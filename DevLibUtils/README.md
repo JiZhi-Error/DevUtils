@@ -58,7 +58,7 @@ DevUtils.openDebug();
 
 - 部分 api 更新不及时或有遗漏等，`具体以对应的工具类为准`
 
-- [JavaDoc - API](https://javadoc.jitpack.io/com/github/afkT/DevUtils/1.7.4/javadoc/)
+- [JavaDoc - API](https://javadoc.jitpack.io/com/github/afkT/DevUtils/1.7.5/javadoc/)
 
 ## API
 
@@ -356,6 +356,56 @@ DevUtils.openDebug();
 | openGpsSettings | 打开 GPS 设置界面 |
 
 
+* **音频管理工具类 ->** [AudioManagerUtils.java](https://github.com/afkT/DevUtils/blob/master/DevLibUtils/src/main/java/dev/utils/app/AudioManagerUtils.java)
+
+| 方法 | 注释 |
+| :- | :- |
+| getAudioManager | 获取 AudioManager |
+| getStreamMaxVolume | 获取指定声音流最大音量大小 |
+| getStreamVolume | 获取指定声音流音量大小 |
+| setStreamVolume | 设置指定声音流音量大小 |
+| adjustVolumeLower | 控制手机音量, 调小一个单位 |
+| adjustVolumeRaise | 控制手机音量, 调大一个单位 |
+| adjustVolume | 控制手机音量, 调大或者调小一个单位 |
+| adjustStreamVolumeLower | 控制指定声音流音量, 调小一个单位 |
+| adjustStreamVolumeRaise | 控制指定声音流音量, 调大一个单位 |
+| adjustStreamVolume | 控制指定声音流音量, 调大或者调小一个单位 |
+| setStreamMuteByMusic | 设置媒体声音静音状态 |
+| setStreamMuteByVoiceCall | 设置通话声音静音状态 |
+| setStreamMuteBySystem | 设置系统声音静音状态 |
+| setStreamMuteByRing | 设置来电响铃静音状态 |
+| setStreamMuteByAlarm | 设置闹钟声音静音状态 |
+| setStreamMuteByNotification | 设置通知声音静音状态 |
+| setStreamMute | 设置指定声音流静音状态 |
+| getMode | 获取当前的音频模式 |
+| setMode | 设置当前的音频模式 |
+| getRingerMode | 获取当前的铃声模式 |
+| setRingerMode | 获取当前的铃声模式 |
+| ringerSilent | 设置静音模式 ( 静音, 且无振动 ) |
+| ringerVibrate | 设置震动模式 ( 静音, 但有振动 ) |
+| ringerNormal | 设置正常模式 ( 正常声音, 振动开关由 setVibrateSetting 决定 ) |
+| isDoNotDisturb | 判断是否授权 Do not disturb 权限 |
+| setSpeakerphoneOn | 设置是否打开扩音器 ( 扬声器 ) |
+| setMicrophoneMute | 设置是否让麦克风静音 |
+| isSpeakerphoneOn | 判断是否打开扩音器 ( 扬声器 ) |
+| isMicrophoneMute | 判断麦克风是否静音 |
+| isMusicActive | 判断是否有音乐处于活跃状态 |
+| isWiredHeadsetOn | 判断是否插入了耳机 |
+| isBluetoothA2dpOn | 检查蓝牙 A2DP 音频外设是否已连接 |
+| isBluetoothScoAvailableOffCall | 检查当前平台是否支持使用 SCO 的关闭调用用例 |
+| isBluetoothScoOn | 检查通信是否使用蓝牙 SCO |
+| setBluetoothScoOn | 设置是否使用蓝牙 SCO 耳机进行通讯 |
+| startBluetoothSco | 启动蓝牙 SCO 音频连接 |
+| stopBluetoothSco | 停止蓝牙 SCO 音频连接 |
+| loadSoundEffects | 加载音效 |
+| unloadSoundEffects | 卸载音效 |
+| playSoundEffect | 播放音效 |
+| abandonAudioFocus | 放弃音频焦点, 使上一个焦点所有者 ( 如果有 ) 接收焦点 |
+| adjustSuggestedStreamVolume | 调整最相关的流的音量, 或者给定的回退流 |
+| getParameters | 获取音频硬件指定 key 的参数值 |
+| getVibrateSetting | 获取用户对振动类型的振动设置 |
+
+
 * **状态栏相关工具类 ->** [BarUtils.java](https://github.com/afkT/DevUtils/blob/master/DevLibUtils/src/main/java/dev/utils/app/BarUtils.java)
 
 | 方法 | 注释 |
@@ -553,6 +603,7 @@ DevUtils.openDebug();
 
 | 方法 | 注释 |
 | :- | :- |
+| getEditText | 获取 EditText |
 | getText | 获取输入的内容 |
 | getTextLength | 获取输入的内容长度 |
 | setText | 设置内容 |
@@ -613,6 +664,47 @@ DevUtils.openDebug();
 | addHtmlUnderline | 为给定的字符串添加 HTML 下划线 |
 | addHtmlIncline | 为给定的字符串添加 HTML 字体倾斜 |
 | keywordReplaceHtmlColor | 将给定的字符串中所有给定的关键字标色 |
+
+
+* **ImageView 工具类 ->** [ImageViewUtils.java](https://github.com/afkT/DevUtils/blob/master/DevLibUtils/src/main/java/dev/utils/app/ImageViewUtils.java)
+
+| 方法 | 注释 |
+| :- | :- |
+| getImageView | 获取 ImageView |
+| setBackground | 设置背景图片 |
+| setBackgroundColor | 设置背景颜色 |
+| setBackgroundResource | 设置背景资源 |
+| setBackgroundTintList | 设置背景着色颜色 |
+| setBackgroundTintMode | 设置背景着色模式 |
+| setForeground | 设置前景图片 |
+| setForegroundGravity | 设置前景重心 |
+| setForegroundTintList | 设置前景着色颜色 |
+| setForegroundTintMode | 设置前景着色模式 |
+| setImageBitmap | 设置 ImageView Bitmap |
+| setImageDrawable | 设置 ImageView Drawable |
+| setImageResource | 设置 ImageView 资源 |
+| setImageMatrix | 设置 ImageView Matrix |
+| setImageTintList | 设置 ImageView 着色颜色 |
+| setImageTintMode | 设置 ImageView 着色模式 |
+| setScaleType | 设置 ImageView 缩放类型 |
+| getBackground | 获取 View 背景 Drawable |
+| getBackgroundTintList | 获取 View 背景着色颜色 |
+| getBackgroundTintMode | 获取 View 背景着色模式 |
+| getForeground | 获取 View 前景 Drawable |
+| getForegroundGravity | 获取 View 前景重心 |
+| getForegroundTintList | 获取 View 前景着色颜色 |
+| getForegroundTintMode | 获取 View 前景着色模式 |
+| getImageMatrix | 获取 ImageView Matrix |
+| getImageTintList | 获取 ImageView 着色颜色 |
+| getImageTintMode | 获取 ImageView 着色模式 |
+| getScaleType | 获取 ImageView 缩放模式 |
+| getDrawable | 获取 ImageView Drawable |
+| setColorFilter | ImageView 着色处理 |
+| setImageResources | 设置 View 图片资源 |
+| setImageBitmaps | 设置 View Bitmap |
+| setImageDrawables | 设置 View Drawable |
+| setScaleTypes | 设置 View 缩放模式 |
+| getImageViewSize | 根据 ImageView 获适当的宽高 |
 
 
 * **Intent ( 意图 ) 相关工具类 ->** [IntentUtils.java](https://github.com/afkT/DevUtils/blob/master/DevLibUtils/src/main/java/dev/utils/app/IntentUtils.java)
@@ -934,7 +1026,16 @@ DevUtils.openDebug();
 | getString | 获取 String |
 | getColor | 获取 Color |
 | getDrawable | 获取 Drawable |
+| getColorDrawable | 获取指定颜色 Drawable |
+| getBitmap | 获取 Bitmap |
 | getDimension | 获取 Dimension |
+| getBoolean | 获取 Boolean |
+| getInteger | 获取 Integer |
+| getAnimation | 获取 Animation |
+| getResourceName | 获取给定资源标识符的全名 |
+| getIntArray | 获取 int[] |
+| getStringArray | 获取 String[] |
+| getTextArray | 获取 CharSequence[] |
 | getLayoutId | 获取 layout id |
 | getDrawableId | 获取 drawable id |
 | getMipmapId | 获取 mipmap id |
@@ -951,6 +1052,9 @@ DevUtils.openDebug();
 | getBoolId | 获取 bool id |
 | getIntegerId | 获取 integer id |
 | getIdentifier | 获取资源 id |
+| openAssetsResource | 获取 AssetManager 指定资源 InputStream |
+| openRawResource | 获取对应资源 InputStream |
+| openRawResourceFd | 获取对应资源 AssetFileDescriptor |
 | readBytesFromAssets | 获取 Assets 资源文件数据 |
 | readStringFromAssets | 获取 Assets 资源文件数据 |
 | readBytesFromRaw | 获取 Raw 资源文件数据 |
@@ -1445,170 +1549,109 @@ DevUtils.openDebug();
 ## <span id="devutilsappimage">**`dev.utils.app.image`**</span>
 
 
-* **图片裁剪工具类 ->** [BitmapCropUtils.java](https://github.com/afkT/DevUtils/blob/master/DevLibUtils/src/main/java/dev/utils/app/image/BitmapCropUtils.java)
-
-| 方法 | 注释 |
-| :- | :- |
-| cropBitmap | 裁剪图片(默认比例16:9) |
-
-
-* **Bitmap 工具类, 主要包括获取 Bitmap 和对 Bitmap 的操作 ->** [BitmapExtendUtils.java](https://github.com/afkT/DevUtils/blob/master/DevLibUtils/src/main/java/dev/utils/app/image/BitmapExtendUtils.java)
-
-| 方法 | 注释 |
-| :- | :- |
-| calculateInSampleSize | 图片压缩处理(使用Options的方法) |
-| getBitmapFromResource | 获取一个指定大小的bitmap |
-| getBitmapFromFile | 获取一个指定大小的bitmap |
-| getBitmapFromByteArray | 获取一个指定大小的bitmap |
-| getBytesFromStream | Stream 转换成 byte[] |
-| getBitmapFromStream | 获取一个指定大小的bitmap |
-| combineImages | 合并Bitmap |
-| combineImagesToSameSize | 合并Bitmap |
-| zoom | 放大缩小图片 |
-| getRoundedCornerBitmap | 获取圆角图片的方法 |
-| createReflectionBitmap | 获取带倒影的图片方法 |
-| compressImage | 压缩图片大小 |
-| convertGreyImg | 将彩色图转换为灰度图 |
-| getRoundBitmap | 转换图片成圆形 |
-| createThumbnailBitmap | 创建图片缩略图 |
-| createWatermarkBitmap | 生成水印图片 水印在右下角 |
-| codec | 重新编码Bitmap |
-| compress | 图片压缩方法(使用compress的方法) |
-| scale | 图片的缩放方法 |
-| rotate | 旋转图片 |
-| reverseByHorizontal | 水平翻转处理 |
-| reverseByVertical | 垂直翻转处理 |
-| adjustTone | 更改图片色系, 变亮或变暗 |
-| convertToBlackWhite | 将彩色图转换为黑白图 |
-| getImageDegree | 读取图片属性 图片被旋转的角度 |
-| saturation | 饱和度处理 |
-| lum | 亮度处理 |
-| hue | 色相处理 |
-| lumAndHueAndSaturation | 亮度、色相、饱和度处理 |
-| nostalgic | 怀旧效果处理 |
-| soften | 柔化效果处理 |
-| sunshine | 光照效果处理 |
-| film | 底片效果处理 |
-| sharpen | 锐化效果处理 |
-| emboss | 浮雕效果处理 |
-| yuvLandscapeToPortrait | 将YUV格式的图片的源数据从横屏模式转为竖屏模式, 注: 将源图片的宽高互换一下就是新图片的宽高 |
-| safeDecodeStream | 比较安全的 解码(decodeStream) 方法 |
-
-
 * **Bitmap 工具类 ->** [BitmapUtils.java](https://github.com/afkT/DevUtils/blob/master/DevLibUtils/src/main/java/dev/utils/app/image/BitmapUtils.java)
 
 | 方法 | 注释 |
 | :- | :- |
-| intToDrawable | 将十进制颜色(Int)转换为Drawable对象 |
-| stringToDrawable | 将十六进制颜色(String)转化为Drawable对象 |
-| tintIcon | 图片着色 |
-| tint9PatchDrawableFrame | .9 图片着色 |
-| setBackground | 设置背景 |
-| getDrawable | 获取 Drawable |
-| getBitmapFromResources | 通过Resources获取Bitmap |
-| getDrawableFromResources | 通过Resources获取Drawable |
-| getSDCardBitmapStream | 获取本地SDCard 图片 |
-| getSDCardBitmapFile | 获取本地SDCard 图片 |
-| getBitmap | 获取Bitmap |
-| bitmapToByte | Bitmay 转换成 byte[] |
-| drawableToByte | Drawable 转换成 byte[] |
-| drawableToByte2 | Drawable 转换成 byte[] |
-| byteToBitmap | byte 数组转换为Bitmap |
-| byteToDrawable | Byte[] 转换成 Drawable |
-| bitmapToDrawable | Bitmap 转换成 Drawable |
-| drawableToBitmap | Drawable 转换成 Bitmap |
-| drawableToBitmap2 | Drawable 转换 Bitmap |
-| drawableToBitmap3 | Drawable 转换 Bitmap |
-| drawableToBitmap4 | Drawable 转 Bitmap |
-| saveBitmapToSDCardJPEG | 保存图片到 SDCard - JPEG |
-| saveBitmapToSDCardPNG | 保存图片到 SDCard - PNG |
-| saveBitmapToSDCard | 保存图片到 SDCard - PNG |
-| getBitmapFromDrawable | 将Drawable转化为Bitmap |
-| bitmapToViewBackGround | 通过 View, 获取背景转换 Bitmap |
-| getBitmapFromView | 通过 View 获取 Bitmap, 绘制整个 View |
-| getBitmapFromView2 | 把一个 View 的对象转换成 bitmap |
-| reckonVideoWidthHeight | 计算视频宽高大小, 视频比例xxx*xxx按屏幕比例放大或者缩小 |
-| caculateInSampleSize | 根据需求的宽和高以及图片实际的宽和高计算SampleSize |
-| getImageViewSize | 根据ImageView获适当的压缩的宽和高 |
-| getImageWidthHeight | 获取图片宽度高度(不加载解析图片) |
+| isEmpty | 判断 Bitmap 对象是否为 null |
+| isNotEmpty | 判断 Bitmap 对象是否不为 null |
+| getBitmapWidth | 获取 Bitmap 宽度 |
+| getBitmapHeight | 获取 Bitmap 高度 |
+| getBitmapWidthHeight | 获取 Bitmap 宽高 |
+| copy | 复制 Bitmap |
+| extractAlpha | 获取 Alpha 位图 ( 获取源图片的轮廓 rgb 为 0) |
+| recode | 重新编码 Bitmap |
+| recycle | Bitmap 通知回收 |
+| rotate | 旋转图片 |
+| getRotateDegree | 读取图片属性, 获取图片被旋转的角度 |
+| reverseByHorizontal | 水平翻转图片 ( 左右颠倒 ) |
+| reverseByVertical | 垂直翻转图片 ( 上下颠倒 ) |
+| reverse | 翻转图片 |
+| zoom | 缩放图片 ( 指定所需宽高 ) |
+| scale | 缩放图片 ( 比例缩放 ) |
+| skew | 倾斜图片 |
+| clip | 裁剪图片 |
+| crop | 裁剪图片 ( 返回指定比例图片 ) |
+| combine | 合并图片 |
+| combineToCenter | 合并图片 ( 居中 ) |
+| combineToSameSize | 合并图片 ( 转为相同大小 ) |
+| reflection | 图片倒影处理 |
+| roundCorner | 图片圆角处理 ( 非圆形 ) |
+| roundCornerTop | 图片圆角处理 ( 非圆形 ) - 只有 leftTop、rightTop |
+| roundCornerBottom | 图片圆角处理 ( 非圆形 ) - 只有 leftBottom、rightBottom |
+| round | 图片圆形处理 |
+| addCornerBorder | 添加圆角边框 |
+| addCircleBorder | 添加圆形边框 |
+| addTextWatermark | 添加文字水印 |
+| addImageWatermark | 添加图片水印 |
+| compressByZoom | 按缩放宽高压缩 |
+| compressByScale | 按缩放比例压缩 |
+| compressByQuality | 按质量压缩 |
+| compressByByteSize | 按质量压缩 ( 图片大小 ) |
+| compressBySampleSize | 按采样大小压缩 |
+| calculateInSampleSize | 计算采样大小 |
 
 
-* **毛玻璃效果工具类 ->** [FastBlurUtils.java](https://github.com/afkT/DevUtils/blob/master/DevLibUtils/src/main/java/dev/utils/app/image/FastBlurUtils.java)
-
-| 方法 | 注释 |
-| :- | :- |
-| blur | 对图片进行毛玻璃化 |
-
-
-* **转换 BMP 图片工具类 ->** [ImageBmpUtils.java](https://github.com/afkT/DevUtils/blob/master/DevLibUtils/src/main/java/dev/utils/app/image/ImageBmpUtils.java)
+* **图片格式转换工具类 ->** [ImageConvertUtils.java](https://github.com/afkT/DevUtils/blob/master/DevLibUtils/src/main/java/dev/utils/app/image/ImageConvertUtils.java)
 
 | 方法 | 注释 |
 | :- | :- |
-| saveBmpImg | 保存Bmp图片 |
+| convertBMP | 图片转换 BMP 格式 byte[] 数据 |
 
 
-* **图片处理工具类 ->** [ImageProcessor.java](https://github.com/afkT/DevUtils/blob/master/DevLibUtils/src/main/java/dev/utils/app/image/ImageProcessor.java)
+* **图片 ( 滤镜、效果 ) 工具类 ->** [ImageFilterUtils.java](https://github.com/afkT/DevUtils/blob/master/DevLibUtils/src/main/java/dev/utils/app/image/ImageFilterUtils.java)
 
 | 方法 | 注释 |
 | :- | :- |
-| scale | 缩放处理 |
-| scaleByWidth | 缩放处理 |
-| scaleByHeight | 缩放处理 |
-| reverseByHorizontal | 水平翻转处理 |
-| reverseByVertical | 垂直翻转处理 |
-| drawableToBitmap | 将给定资源ID的Drawable转换成Bitmap |
-| roundCorner | 圆角处理 |
-| reflection | 倒影处理 |
-| rotate | 旋转处理 |
+| blur | 图片模糊处理 ( Android RenderScript 实现, 效率最高 ) |
+| fastBlur | 图片模糊处理 ( 毛玻璃化 FastBlur Java 实现 ) |
+| nostalgic | 怀旧效果处理 |
+| sunshine | 光照效果处理 |
+| film | 底片效果处理 |
+| soften | 柔化效果处理 |
+| sharpen | 锐化效果处理 |
+| emboss | 浮雕效果处理 |
+| toGray | 转为灰度图片 |
 | saturation | 饱和度处理 |
 | lum | 亮度处理 |
 | hue | 色相处理 |
-| lumAndHueAndSaturation | 亮度、色相、饱和度处理 |
-| nostalgic | 怀旧效果处理 |
-| blur | 模糊效果处理 |
-| soften | 柔化效果处理 |
-| sunshine | 光照效果处理 |
-| film | 底片效果处理 |
-| sharpen | 锐化效果处理 |
-| emboss | 浮雕效果处理 |
+| lumHueSaturation | 亮度、色相、饱和度处理 |
+| yuvLandscapeToPortrait | 将 YUV 格式的图片的源数据从横屏模式转为竖屏模式 |
 
 
-* **图片相关工具类 ->** [ImageUtils.java](https://github.com/afkT/DevUtils/blob/master/DevLibUtils/src/main/java/dev/utils/app/image/ImageUtils.java)
+* **Image ( Bitmap、Drawable 等 ) 工具类 ->** [ImageUtils.java](https://github.com/afkT/DevUtils/blob/master/DevLibUtils/src/main/java/dev/utils/app/image/ImageUtils.java)
 
 | 方法 | 注释 |
 | :- | :- |
-| getBitmap | 获取 bitmap |
-| scale | 缩放图片 |
-| clip | 裁剪图片 |
-| skew | 倾斜图片 |
-| rotate | 旋转图片 |
-| getRotateDegree | 获取图片旋转角度 - 返回 -1 表示异常 |
-| toRound | 转为圆形图片 |
-| toRoundCorner | 转为圆角图片 |
-| addCornerBorder | 添加圆角边框 |
-| addCircleBorder | 添加圆形边框 |
-| addReflection | 添加倒影 |
-| addTextWatermark | 添加文字水印 |
-| addImageWatermark | 添加图片水印 |
-| toAlpha | 转为 alpha 位图 |
-| toGray | 转为灰度图片 |
-| fastBlur | 快速模糊 - 先缩小原图, 对小图进行模糊, 再放大回原先尺寸 |
-| renderScriptBlur | renderScript 模糊图片 - API 大于 17 |
-| stackBlur | stack 模糊图片 |
-| save | 保存图片 |
+| isEmpty | 判断 Bitmap 对象是否为 null |
+| isNotEmpty | 判断 Bitmap 对象是否不为 null |
 | isImage | 根据文件名判断文件是否为图片 |
 | getImageType | 获取图片类型 |
-| compressByScale | 按缩放压缩 |
-| compressByQuality | 按质量压缩 |
-| compressBySampleSize | 按采样大小压缩 |
-| setViewImageRes | 设置 View 图片资源 |
-
-
-* **Android RenderScript 实现图片模糊工具类 ->** [RSBlurUtils.java](https://github.com/afkT/DevUtils/blob/master/DevLibUtils/src/main/java/dev/utils/app/image/RSBlurUtils.java)
-
-| 方法 | 注释 |
-| :- | :- |
-| blur | RenderScript 实现图片模糊 |
+| isPNG | 判断是否 PNG 图片 |
+| isJPEG | 判断是否 JPG 图片 |
+| isBMP | 判断是否 BMP 图片 |
+| isGif | 判断是否 GIF 图片 |
+| isWEBP | 判断是否 webp 图片 |
+| decodeFile | 获取 Bitmap |
+| decodeResource | 获取 Bitmap |
+| decodeStream | 获取 Bitmap |
+| decodeFileDescriptor | 获取 Bitmap |
+| decodeByteArray | 获取 Bitmap |
+| saveBitmapToSDCardJPEG | 保存图片到 SDCard - JPEG |
+| saveBitmapToSDCardPNG | 保存图片到 SDCard - PNG |
+| saveBitmapToSDCardWEBP | 保存图片到 SDCard - WEBP |
+| saveBitmapToSDCard | 保存图片到 SDCard |
+| get9PatchDrawable | 获取 .9 Drawable |
+| setColorFilter | 图片着色 - tint |
+| getBitmap | 获取 Bitmap |
+| getBitmapFromView | 通过 View 绘制为 Bitmap |
+| getBitmapFromViewCache | 通过 View Cache 绘制为 Bitmap |
+| bitmapToByte | Bitmap 转换成 byte[] |
+| drawableToByte | Drawable 转换成 byte[] |
+| byteToBitmap | byte[] 转 Bitmap |
+| bitmapToDrawable | Bitmap 转 Drawable |
+| byteToDrawable | byte[] 转 Drawable |
+| drawableToBitmap | Drawable 转 Bitmap |
 
 
 ## <span id="devutilsappinfo">**`dev.utils.app.info`**</span>
@@ -2409,6 +2452,8 @@ DevUtils.openDebug();
 | copyFolder | 复制文件夹 |
 | moveFile | 移动 ( 剪切 ) 文件 |
 | moveFolder | 移动 ( 剪切 ) 文件夹 |
+| copyOrMoveDir | 复制或移动目录 |
+| copyOrMoveFile | 复制或移动文件 |
 | copyDir | 复制目录 |
 | moveDir | 移动目录 |
 | deleteDir | 删除目录 |
