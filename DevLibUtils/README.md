@@ -1631,7 +1631,7 @@ DevUtils.openDebug();
 | isJPEG | 判断是否 JPG 图片 |
 | isBMP | 判断是否 BMP 图片 |
 | isGif | 判断是否 GIF 图片 |
-| isWEBP | 判断是否 webp 图片 |
+| isWEBP | 判断是否 WEBP 图片 |
 | decodeFile | 获取 Bitmap |
 | decodeResource | 获取 Bitmap |
 | decodeStream | 获取 Bitmap |
