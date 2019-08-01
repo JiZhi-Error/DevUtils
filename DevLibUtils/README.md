@@ -1243,6 +1243,46 @@ DevUtils.openDebug();
 | bellow | 设置 Snackbar 显示在指定 View 的下方 |
 
 
+* **SpannableString 工具类 ->** [SpannableStringUtils.java](https://github.com/afkT/DevUtils/blob/master/DevLibUtils/src/main/java/dev/utils/app/SpannableStringUtils.java)
+
+| 方法 | 注释 |
+| :- | :- |
+| with | 获取持有 TextView SpannableStringUtils |
+| setFlag | 设置标识 |
+| setForegroundColor | 设置前景色 |
+| setBackgroundColor | 设置背景色 |
+| setLineHeight | 设置行高 |
+| setQuoteColor | 设置引用线的颜色 |
+| setLeadingMargin | 设置缩进 |
+| setBullet | 设置列表标记 |
+| setFontSize | 设置字体尺寸 |
+| setFontProportion | 设置字体比例 |
+| setFontXProportion | 设置字体横向比例 |
+| setStrikethrough | 设置删除线 |
+| setUnderline | 设置下划线 |
+| setSuperscript | 设置上标 |
+| setSubscript | 设置下标 |
+| setBold | 设置粗体 |
+| setItalic | 设置斜体 |
+| setBoldItalic | 设置粗斜体 |
+| setFontFamily | 设置字体系列 |
+| setTypeface | 设置字体 |
+| setHorizontalAlign | 设置水平对齐 |
+| setVerticalAlign | 设置垂直对齐 |
+| setClickSpan | 设置点击事件 |
+| setUrl | 设置超链接 |
+| setBlur | 设置模糊 |
+| setShader | 设置着色器 |
+| setShadow | 设置阴影 |
+| setSpans | 自定义 setSpan 参数 |
+| append | 追加文本 |
+| appendLine | 追加换行 |
+| appendImage | 追加 Image |
+| appendSpace | 追加空格 |
+| get | 获取 SpannableStringBuilder |
+| create | 创建 SpannableStringBuilder |
+
+
 * **颜色状态列表工具类 ->** [StateListUtils.java](https://github.com/afkT/DevUtils/blob/master/DevLibUtils/src/main/java/dev/utils/app/StateListUtils.java)
 
 | 方法 | 注释 |
@@ -1349,6 +1389,18 @@ DevUtils.openDebug();
 | setMargin | 设置 Margin 边距 |
 | getPadding | 获取 View Padding |
 | setPadding | 设置 Padding 边距 |
+| getCompoundDrawables | 获取 CompoundDrawables |
+| getCompoundDrawablePadding | 获取 CompoundDrawables Padding |
+| setCompoundDrawablesByLeft | 设置 Left CompoundDrawables |
+| setCompoundDrawablesByTop | 设置 Top CompoundDrawables |
+| setCompoundDrawablesByRight | 设置 Right CompoundDrawables |
+| setCompoundDrawablesByBottom | 设置 Bottom CompoundDrawables |
+| setCompoundDrawables | 设置 CompoundDrawables |
+| setCompoundDrawablesWithIntrinsicBoundsByLeft | 设置 Left CompoundDrawables - 按照原有比例大小显示图片 |
+| setCompoundDrawablesWithIntrinsicBoundsByTop | 设置 Top CompoundDrawables - 按照原有比例大小显示图片 |
+| setCompoundDrawablesWithIntrinsicBoundsByRight | 设置 Right CompoundDrawables - 按照原有比例大小显示图片 |
+| setCompoundDrawablesWithIntrinsicBoundsByBottom | 设置 Bottom CompoundDrawables - 按照原有比例大小显示图片 |
+| setCompoundDrawablesWithIntrinsicBounds | 设置 CompoundDrawables - 按照原有比例大小显示图片 |
 | calcListViewItemHeight | 计算 ListView Item 高度 |
 | calcGridViewItemHeight | 计算 GridView Item 高度 |
 | getItemHeighet | 获取单独一个 Item 高度 |
@@ -1654,6 +1706,7 @@ DevUtils.openDebug();
 | bitmapToDrawable | Bitmap 转 Drawable |
 | byteToDrawable | byte[] 转 Drawable |
 | drawableToBitmap | Drawable 转 Bitmap |
+| setBounds | 设置 Drawable 绘制区域 |
 
 
 ## <span id="devutilsappinfo">**`dev.utils.app.info`**</span>
