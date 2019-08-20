@@ -1496,7 +1496,7 @@ DevUtils.openDebug();
 | closeNotRunTask | 关闭所有未运行的任务 |
 | closeInfiniteTask | 关闭所有无限循环的任务 |
 | closeMark | 关闭所有符合对应的字符串标记的定时器任务 |
-| createTimer | 创建定时器 => 立即执行、无限循环、通知默认 what |
+| createTimer | 创建定时器 ( 立即执行、无限循环、通知默认 what ) |
 | getMarkId | 获取标记 id |
 | getMarkStr | 获取标记字符串 |
 | setMarkId | 设置标记 id |
