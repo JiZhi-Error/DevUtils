@@ -1,4 +1,10 @@
 
+## Gradle
+
+```java
+implementation 'com.afkt:DevApp:1.7.7'
+```
+
 ## 使用
 
 > ##### 只需要在 Application 中调用 `DevUtils.init()` 进行初始化就行
@@ -57,8 +63,6 @@ DevUtils.openDebug();
 - 工具类部分模块配置与使用 - [Use and Config](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/utils_readme/USE_CONFIG.md)
 
 - 部分 api 更新不及时或有遗漏等，`具体以对应的工具类为准`
-
-- [JavaDoc - API](https://javadoc.jitpack.io/com/github/afkT/DevUtils/1.7.6/javadoc/)
 
 - [检测代码规范、注释内容排版, API 文档生成](https://github.com/afkT/JavaDoc)
 
@@ -315,7 +319,7 @@ DevUtils.openDebug();
 | isO | 是否在 8.0 版本及以上 |
 | isO_MR1 | 是否在 8.1 版本及以上 |
 | isP | 是否在 9.0 版本及以上 |
-| convertSDKVersion | 转换 SDK 版本 convertSDKVersion(14) => Android 4.0.0-2 |
+| convertSDKVersion | 转换 SDK 版本 convertSDKVersion(14) = Android 4.0.0-2 |
 
 
 * **APP (Android) 工具类 ->** [AppUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/AppUtils.java)
@@ -1087,6 +1091,7 @@ DevUtils.openDebug();
 | getWidthDpi | 获取宽度比例 dpi 基准 |
 | getHeightDpi | 获取高度比例 dpi 基准 |
 | getScreenInfo | 获取屏幕信息 |
+| setWindowSecure | 设置禁止截屏 |
 | setFullScreen | 设置屏幕为全屏 |
 | setLandscape | 设置屏幕为横屏 |
 | setPortrait | 设置屏幕为竖屏 |
@@ -1288,8 +1293,8 @@ DevUtils.openDebug();
 | 方法 | 注释 |
 | :- | :- |
 | getColorStateList | 获取 ColorStateList |
-| createColorStateList | 创建 ColorStateList => createColorStateList("#ffffffff", "#ff44e6ff") |
-| newSelector | 创建 StateListDrawable => view.setBackground(Drawable) |
+| createColorStateList | 创建 ColorStateList |
+| newSelector | 创建 StateListDrawable |
 
 
 * **TextView 工具类 ->** [TextViewUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/TextViewUtils.java)
@@ -1356,6 +1361,8 @@ DevUtils.openDebug();
 | inflate | 获取 View |
 | getChildAt | 获取指定索引 View |
 | removeAllViews | 移除全部子 View |
+| getLayoutParams | 获取 LayoutParams |
+| setLayoutParams | 设置 View LayoutParams |
 | findViewById | 初始化 View |
 | convertView | 转换 View |
 | isEmpty | 判断 View 是否为 null |
@@ -1385,9 +1392,27 @@ DevUtils.openDebug();
 | measureView | 测量 View |
 | getMeasuredWidth | 获取 View 的宽度 |
 | getMeasuredHeight | 获取 View 的高度 |
+| getLayoutGravity | 获取 View Layout Gravity |
+| setLayoutGravity | 设置 View Layout Gravity |
+| getMarginLeft | 获取 View Left Margin |
+| getMarginTop | 获取 View Top Margin |
+| getMarginRight | 获取 View Right Margin |
+| getMarginBottom | 获取 View Bottom Margin |
 | getMargin | 获取 View Margin |
+| setMarginLeft | 设置 View Left Margin |
+| setMarginTop | 设置 View Top Margin |
+| setMarginRight | 设置 View Right Margin |
+| setMarginBottom | 设置 View Bottom Margin |
 | setMargin | 设置 Margin 边距 |
+| getPaddingLeft | 获取 View Left Padding |
+| getPaddingTop | 获取 View Top Padding |
+| getPaddingRight | 获取 View Right Padding |
+| getPaddingBottom | 获取 View Bottom Padding |
 | getPadding | 获取 View Padding |
+| setPaddingLeft | 设置 View Left Padding |
+| setPaddingTop | 设置 View Top Padding |
+| setPaddingRight | 设置 View Right Padding |
+| setPaddingBottom | 设置 View Bottom Padding |
 | setPadding | 设置 Padding 边距 |
 | getCompoundDrawables | 获取 CompoundDrawables |
 | getCompoundDrawablePadding | 获取 CompoundDrawables Padding |
@@ -2519,7 +2544,7 @@ DevUtils.openDebug();
 | listFilesInDir | 获取目录下所有文件 - 不递归进子目录 |
 | listFilesInDirWithFilter | 获取目录下所有过滤的文件 - 不递归进子目录 |
 | getFileMD5 | 获取文件 MD5 值 |
-| getFileMD5ToHexString | 获取文件 MD5 值 - 小写 |
+| getFileMD5ToHexString | 获取文件 MD5 值 |
 
 
 * **Http 参数工具类 ->** [HttpParamsUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/common/HttpParamsUtils.java)
@@ -2529,7 +2554,6 @@ DevUtils.openDebug();
 | splitParams | 拆分参数 |
 | joinParams | 拼接请求参数 - value(String) |
 | joinParamsObj | 拼接请求参数 - value(Object) |
-| printMapParams | 拼接打印 Map 参数 |
 | toConvertObjToMS | 进行转换对象处理 ( 请求发送对象 ) |
 | toConvertObjToMO | 进行转换对象处理 ( 请求发送对象 ) |
 | toUrlEncode | 进行 URL 编码, 默认 UTF-8 |
@@ -2746,7 +2770,7 @@ DevUtils.openDebug();
 | toUnicode | 将字符串转移为 Unicode 码 |
 | toUnicodeString | 将字符数组转移为 Unicode 码 |
 | toDBC | 转化为半角字符 |
-| toSBC | 转化为全角字符 如: a => ａ A => Ａ |
+| toSBC | 转化为全角字符 如: a = ａ, A = Ａ |
 | checkChineseToString | 检测字符串是否全是中文 |
 | isChinese | 判定输入汉字 |
 | upperFirstLetter | 首字母大写 |
@@ -2984,10 +3008,10 @@ DevUtils.openDebug();
 
 | 方法 | 注释 |
 | :- | :- |
-| md5 | 加密内容 - 32 位 MD5 - 小写 |
-| md5Upper | 加密内容 - 32 位 MD5 - 大写 |
+| md5 | 加密内容 (32 位小写 MD5) |
+| md5Upper | 加密内容 (32 位大写 MD5) |
 | getFileMD5 | 获取文件 MD5 值 |
-| getFileMD5ToHexString | 获取文件 MD5 值 - 小写 |
+| getFileMD5ToHexString | 获取文件 MD5 值 |
 
 
 * **SHA 加密工具类 ->** [SHAUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/common/encrypt/SHAUtils.java)
@@ -3018,7 +3042,7 @@ DevUtils.openDebug();
 
 | 方法 | 注释 |
 | :- | :- |
-| encryptAsFix | 加解密 ( 固定 Key 方式 ) - 这种方式 加解密 方法共用 |
+| encryptAsFix | 加解密 ( 固定 Key 方式 ) 这种方式 加解密 方法共用 |
 | encrypt | 加密 ( 非固定 Key 方式 ) |
 | decrypt | 解密 ( 非固定 Key 方式 ) |
 
@@ -3092,9 +3116,9 @@ DevUtils.openDebug();
 | getAgeByIdCard | 根据身份编号获取年龄 |
 | getBirthByIdCard | 根据身份编号获取生日 |
 | getBirthdayByIdCard | 根据身份编号获取生日 |
-| getYearByIdCard | 根据身份编号获取生日 - 年份 |
-| getMonthByIdCard | 根据身份编号获取生日 - 月份 |
-| getDateByIdCard | 根据身份编号获取生日 - 天数 |
+| getYearByIdCard | 根据身份编号获取生日 ( 年份 ) |
+| getMonthByIdCard | 根据身份编号获取生日 ( 月份 ) |
+| getDateByIdCard | 根据身份编号获取生日 ( 天数 ) |
 | getGenderByIdCard | 根据身份编号获取性别 |
 | getProvinceByIdCard | 根据身份编号获取户籍省份 |
 | getPowerSum | 将身份证的每位和对应位的加权因子相乘之后, 再获取和值 |
