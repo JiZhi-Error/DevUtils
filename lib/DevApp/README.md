@@ -5,10 +5,6 @@
 implementation 'com.afkt:DevApp:1.7.7'
 ```
 
-## 使用
-
-> ##### 只需要在 Application 中调用 `DevUtils.init()` 进行初始化就行
-
 ## 目录结构
 
 ```
@@ -39,6 +35,10 @@ implementation 'com.afkt:DevApp:1.7.7'
 ```
 
 
+## 使用
+
+> ##### 只需要在 Application 中调用 `DevUtils.init()` 进行初始化就行
+
 ## 事项
 
 - 内部存在两个日志工具类(工具类内部调用)，对外使用 [DevLogger](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/utils_readme/logger/DevLogger.md)
@@ -52,7 +52,7 @@ LogPrintUtils
 JCLogUtils
 ```
 
-- 需要开启日志，单独调用
+- 开启日志
 ```java
 // 打开 lib 内部日志 - 线上(release)环境, 不调用方法就行
 DevUtils.openLog();
