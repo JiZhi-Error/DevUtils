@@ -3,6 +3,9 @@
 
 ```java
 implementation 'com.afkt:DevApp:1.7.7'
+
+// AndroidX
+implementation 'com.afkt:DevAppX:1.7.7'
 ```
 
 ## 目录结构
