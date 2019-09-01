@@ -2286,6 +2286,7 @@ DevUtils.openDebug();
 
 | 方法 | 注释 |
 | :- | :- |
+| convert | Object 转换所需类型对象 |
 | toString | char[] 转 String |
 | toInt | 字符串 转 int |
 | toBoolean | 字符串 转 boolean |
