@@ -3,6 +3,9 @@
 
 ```java
 implementation 'com.afkt:DevApp:1.7.7'
+
+// AndroidX
+implementation 'com.afkt:DevAppX:1.7.7'
 ```
 
 ## 目录结构
@@ -44,7 +47,7 @@ implementation 'com.afkt:DevApp:1.7.7'
 - 内部存在两个日志工具类 (工具类内部调用)，对外使用 [DevLogger](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/utils_readme/logger/DevLogger.md)
 
 ```java
-// 整个工具类内部日志信息, 都通过以下两个工具类输出打印, 并且通过 DevUtils.openLog() 控制开关
+// 整个工具类内部日志信息，都通过以下两个工具类输出打印，并且通过 DevUtils.openLog() 控制开关
 
 // dev.utils.app - APP 日志打印工具类
 LogPrintUtils
@@ -54,7 +57,7 @@ JCLogUtils
 
 - 开启日志
 ```java
-// 打开 lib 内部日志 - 线上(release)环境, 不调用方法就行
+// 打开 lib 内部日志 - 线上 (release) 环境，不调用方法就行
 DevUtils.openLog();
 // 标示 debug 模式
 DevUtils.openDebug();
@@ -64,7 +67,7 @@ DevUtils.openDebug();
 
 - 部分 API 更新不及时或有遗漏等，`具体以对应的工具类为准`
 
-- [检测代码规范、注释内容排版, API 文档生成](https://github.com/afkT/JavaDoc)
+- [检测代码规范、注释内容排版，API 文档生成](https://github.com/afkT/JavaDoc)
 
 ## API
 
@@ -2283,6 +2286,7 @@ DevUtils.openDebug();
 
 | 方法 | 注释 |
 | :- | :- |
+| convert | Object 转换所需类型对象 |
 | toString | char[] 转 String |
 | toInt | 字符串 转 int |
 | toBoolean | 字符串 转 boolean |
