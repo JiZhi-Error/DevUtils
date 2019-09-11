@@ -2,10 +2,10 @@
 ## Gradle
 
 ```java
-implementation 'com.afkt:DevApp:1.7.7'
+implementation 'com.afkt:DevApp:1.7.8'
 
 // AndroidX
-implementation 'com.afkt:DevAppX:1.7.7'
+implementation 'com.afkt:DevAppX:1.7.8'
 ```
 
 ## 目录结构
@@ -653,7 +653,7 @@ DevUtils.openDebug();
 | isFlashlightEnable | 是否支持手机闪光灯 |
 
 
-* **Handler 工具类 ( 默认开启一个 Handler, 方便在各个地方随时执行主线程任务 ) ->** [HandlerUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/HandlerUtils.java)
+* **Handler 工具类 ->** [HandlerUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/HandlerUtils.java)
 
 | 方法 | 注释 |
 | :- | :- |
@@ -709,6 +709,7 @@ DevUtils.openDebug();
 | getScaleType | 获取 ImageView 缩放模式 |
 | getDrawable | 获取 ImageView Drawable |
 | setColorFilter | ImageView 着色处理 |
+| setBackgroundResources | 设置 View 图片资源 |
 | setImageResources | 设置 View 图片资源 |
 | setImageBitmaps | 设置 View Bitmap |
 | setImageDrawables | 设置 View Drawable |
@@ -716,7 +717,7 @@ DevUtils.openDebug();
 | getImageViewSize | 根据 ImageView 获适当的宽高 |
 
 
-* **Intent ( 意图 ) 相关工具类 ->** [IntentUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/IntentUtils.java)
+* **Intent 相关工具类 ->** [IntentUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/IntentUtils.java)
 
 | 方法 | 注释 |
 | :- | :- |
@@ -748,7 +749,7 @@ DevUtils.openDebug();
 | stringJSONEscape | 字符串 JSON 转义处理 |
 
 
-* **软键盘相关辅助类 ->** [KeyBoardUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/KeyBoardUtils.java)
+* **软键盘相关工具类 ->** [KeyBoardUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/KeyBoardUtils.java)
 
 | 方法 | 注释 |
 | :- | :- |
@@ -1362,6 +1363,7 @@ DevUtils.openDebug();
 | getContext | 获取 Context |
 | getActivity | 获取 View context 所属的 Activity |
 | inflate | 获取 View |
+| getParent | 获取指定 View 父布局 |
 | getChildAt | 获取指定索引 View |
 | removeAllViews | 移除全部子 View |
 | getLayoutParams | 获取 LayoutParams |
