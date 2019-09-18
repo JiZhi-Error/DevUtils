@@ -2,10 +2,10 @@
 ## Gradle
 
 ```java
-implementation 'com.afkt:DevApp:1.7.8'
+implementation 'com.afkt:DevApp:1.7.9'
 
 // AndroidX
-implementation 'com.afkt:DevAppX:1.7.8'
+implementation 'com.afkt:DevAppX:1.7.9'
 ```
 
 ## 目录结构
@@ -322,6 +322,7 @@ DevUtils.openDebug();
 | isO | 是否在 8.0 版本及以上 |
 | isO_MR1 | 是否在 8.1 版本及以上 |
 | isP | 是否在 9.0 版本及以上 |
+| isQ | 是否在 10.0 版本及以上 |
 | convertSDKVersion | 转换 SDK 版本 convertSDKVersion(14) = Android 4.0.0-2 |
 
 
@@ -804,6 +805,7 @@ DevUtils.openDebug();
 | getListenerInfo | 获取 View ListenerInfo 对象 ( 内部类 ) |
 | getListenerInfoListener | 获取 View ListenerInfo 对象内部事件对象 |
 | setOnClicks | 设置点击事件 |
+| setOnLongClicks | 设置长按事件 |
 
 
 * **定位相关工具类 ->** [LocationUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/LocationUtils.java)
@@ -1372,6 +1374,8 @@ DevUtils.openDebug();
 | convertView | 转换 View |
 | isEmpty | 判断 View 是否为 null |
 | isNotEmpty | 判断 View 是否不为 null |
+| getTag | 获取 View Tag |
+| setTag | 设置 View Tag |
 | setFocusable | 设置 View 是否可以获取焦点 |
 | setSelected | 设置 View 是否选中 |
 | setEnabled | 设置 View 是否启用 |
@@ -1639,6 +1643,7 @@ DevUtils.openDebug();
 | :- | :- |
 | isEmpty | 判断 Bitmap 对象是否为 null |
 | isNotEmpty | 判断 Bitmap 对象是否不为 null |
+| isImage | 根据文件判断是否为图片 |
 | getBitmapWidth | 获取 Bitmap 宽度 |
 | getBitmapHeight | 获取 Bitmap 高度 |
 | getBitmapWidthHeight | 获取 Bitmap 宽高 |
@@ -1709,13 +1714,15 @@ DevUtils.openDebug();
 | :- | :- |
 | isEmpty | 判断 Bitmap 对象是否为 null |
 | isNotEmpty | 判断 Bitmap 对象是否不为 null |
-| isImage | 根据文件名判断文件是否为图片 |
+| isImageFormats | 根据文件名判断文件是否为图片 |
 | getImageType | 获取图片类型 |
 | isPNG | 判断是否 PNG 图片 |
 | isJPEG | 判断是否 JPG 图片 |
 | isBMP | 判断是否 BMP 图片 |
 | isGif | 判断是否 GIF 图片 |
 | isWEBP | 判断是否 WEBP 图片 |
+| isICO | 判断是否 ICO 图片 |
+| isTIFF | 判断是否 TIFF 图片 |
 | decodeFile | 获取 Bitmap |
 | decodeResource | 获取 Bitmap |
 | decodeStream | 获取 Bitmap |
