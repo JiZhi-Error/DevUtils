@@ -2,10 +2,10 @@
 ## Gradle
 
 ```java
-implementation 'com.afkt:DevApp:1.7.9'
+implementation 'com.afkt:DevApp:1.8.0'
 
 // AndroidX
-implementation 'com.afkt:DevAppX:1.7.9'
+implementation 'com.afkt:DevAppX:1.8.0'
 ```
 
 ## 目录结构
@@ -1333,12 +1333,14 @@ DevUtils.openDebug();
 | setLineSpacingAndMultiplier | 设置文字行间距 ( 行高 )、行间距倍数 |
 | setTextScaleX | 设置字体水平方向的缩放 |
 | setIncludeFontPadding | 设置是否保留字体留白间隙区域 |
+| getPaint | 获取 TextView Paint |
 | getTextHeight | 获取字体高度 |
 | getTextTopOffsetHeight | 获取字体顶部偏移高度 |
 | getTextWidth | 计算字体宽度 |
 | getCenterRectY | 获取画布中间居中位置 |
 | reckonTextSize | 通过需要的高度, 计算字体大小 |
 | calcTextWidth | 计算第几位超过宽度 |
+| calcTextLine | 计算文本换行行数 |
 
 
 * **Uri 工具类 ->** [UriUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/UriUtils.java)
@@ -2637,6 +2639,11 @@ DevUtils.openDebug();
 | percentL2 | 计算百分比值 ( 可超出 100%) |
 | percentF2 | 计算百分比值 ( 可超出 100%) |
 | clamp | 返回的 value 介于 max、min 之间, 若 value 小于 min, 返回 min, 若大于 max, 返回 max |
+| getMultiple | 获取倍数 ( 自动补 1) |
+| getMultipleI | 获取倍数 |
+| getMultipleD | 获取倍数 |
+| getMultipleL | 获取倍数 |
+| getMultipleF | 获取倍数 |
 | numberToCHN | 数字转中文数值 |
 | isNumber | 检验数字 |
 | isNumberDecimal | 检验数字或包含小数点 |
