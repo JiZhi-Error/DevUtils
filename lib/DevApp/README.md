@@ -69,6 +69,8 @@ DevUtils.openDebug();
 
 - [检测代码规范、注释内容排版，API 文档生成](https://github.com/afkT/JavaDoc)
 
+- [View 链式调用快捷设置 Helper 类](https://github.com/afkT/DevUtils/blob/master/lib/DevOther/src/main/java/dev/ViewHelper.java)
+
 ## API
 
 
@@ -617,6 +619,7 @@ DevUtils.openDebug();
 | getText | 获取输入的内容 |
 | getTextLength | 获取输入的内容长度 |
 | setText | 设置内容 |
+| setTexts | 设置多个 EditText 文本 |
 | insert | 追加内容 ( 当前光标位置追加 ) |
 | setMaxLength | 设置长度限制 |
 | setMaxLengthAndText | 设置长度限制, 并且设置内容 |
@@ -625,6 +628,8 @@ DevUtils.openDebug();
 | setSelectionToTop | 设置光标在第一位 |
 | setSelectionToBottom | 设置光标在最后一位 |
 | setSelection | 设置光标位置 |
+| addTextChangedListener | 添加输入监听事件 |
+| removeTextChangedListener | 移除输入监听事件 |
 | setKeyListener | 设置 KeyListener |
 | getLettersKeyListener | 获取 DigitsKeyListener ( 限制只能输入字母, 默认弹出英文输入法 ) |
 | getNumberAndLettersKeyListener | 获取 DigitsKeyListener ( 限制只能输入字母和数字, 默认弹出英文输入法 ) |
@@ -1308,13 +1313,20 @@ DevUtils.openDebug();
 | 方法 | 注释 |
 | :- | :- |
 | getTextView | 获取 TextView |
+| getHint | 获取 Hint 文本 |
 | getText | 获取文本 |
+| getHints | 获取多个 TextView Hint 文本 |
 | getTexts | 获取多个 TextView 文本 |
+| setHint | 设置 Hint 文本 |
 | setText | 设置文本 |
 | setTexts | 设置多个 TextView 文本 |
 | setHtmlText | 设置 Html 内容 |
 | setHtmlTexts | 设置多个 TextView Html 内容 |
+| getHintTextColors | 获取 Hint 字体颜色 |
+| setHintTextColor | 设置 Hint 字体颜色 |
+| getTextColors | 获取字体颜色 |
 | setTextColor | 设置字体颜色 |
+| setHintTextColors | 设置多个 TextView Hint 字体颜色 |
 | setTextColors | 设置多个 TextView 字体颜色 |
 | setTypeface | 设置字体 |
 | setTextSizeByPx | 设置字体大小 - px 像素 |
@@ -1333,6 +1345,11 @@ DevUtils.openDebug();
 | setLineSpacingAndMultiplier | 设置文字行间距 ( 行高 )、行间距倍数 |
 | setTextScaleX | 设置字体水平方向的缩放 |
 | setIncludeFontPadding | 设置是否保留字体留白间隙区域 |
+| setLines | 设置行数 |
+| setMaxLines | 设置最大行数 |
+| setEllipsize | 设置 Ellipsize 效果 |
+| setAutoLinkMask | 设置自动识别文本链接 |
+| setGravity | 设置 Gravity |
 | getPaint | 获取 TextView Paint |
 | getTextHeight | 获取字体高度 |
 | getTextTopOffsetHeight | 获取字体顶部偏移高度 |
