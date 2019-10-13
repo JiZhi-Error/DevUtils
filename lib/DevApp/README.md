@@ -2,10 +2,10 @@
 ## Gradle
 
 ```java
-implementation 'com.afkt:DevApp:1.8.0'
+implementation 'com.afkt:DevApp:1.8.1'
 
 // AndroidX
-implementation 'com.afkt:DevAppX:1.8.0'
+implementation 'com.afkt:DevAppX:1.8.1'
 ```
 
 ## 目录结构
@@ -70,6 +70,8 @@ DevUtils.openDebug();
 - [检测代码规范、注释内容排版，API 文档生成](https://github.com/afkT/JavaDoc)
 
 - [View 链式调用快捷设置 Helper 类](https://github.com/afkT/DevUtils/blob/master/lib/DevOther/src/main/java/dev/ViewHelper.java)
+
+- [Dev 工具类链式调用 Helper 类](https://github.com/afkT/DevUtils/blob/master/lib/DevOther/src/main/java/dev/DevHelper.java)
 
 ## API
 
@@ -686,6 +688,12 @@ DevUtils.openDebug();
 | 方法 | 注释 |
 | :- | :- |
 | getImageView | 获取 ImageView |
+| getAdjustViewBounds | 获取 ImageView 是否保持宽高比 |
+| setAdjustViewBounds | 设置 ImageView 是否保持宽高比 |
+| getMaxHeight | 获取 ImageView 最大高度 |
+| setMaxHeight | 设置 ImageView 最大高度 |
+| getMaxWidth | 获取 ImageView 最大宽度 |
+| setMaxWidth | 设置 ImageView 最大宽度 |
 | setBackground | 设置背景图片 |
 | setBackgroundColor | 设置背景颜色 |
 | setBackgroundResource | 设置背景资源 |
@@ -1393,6 +1401,10 @@ DevUtils.openDebug();
 | convertView | 转换 View |
 | isEmpty | 判断 View 是否为 null |
 | isNotEmpty | 判断 View 是否不为 null |
+| getMinimumHeight | 获取 View 最小高度 |
+| setMinimumHeight | 设置 View 最小高度 |
+| getMinimumWidth | 获取 View 最小宽度 |
+| setMinimumWidth | 设置 View 最小宽度 |
 | getTag | 获取 View Tag |
 | setTag | 设置 View Tag |
 | setFocusable | 设置 View 是否可以获取焦点 |
