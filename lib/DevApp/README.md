@@ -2,10 +2,10 @@
 ## Gradle
 
 ```java
-implementation 'com.afkt:DevApp:1.8.1'
+implementation 'com.afkt:DevApp:1.8.2'
 
 // AndroidX
-implementation 'com.afkt:DevAppX:1.8.1'
+implementation 'com.afkt:DevAppX:1.8.2'
 ```
 
 ## 目录结构
@@ -630,6 +630,8 @@ DevUtils.openDebug();
 | setSelectionToTop | 设置光标在第一位 |
 | setSelectionToBottom | 设置光标在最后一位 |
 | setSelection | 设置光标位置 |
+| setInputType | 设置输入类型 |
+| setImeOptions | 设置软键盘右下角按钮类型 |
 | addTextChangedListener | 添加输入监听事件 |
 | removeTextChangedListener | 移除输入监听事件 |
 | setKeyListener | 设置 KeyListener |
@@ -761,6 +763,7 @@ DevUtils.openDebug();
 | fromJson | Object 转换 JSON 对象 |
 | wrap | 包装转换 Object - {@link JSONObject#wrap(Object)} |
 | stringJSONEscape | 字符串 JSON 转义处理 |
+| isJSON | 判断字符串是否 JSON 格式 |
 
 
 * **软键盘相关工具类 ->** [KeyBoardUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/KeyBoardUtils.java)
@@ -1353,10 +1356,19 @@ DevUtils.openDebug();
 | setLineSpacingAndMultiplier | 设置文字行间距 ( 行高 )、行间距倍数 |
 | setTextScaleX | 设置字体水平方向的缩放 |
 | setIncludeFontPadding | 设置是否保留字体留白间隙区域 |
+| setInputType | 设置输入类型 |
+| setImeOptions | 设置软键盘右下角按钮类型 |
 | setLines | 设置行数 |
 | setMaxLines | 设置最大行数 |
+| setMinLines | 设置最小行数 |
+| setMaxEms | 设置最大字符宽度限制 |
+| setMinEms | 设置最小字符宽度限制 |
+| setEms | 设置指定字符宽度 |
+| setMaxLength | 设置长度限制 |
+| setMaxLengthAndText | 设置长度限制, 并且设置内容 |
 | setEllipsize | 设置 Ellipsize 效果 |
 | setAutoLinkMask | 设置自动识别文本链接 |
+| setAllCaps | 设置文本全为大写 |
 | setGravity | 设置 Gravity |
 | getPaint | 获取 TextView Paint |
 | getTextHeight | 获取字体高度 |
@@ -1405,8 +1417,28 @@ DevUtils.openDebug();
 | setMinimumHeight | 设置 View 最小高度 |
 | getMinimumWidth | 获取 View 最小宽度 |
 | setMinimumWidth | 设置 View 最小宽度 |
+| getAlpha | 获取 View 透明度 |
+| setAlpha | 设置 View 透明度 |
 | getTag | 获取 View Tag |
 | setTag | 设置 View Tag |
+| setScrollContainer | 设置 View 滚动效应 |
+| setNextFocusForwardId | 设置下一个获取焦点的 View id |
+| setNextFocusDownId | 设置向下移动焦点时, 下一个获取焦点的 View id |
+| setNextFocusLeftId | 设置向左移动焦点时, 下一个获取焦点的 View id |
+| setNextFocusRightId | 设置向右移动焦点时, 下一个获取焦点的 View id |
+| setNextFocusUpId | 设置向上移动焦点时, 下一个获取焦点的 View id |
+| setRotation | 设置 View 旋转度数 |
+| setRotationX | 设置 View 水平旋转度数 |
+| setRotationY | 设置 View 竖直旋转度数 |
+| setScaleX | 设置 View 水平方向缩放比例 |
+| setScaleY | 设置 View 竖直方向缩放比例 |
+| setTextAlignment | 设置文本的显示方式 |
+| setTextDirection | 设置文本的显示方向 |
+| setPivotX | 设置水平方向偏转量 |
+| setPivotY | 设置竖直方向偏转量 |
+| setTranslationX | 设置水平方向的移动距离 |
+| setTranslationY | 设置竖直方向的移动距离 |
+| setLayerType | 设置 View 硬件加速类型 |
 | setFocusable | 设置 View 是否可以获取焦点 |
 | setSelected | 设置 View 是否选中 |
 | setEnabled | 设置 View 是否启用 |
