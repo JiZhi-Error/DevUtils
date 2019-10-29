@@ -3285,4 +3285,222 @@ public final class ArrayUtils {
         }
         return -1;
     }
+
+    // ================
+    // = 计算数组总和 =
+    // ================
+
+    /**
+     * 计算数组总和
+     * @param data 数组
+     * @return 数组总和
+     */
+    public static int sumarray(final int[] data) {
+        return sumarray(data, 0, length(data), 0);
+    }
+
+    /**
+     * 计算数组总和
+     * @param data 数组
+     * @param end  结束位置
+     * @return 数组总和
+     */
+    public static int sumarray(final int[] data, final int end) {
+        return sumarray(data, 0, end, 0);
+    }
+
+    /**
+     * 计算数组总和
+     * @param data  数组
+     * @param end   结束位置
+     * @param extra 额外值
+     * @return 数组总和
+     */
+    public static int sumarray(final int[] data, final int end, final int extra) {
+        return sumarray(data, 0, end, extra);
+    }
+
+    /**
+     * 计算数组总和
+     * @param data  数组
+     * @param start 开始位置
+     * @param end   结束位置
+     * @param extra 额外值
+     * @return 数组总和
+     */
+    public static int sumarray(final int[] data, final int start, final int end, final int extra) {
+        int total = 0;
+        if (data != null) {
+            for (int i = start; i < end; i++) {
+                try {
+                    total += (data[i] + extra);
+                } catch (Exception e) {
+                    JCLogUtils.eTag(TAG, e, "sumarray");
+                }
+            }
+        }
+        return total;
+    }
+
+    // =
+
+    /**
+     * 计算数组总和
+     * @param data 数组
+     * @return 数组总和
+     */
+    public static long sumarray(final long[] data) {
+        return sumarray(data, 0, length(data), 0);
+    }
+
+    /**
+     * 计算数组总和
+     * @param data 数组
+     * @param end  结束位置
+     * @return 数组总和
+     */
+    public static long sumarray(final long[] data, final int end) {
+        return sumarray(data, 0, end, 0);
+    }
+
+    /**
+     * 计算数组总和
+     * @param data  数组
+     * @param end   结束位置
+     * @param extra 额外值
+     * @return 数组总和
+     */
+    public static long sumarray(final long[] data, final int end, final long extra) {
+        return sumarray(data, 0, end, extra);
+    }
+
+    /**
+     * 计算数组总和
+     * @param data  数组
+     * @param start 开始位置
+     * @param end   结束位置
+     * @param extra 额外值
+     * @return 数组总和
+     */
+    public static long sumarray(final long[] data, final int start, final int end, final long extra) {
+        long total = 0;
+        if (data != null) {
+            for (int i = start; i < end; i++) {
+                try {
+                    total += (data[i] + extra);
+                } catch (Exception e) {
+                    JCLogUtils.eTag(TAG, e, "sumarray");
+                }
+            }
+        }
+        return total;
+    }
+
+    // =
+
+    /**
+     * 计算数组总和
+     * @param data 数组
+     * @return 数组总和
+     */
+    public static float sumarray(final float[] data) {
+        return sumarray(data, 0, length(data), 0);
+    }
+
+    /**
+     * 计算数组总和
+     * @param data 数组
+     * @param end  结束位置
+     * @return 数组总和
+     */
+    public static float sumarray(final float[] data, final int end) {
+        return sumarray(data, 0, end, 0);
+    }
+
+    /**
+     * 计算数组总和
+     * @param data  数组
+     * @param end   结束位置
+     * @param extra 额外值
+     * @return 数组总和
+     */
+    public static float sumarray(final float[] data, final int end, final float extra) {
+        return sumarray(data, 0, end, extra);
+    }
+
+    /**
+     * 计算数组总和
+     * @param data  数组
+     * @param start 开始位置
+     * @param end   结束位置
+     * @param extra 额外值
+     * @return 数组总和
+     */
+    public static float sumarray(final float[] data, final int start, final int end, final float extra) {
+        float total = 0;
+        if (data != null) {
+            for (int i = start; i < end; i++) {
+                try {
+                    total += (data[i] + extra);
+                } catch (Exception e) {
+                    JCLogUtils.eTag(TAG, e, "sumarray");
+                }
+            }
+        }
+        return total;
+    }
+
+    // =
+
+    /**
+     * 计算数组总和
+     * @param data 数组
+     * @return 数组总和
+     */
+    public static double sumarray(final double[] data) {
+        return sumarray(data, 0, length(data), 0);
+    }
+
+    /**
+     * 计算数组总和
+     * @param data 数组
+     * @param end  结束位置
+     * @return 数组总和
+     */
+    public static double sumarray(final double[] data, final int end) {
+        return sumarray(data, 0, end, 0);
+    }
+
+    /**
+     * 计算数组总和
+     * @param data  数组
+     * @param end   结束位置
+     * @param extra 额外值
+     * @return 数组总和
+     */
+    public static double sumarray(final double[] data, final int end, final double extra) {
+        return sumarray(data, 0, end, extra);
+    }
+
+    /**
+     * 计算数组总和
+     * @param data  数组
+     * @param start 开始位置
+     * @param end   结束位置
+     * @param extra 额外值
+     * @return 数组总和
+     */
+    public static double sumarray(final double[] data, final int start, final int end, final double extra) {
+        double total = 0;
+        if (data != null) {
+            for (int i = start; i < end; i++) {
+                try {
+                    total += (data[i] + extra);
+                } catch (Exception e) {
+                    JCLogUtils.eTag(TAG, e, "sumarray");
+                }
+            }
+        }
+        return total;
+    }
 }
