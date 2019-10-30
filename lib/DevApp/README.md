@@ -2,10 +2,10 @@
 ## Gradle
 
 ```java
-implementation 'com.afkt:DevApp:1.8.2'
+implementation 'com.afkt:DevApp:1.8.3'
 
 // AndroidX
-implementation 'com.afkt:DevAppX:1.8.2'
+implementation 'com.afkt:DevAppX:1.8.3'
 ```
 
 ## 目录结构
@@ -68,6 +68,8 @@ DevUtils.openDebug();
 - 部分 API 更新不及时或有遗漏等，`具体以对应的工具类为准`
 
 - [检测代码规范、注释内容排版，API 文档生成](https://github.com/afkT/JavaDoc)
+
+- [Change Log](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/CHANGELOG.md)
 
 - [View 链式调用快捷设置 Helper 类](https://github.com/afkT/DevUtils/blob/master/lib/DevOther/src/main/java/dev/ViewHelper.java)
 
@@ -353,6 +355,8 @@ DevUtils.openDebug();
 | isAppForeground | 判断 APP 是否在前台 |
 | isInstalledApp | 判断是否安装了 APP |
 | isInstalledApp2 | 判断是否安装了 APP |
+| startActivity | Activity 跳转 |
+| startActivityForResult | Activity 跳转回传 |
 | installApp | 安装 APP( 支持 8.0) 的意图 |
 | installAppSilent | 静默安装应用 |
 | uninstallApp | 卸载应用 |
@@ -455,6 +459,30 @@ DevUtils.openDebug();
 | setBrightness | 设置屏幕亮度 |
 | setWindowBrightness | 设置窗口亮度 |
 | getWindowBrightness | 获取窗口亮度 |
+
+
+* **截图工具类 ->** [CapturePictureUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/CapturePictureUtils.java)
+
+| 方法 | 注释 |
+| :- | :- |
+| setBitmapConfig | 设置 Bitmap Config |
+| setBackgroundColor | 设置 Canvas 背景色 |
+| setPaint | 设置画笔 |
+| snapshotWithStatusBar | 获取当前屏幕截图, 包含状态栏 ( 顶部灰色 TitleBar 高度, 没有设置 android:theme 的 NoTitleBar 时会显示 ) |
+| snapshotWithoutStatusBar | 获取当前屏幕截图, 不包含状态栏 ( 如果 android:theme 全屏, 则截图无状态栏 ) |
+| enableSlowWholeDocumentDraw | 关闭 WebView 优化 |
+| snapshotByWebView | 截图 WebView |
+| snapshotByView | 通过 View 绘制为 Bitmap |
+| snapshotByViewCache | 通过 View Cache 绘制为 Bitmap |
+| snapshotByLinearLayout | 通过 LinearLayout 绘制为 Bitmap |
+| snapshotByFrameLayout | 通过 FrameLayout 绘制为 Bitmap |
+| snapshotByRelativeLayout | 通过 RelativeLayout 绘制为 Bitmap |
+| snapshotByScrollView | 通过 ScrollView 绘制为 Bitmap |
+| snapshotByHorizontalScrollView | 通过 HorizontalScrollView 绘制为 Bitmap |
+| snapshotByNestedScrollView | 通过 NestedScrollView 绘制为 Bitmap |
+| snapshotByListView | 通过 ListView 绘制为 Bitmap |
+| snapshotByGridView | 通过 GridView 绘制为 Bitmap |
+| snapshotByRecyclerView | 通过 RecyclerView 绘制为 Bitmap |
 
 
 * **本应用数据清除管理工具类 ->** [CleanUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/CleanUtils.java)
@@ -743,6 +771,8 @@ DevUtils.openDebug();
 | getUninstallAppIntent | 获取卸载 APP 的意图 |
 | getLaunchAppIntent | 获取打开 APP 的意图 |
 | getSystemSettingIntent | 获取跳转到系统设置的意图 |
+| getLaunchAppInstallPermissionSettingsIntent | 获取 APP 安装权限设置的意图 |
+| getLaunchAppNotificationSettingsIntent | 获取 APP 通知权限设置的意图 |
 | getLaunchAppDetailsSettingsIntent | 获取 APP 具体设置的意图 |
 | getLaunchAppDetailIntent | 获取到应用商店 APP 详情界面的意图 |
 | getShareTextIntent | 获取分享文本的意图 |
@@ -909,6 +939,7 @@ DevUtils.openDebug();
 | 方法 | 注释 |
 | :- | :- |
 | getNotificationManager | 获取通知栏管理对象 |
+| isNotificationEnabled | 检查通知栏权限是否开启 |
 | cancelAll | 移除通知 - 移除所有通知 ( 只是针对当前 Context 下的 Notification) |
 | cancel | 移除通知 - 移除标记为 id 的通知 ( 只是针对当前 Context 下的所有 Notification) |
 | notify | 进行通知 |
@@ -1127,8 +1158,6 @@ DevUtils.openDebug();
 | getStatusBarHeight | 获取应用区域 TitleBar 高度 ( 顶部灰色 TitleBar 高度, 没有设置 android:theme 的 NoTitleBar 时会显示 ) |
 | setSleepDuration | 设置进入休眠时长 |
 | getSleepDuration | 获取进入休眠时长 |
-| snapShotWithStatusBar | 获取当前屏幕截图, 包含状态栏 ( 顶部灰色 TitleBar 高度, 没有设置 android:theme 的 NoTitleBar 时会显示 ) |
-| snapShotWithoutStatusBar | 获取当前屏幕截图, 不包含状态栏 ( 如果 android:theme 全屏, 则截图无状态栏 ) |
 | getNavigationBarHeight | 获取底部导航栏高度 |
 | checkDeviceHasNavigationBar | 检测是否具有底部导航栏 |
 
@@ -1413,6 +1442,11 @@ DevUtils.openDebug();
 | convertView | 转换 View |
 | isEmpty | 判断 View 是否为 null |
 | isNotEmpty | 判断 View 是否不为 null |
+| setWidthHeight | 设置 View 宽度、高度 |
+| setWidth | 设置 View 宽度 |
+| getWidth | 获取 View 宽度 |
+| setHeight | 设置 View 高度 |
+| getHeight | 获取 View 高度 |
 | getMinimumHeight | 获取 View 最小高度 |
 | setMinimumHeight | 设置 View 最小高度 |
 | getMinimumWidth | 获取 View 最小宽度 |
@@ -1498,9 +1532,18 @@ DevUtils.openDebug();
 | setCompoundDrawablesWithIntrinsicBoundsByRight | 设置 Right CompoundDrawables - 按照原有比例大小显示图片 |
 | setCompoundDrawablesWithIntrinsicBoundsByBottom | 设置 Bottom CompoundDrawables - 按照原有比例大小显示图片 |
 | setCompoundDrawablesWithIntrinsicBounds | 设置 CompoundDrawables - 按照原有比例大小显示图片 |
-| calcListViewItemHeight | 计算 ListView Item 高度 |
-| calcGridViewItemHeight | 计算 GridView Item 高度 |
-| getItemHeighet | 获取单独一个 Item 高度 |
+| addRule | 设置 RelativeLayout View 布局规则 |
+| removeRule | 移除 RelativeLayout View 布局规则 |
+| getRule | 获取 RelativeLayout View 指定布局位置 View id |
+| addRules | 设置多个 RelativeLayout View 布局规则 |
+| removeRules | 移除多个 RelativeLayout View 布局规则 |
+| setAnimation | 设置动画 |
+| getAnimation | 获取动画 |
+| clearAnimation | 清空动画 |
+| startAnimation | 启动动画 |
+| cancel | 取消动画 |
+| calcListViewHeight | 计算 ListView 高度 |
+| calcGridViewHeight | 计算 GridView 高度 |
 
 
 ## <span id="devutilsappanim">**`dev.utils.app.anim`**</span>
@@ -1511,6 +1554,11 @@ DevUtils.openDebug();
 | 方法 | 注释 |
 | :- | :- |
 | setAnimRepeat | 设置动画重复处理 |
+| setAnimation | 设置动画 |
+| getAnimation | 获取动画 |
+| clearAnimation | 清空动画 |
+| startAnimation | 启动动画 |
+| cancel | 取消动画 |
 | getRotateAnimation | 获取一个旋转动画 |
 | getRotateAnimationByCenter | 获取一个根据视图自身中心点旋转的动画 |
 | getAlphaAnimation | 获取一个透明度渐变动画 |
@@ -1973,6 +2021,7 @@ DevUtils.openDebug();
 | notifyPermissionsChange | 刷新权限改变处理 ( 清空已拒绝的权限记录 ) |
 | isGranted | 判断是否授予了权限 |
 | shouldShowRequestPermissionRationale | 是否拒绝了权限 - 拒绝过一次, 再次申请时, 弹出选择不再提醒并拒绝才会触发 true |
+| canRequestPackageInstalls | 是否存在 APK 安装权限 |
 | getAllPermissionToSet | 获取全部权限 |
 | getAllPermissionToList | 获取全部权限 |
 | getAppPermissionToList | 获取 APP 注册的权限 |
@@ -2233,6 +2282,11 @@ DevUtils.openDebug();
 | newarray | 创建指定长度数组 |
 | subarray | 从数组上截取一段 |
 | appendToString | 追加数组内容字符串 |
+| getMinimumIndex | 获取数组中最小值索引 |
+| getMaximumIndex | 获取数组中最大值索引 |
+| getMinimum | 获取数组中最小值 |
+| getMaximum | 获取数组中最大值 |
+| sumarray | 计算数组总和 |
 
 
 * **资金运算工具类 ->** [BigDecimalUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/common/BigDecimalUtils.java)
@@ -2320,6 +2374,26 @@ DevUtils.openDebug();
 | equals | 判断两个值是否一样 |
 | toArray | 转换数组 to Object |
 | reverse | 集合翻转处理 |
+| getMinimumIndexI | 获取集合中最小值索引 |
+| getMinimumIndexL | 获取集合中最小值索引 |
+| getMinimumIndexF | 获取集合中最小值索引 |
+| getMinimumIndexD | 获取集合中最小值索引 |
+| getMaximumIndexI | 获取集合中最大值索引 |
+| getMaximumIndexL | 获取集合中最大值索引 |
+| getMaximumIndexF | 获取集合中最大值索引 |
+| getMaximumIndexD | 获取集合中最大值索引 |
+| getMinimumI | 获取集合中最小值 |
+| getMinimumL | 获取集合中最小值 |
+| getMinimumF | 获取集合中最小值 |
+| getMinimumD | 获取集合中最小值 |
+| getMaximumI | 获取集合中最大值 |
+| getMaximumL | 获取集合中最大值 |
+| getMaximumF | 获取集合中最大值 |
+| getMaximumD | 获取集合中最大值 |
+| sumlistI | 计算集合总和 |
+| sumlistL | 计算集合总和 |
+| sumlistF | 计算集合总和 |
+| sumlistD | 计算集合总和 |
 
 
 * **颜色工具类 ( 包括常用的色值 ) ->** [ColorUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/common/ColorUtils.java)

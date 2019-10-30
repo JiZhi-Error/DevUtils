@@ -3085,4 +3085,542 @@ public final class ArrayUtils {
         }
         return "";
     }
+
+    // ==============
+    // = 最小值索引 =
+    // ==============
+
+    /**
+     * 获取数组中最小值索引
+     * @param data 数组
+     * @return 最小值索引
+     */
+    public static int getMinimumIndex(final int[] data) {
+        if (data != null) {
+            int len = data.length;
+            if (len > 0) {
+                int index = 0;
+                int temp = data[index];
+                for (int i = 1; i < len; i++) {
+                    int value = data[i];
+                    if (value < temp) {
+                        index = i;
+                        temp = value;
+                    }
+                }
+                return index;
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * 获取数组中最小值索引
+     * @param data 数组
+     * @return 最小值索引
+     */
+    public static int getMinimumIndex(final long[] data) {
+        if (data != null) {
+            int len = data.length;
+            if (len > 0) {
+                int index = 0;
+                long temp = data[index];
+                for (int i = 1; i < len; i++) {
+                    long value = data[i];
+                    if (value < temp) {
+                        index = i;
+                        temp = value;
+                    }
+                }
+                return index;
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * 获取数组中最小值索引
+     * @param data 数组
+     * @return 最小值索引
+     */
+    public static int getMinimumIndex(final float[] data) {
+        if (data != null) {
+            int len = data.length;
+            if (len > 0) {
+                int index = 0;
+                float temp = data[index];
+                for (int i = 1; i < len; i++) {
+                    float value = data[i];
+                    if (value < temp) {
+                        index = i;
+                        temp = value;
+                    }
+                }
+                return index;
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * 获取数组中最小值索引
+     * @param data 数组
+     * @return 最小值索引
+     */
+    public static int getMinimumIndex(final double[] data) {
+        if (data != null) {
+            int len = data.length;
+            if (len > 0) {
+                int index = 0;
+                double temp = data[index];
+                for (int i = 1; i < len; i++) {
+                    double value = data[i];
+                    if (value < temp) {
+                        index = i;
+                        temp = value;
+                    }
+                }
+                return index;
+            }
+        }
+        return -1;
+    }
+
+    // ==============
+    // = 最大值索引 =
+    // ==============
+
+    /**
+     * 获取数组中最大值索引
+     * @param data 数组
+     * @return 最大值索引
+     */
+    public static int getMaximumIndex(final int[] data) {
+        if (data != null) {
+            int len = data.length;
+            if (len > 0) {
+                int index = 0;
+                int temp = data[index];
+                for (int i = 1; i < len; i++) {
+                    int value = data[i];
+                    if (value > temp) {
+                        index = i;
+                        temp = value;
+                    }
+                }
+                return index;
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * 获取数组中最大值索引
+     * @param data 数组
+     * @return 最大值索引
+     */
+    public static int getMaximumIndex(final long[] data) {
+        if (data != null) {
+            int len = data.length;
+            if (len > 0) {
+                int index = 0;
+                long temp = data[index];
+                for (int i = 1; i < len; i++) {
+                    long value = data[i];
+                    if (value > temp) {
+                        index = i;
+                        temp = value;
+                    }
+                }
+                return index;
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * 获取数组中最大值索引
+     * @param data 数组
+     * @return 最大值索引
+     */
+    public static int getMaximumIndex(final float[] data) {
+        if (data != null) {
+            int len = data.length;
+            if (len > 0) {
+                int index = 0;
+                float temp = data[index];
+                for (int i = 1; i < len; i++) {
+                    float value = data[i];
+                    if (value > temp) {
+                        index = i;
+                        temp = value;
+                    }
+                }
+                return index;
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * 获取数组中最大值索引
+     * @param data 数组
+     * @return 最大值索引
+     */
+    public static int getMaximumIndex(final double[] data) {
+        if (data != null) {
+            int len = data.length;
+            if (len > 0) {
+                int index = 0;
+                double temp = data[index];
+                for (int i = 1; i < len; i++) {
+                    double value = data[i];
+                    if (value > temp) {
+                        index = i;
+                        temp = value;
+                    }
+                }
+                return index;
+            }
+        }
+        return -1;
+    }
+
+    // ==============
+    // = 获取最小值 =
+    // ==============
+
+    /**
+     * 获取数组中最小值
+     * @param data 数组
+     * @return 最小值
+     */
+    public static int getMinimum(final int[] data) {
+        try {
+            return data[getMinimumIndex(data)];
+        } catch (Exception e) {
+            JCLogUtils.eTag(TAG, e, "getMinimum");
+        }
+        return 0;
+    }
+
+    /**
+     * 获取数组中最小值
+     * @param data 数组
+     * @return 最小值
+     */
+    public static long getMinimum(final long[] data) {
+        try {
+            return data[getMinimumIndex(data)];
+        } catch (Exception e) {
+            JCLogUtils.eTag(TAG, e, "getMinimum");
+        }
+        return 0L;
+    }
+
+    /**
+     * 获取数组中最小值
+     * @param data 数组
+     * @return 最小值
+     */
+    public static float getMinimum(final float[] data) {
+        try {
+            return data[getMinimumIndex(data)];
+        } catch (Exception e) {
+            JCLogUtils.eTag(TAG, e, "getMinimum");
+        }
+        return 0f;
+    }
+
+    /**
+     * 获取数组中最小值
+     * @param data 数组
+     * @return 最小值
+     */
+    public static double getMinimum(final double[] data) {
+        try {
+            return data[getMinimumIndex(data)];
+        } catch (Exception e) {
+            JCLogUtils.eTag(TAG, e, "getMinimum");
+        }
+        return 0d;
+    }
+
+    // ==============
+    // = 获取最大值 =
+    // ==============
+
+    /**
+     * 获取数组中最大值
+     * @param data 数组
+     * @return 最大值
+     */
+    public static int getMaximum(final int[] data) {
+        try {
+            return data[getMaximumIndex(data)];
+        } catch (Exception e) {
+            JCLogUtils.eTag(TAG, e, "getMaximum");
+        }
+        return 0;
+    }
+
+    /**
+     * 获取数组中最大值
+     * @param data 数组
+     * @return 最大值
+     */
+    public static long getMaximum(final long[] data) {
+        try {
+            return data[getMaximumIndex(data)];
+        } catch (Exception e) {
+            JCLogUtils.eTag(TAG, e, "getMaximum");
+        }
+        return 0L;
+    }
+
+    /**
+     * 获取数组中最大值
+     * @param data 数组
+     * @return 最大值
+     */
+    public static float getMaximum(final float[] data) {
+        try {
+            return data[getMaximumIndex(data)];
+        } catch (Exception e) {
+            JCLogUtils.eTag(TAG, e, "getMaximum");
+        }
+        return 0f;
+    }
+
+    /**
+     * 获取数组中最大值
+     * @param data 数组
+     * @return 最大值
+     */
+    public static double getMaximum(final double[] data) {
+        try {
+            return data[getMaximumIndex(data)];
+        } catch (Exception e) {
+            JCLogUtils.eTag(TAG, e, "getMaximum");
+        }
+        return 0d;
+    }
+
+    // ================
+    // = 计算数组总和 =
+    // ================
+
+    /**
+     * 计算数组总和
+     * @param data 数组
+     * @return 数组总和
+     */
+    public static int sumarray(final int[] data) {
+        return sumarray(data, 0, length(data), 0);
+    }
+
+    /**
+     * 计算数组总和
+     * @param data 数组
+     * @param end  结束位置
+     * @return 数组总和
+     */
+    public static int sumarray(final int[] data, final int end) {
+        return sumarray(data, 0, end, 0);
+    }
+
+    /**
+     * 计算数组总和
+     * @param data  数组
+     * @param end   结束位置
+     * @param extra 额外值
+     * @return 数组总和
+     */
+    public static int sumarray(final int[] data, final int end, final int extra) {
+        return sumarray(data, 0, end, extra);
+    }
+
+    /**
+     * 计算数组总和
+     * @param data  数组
+     * @param start 开始位置
+     * @param end   结束位置
+     * @param extra 额外值
+     * @return 数组总和
+     */
+    public static int sumarray(final int[] data, final int start, final int end, final int extra) {
+        int total = 0;
+        if (data != null) {
+            for (int i = start; i < end; i++) {
+                try {
+                    total += (data[i] + extra);
+                } catch (Exception e) {
+                    JCLogUtils.eTag(TAG, e, "sumarray");
+                }
+            }
+        }
+        return total;
+    }
+
+    // =
+
+    /**
+     * 计算数组总和
+     * @param data 数组
+     * @return 数组总和
+     */
+    public static long sumarray(final long[] data) {
+        return sumarray(data, 0, length(data), 0);
+    }
+
+    /**
+     * 计算数组总和
+     * @param data 数组
+     * @param end  结束位置
+     * @return 数组总和
+     */
+    public static long sumarray(final long[] data, final int end) {
+        return sumarray(data, 0, end, 0);
+    }
+
+    /**
+     * 计算数组总和
+     * @param data  数组
+     * @param end   结束位置
+     * @param extra 额外值
+     * @return 数组总和
+     */
+    public static long sumarray(final long[] data, final int end, final long extra) {
+        return sumarray(data, 0, end, extra);
+    }
+
+    /**
+     * 计算数组总和
+     * @param data  数组
+     * @param start 开始位置
+     * @param end   结束位置
+     * @param extra 额外值
+     * @return 数组总和
+     */
+    public static long sumarray(final long[] data, final int start, final int end, final long extra) {
+        long total = 0;
+        if (data != null) {
+            for (int i = start; i < end; i++) {
+                try {
+                    total += (data[i] + extra);
+                } catch (Exception e) {
+                    JCLogUtils.eTag(TAG, e, "sumarray");
+                }
+            }
+        }
+        return total;
+    }
+
+    // =
+
+    /**
+     * 计算数组总和
+     * @param data 数组
+     * @return 数组总和
+     */
+    public static float sumarray(final float[] data) {
+        return sumarray(data, 0, length(data), 0);
+    }
+
+    /**
+     * 计算数组总和
+     * @param data 数组
+     * @param end  结束位置
+     * @return 数组总和
+     */
+    public static float sumarray(final float[] data, final int end) {
+        return sumarray(data, 0, end, 0);
+    }
+
+    /**
+     * 计算数组总和
+     * @param data  数组
+     * @param end   结束位置
+     * @param extra 额外值
+     * @return 数组总和
+     */
+    public static float sumarray(final float[] data, final int end, final float extra) {
+        return sumarray(data, 0, end, extra);
+    }
+
+    /**
+     * 计算数组总和
+     * @param data  数组
+     * @param start 开始位置
+     * @param end   结束位置
+     * @param extra 额外值
+     * @return 数组总和
+     */
+    public static float sumarray(final float[] data, final int start, final int end, final float extra) {
+        float total = 0;
+        if (data != null) {
+            for (int i = start; i < end; i++) {
+                try {
+                    total += (data[i] + extra);
+                } catch (Exception e) {
+                    JCLogUtils.eTag(TAG, e, "sumarray");
+                }
+            }
+        }
+        return total;
+    }
+
+    // =
+
+    /**
+     * 计算数组总和
+     * @param data 数组
+     * @return 数组总和
+     */
+    public static double sumarray(final double[] data) {
+        return sumarray(data, 0, length(data), 0);
+    }
+
+    /**
+     * 计算数组总和
+     * @param data 数组
+     * @param end  结束位置
+     * @return 数组总和
+     */
+    public static double sumarray(final double[] data, final int end) {
+        return sumarray(data, 0, end, 0);
+    }
+
+    /**
+     * 计算数组总和
+     * @param data  数组
+     * @param end   结束位置
+     * @param extra 额外值
+     * @return 数组总和
+     */
+    public static double sumarray(final double[] data, final int end, final double extra) {
+        return sumarray(data, 0, end, extra);
+    }
+
+    /**
+     * 计算数组总和
+     * @param data  数组
+     * @param start 开始位置
+     * @param end   结束位置
+     * @param extra 额外值
+     * @return 数组总和
+     */
+    public static double sumarray(final double[] data, final int start, final int end, final double extra) {
+        double total = 0;
+        if (data != null) {
+            for (int i = start; i < end; i++) {
+                try {
+                    total += (data[i] + extra);
+                } catch (Exception e) {
+                    JCLogUtils.eTag(TAG, e, "sumarray");
+                }
+            }
+        }
+        return total;
+    }
 }
