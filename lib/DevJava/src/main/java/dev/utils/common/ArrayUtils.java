@@ -3286,6 +3286,126 @@ public final class ArrayUtils {
         return -1;
     }
 
+    // ==============
+    // = 获取最小值 =
+    // ==============
+
+    /**
+     * 获取数组中最小值
+     * @param data 数组
+     * @return 最小值
+     */
+    public static int getMinimum(final int[] data) {
+        try {
+            return data[getMinimumIndex(data)];
+        } catch (Exception e) {
+            JCLogUtils.eTag(TAG, e, "getMinimum");
+        }
+        return 0;
+    }
+
+    /**
+     * 获取数组中最小值
+     * @param data 数组
+     * @return 最小值
+     */
+    public static long getMinimum(final long[] data) {
+        try {
+            return data[getMinimumIndex(data)];
+        } catch (Exception e) {
+            JCLogUtils.eTag(TAG, e, "getMinimum");
+        }
+        return 0L;
+    }
+
+    /**
+     * 获取数组中最小值
+     * @param data 数组
+     * @return 最小值
+     */
+    public static float getMinimum(final float[] data) {
+        try {
+            return data[getMinimumIndex(data)];
+        } catch (Exception e) {
+            JCLogUtils.eTag(TAG, e, "getMinimum");
+        }
+        return 0f;
+    }
+
+    /**
+     * 获取数组中最小值
+     * @param data 数组
+     * @return 最小值
+     */
+    public static double getMinimum(final double[] data) {
+        try {
+            return data[getMinimumIndex(data)];
+        } catch (Exception e) {
+            JCLogUtils.eTag(TAG, e, "getMinimum");
+        }
+        return 0d;
+    }
+
+    // ==============
+    // = 获取最大值 =
+    // ==============
+
+    /**
+     * 获取数组中最大值
+     * @param data 数组
+     * @return 最大值
+     */
+    public static int getMaximum(final int[] data) {
+        try {
+            return data[getMaximumIndex(data)];
+        } catch (Exception e) {
+            JCLogUtils.eTag(TAG, e, "getMaximum");
+        }
+        return 0;
+    }
+
+    /**
+     * 获取数组中最大值
+     * @param data 数组
+     * @return 最大值
+     */
+    public static long getMaximum(final long[] data) {
+        try {
+            return data[getMaximumIndex(data)];
+        } catch (Exception e) {
+            JCLogUtils.eTag(TAG, e, "getMaximum");
+        }
+        return 0L;
+    }
+
+    /**
+     * 获取数组中最大值
+     * @param data 数组
+     * @return 最大值
+     */
+    public static float getMaximum(final float[] data) {
+        try {
+            return data[getMaximumIndex(data)];
+        } catch (Exception e) {
+            JCLogUtils.eTag(TAG, e, "getMaximum");
+        }
+        return 0f;
+    }
+
+    /**
+     * 获取数组中最大值
+     * @param data 数组
+     * @return 最大值
+     */
+    public static double getMaximum(final double[] data) {
+        try {
+            return data[getMaximumIndex(data)];
+        } catch (Exception e) {
+            JCLogUtils.eTag(TAG, e, "getMaximum");
+        }
+        return 0d;
+    }
+
     // ================
     // = 计算数组总和 =
     // ================
