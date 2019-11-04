@@ -39,6 +39,8 @@ import dev.utils.LogPrintUtils;
  *     @see <a href="https://blog.csdn.net/qq_26971803/article/details/54347598"/>
  *     Android 常用布局属性
  *     @see <a href="https://www.jianshu.com/p/78e2dfb6d244"/>
+ *     Android 应用坐标系统全面详解
+ *     @see <a href="https://blog.csdn.net/yanbober/article/details/50419117"/>
  *     <p></p>
  *     RelativeLayout 的特有属性
  *     属性值为 true、false
