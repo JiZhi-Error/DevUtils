@@ -730,7 +730,7 @@ public final class ViewUtils {
      *     android:descendantFocusability="blocksDescendants"
      * </pre>
      * @param view         {@link ViewGroup}
-     * @param focusability {@link ViewGroup#FOCUS_BEFORE_DESCENDANTS}、@link ViewGroup#FOCUS_AFTER_DESCENDANTS}、@link ViewGroup#FOCUS_BLOCK_DESCENDANTS}
+     * @param focusability {@link ViewGroup#FOCUS_BEFORE_DESCENDANTS}、{@link ViewGroup#FOCUS_AFTER_DESCENDANTS}、{@link ViewGroup#FOCUS_BLOCK_DESCENDANTS}
      * @param <T>          泛型
      * @return {@link ViewGroup}
      */
