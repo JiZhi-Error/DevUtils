@@ -40,6 +40,8 @@ import dev.utils.LogPrintUtils;
  *     @see <a href="https://blog.csdn.net/qq_26971803/article/details/54347598"/>
  *     Android 常用布局属性
  *     @see <a href="https://www.jianshu.com/p/78e2dfb6d244"/>
+ *     Android 应用坐标系统全面详解
+ *     @see <a href="https://blog.csdn.net/yanbober/article/details/50419117"/>
  *     <p></p>
  *     RelativeLayout 的特有属性
  *     属性值为 true、false
@@ -167,6 +169,18 @@ public final class ViewUtils {
     }
 
     // =
+
+    /**
+     * 获取子 View 总数
+     * @param viewGroup {@link ViewGroup}
+     * @return 子 View 总数
+     */
+    public static int getChildCount(final ViewGroup viewGroup) {
+        if (viewGroup != null) {
+            return viewGroup.getChildCount();
+        }
+        return 0;
+    }
 
     /**
      * 获取指定索引 View
@@ -380,6 +394,18 @@ public final class ViewUtils {
     // =
 
     /**
+     * 获取 View 宽高
+     * @param view {@link View}
+     * @return int[], 0 = 宽度, 1 = 高度
+     */
+    public static int[] getWidthHeight(final View view) {
+        if (view != null) {
+            return new int[]{view.getWidth(), view.getHeight()};
+        }
+        return new int[]{0, 0};
+    }
+
+    /**
      * 设置 View 宽度、高度
      * @param view   {@link View}
      * @param width  View 宽度
@@ -387,6 +413,18 @@ public final class ViewUtils {
      * @return {@link View}
      */
     public static View setWidthHeight(final View view, final int width, final int height) {
+        return setWidthHeight(view, width, height, true);
+    }
+
+    /**
+     * 设置 View 宽度、高度
+     * @param view      {@link View}
+     * @param width     View 宽度
+     * @param height    View 高度
+     * @param nullNewLP 如果 LayoutParams 为 null 是否创建新的
+     * @return {@link View}
+     */
+    public static View setWidthHeight(final View view, final int width, final int height, final boolean nullNewLP) {
         if (view != null) {
             try {
                 ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
@@ -394,8 +432,10 @@ public final class ViewUtils {
                     layoutParams.width = width;
                     layoutParams.height = height;
                 } else {
-                    layoutParams = new ViewGroup.LayoutParams(width, height);
-                    view.setLayoutParams(layoutParams);
+                    if (nullNewLP) {
+                        layoutParams = new ViewGroup.LayoutParams(width, height);
+                        view.setLayoutParams(layoutParams);
+                    }
                 }
             } catch (Exception e) {
                 LogPrintUtils.eTag(TAG, e, "setWidthHeight");
@@ -404,28 +444,7 @@ public final class ViewUtils {
         return view;
     }
 
-    /**
-     * 设置 View 宽度
-     * @param view  {@link View}
-     * @param width View 宽度
-     * @return {@link View}
-     */
-    public static View setWidth(final View view, final int width) {
-        if (view != null) {
-            try {
-                ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
-                if (layoutParams != null) {
-                    layoutParams.width = width;
-                } else {
-                    layoutParams = new ViewGroup.LayoutParams(width, ViewGroup.LayoutParams.WRAP_CONTENT);
-                    view.setLayoutParams(layoutParams);
-                }
-            } catch (Exception e) {
-                LogPrintUtils.eTag(TAG, e, "setWidth");
-            }
-        }
-        return view;
-    }
+    // =
 
     /**
      * 获取 View 宽度
@@ -436,31 +455,46 @@ public final class ViewUtils {
         if (view != null) {
             return view.getWidth();
         }
-        return -1;
+        return 0;
     }
 
     /**
-     * 设置 View 高度
-     * @param view   {@link View}
-     * @param height View 高度
+     * 设置 View 宽度
+     * @param view  {@link View}
+     * @param width View 宽度
      * @return {@link View}
      */
-    public static View setHeight(final View view, final int height) {
+    public static View setWidth(final View view, final int width) {
+        return setWidth(view, width, true);
+    }
+
+    /**
+     * 设置 View 宽度
+     * @param view      {@link View}
+     * @param width     View 宽度
+     * @param nullNewLP 如果 LayoutParams 为 null 是否创建新的
+     * @return {@link View}
+     */
+    public static View setWidth(final View view, final int width, final boolean nullNewLP) {
         if (view != null) {
             try {
                 ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
                 if (layoutParams != null) {
-                    layoutParams.height = height;
+                    layoutParams.width = width;
                 } else {
-                    layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, height);
-                    view.setLayoutParams(layoutParams);
+                    if (nullNewLP) {
+                        layoutParams = new ViewGroup.LayoutParams(width, ViewGroup.LayoutParams.WRAP_CONTENT);
+                        view.setLayoutParams(layoutParams);
+                    }
                 }
             } catch (Exception e) {
-                LogPrintUtils.eTag(TAG, e, "setHeight");
+                LogPrintUtils.eTag(TAG, e, "setWidth");
             }
         }
         return view;
     }
+
+    // =
 
     /**
      * 获取 View 高度
@@ -471,7 +505,43 @@ public final class ViewUtils {
         if (view != null) {
             return view.getHeight();
         }
-        return -1;
+        return 0;
+    }
+
+    /**
+     * 设置 View 高度
+     * @param view   {@link View}
+     * @param height View 高度
+     * @return {@link View}
+     */
+    public static View setHeight(final View view, final int height) {
+        return setHeight(view, height, true);
+    }
+
+    /**
+     * 设置 View 高度
+     * @param view      {@link View}
+     * @param height    View 高度
+     * @param nullNewLP 如果 LayoutParams 为 null 是否创建新的
+     * @return {@link View}
+     */
+    public static View setHeight(final View view, final int height, final boolean nullNewLP) {
+        if (view != null) {
+            try {
+                ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
+                if (layoutParams != null) {
+                    layoutParams.height = height;
+                } else {
+                    if (nullNewLP) {
+                        layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, height);
+                        view.setLayoutParams(layoutParams);
+                    }
+                }
+            } catch (Exception e) {
+                LogPrintUtils.eTag(TAG, e, "setHeight");
+            }
+        }
+        return view;
     }
 
     // =
@@ -486,12 +556,12 @@ public final class ViewUtils {
         if (view != null) {
             return view.getMinimumHeight();
         }
-        return -1;
+        return 0;
     }
 
     /**
      * 设置 View 最小高度
-     * @param view      View
+     * @param view      {@link View}
      * @param minHeight 最小高度
      * @return {@link View}
      */
@@ -512,12 +582,12 @@ public final class ViewUtils {
         if (view != null) {
             return view.getMinimumWidth();
         }
-        return -1;
+        return 0;
     }
 
     /**
      * 设置 View 最小宽度
-     * @param view     View
+     * @param view     {@link View}
      * @param minWidth 最小宽度
      * @return {@link View}
      */
@@ -583,8 +653,179 @@ public final class ViewUtils {
     // =
 
     /**
+     * View 内容滚动位置 - 相对于初始位置移动
+     * <pre>
+     *     无滚动过程
+     * </pre>
+     * @param view {@link View}
+     * @param x    X 轴开始坐标
+     * @param y    Y 轴开始坐标
+     * @return {@link View}
+     */
+    public static View scrollTo(final View view, final int x, final int y) {
+        if (view != null) view.scrollTo(x, y);
+        return view;
+    }
+
+    /**
+     * View 内部滚动位置 - 相对于上次移动的最后位置移动
+     * <pre>
+     *     无滚动过程
+     * </pre>
+     * @param view {@link View}
+     * @param x    X 轴开始坐标
+     * @param y    Y 轴开始坐标
+     * @return {@link View}
+     */
+    public static View scrollBy(final View view, final int x, final int y) {
+        if (view != null) view.scrollBy(x, y);
+        return view;
+    }
+
+    /**
+     * 设置 View 滑动的 X 轴坐标
+     * @param view  {@link View}
+     * @param value X 轴坐标
+     * @return {@link View}
+     */
+    public static View setScrollX(final View view, final int value) {
+        if (view != null) view.setScrollX(value);
+        return view;
+    }
+
+    /**
+     * 设置 View 滑动的 Y 轴坐标
+     * @param view  {@link View}
+     * @param value Y 轴坐标
+     * @return {@link View}
+     */
+    public static View setScrollY(final View view, final int value) {
+        if (view != null) view.setScrollY(value);
+        return view;
+    }
+
+    /**
+     * 获取 View 滑动的 X 轴坐标
+     * @param view {@link View}
+     * @return 滑动的 X 轴坐标
+     */
+    public static int getScrollX(final View view) {
+        return view != null ? view.getScrollX() : 0;
+    }
+
+    /**
+     * 获取 View 滑动的 Y 轴坐标
+     * @param view {@link View}
+     * @return 滑动的 Y 轴坐标
+     */
+    public static int getScrollY(final View view) {
+        return view != null ? view.getScrollY() : 0;
+    }
+
+    // =
+
+    /**
+     * 设置 ViewGroup 和其子控件两者之间的关系
+     * <pre>
+     *     beforeDescendants : ViewGroup 会优先其子类控件而获取到焦点
+     *     afterDescendants : ViewGroup 只有当其子类控件不需要获取焦点时才获取焦点
+     *     blocksDescendants : ViewGroup 会覆盖子类控件而直接获得焦点
+     *     android:descendantFocusability="blocksDescendants"
+     * </pre>
+     * @param view         {@link ViewGroup}
+     * @param focusability {@link ViewGroup#FOCUS_BEFORE_DESCENDANTS}、{@link ViewGroup#FOCUS_AFTER_DESCENDANTS}、{@link ViewGroup#FOCUS_BLOCK_DESCENDANTS}
+     * @param <T>          泛型
+     * @return {@link ViewGroup}
+     */
+    public static <T extends ViewGroup> T setDescendantFocusability(final T view, final int focusability) {
+        try {
+            if (view != null) view.setDescendantFocusability(focusability);
+        } catch (Exception e) {
+            LogPrintUtils.eTag(TAG, e, "setDescendantFocusability");
+        }
+        return view;
+    }
+
+    /**
+     * 设置 View 滚动模式
+     * <pre>
+     *     设置滑动到边缘时无效果模式 {@link View#OVER_SCROLL_NEVER}
+     *     android:overScrollMode="never"
+     * </pre>
+     * @param view           {@link View}
+     * @param overScrollMode {@link View#OVER_SCROLL_ALWAYS}、{@link View#OVER_SCROLL_IF_CONTENT_SCROLLS}、{@link View#OVER_SCROLL_NEVER}
+     * @param <T>            泛型
+     * @return {@link View}
+     */
+    public static <T extends View> T setOverScrollMode(final T view, final int overScrollMode) {
+        try {
+            if (view != null) view.setOverScrollMode(overScrollMode);
+        } catch (Exception e) {
+            LogPrintUtils.eTag(TAG, e, "setOverScrollMode");
+        }
+        return view;
+    }
+
+    // =
+
+    /**
+     * 是否绘制横向滚动条
+     * @param view {@link View}
+     * @return {@code true} yes, {@code false} no
+     */
+    public static boolean isHorizontalScrollBarEnabled(final View view) {
+        return (view != null) ? view.isHorizontalScrollBarEnabled() : false;
+    }
+
+    /**
+     * 设置是否绘制横向滚动条
+     * @param view                       {@link View}
+     * @param horizontalScrollBarEnabled {@code true} yes, {@code false} no
+     * @return {@link View}
+     */
+    public static View setHorizontalScrollBarEnabled(final View view, final boolean horizontalScrollBarEnabled) {
+        if (view != null) view.setHorizontalScrollBarEnabled(horizontalScrollBarEnabled);
+        return view;
+    }
+
+    /**
+     * 是否绘制垂直滚动条
+     * @param view {@link View}
+     * @return {@code true} yes, {@code false} no
+     */
+    public static boolean isVerticalScrollBarEnabled(final View view) {
+        return (view != null) ? view.isVerticalScrollBarEnabled() : false;
+    }
+
+    /**
+     * 设置是否绘制垂直滚动条
+     * @param view                     {@link View}
+     * @param verticalScrollBarEnabled {@code true} yes, {@code false} no
+     * @return {@link View}
+     */
+    public static View setVerticalScrollBarEnabled(final View view, final boolean verticalScrollBarEnabled) {
+        if (view != null) view.setVerticalScrollBarEnabled(verticalScrollBarEnabled);
+        return view;
+    }
+
+    // =
+
+    /**
+     * 获取 View 是否需要滚动效应
+     * @param view {@link View}
+     * @return {@code true} yes, {@code false} no
+     */
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+    public static boolean isScrollContainer(final View view) {
+        if (view != null) {
+            return view.isScrollContainer();
+        }
+        return false;
+    }
+
+    /**
      * 设置 View 滚动效应
-     * @param view              View
+     * @param view              {@link View}
      * @param isScrollContainer 是否需要滚动效应
      * @return {@link View}
      */
@@ -595,9 +836,23 @@ public final class ViewUtils {
         return view;
     }
 
+    // =
+
+    /**
+     * 下一个获取焦点的 View id
+     * @param view {@link View}
+     * @return 下一个获取焦点的 View id
+     */
+    public static int getNextFocusForwardId(final View view) {
+        if (view != null) {
+            return view.getNextFocusForwardId();
+        }
+        return 0;
+    }
+
     /**
      * 设置下一个获取焦点的 View id
-     * @param view               View
+     * @param view               {@link View}
      * @param nextFocusForwardId 下一个获取焦点的 View id
      * @return {@link View}
      */
@@ -608,9 +863,23 @@ public final class ViewUtils {
         return view;
     }
 
+    // =
+
+    /**
+     * 向下移动焦点时, 下一个获取焦点的 View id
+     * @param view {@link View}
+     * @return 向下移动焦点时, 下一个获取焦点的 View id
+     */
+    public static int getNextFocusDownId(final View view) {
+        if (view != null) {
+            return view.getNextFocusDownId();
+        }
+        return 0;
+    }
+
     /**
      * 设置向下移动焦点时, 下一个获取焦点的 View id
-     * @param view            View
+     * @param view            {@link View}
      * @param nextFocusDownId 下一个获取焦点的 View id
      * @return {@link View}
      */
@@ -621,9 +890,23 @@ public final class ViewUtils {
         return view;
     }
 
+    // =
+
+    /**
+     * 向左移动焦点时, 下一个获取焦点的 View id
+     * @param view {@link View}
+     * @return 向左移动焦点时, 下一个获取焦点的 View id
+     */
+    public static int getNextFocusLeftId(final View view) {
+        if (view != null) {
+            return view.getNextFocusLeftId();
+        }
+        return 0;
+    }
+
     /**
      * 设置向左移动焦点时, 下一个获取焦点的 View id
-     * @param view            View
+     * @param view            {@link View}
      * @param nextFocusLeftId 下一个获取焦点的 View id
      * @return {@link View}
      */
@@ -634,9 +917,23 @@ public final class ViewUtils {
         return view;
     }
 
+    // =
+
+    /**
+     * 向右移动焦点时, 下一个获取焦点的 View id
+     * @param view {@link View}
+     * @return 向右移动焦点时, 下一个获取焦点的 View id
+     */
+    public static int getNextFocusRightId(final View view) {
+        if (view != null) {
+            return view.getNextFocusRightId();
+        }
+        return 0;
+    }
+
     /**
      * 设置向右移动焦点时, 下一个获取焦点的 View id
-     * @param view             View
+     * @param view             {@link View}
      * @param nextFocusRightId 下一个获取焦点的 View id
      * @return {@link View}
      */
@@ -647,9 +944,23 @@ public final class ViewUtils {
         return view;
     }
 
+    // =
+
+    /**
+     * 向上移动焦点时, 下一个获取焦点的 View id
+     * @param view {@link View}
+     * @return 向上移动焦点时, 下一个获取焦点的 View id
+     */
+    public static int getNextFocusUpId(final View view) {
+        if (view != null) {
+            return view.getNextFocusUpId();
+        }
+        return 0;
+    }
+
     /**
      * 设置向上移动焦点时, 下一个获取焦点的 View id
-     * @param view          View
+     * @param view          {@link View}
      * @param nextFocusUpId 下一个获取焦点的 View id
      * @return {@link View}
      */
@@ -660,9 +971,23 @@ public final class ViewUtils {
         return view;
     }
 
+    // =
+
+    /**
+     * 获取 View 旋转度数
+     * @param view {@link View}
+     * @return View 旋转度数
+     */
+    public static float getRotation(final View view) {
+        if (view != null) {
+            return view.getRotation();
+        }
+        return 0f;
+    }
+
     /**
      * 设置 View 旋转度数
-     * @param view     View
+     * @param view     {@link View}
      * @param rotation 旋转度数
      * @return {@link View}
      */
@@ -673,9 +998,23 @@ public final class ViewUtils {
         return view;
     }
 
+    // =
+
+    /**
+     * 获取 View 水平旋转度数
+     * @param view {@link View}
+     * @return View 水平旋转度数
+     */
+    public static float getRotationX(final View view) {
+        if (view != null) {
+            return view.getRotationX();
+        }
+        return 0f;
+    }
+
     /**
      * 设置 View 水平旋转度数
-     * @param view      View
+     * @param view      {@link View}
      * @param rotationX 水平旋转度数
      * @return {@link View}
      */
@@ -686,9 +1025,23 @@ public final class ViewUtils {
         return view;
     }
 
+    // =
+
+    /**
+     * 获取 View 竖直旋转度数
+     * @param view {@link View}
+     * @return View 竖直旋转度数
+     */
+    public static float getRotationY(final View view) {
+        if (view != null) {
+            return view.getRotationY();
+        }
+        return 0f;
+    }
+
     /**
      * 设置 View 竖直旋转度数
-     * @param view      View
+     * @param view      {@link View}
      * @param rotationY 竖直旋转度数
      * @return {@link View}
      */
@@ -697,6 +1050,20 @@ public final class ViewUtils {
             view.setRotationY(rotationY);
         }
         return view;
+    }
+
+    // =
+
+    /**
+     * 获取 View 水平方向缩放比例
+     * @param view View
+     * @return View 水平方向缩放比例
+     */
+    public static float getScaleX(final View view) {
+        if (view != null) {
+            return view.getScaleX();
+        }
+        return 0f;
     }
 
     /**
@@ -712,6 +1079,20 @@ public final class ViewUtils {
         return view;
     }
 
+    // =
+
+    /**
+     * 获取 View 竖直方向缩放比例
+     * @param view View
+     * @return View 竖直方向缩放比例
+     */
+    public static float getScaleY(final View view) {
+        if (view != null) {
+            return view.getScaleY();
+        }
+        return 0f;
+    }
+
     /**
      * 设置 View 竖直方向缩放比例
      * @param view   View
@@ -725,9 +1106,24 @@ public final class ViewUtils {
         return view;
     }
 
+    // =
+
+    /**
+     * 获取文本的显示方式
+     * @param view {@link View}
+     * @return 文本的显示方式
+     */
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+    public static int getTextAlignment(final View view) {
+        if (view != null) {
+            return view.getTextAlignment();
+        }
+        return 0;
+    }
+
     /**
      * 设置文本的显示方式
-     * @param view          View
+     * @param view          {@link View}
      * @param textAlignment 文本的显示方式
      * @return {@link View}
      */
@@ -739,9 +1135,24 @@ public final class ViewUtils {
         return view;
     }
 
+    // =
+
+    /**
+     * 获取文本的显示方向
+     * @param view {@link View}
+     * @return 文本的显示方向
+     */
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+    public static int getTextDirection(final View view) {
+        if (view != null) {
+            return view.getTextDirection();
+        }
+        return 0;
+    }
+
     /**
      * 设置文本的显示方向
-     * @param view          View
+     * @param view          {@link View}
      * @param textDirection 文本的显示方向
      * @return {@link View}
      */
@@ -751,6 +1162,20 @@ public final class ViewUtils {
             view.setTextDirection(textDirection);
         }
         return view;
+    }
+
+    // =
+
+    /**
+     * 获取水平方向偏转量
+     * @param view {@link View}
+     * @return 水平方向偏转量
+     */
+    public static float getPivotX(final View view) {
+        if (view != null) {
+            return view.getPivotX();
+        }
+        return 0f;
     }
 
     /**
@@ -766,6 +1191,20 @@ public final class ViewUtils {
         return view;
     }
 
+    // =
+
+    /**
+     * 获取竖直方向偏转量
+     * @param view {@link View}
+     * @return 竖直方向偏转量
+     */
+    public static float getPivotY(final View view) {
+        if (view != null) {
+            return view.getPivotY();
+        }
+        return 0f;
+    }
+
     /**
      * 设置竖直方向偏转量
      * @param view   View
@@ -779,9 +1218,23 @@ public final class ViewUtils {
         return view;
     }
 
+    // =
+
+    /**
+     * 获取水平方向的移动距离
+     * @param view {@link View}
+     * @return 水平方向的移动距离
+     */
+    public static float getTranslationX(final View view) {
+        if (view != null) {
+            return view.getTranslationX();
+        }
+        return 0f;
+    }
+
     /**
      * 设置水平方向的移动距离
-     * @param view         View
+     * @param view         {@link View}
      * @param translationX 水平方向的移动距离
      * @return {@link View}
      */
@@ -792,9 +1245,23 @@ public final class ViewUtils {
         return view;
     }
 
+    // =
+
+    /**
+     * 获取竖直方向的移动距离
+     * @param view {@link View}
+     * @return 竖直方向的移动距离
+     */
+    public static float getTranslationY(final View view) {
+        if (view != null) {
+            return view.getTranslationY();
+        }
+        return 0f;
+    }
+
     /**
      * 设置竖直方向的移动距离
-     * @param view         View
+     * @param view         {@link View}
      * @param translationY 竖直方向的移动距离
      * @return {@link View}
      */
@@ -805,9 +1272,23 @@ public final class ViewUtils {
         return view;
     }
 
+    // =
+
+    /**
+     * 获取 View 硬件加速类型
+     * @param view {@link View}
+     * @return View 硬件加速类型
+     */
+    public static int getLayerType(final View view) {
+        if (view != null) {
+            return view.getLayerType();
+        }
+        return 0;
+    }
+
     /**
      * 设置 View 硬件加速类型
-     * @param view      View
+     * @param view      {@link View}
      * @param layerType 硬件加速类型
      * @param paint     {@link Paint}
      * @return {@link View}
@@ -820,6 +1301,136 @@ public final class ViewUtils {
     }
 
     // =
+
+    /**
+     * 请求重新对 View 布局
+     * @param view {@link View}
+     * @return {@link View}
+     */
+    public static View requestLayout(final View view) {
+        if (view != null) {
+            view.requestLayout();
+        }
+        return view;
+    }
+
+    /**
+     * View 请求获取焦点
+     * @param view {@link View}
+     * @return {@link View}
+     */
+    public static View requestFocus(final View view) {
+        if (view != null) {
+            view.requestFocus();
+        }
+        return view;
+    }
+
+    /**
+     * View 清除焦点
+     * @param view {@link View}
+     * @return {@link View}
+     */
+    public static View clearFocus(final View view) {
+        if (view != null) {
+            view.clearFocus();
+        }
+        return view;
+    }
+
+    /**
+     * 获取 View 里获取焦点的 View
+     * @param view {@link View}
+     * @return {@link View}
+     */
+    public static View findFocus(final View view) {
+        if (view != null) {
+            return view.findFocus();
+        }
+        return null;
+    }
+
+    /**
+     * 获取是否当前 View 就是焦点 View
+     * @param view {@link View}
+     * @return {@code true} yes, {@code false} no
+     */
+    public static boolean isFocused(final View view) {
+        if (view != null) {
+            return view.isFocused();
+        }
+        return false;
+    }
+
+    /**
+     * 获取当前 View 是否是焦点 View 或者子 View 里面有焦点 View
+     * @param view {@link View}
+     * @return {@code true} yes, {@code false} no
+     */
+    public static boolean hasFocus(final View view) {
+        if (view != null) {
+            return view.hasFocus();
+        }
+        return false;
+    }
+
+    /**
+     * 获取当前 View 或者子 View 是否可以获取焦点
+     * @param view {@link View}
+     * @return {@code true} yes, {@code false} no
+     */
+    public static boolean hasFocusable(final View view) {
+        if (view != null) {
+            return view.hasFocusable();
+        }
+        return false;
+    }
+
+    // =
+
+    /**
+     * 获取 View 是否在触摸模式下获得焦点
+     * @param view {@link View}
+     * @return {@code true} 可获取, {@code false} 不可获取
+     */
+    public static boolean isFocusableInTouchMode(final View view) {
+        if (view != null) {
+            return view.isFocusableInTouchMode();
+        }
+        return false;
+    }
+
+    /**
+     * 设置 View 是否在触摸模式下获得焦点
+     * @param focusableInTouchMode {@code true} 可获取, {@code false} 不可获取
+     * @param views                View[]
+     * @return {@code true} 可获取, {@code false} 不可获取
+     */
+    public static boolean setFocusableInTouchMode(final boolean focusableInTouchMode, final View... views) {
+        if (views != null) {
+            for (int i = 0, len = views.length; i < len; i++) {
+                View view = views[i];
+                if (view != null) {
+                    view.setFocusableInTouchMode(focusableInTouchMode);
+                }
+            }
+        }
+        return focusableInTouchMode;
+    }
+
+    // =
+
+    /**
+     * 获取 View 是否可以获取焦点
+     * @param view {@link View}
+     * @return {@code true} 可获取, {@code false} 不可获取
+     */
+    public static boolean isFocusable(final View view) {
+        if (view != null) {
+            return view.isFocusable();
+        }
+        return false;
+    }
 
     /**
      * 设置 View 是否可以获取焦点
@@ -837,6 +1448,20 @@ public final class ViewUtils {
             }
         }
         return focusable;
+    }
+
+    // =
+
+    /**
+     * 获取 View 是否选中
+     * @param view {@link View}
+     * @return {@code true} 选中, {@code false} 非选中
+     */
+    public static boolean isSelected(final View view) {
+        if (view != null) {
+            return view.isSelected();
+        }
+        return false;
     }
 
     /**
@@ -857,6 +1482,20 @@ public final class ViewUtils {
         return selected;
     }
 
+    // =
+
+    /**
+     * 获取 View 是否启用
+     * @param view {@link View}
+     * @return {@code true} 启用, {@code false} 禁用
+     */
+    public static boolean isEnabled(final View view) {
+        if (view != null) {
+            return view.isEnabled();
+        }
+        return false;
+    }
+
     /**
      * 设置 View 是否启用
      * @param enabled {@code true} 启用, {@code false} 禁用
@@ -875,6 +1514,20 @@ public final class ViewUtils {
         return enabled;
     }
 
+    // =
+
+    /**
+     * 获取 View 是否可以点击
+     * @param view {@link View}
+     * @return {@code true} 可点击, {@code false} 不可点击
+     */
+    public static boolean isClickable(final View view) {
+        if (view != null) {
+            return view.isClickable();
+        }
+        return false;
+    }
+
     /**
      * 设置 View 是否可以点击
      * @param clickable {@code true} 可点击, {@code false} 不可点击
@@ -891,6 +1544,20 @@ public final class ViewUtils {
             }
         }
         return clickable;
+    }
+
+    // =
+
+    /**
+     * 获取 View 是否可以长按
+     * @param view {@link View}
+     * @return {@code true} 可长按, {@code false} 不可长按
+     */
+    public static boolean isLongClickable(final View view) {
+        if (view != null) {
+            return view.isLongClickable();
+        }
+        return false;
     }
 
     /**
@@ -1438,7 +2105,7 @@ public final class ViewUtils {
                 LogPrintUtils.eTag(TAG, e, "getLayoutGravity");
             }
         }
-        return -1;
+        return 0;
     }
 
     /**

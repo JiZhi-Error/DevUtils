@@ -2,10 +2,10 @@
 ## Gradle
 
 ```java
-implementation 'com.afkt:DevApp:1.8.3'
+implementation 'com.afkt:DevApp:1.8.4'
 
 // AndroidX
-implementation 'com.afkt:DevAppX:1.8.3'
+implementation 'com.afkt:DevAppX:1.8.4'
 ```
 
 ## 目录结构
@@ -18,6 +18,7 @@ implementation 'com.afkt:DevAppX:1.8.3'
          - manager   | 管理器 如: TimerManager
       - cache        | 缓存工具类
       - camera1      | 摄像头相关 android.hardware.Camera
+      - helper       | 功能 Helper 辅助类
       - image        | 图片相关处理
       - info         | APP 信息、PackageInfo 等
       - logger       | 日志库 DevLogger
@@ -71,9 +72,9 @@ DevUtils.openDebug();
 
 - [Change Log](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/CHANGELOG.md)
 
-- [View 链式调用快捷设置 Helper 类](https://github.com/afkT/DevUtils/blob/master/lib/DevOther/src/main/java/dev/ViewHelper.java)
+- [View 链式调用快捷设置 Helper 类](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/helper/ViewHelper.java)
 
-- [Dev 工具类链式调用 Helper 类](https://github.com/afkT/DevUtils/blob/master/lib/DevOther/src/main/java/dev/DevHelper.java)
+- [Dev 工具类链式调用 Helper 类](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/helper/DevHelper.java)
 
 ## API
 
@@ -85,6 +86,7 @@ DevUtils.openDebug();
          - [manager](#devutilsappassistmanager)       | 管理器 如: TimerManager
       - [cache](#devutilsappcache)                    | 缓存工具类
       - [camera1](#devutilsappcamera1)                | 摄像头相关 android.hardware.Camera
+      - [helper](#devutilsapphelper)                  | 功能 Helper 辅助类
       - [image](#devutilsappimage)                    | 图片相关处理
       - [info](#devutilsappinfo)                      | APP 信息、PackageInfo 等
       - [logger](#devutilsapplogger)                  | 日志库 DevLogger
@@ -653,13 +655,18 @@ DevUtils.openDebug();
 | insert | 追加内容 ( 当前光标位置追加 ) |
 | setMaxLength | 设置长度限制 |
 | setMaxLengthAndText | 设置长度限制, 并且设置内容 |
+| isCursorVisible | 是否显示光标 |
 | setCursorVisible | 设置是否显示光标 |
 | getSelectionStart | 获取光标位置 |
 | setSelectionToTop | 设置光标在第一位 |
 | setSelectionToBottom | 设置光标在最后一位 |
 | setSelection | 设置光标位置 |
+| getInputType | 设置输入类型 |
 | setInputType | 设置输入类型 |
+| getImeOptions | 设置软键盘右下角按钮类型 |
 | setImeOptions | 设置软键盘右下角按钮类型 |
+| getTransformationMethod | 获取文本视图显示转换 |
+| setTransformationMethod | 设置文本视图显示转换 |
 | addTextChangedListener | 添加输入监听事件 |
 | removeTextChangedListener | 移除输入监听事件 |
 | setKeyListener | 设置 KeyListener |
@@ -852,6 +859,31 @@ DevUtils.openDebug();
 | getListenerInfoListener | 获取 View ListenerInfo 对象内部事件对象 |
 | setOnClicks | 设置点击事件 |
 | setOnLongClicks | 设置长按事件 |
+
+
+* **List View ( 列表 View ) 相关工具类 ->** [ListViewUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/ListViewUtils.java)
+
+| 方法 | 注释 |
+| :- | :- |
+| getItemCount | 获取 Adapter Item 总数 |
+| getItemView | 获取指定索引 Item View |
+| smoothScrollToPosition | 滑动到指定索引 ( 有滚动过程 ) |
+| scrollToPosition | 滑动到指定索引 ( 无滚动过程 ) |
+| smoothScrollToTop | 滑动到顶部 ( 有滚动过程 ) |
+| scrollToTop | 滑动到顶部 ( 无滚动过程 ) |
+| smoothScrollToBottom | 滑动到底部 ( 有滚动过程 ) |
+| scrollToBottom | 滑动到底部 ( 无滚动过程 ) |
+| smoothScrollTo | 滚动到指定位置 ( 有滚动过程 ) - 相对于初始位置移动 |
+| smoothScrollBy | 滚动到指定位置 ( 有滚动过程 ) - 相对于上次移动的最后位置移动 |
+| fullScroll | 滚动方向 ( 有滚动过程 ) |
+| scrollTo | View 内容滚动位置 - 相对于初始位置移动 |
+| scrollBy | View 内部滚动位置 - 相对于上次移动的最后位置移动 |
+| setScrollX | 设置 View 滑动的 X 轴坐标 |
+| setScrollY | 设置 View 滑动的 Y 轴坐标 |
+| getScrollX | 获取 View 滑动的 X 轴坐标 |
+| getScrollY | 获取 View 滑动的 Y 轴坐标 |
+| setDescendantFocusability | 设置 ViewGroup 和其子控件两者之间的关系 |
+| setOverScrollMode | 设置 View 滚动模式 |
 
 
 * **定位相关工具类 ->** [LocationUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/LocationUtils.java)
@@ -1368,6 +1400,7 @@ DevUtils.openDebug();
 | setTextColor | 设置字体颜色 |
 | setHintTextColors | 设置多个 TextView Hint 字体颜色 |
 | setTextColors | 设置多个 TextView 字体颜色 |
+| getTypeface | 获取字体 |
 | setTypeface | 设置字体 |
 | setTextSizeByPx | 设置字体大小 - px 像素 |
 | setTextSizeBySp | 设置字体大小 - sp 缩放像素 |
@@ -1380,25 +1413,41 @@ DevUtils.openDebug();
 | setBold | 设置 TextView 是否加粗 |
 | setUnderlineText | 设置下划线 |
 | setStrikeThruText | 设置中划线 |
+| getLetterSpacing | 获取文字水平间距 |
 | setLetterSpacing | 设置文字水平间距 |
+| getLineSpacingExtra | 获取文字行间距 ( 行高 ) |
+| getLineSpacingMultiplier | 获取文字行间距倍数 |
 | setLineSpacing | 设置文字行间距 ( 行高 ) |
 | setLineSpacingAndMultiplier | 设置文字行间距 ( 行高 )、行间距倍数 |
+| getTextScaleX | 获取字体水平方向的缩放 |
 | setTextScaleX | 设置字体水平方向的缩放 |
+| getIncludeFontPadding | 是否保留字体留白间隙区域 |
 | setIncludeFontPadding | 设置是否保留字体留白间隙区域 |
+| getInputType | 获取输入类型 |
 | setInputType | 设置输入类型 |
+| getImeOptions | 获取软键盘右下角按钮类型 |
 | setImeOptions | 设置软键盘右下角按钮类型 |
 | setLines | 设置行数 |
+| getMaxLines | 获取最大行数 |
 | setMaxLines | 设置最大行数 |
+| getMinLines | 获取最小行数 |
 | setMinLines | 设置最小行数 |
+| getMaxEms | 获取最大字符宽度限制 |
 | setMaxEms | 设置最大字符宽度限制 |
+| getMinEms | 获取最小字符宽度限制 |
 | setMinEms | 设置最小字符宽度限制 |
 | setEms | 设置指定字符宽度 |
 | setMaxLength | 设置长度限制 |
 | setMaxLengthAndText | 设置长度限制, 并且设置内容 |
+| getEllipsize | 获取 Ellipsize 效果 |
 | setEllipsize | 设置 Ellipsize 效果 |
+| getAutoLinkMask | 获取自动识别文本类型 |
 | setAutoLinkMask | 设置自动识别文本链接 |
 | setAllCaps | 设置文本全为大写 |
+| getGravity | 获取 Gravity |
 | setGravity | 设置 Gravity |
+| getTransformationMethod | 获取文本视图显示转换 |
+| setTransformationMethod | 设置文本视图显示转换 |
 | getPaint | 获取 TextView Paint |
 | getTextHeight | 获取字体高度 |
 | getTextTopOffsetHeight | 获取字体顶部偏移高度 |
@@ -1434,6 +1483,7 @@ DevUtils.openDebug();
 | getActivity | 获取 View context 所属的 Activity |
 | inflate | 获取 View |
 | getParent | 获取指定 View 父布局 |
+| getChildCount | 获取子 View 总数 |
 | getChildAt | 获取指定索引 View |
 | removeAllViews | 移除全部子 View |
 | getLayoutParams | 获取 LayoutParams |
@@ -1442,11 +1492,12 @@ DevUtils.openDebug();
 | convertView | 转换 View |
 | isEmpty | 判断 View 是否为 null |
 | isNotEmpty | 判断 View 是否不为 null |
+| getWidthHeight | 获取 View 宽高 |
 | setWidthHeight | 设置 View 宽度、高度 |
-| setWidth | 设置 View 宽度 |
 | getWidth | 获取 View 宽度 |
-| setHeight | 设置 View 高度 |
+| setWidth | 设置 View 宽度 |
 | getHeight | 获取 View 高度 |
+| setHeight | 设置 View 高度 |
 | getMinimumHeight | 获取 View 最小高度 |
 | setMinimumHeight | 设置 View 最小高度 |
 | getMinimumWidth | 获取 View 最小宽度 |
@@ -1455,28 +1506,72 @@ DevUtils.openDebug();
 | setAlpha | 设置 View 透明度 |
 | getTag | 获取 View Tag |
 | setTag | 设置 View Tag |
+| scrollTo | View 内容滚动位置 - 相对于初始位置移动 |
+| scrollBy | View 内部滚动位置 - 相对于上次移动的最后位置移动 |
+| setScrollX | 设置 View 滑动的 X 轴坐标 |
+| setScrollY | 设置 View 滑动的 Y 轴坐标 |
+| getScrollX | 获取 View 滑动的 X 轴坐标 |
+| getScrollY | 获取 View 滑动的 Y 轴坐标 |
+| setDescendantFocusability | 设置 ViewGroup 和其子控件两者之间的关系 |
+| setOverScrollMode | 设置 View 滚动模式 |
+| isHorizontalScrollBarEnabled | 是否绘制横向滚动条 |
+| setHorizontalScrollBarEnabled | 设置是否绘制横向滚动条 |
+| isVerticalScrollBarEnabled | 是否绘制垂直滚动条 |
+| setVerticalScrollBarEnabled | 设置是否绘制垂直滚动条 |
+| isScrollContainer | 获取 View 是否需要滚动效应 |
 | setScrollContainer | 设置 View 滚动效应 |
+| getNextFocusForwardId | 下一个获取焦点的 View id |
 | setNextFocusForwardId | 设置下一个获取焦点的 View id |
+| getNextFocusDownId | 向下移动焦点时, 下一个获取焦点的 View id |
 | setNextFocusDownId | 设置向下移动焦点时, 下一个获取焦点的 View id |
+| getNextFocusLeftId | 向左移动焦点时, 下一个获取焦点的 View id |
 | setNextFocusLeftId | 设置向左移动焦点时, 下一个获取焦点的 View id |
+| getNextFocusRightId | 向右移动焦点时, 下一个获取焦点的 View id |
 | setNextFocusRightId | 设置向右移动焦点时, 下一个获取焦点的 View id |
+| getNextFocusUpId | 向上移动焦点时, 下一个获取焦点的 View id |
 | setNextFocusUpId | 设置向上移动焦点时, 下一个获取焦点的 View id |
+| getRotation | 获取 View 旋转度数 |
 | setRotation | 设置 View 旋转度数 |
+| getRotationX | 获取 View 水平旋转度数 |
 | setRotationX | 设置 View 水平旋转度数 |
+| getRotationY | 获取 View 竖直旋转度数 |
 | setRotationY | 设置 View 竖直旋转度数 |
+| getScaleX | 获取 View 水平方向缩放比例 |
 | setScaleX | 设置 View 水平方向缩放比例 |
+| getScaleY | 获取 View 竖直方向缩放比例 |
 | setScaleY | 设置 View 竖直方向缩放比例 |
+| getTextAlignment | 获取文本的显示方式 |
 | setTextAlignment | 设置文本的显示方式 |
+| getTextDirection | 获取文本的显示方向 |
 | setTextDirection | 设置文本的显示方向 |
+| getPivotX | 获取水平方向偏转量 |
 | setPivotX | 设置水平方向偏转量 |
+| getPivotY | 获取竖直方向偏转量 |
 | setPivotY | 设置竖直方向偏转量 |
+| getTranslationX | 获取水平方向的移动距离 |
 | setTranslationX | 设置水平方向的移动距离 |
+| getTranslationY | 获取竖直方向的移动距离 |
 | setTranslationY | 设置竖直方向的移动距离 |
+| getLayerType | 获取 View 硬件加速类型 |
 | setLayerType | 设置 View 硬件加速类型 |
+| requestLayout | 请求重新对 View 布局 |
+| requestFocus | View 请求获取焦点 |
+| clearFocus | View 清除焦点 |
+| findFocus | 获取 View 里获取焦点的 View |
+| isFocused | 获取是否当前 View 就是焦点 View |
+| hasFocus | 获取当前 View 是否是焦点 View 或者子 View 里面有焦点 View |
+| hasFocusable | 获取当前 View 或者子 View 是否可以获取焦点 |
+| isFocusableInTouchMode | 获取 View 是否在触摸模式下获得焦点 |
+| setFocusableInTouchMode | 设置 View 是否在触摸模式下获得焦点 |
+| isFocusable | 获取 View 是否可以获取焦点 |
 | setFocusable | 设置 View 是否可以获取焦点 |
+| isSelected | 获取 View 是否选中 |
 | setSelected | 设置 View 是否选中 |
+| isEnabled | 获取 View 是否启用 |
 | setEnabled | 设置 View 是否启用 |
+| isClickable | 获取 View 是否可以点击 |
 | setClickable | 设置 View 是否可以点击 |
+| isLongClickable | 获取 View 是否可以长按 |
 | setLongClickable | 设置 View 是否可以长按 |
 | isVisibility | 判断 View 是否显示 |
 | isVisibilitys | 判断 View 是否都显示 |
@@ -1554,6 +1649,7 @@ DevUtils.openDebug();
 | 方法 | 注释 |
 | :- | :- |
 | setAnimRepeat | 设置动画重复处理 |
+| setAnimationListener | 设置动画事件 |
 | setAnimation | 设置动画 |
 | getAnimation | 获取动画 |
 | clearAnimation | 清空动画 |
@@ -1743,6 +1839,253 @@ DevUtils.openDebug();
 | freeCameraResource | 释放摄像头资源 |
 | initCamera | 初始化摄像头 |
 | open | 打开摄像头 |
+
+
+## <span id="devutilsapphelper">**`dev.utils.app.helper`**</span>
+
+
+* **Dev 工具类链式调用 Helper 类 ->** [DevHelper.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/helper/DevHelper.java)
+
+| 方法 | 注释 |
+| :- | :- |
+| get | 获取单例 DevHelper |
+| viewHelper | 获取 ViewHelper |
+| devHelper | 获取 DevHelper |
+| postRunnable | 在主线程 Handler 中执行任务 |
+| removeRunnable | 在主线程 Handler 中清除任务 |
+| startTimer | 运行定时器 |
+| closeTimer | 关闭定时器 |
+| recycle | Bitmap 通知回收 |
+| saveBitmapToSDCardJPEG | 保存图片到 SDCard - JPEG |
+| saveBitmapToSDCardPNG | 保存图片到 SDCard - PNG |
+| saveBitmapToSDCardWEBP | 保存图片到 SDCard - WEBP |
+| saveBitmapToSDCard | 保存图片到 SDCard |
+| addTextChangedListener | 添加输入监听事件 |
+| removeTextChangedListener | 移除输入监听事件 |
+| setKeyListener | 设置 KeyListener |
+| record | 日志记录 |
+| cleanInternalCache | 清除内部缓存 - path /data/data/package/cache |
+| cleanInternalFiles | 清除内部文件 - path /data/data/package/files |
+| cleanInternalDbs | 清除内部数据库 - path /data/data/package/databases |
+| cleanInternalDbByName | 根据名称清除数据库 - path /data/data/package/databases/dbName |
+| cleanInternalSp | 清除内部 SP - path /data/data/package/shared_prefs |
+| cleanExternalCache | 清除外部缓存 - path /storage/emulated/0/android/data/package/cache |
+| cleanCustomDir | 清除自定义路径下的文件, 使用需小心请不要误删, 而且只支持目录下的文件删除 |
+| cleanApplicationData | 清除本应用所有的数据 |
+| copyText | 复制文本到剪贴板 |
+| copyUri | 复制 URI 到剪贴板 |
+| copyIntent | 复制意图到剪贴板 |
+| notifyMediaStore | 通知刷新本地资源 |
+| insertImageIntoMediaStore | 添加图片到系统相册 ( 包含原图、相册图, 会存在两张 ) - 想要一张, 直接调用 notifyMediaStore() |
+| insertVideoIntoMediaStore | 添加视频到系统相册 |
+| insertIntoMediaStore | 保存到系统相册 |
+| showDialog | 显示 Dialog |
+| closeDialog | 关闭 Dialog |
+| closeDialogs | 关闭多个 Dialog |
+| closePopupWindow | 关闭 PopupWindow |
+| closePopupWindows | 关闭多个 PopupWindow |
+| autoCloseDialog | 自动关闭 dialog |
+| autoClosePopupWindow | 自动关闭 PopupWindow |
+| openKeyboard | 打开软键盘 |
+| closeKeyboard | 关闭软键盘 |
+| closeKeyBoardSpecial | 关闭软键盘 - 特殊处理 |
+| judgeView | 设置某个 View 内所有非 EditText 的子 View OnTouchListener 事件 |
+| registerSoftInputChangedListener | 注册软键盘改变监听 |
+| registerSoftInputChangedListener2 | 注册软键盘改变监听 |
+| applyLanguage | 修改系统语言 (APP 多语言, 单独改变 APP 语言 ) |
+| setOnClicks | 设置点击事件 |
+| setOnLongClicks | 设置长按事件 |
+| addTouchArea | 增加控件的触摸范围, 最大范围只能是父布局所包含的的区域 |
+| cancelAllNotification | 移除通知 - 移除所有通知 ( 只是针对当前 Context 下的 Notification) |
+| cancelNotification | 移除通知 - 移除标记为 id 的通知 ( 只是针对当前 Context 下的所有 Notification) |
+| notifyNotification | 进行通知 |
+| saveAssetsFormFile | 获取 Assets 资源文件数据并保存到本地 |
+| saveRawFormFile | 获取 Raw 资源文件数据并保存到本地 |
+| setWindowSecure | 设置禁止截屏 |
+| setFullScreen | 设置屏幕为全屏 |
+| setLandscape | 设置屏幕为横屏 |
+| setPortrait | 设置屏幕为竖屏 |
+| toggleScreenOrientation | 切换屏幕方向 |
+| forceGetViewSize | 在 onCreate 中获取视图的尺寸 - 需回调 onGetSizeListener 接口, 在 onGetSize 中获取 View 宽高 |
+| vibrate | 震动 |
+| cancel | 取消震动 |
+| closeIO | 关闭 IO |
+| closeIOQuietly | 安静关闭 IO |
+| getNetTime | 获取网络时间 - 默认使用百度链接 |
+| waitForEndAsyn | 设置等待一段时间后, 通知方法 ( 异步 ) |
+| waitForEnd | 设置等待一段时间后, 通知方法 ( 同步 ) |
+| setAnimationListener | 设置动画事件 |
+
+
+* **View 链式调用快捷设置 Helper 类 ->** [ViewHelper.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/helper/ViewHelper.java)
+
+| 方法 | 注释 |
+| :- | :- |
+| get | 获取单例 ViewHelper |
+| viewHelper | 获取 ViewHelper |
+| devHelper | 获取 DevHelper |
+| postRunnable | 在主线程 Handler 中执行任务 |
+| removeRunnable | 在主线程 Handler 中清除任务 |
+| setHint | 设置 Hint 文本 |
+| setText | 设置文本 |
+| setTexts | 设置多个 TextView 文本 |
+| setHtmlText | 设置 Html 内容 |
+| setHtmlTexts | 设置多个 TextView Html 内容 |
+| setHintTextColor | 设置 Hint 字体颜色 |
+| setHintTextColors | 设置多个 TextView Hint 字体颜色 |
+| setTextColor | 设置字体颜色 |
+| setTextColors | 设置多个 TextView 字体颜色 |
+| setTypeface | 设置字体 |
+| setTextSizeByPx | 设置字体大小 - px 像素 |
+| setTextSizeBySp | 设置字体大小 - sp 缩放像素 |
+| setTextSizeByDp | 设置字体大小 - dp 与设备无关的像素 |
+| setTextSizeByIn | 设置字体大小 - inches 英寸 |
+| setTextSize | 设置字体大小 |
+| setTextSizes | 设置多个 TextView 字体大小 |
+| clearFlags | 清空 flags |
+| setBold | 设置 TextView 是否加粗 |
+| setUnderlineText | 设置下划线 |
+| setStrikeThruText | 设置中划线 |
+| setLetterSpacing | 设置文字水平间距 |
+| setLineSpacing | 设置文字行间距 ( 行高 ) |
+| setLineSpacingAndMultiplier | 设置文字行间距 ( 行高 )、行间距倍数 |
+| setTextScaleX | 设置字体水平方向的缩放 |
+| setIncludeFontPadding | 设置是否保留字体留白间隙区域 |
+| setInputType | 设置输入类型 |
+| setImeOptions | 设置软键盘右下角按钮类型 |
+| setLines | 设置行数 |
+| setMaxLines | 设置最大行数 |
+| setMinLines | 设置最小行数 |
+| setMaxEms | 设置最大字符宽度限制 |
+| setMinEms | 设置最小字符宽度限制 |
+| setEms | 设置指定字符宽度 |
+| setEllipsize | 设置 Ellipsize 效果 |
+| setAutoLinkMask | 设置自动识别文本链接 |
+| setAllCaps | 设置文本全为大写 |
+| setTextGravity | 设置 Text Gravity |
+| insert | 追加内容 ( 当前光标位置追加 ) |
+| setMaxLength | 设置长度限制 |
+| setMaxLengthAndText | 设置长度限制, 并且设置内容 |
+| setCursorVisible | 设置是否显示光标 |
+| setSelectionToTop | 设置光标在第一位 |
+| setSelectionToBottom | 设置光标在最后一位 |
+| setSelection | 设置光标位置 |
+| setTransformationMethod | 设置文本视图显示转换 |
+| addTextChangedListener | 添加输入监听事件 |
+| removeTextChangedListener | 移除输入监听事件 |
+| setKeyListener | 设置 KeyListener |
+| setAdjustViewBounds | 设置 ImageView 是否保持宽高比 |
+| setMaxHeight | 设置 ImageView 最大高度 |
+| setMaxWidth | 设置 ImageView 最大宽度 |
+| setBackground | 设置背景图片 |
+| setBackgroundColor | 设置背景颜色 |
+| setBackgroundResource | 设置背景资源 |
+| setBackgroundTintList | 设置背景着色颜色 |
+| setBackgroundTintMode | 设置背景着色模式 |
+| setForeground | 设置前景图片 |
+| setForegroundGravity | 设置前景重心 |
+| setForegroundTintList | 设置前景着色颜色 |
+| setForegroundTintMode | 设置前景着色模式 |
+| setImageBitmap | 设置 ImageView Bitmap |
+| setImageDrawable | 设置 ImageView Drawable |
+| setImageResource | 设置 ImageView 资源 |
+| setImageMatrix | 设置 ImageView Matrix |
+| setImageTintList | 设置 ImageView 着色颜色 |
+| setImageTintMode | 设置 ImageView 着色模式 |
+| setScaleType | 设置 ImageView 缩放类型 |
+| setColorFilter | ImageView 着色处理 |
+| setBackgroundResources | 设置 View 图片资源 |
+| setImageResources | 设置 View 图片资源 |
+| setImageBitmaps | 设置 View Bitmap |
+| setImageDrawables | 设置 View Drawable |
+| setScaleTypes | 设置 View 缩放模式 |
+| setWidthHeight | 设置 View 宽度、高度 |
+| setWidth | 设置 View 宽度 |
+| setHeight | 设置 View 高度 |
+| setMinimumHeight | 设置 View 最小高度 |
+| setMinimumWidth | 设置 View 最小宽度 |
+| setAlpha | 设置 View 透明度 |
+| setTag | 设置 View Tag |
+| scrollTo | View 内容滚动位置 - 相对于初始位置移动 |
+| scrollBy | View 内部滚动位置 - 相对于上次移动的最后位置移动 |
+| setDescendantFocusability | 设置 ViewGroup 和其子控件两者之间的关系 |
+| setOverScrollMode | 设置 View 滚动模式 |
+| setHorizontalScrollBarEnabled | 设置是否绘制横向滚动条 |
+| setVerticalScrollBarEnabled | 设置是否绘制垂直滚动条 |
+| setScrollContainer | 设置 View 滚动效应 |
+| setNextFocusForwardId | 设置下一个获取焦点的 View id |
+| setNextFocusDownId | 设置向下移动焦点时, 下一个获取焦点的 View id |
+| setNextFocusLeftId | 设置向左移动焦点时, 下一个获取焦点的 View id |
+| setNextFocusRightId | 设置向右移动焦点时, 下一个获取焦点的 View id |
+| setNextFocusUpId | 设置向上移动焦点时, 下一个获取焦点的 View id |
+| setRotation | 设置 View 旋转度数 |
+| setRotationX | 设置 View 水平旋转度数 |
+| setRotationY | 设置 View 竖直旋转度数 |
+| setScaleX | 设置 View 水平方向缩放比例 |
+| setScaleY | 设置 View 竖直方向缩放比例 |
+| setTextAlignment | 设置文本的显示方式 |
+| setTextDirection | 设置文本的显示方向 |
+| setPivotX | 设置水平方向偏转量 |
+| setPivotY | 设置竖直方向偏转量 |
+| setTranslationX | 设置水平方向的移动距离 |
+| setTranslationY | 设置竖直方向的移动距离 |
+| setLayerType | 设置 View 硬件加速类型 |
+| requestLayout | 请求重新对 View 布局 |
+| requestFocus | View 请求获取焦点 |
+| clearFocus | View 清除焦点 |
+| requestLayoutParent | View 请求更新 |
+| setLayoutParams | 设置 View LayoutParams |
+| setFocusableInTouchMode | 设置 View 是否在触摸模式下获得焦点 |
+| setFocusable | 设置 View 是否可以获取焦点 |
+| setSelected | 设置 View 是否选中 |
+| setEnabled | 设置 View 是否启用 |
+| setClickable | 设置 View 是否可以点击 |
+| setLongClickable | 设置 View 是否可以长按 |
+| setVisibility | 设置 View 显示的状态 |
+| setVisibilitys | 设置 View 显示的状态 |
+| toggleVisibilitys | 切换 View 显示的状态 |
+| reverseVisibilitys | 反转 View 显示的状态 |
+| removeSelfFromParent | 把自身从父 View 中移除 |
+| setLayoutGravity | 设置 View Layout Gravity |
+| setMarginLeft | 设置 View Left Margin |
+| setMarginTop | 设置 View Top Margin |
+| setMarginRight | 设置 View Right Margin |
+| setMarginBottom | 设置 View Bottom Margin |
+| setMargin | 设置 Margin 边距 |
+| setPaddingLeft | 设置 View Left Padding |
+| setPaddingTop | 设置 View Top Padding |
+| setPaddingRight | 设置 View Right Padding |
+| setPaddingBottom | 设置 View Bottom Padding |
+| setPadding | 设置 Padding 边距 |
+| setCompoundDrawablesByLeft | 设置 Left CompoundDrawables |
+| setCompoundDrawablesByTop | 设置 Top CompoundDrawables |
+| setCompoundDrawablesByRight | 设置 Right CompoundDrawables |
+| setCompoundDrawablesByBottom | 设置 Bottom CompoundDrawables |
+| setCompoundDrawables | 设置 CompoundDrawables |
+| setCompoundDrawablesWithIntrinsicBoundsByLeft | 设置 Left CompoundDrawables - 按照原有比例大小显示图片 |
+| setCompoundDrawablesWithIntrinsicBoundsByTop | 设置 Top CompoundDrawables - 按照原有比例大小显示图片 |
+| setCompoundDrawablesWithIntrinsicBoundsByRight | 设置 Right CompoundDrawables - 按照原有比例大小显示图片 |
+| setCompoundDrawablesWithIntrinsicBoundsByBottom | 设置 Bottom CompoundDrawables - 按照原有比例大小显示图片 |
+| setCompoundDrawablesWithIntrinsicBounds | 设置 CompoundDrawables - 按照原有比例大小显示图片 |
+| addRule | 设置 RelativeLayout View 布局规则 |
+| removeRule | 移除 RelativeLayout View 布局规则 |
+| addRules | 设置多个 RelativeLayout View 布局规则 |
+| removeRules | 移除多个 RelativeLayout View 布局规则 |
+| setAnimation | 设置动画 |
+| clearAnimation | 清空动画 |
+| startAnimation | 启动动画 |
+| setOnClicks | 设置点击事件 |
+| setOnLongClicks | 设置长按事件 |
+| addTouchArea | 增加控件的触摸范围, 最大范围只能是父布局所包含的的区域 |
+| smoothScrollToPosition | 滑动到指定索引 ( 有滚动过程 ) |
+| scrollToPosition | 滑动到指定索引 ( 无滚动过程 ) |
+| smoothScrollToTop | 滑动到顶部 ( 有滚动过程 ) |
+| scrollToTop | 滑动到顶部 ( 无滚动过程 ) |
+| smoothScrollToBottom | 滑动到底部 ( 有滚动过程 ) |
+| scrollToBottom | 滑动到底部 ( 无滚动过程 ) |
+| smoothScrollTo | 滚动到指定位置 ( 有滚动过程 ) - 相对于初始位置移动 |
+| smoothScrollBy | 滚动到指定位置 ( 有滚动过程 ) - 相对于上次移动的最后位置移动 |
+| fullScroll | 滚动方向 ( 有滚动过程 ) |
 
 
 ## <span id="devutilsappimage">**`dev.utils.app.image`**</span>
@@ -2693,6 +3036,10 @@ DevUtils.openDebug();
 | deleteFilesInDirWithFilter | 删除目录下所有过滤的文件 |
 | listFilesInDir | 获取目录下所有文件 - 不递归进子目录 |
 | listFilesInDirWithFilter | 获取目录下所有过滤的文件 - 不递归进子目录 |
+| isImageFormats | 根据文件名判断文件是否为图片 |
+| isAudioFormats | 根据文件名判断文件是否为音频 |
+| isVideoFormats | 根据文件名判断文件是否为视频 |
+| isFileFormats | 根据文件名判断文件是否为指定格式 |
 | getFileMD5 | 获取文件 MD5 值 |
 | getFileMD5ToHexString | 获取文件 MD5 值 |
 

@@ -10,6 +10,12 @@ import dev.utils.JCLogUtils;
 /**
  * detail: Array 数组工具类
  * @author Ttt
+ * <pre>
+ *     // 升序
+ *     Arrays.sort(arrays);
+ *     // 降序 - 只能对对象数组降序
+ *     Arrays.sort(arrays, Collections.reverseOrder());
+ * </pre>
  */
 public final class ArrayUtils {
 
