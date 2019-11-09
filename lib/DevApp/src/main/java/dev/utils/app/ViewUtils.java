@@ -1789,21 +1789,24 @@ public final class ViewUtils {
      * 切换 View 显示的状态
      * @param view  {@link View}
      * @param views View[]
+     * @return {@code true} success, {@code false} fail
      */
-    public static void toggleVisibilitys(final View view, final View... views) {
+    public static boolean toggleVisibilitys(final View view, final View... views) {
         if (view != null) {
             view.setVisibility(View.VISIBLE);
         }
         setVisibilitys(View.GONE, views);
+        return true;
     }
 
     /**
      * 切换 View 显示的状态
      * @param viewArys View[]
      * @param views    View[]
+     * @return {@code true} success, {@code false} fail
      */
-    public static void toggleVisibilitys(final View[] viewArys, final View... views) {
-        toggleVisibilitys(View.GONE, viewArys, views);
+    public static boolean toggleVisibilitys(final View[] viewArys, final View... views) {
+        return toggleVisibilitys(View.GONE, viewArys, views);
     }
 
     /**
@@ -1811,12 +1814,14 @@ public final class ViewUtils {
      * @param status   {@link View#VISIBLE}、{@link View#INVISIBLE}、{@link View#GONE}
      * @param viewArys View[]
      * @param views    View[]
+     * @return {@code true} success, {@code false} fail
      */
-    public static void toggleVisibilitys(final int status, final View[] viewArys, final View... views) {
+    public static boolean toggleVisibilitys(final int status, final View[] viewArys, final View... views) {
         // 默认显示
         setVisibilitys(View.VISIBLE, viewArys);
         // 根据状态处理
         setVisibilitys(status, views);
+        return true;
     }
 
     // =
@@ -2029,9 +2034,10 @@ public final class ViewUtils {
      * 测量 View
      * @param view           {@link View}
      * @param specifiedWidth 指定宽度
+     * @return {@code true} success, {@code false} fail
      */
-    public static void measureView(final View view, final int specifiedWidth) {
-        measureView(view, specifiedWidth, 0);
+    public static boolean measureView(final View view, final int specifiedWidth) {
+        return measureView(view, specifiedWidth, 0);
     }
 
     /**
@@ -2039,8 +2045,9 @@ public final class ViewUtils {
      * @param view            {@link View}
      * @param specifiedWidth  指定宽度
      * @param specifiedHeight 指定高度
+     * @return {@code true} success, {@code false} fail
      */
-    public static void measureView(final View view, final int specifiedWidth, final int specifiedHeight) {
+    public static boolean measureView(final View view, final int specifiedWidth, final int specifiedHeight) {
         try {
             ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
             // MeasureSpec
@@ -2069,9 +2076,11 @@ public final class ViewUtils {
             }
             view.measure(widthMeasureSpec, heightMeasureSpec);
             view.layout(0, 0, view.getMeasuredWidth(), view.getMeasuredHeight());
+            return true;
         } catch (Exception e) {
             LogPrintUtils.eTag(TAG, e, "measureView");
         }
+        return false;
     }
 
     // ==================
@@ -2439,18 +2448,20 @@ public final class ViewUtils {
      * @param views     View[]
      * @param leftRight Left and Right Margin
      * @param topBottom Top and bottom Margin
+     * @return {@code true} success, {@code false} fail
      */
-    public static void setMargin(final View[] views, final int leftRight, final int topBottom) {
-        setMargin(views, leftRight, topBottom, leftRight, topBottom);
+    public static boolean setMargin(final View[] views, final int leftRight, final int topBottom) {
+        return setMargin(views, leftRight, topBottom, leftRight, topBottom);
     }
 
     /**
      * 设置 Margin 边距
      * @param views  View[]
      * @param margin Margin
+     * @return {@code true} success, {@code false} fail
      */
-    public static void setMargin(final View[] views, final int margin) {
-        setMargin(views, margin, margin, margin, margin);
+    public static boolean setMargin(final View[] views, final int margin) {
+        return setMargin(views, margin, margin, margin, margin);
     }
 
     /**
@@ -2460,13 +2471,16 @@ public final class ViewUtils {
      * @param top    Top Margin
      * @param right  Right Margin
      * @param bottom Bottom Margin
+     * @return {@code true} success, {@code false} fail
      */
-    public static void setMargin(final View[] views, final int left, final int top, final int right, final int bottom) {
+    public static boolean setMargin(final View[] views, final int left, final int top, final int right, final int bottom) {
         if (views != null) {
             for (int i = 0, len = views.length; i < len; i++) {
                 setMargin(views[i], left, top, right, bottom);
             }
+            return true;
         }
+        return false;
     }
 
     // ================
@@ -2728,18 +2742,20 @@ public final class ViewUtils {
      * @param views     View[]
      * @param leftRight Left and Right Padding
      * @param topBottom Top and bottom Padding
+     * @return {@code true} success, {@code false} fail
      */
-    public static void setPadding(final View[] views, final int leftRight, final int topBottom) {
-        setPadding(views, leftRight, topBottom, leftRight, topBottom);
+    public static boolean setPadding(final View[] views, final int leftRight, final int topBottom) {
+        return setPadding(views, leftRight, topBottom, leftRight, topBottom);
     }
 
     /**
      * 设置 Padding 边距
      * @param views   View[]
      * @param padding Padding
+     * @return {@code true} success, {@code false} fail
      */
-    public static void setPadding(final View[] views, final int padding) {
-        setPadding(views, padding, padding, padding, padding);
+    public static boolean setPadding(final View[] views, final int padding) {
+        return setPadding(views, padding, padding, padding, padding);
     }
 
     /**
@@ -2749,13 +2765,16 @@ public final class ViewUtils {
      * @param top    Top Padding
      * @param right  Right Padding
      * @param bottom Bottom Padding
+     * @return {@code true} success, {@code false} fail
      */
-    public static void setPadding(final View[] views, final int left, final int top, final int right, final int bottom) {
+    public static boolean setPadding(final View[] views, final int left, final int top, final int right, final int bottom) {
         if (views != null) {
             for (int i = 0, len = views.length; i < len; i++) {
                 setPadding(views[i], left, top, right, bottom);
             }
+            return true;
         }
+        return false;
     }
 
     // =====================
@@ -3017,9 +3036,10 @@ public final class ViewUtils {
      * 设置多个 RelativeLayout View 布局规则
      * @param verb  布局位置
      * @param views View[]
+     * @return {@code true} success, {@code false} fail
      */
-    public static void addRules(final int verb, final View... views) {
-        addRules(verb, -1, views);
+    public static boolean addRules(final int verb, final View... views) {
+        return addRules(verb, -1, views);
     }
 
     /**
@@ -3027,26 +3047,32 @@ public final class ViewUtils {
      * @param verb    布局位置
      * @param subject 关联 View id
      * @param views   View[]
+     * @return {@code true} success, {@code false} fail
      */
-    public static void addRules(final int verb, final int subject, final View... views) {
+    public static boolean addRules(final int verb, final int subject, final View... views) {
         if (views != null) {
             for (int i = 0, len = views.length; i < len; i++) {
                 addRule(views[i], verb, subject);
             }
+            return true;
         }
+        return false;
     }
 
     /**
      * 移除多个 RelativeLayout View 布局规则
      * @param verb  布局位置
      * @param views View[]
+     * @return {@code true} success, {@code false} fail
      */
-    public static void removeRules(final int verb, final View... views) {
+    public static boolean removeRules(final int verb, final View... views) {
         if (views != null) {
             for (int i = 0, len = views.length; i < len; i++) {
                 removeRule(views[i], verb);
             }
+            return true;
         }
+        return false;
     }
 
     // =============
