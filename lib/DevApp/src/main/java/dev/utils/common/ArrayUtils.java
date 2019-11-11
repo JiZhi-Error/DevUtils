@@ -281,7 +281,7 @@ public final class ArrayUtils {
     /**
      * 获取数组长度
      * @param object Object[]
-     * @return 如果数据为 null, 则返回 defaultLength, 如果不为 null, 则返回 array[].length
+     * @return 如果数据为 null, 则返回默认长度, 如果不为 null, 则返回 array[].length
      */
     public static int length(final Object object) {
         return length(object, 0);
