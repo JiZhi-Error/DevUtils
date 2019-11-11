@@ -278,6 +278,15 @@ public final class ArrayUtils {
         return length(booleans, 0);
     }
 
+    /**
+     * 获取数组长度
+     * @param object Object[]
+     * @return 如果数据为 null, 则返回 defaultLength, 如果不为 null, 则返回 array[].length
+     */
+    public static int length(final Object object) {
+        return length(object, 0);
+    }
+
     // =
 
     /**
@@ -370,6 +379,63 @@ public final class ArrayUtils {
         return booleans != null ? booleans.length : defaultLength;
     }
 
+    /**
+     * 获取数组长度
+     * @param object        Object[]
+     * @param defaultLength 数组为 null 时, 返回的长度
+     * @return 如果数据为 null, 则返回 defaultLength, 如果不为 null, 则返回 array[].length
+     */
+    public static int length(final Object object, final int defaultLength) {
+        if (object != null) {
+            Class<?> clazz = object.getClass();
+            // 判断是否数组类型
+            if (clazz.isArray()) {
+                try {
+                    // = 基本数据类型 =
+                    if (clazz.isAssignableFrom(int[].class)) {
+                        return ((int[]) object).length;
+                    } else if (clazz.isAssignableFrom(boolean[].class)) {
+                        return ((boolean[]) object).length;
+                    } else if (clazz.isAssignableFrom(long[].class)) {
+                        return ((long[]) object).length;
+                    } else if (clazz.isAssignableFrom(double[].class)) {
+                        return ((double[]) object).length;
+                    } else if (clazz.isAssignableFrom(float[].class)) {
+                        return ((float[]) object).length;
+                    } else if (clazz.isAssignableFrom(byte[].class)) {
+                        return ((byte[]) object).length;
+                    } else if (clazz.isAssignableFrom(char[].class)) {
+                        return ((char[]) object).length;
+                    } else if (clazz.isAssignableFrom(short[].class)) {
+                        return ((short[]) object).length;
+                    }
+                    // = 基本类型封装 =
+                    if (clazz.isAssignableFrom(Integer[].class)) {
+                        return ((Integer[]) object).length;
+                    } else if (clazz.isAssignableFrom(Boolean[].class)) {
+                        return ((Boolean[]) object).length;
+                    } else if (clazz.isAssignableFrom(Long[].class)) {
+                        return ((Long[]) object).length;
+                    } else if (clazz.isAssignableFrom(Double[].class)) {
+                        return ((Double[]) object).length;
+                    } else if (clazz.isAssignableFrom(Float[].class)) {
+                        return ((Float[]) object).length;
+                    } else if (clazz.isAssignableFrom(Byte[].class)) {
+                        return ((Byte[]) object).length;
+                    } else if (clazz.isAssignableFrom(Character[].class)) {
+                        return ((Character[]) object).length;
+                    } else if (clazz.isAssignableFrom(Short[].class)) {
+                        return ((Short[]) object).length;
+                    }
+                    return ((Object[]) object).length;
+                } catch (Exception e) {
+                    JCLogUtils.eTag(TAG, e, "length");
+                }
+            }
+        }
+        return defaultLength;
+    }
+
     // =
 
     /**
@@ -460,6 +526,34 @@ public final class ArrayUtils {
      */
     public static boolean isLength(final boolean[] booleans, final int length) {
         return booleans != null && booleans.length == length;
+    }
+
+    /**
+     * 判断数组长度是否等于期望长度
+     * @param object Object[]
+     * @param length 期望长度
+     * @return {@code true} yes, {@code false} no
+     */
+    public static boolean isLength(final Object object, final int length) {
+        return object != null && length(object) == length;
+    }
+
+    // ================
+    // = 获取长度总和 =
+    // ================
+
+    /**
+     * 获取数组长度总和
+     * @param objects Object[]
+     * @return 数组长度总和
+     */
+    public static int getCount(final Object... objects) {
+        if (objects == null) return 0;
+        int count = 0;
+        for (Object object : objects) {
+            count += length(object);
+        }
+        return count;
     }
 
     // ============
