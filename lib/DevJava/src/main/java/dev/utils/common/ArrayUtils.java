@@ -110,6 +110,15 @@ public final class ArrayUtils {
         return booleans == null || booleans.length == 0;
     }
 
+    /**
+     * 判断数组是否为 null
+     * @param object Array[]
+     * @return {@code true} is null, {@code false} not null
+     */
+    public static boolean isEmpty(final Object object) {
+        return object == null || length(object) == 0;
+    }
+
     // =
 
     /**
@@ -191,6 +200,15 @@ public final class ArrayUtils {
      */
     public static boolean isNotEmpty(final boolean[] booleans) {
         return booleans != null && booleans.length != 0;
+    }
+
+    /**
+     * 判断数组是否不为 null
+     * @param object Array[]
+     * @return {@code true} not null, {@code false} is null
+     */
+    public static boolean isNotEmpty(final Object object) {
+        return object != null && length(object) != 0;
     }
 
     // ============
@@ -276,6 +294,15 @@ public final class ArrayUtils {
      */
     public static int length(final boolean[] booleans) {
         return length(booleans, 0);
+    }
+
+    /**
+     * 获取数组长度
+     * @param object Array[]
+     * @return 如果数据为 null, 则返回默认长度, 如果不为 null, 则返回 array[].length
+     */
+    public static int length(final Object object) {
+        return length(object, 0);
     }
 
     // =
@@ -370,6 +397,45 @@ public final class ArrayUtils {
         return booleans != null ? booleans.length : defaultLength;
     }
 
+    /**
+     * 获取数组长度
+     * @param object        Array[]
+     * @param defaultLength 数组为 null 时, 返回的长度
+     * @return 如果数据为 null, 则返回 defaultLength, 如果不为 null, 则返回 array[].length
+     */
+    public static int length(final Object object, final int defaultLength) {
+        if (object != null) {
+            Class<?> clazz = object.getClass();
+            // 判断是否数组类型
+            if (clazz.isArray()) {
+                try {
+                    // = 基本数据类型 =
+                    if (clazz.isAssignableFrom(int[].class)) {
+                        return ((int[]) object).length;
+                    } else if (clazz.isAssignableFrom(boolean[].class)) {
+                        return ((boolean[]) object).length;
+                    } else if (clazz.isAssignableFrom(long[].class)) {
+                        return ((long[]) object).length;
+                    } else if (clazz.isAssignableFrom(double[].class)) {
+                        return ((double[]) object).length;
+                    } else if (clazz.isAssignableFrom(float[].class)) {
+                        return ((float[]) object).length;
+                    } else if (clazz.isAssignableFrom(byte[].class)) {
+                        return ((byte[]) object).length;
+                    } else if (clazz.isAssignableFrom(char[].class)) {
+                        return ((char[]) object).length;
+                    } else if (clazz.isAssignableFrom(short[].class)) {
+                        return ((short[]) object).length;
+                    }
+                    return ((Object[]) object).length;
+                } catch (Exception e) {
+                    JCLogUtils.eTag(TAG, e, "length");
+                }
+            }
+        }
+        return defaultLength;
+    }
+
     // =
 
     /**
@@ -460,6 +526,34 @@ public final class ArrayUtils {
      */
     public static boolean isLength(final boolean[] booleans, final int length) {
         return booleans != null && booleans.length == length;
+    }
+
+    /**
+     * 判断数组长度是否等于期望长度
+     * @param object Array[]
+     * @param length 期望长度
+     * @return {@code true} yes, {@code false} no
+     */
+    public static boolean isLength(final Object object, final int length) {
+        return object != null && length(object) == length;
+    }
+
+    // ================
+    // = 获取长度总和 =
+    // ================
+
+    /**
+     * 获取数组长度总和
+     * @param objects Array[]
+     * @return 数组长度总和
+     */
+    public static int getCount(final Object... objects) {
+        if (objects == null) return 0;
+        int count = 0;
+        for (Object object : objects) {
+            count += length(object);
+        }
+        return count;
     }
 
     // ============
@@ -587,9 +681,7 @@ public final class ArrayUtils {
     public static <T> T get(final T[] array, final int pos, final T defaultValue) {
         if (array != null) {
             // 防止索引为负数
-            if (pos < 0) {
-                return defaultValue;
-            }
+            if (pos < 0) return defaultValue;
             try {
                 return array[pos];
             } catch (Exception e) {
@@ -609,9 +701,7 @@ public final class ArrayUtils {
     public static int get(final int[] ints, final int pos, final int defaultValue) {
         if (ints != null) {
             // 防止索引为负数
-            if (pos < 0) {
-                return defaultValue;
-            }
+            if (pos < 0) return defaultValue;
             try {
                 return ints[pos];
             } catch (Exception e) {
@@ -631,9 +721,7 @@ public final class ArrayUtils {
     public static byte get(final byte[] bytes, final int pos, final byte defaultValue) {
         if (bytes != null) {
             // 防止索引为负数
-            if (pos < 0) {
-                return defaultValue;
-            }
+            if (pos < 0) return defaultValue;
             try {
                 return bytes[pos];
             } catch (Exception e) {
@@ -653,9 +741,7 @@ public final class ArrayUtils {
     public static char get(final char[] chars, final int pos, final char defaultValue) {
         if (chars != null) {
             // 防止索引为负数
-            if (pos < 0) {
-                return defaultValue;
-            }
+            if (pos < 0) return defaultValue;
             try {
                 return chars[pos];
             } catch (Exception e) {
@@ -675,9 +761,7 @@ public final class ArrayUtils {
     public static short get(final short[] shorts, final int pos, final short defaultValue) {
         if (shorts != null) {
             // 防止索引为负数
-            if (pos < 0) {
-                return defaultValue;
-            }
+            if (pos < 0) return defaultValue;
             try {
                 return shorts[pos];
             } catch (Exception e) {
@@ -697,9 +781,7 @@ public final class ArrayUtils {
     public static long get(final long[] longs, final int pos, final long defaultValue) {
         if (longs != null) {
             // 防止索引为负数
-            if (pos < 0) {
-                return defaultValue;
-            }
+            if (pos < 0) return defaultValue;
             try {
                 return longs[pos];
             } catch (Exception e) {
@@ -719,9 +801,7 @@ public final class ArrayUtils {
     public static float get(final float[] floats, final int pos, final float defaultValue) {
         if (floats != null) {
             // 防止索引为负数
-            if (pos < 0) {
-                return defaultValue;
-            }
+            if (pos < 0) return defaultValue;
             try {
                 return floats[pos];
             } catch (Exception e) {
@@ -741,9 +821,7 @@ public final class ArrayUtils {
     public static double get(final double[] doubles, final int pos, final double defaultValue) {
         if (doubles != null) {
             // 防止索引为负数
-            if (pos < 0) {
-                return defaultValue;
-            }
+            if (pos < 0) return defaultValue;
             try {
                 return doubles[pos];
             } catch (Exception e) {
@@ -763,9 +841,7 @@ public final class ArrayUtils {
     public static boolean get(final boolean[] booleans, final int pos, final boolean defaultValue) {
         if (booleans != null) {
             // 防止索引为负数
-            if (pos < 0) {
-                return defaultValue;
-            }
+            if (pos < 0) return defaultValue;
             try {
                 return booleans[pos];
             } catch (Exception e) {
@@ -948,7 +1024,7 @@ public final class ArrayUtils {
     // ===================
 
     /**
-     * 根据指定值获取 value 所在位置 + 偏移量的索引
+     * 根据指定值获取 value 所在位置 + 偏移量的值
      * @param array   数组
      * @param value   值
      * @param number  符合条件次数 ( 从 0 开始, 0 = 1)
@@ -991,7 +1067,7 @@ public final class ArrayUtils {
      * @param notNull 是否不允许值为 null
      * @param offset  偏移量
      * @param <T>     泛型
-     * @return 对应索引的值
+     * @return 对应的索引
      */
     public static <T> int getPosition(final T[] array, final T value, final int number, final boolean notNull, final int offset) {
         if (array != null) {
@@ -1172,7 +1248,7 @@ public final class ArrayUtils {
     // =
 
     /**
-     * 根据指定值获取 value 所在位置 + 偏移量的索引
+     * 根据指定值获取 value 所在位置 + 偏移量的值
      * @param array  数组
      * @param value  值
      * @param number 符合条件次数 ( 从 0 开始, 0 = 1)
@@ -1236,7 +1312,7 @@ public final class ArrayUtils {
     // =
 
     /**
-     * 根据指定值获取 value 所在位置 + 偏移量的索引
+     * 根据指定值获取 value 所在位置 + 偏移量的值
      * @param array  数组
      * @param value  值
      * @param number 符合条件次数 ( 从 0 开始, 0 = 1)
@@ -1300,7 +1376,7 @@ public final class ArrayUtils {
     // =
 
     /**
-     * 根据指定值获取 value 所在位置 + 偏移量的索引
+     * 根据指定值获取 value 所在位置 + 偏移量的值
      * @param array  数组
      * @param value  值
      * @param number 符合条件次数 ( 从 0 开始, 0 = 1)
@@ -1364,7 +1440,7 @@ public final class ArrayUtils {
     // =
 
     /**
-     * 根据指定值获取 value 所在位置 + 偏移量的索引
+     * 根据指定值获取 value 所在位置 + 偏移量的值
      * @param array  数组
      * @param value  值
      * @param number 符合条件次数 ( 从 0 开始, 0 = 1)
@@ -1428,7 +1504,7 @@ public final class ArrayUtils {
     // =
 
     /**
-     * 根据指定值获取 value 所在位置 + 偏移量的索引
+     * 根据指定值获取 value 所在位置 + 偏移量的值
      * @param array  数组
      * @param value  值
      * @param number 符合条件次数 ( 从 0 开始, 0 = 1)
@@ -1492,7 +1568,7 @@ public final class ArrayUtils {
     // =
 
     /**
-     * 根据指定值获取 value 所在位置 + 偏移量的索引
+     * 根据指定值获取 value 所在位置 + 偏移量的值
      * @param array  数组
      * @param value  值
      * @param number 符合条件次数 ( 从 0 开始, 0 = 1)
@@ -1556,7 +1632,7 @@ public final class ArrayUtils {
     // =
 
     /**
-     * 根据指定值获取 value 所在位置 + 偏移量的索引
+     * 根据指定值获取 value 所在位置 + 偏移量的值
      * @param array  数组
      * @param value  值
      * @param number 符合条件次数 ( 从 0 开始, 0 = 1)
@@ -1620,7 +1696,7 @@ public final class ArrayUtils {
     // =
 
     /**
-     * 根据指定值获取 value 所在位置 + 偏移量的索引
+     * 根据指定值获取 value 所在位置 + 偏移量的值
      * @param array  数组
      * @param value  值
      * @param number 符合条件次数 ( 从 0 开始, 0 = 1)
@@ -1692,7 +1768,6 @@ public final class ArrayUtils {
      */
     public static Integer[] intsToIntegers(final int[] ints) {
         if (ints != null) {
-            // 获取数组长度
             int len = ints.length;
             // 创建数组
             Integer[] array = new Integer[len];
@@ -1711,7 +1786,6 @@ public final class ArrayUtils {
      */
     public static Byte[] bytesToBytes(final byte[] bytes) {
         if (bytes != null) {
-            // 获取数组长度
             int len = bytes.length;
             // 创建数组
             Byte[] array = new Byte[len];
@@ -1730,7 +1804,6 @@ public final class ArrayUtils {
      */
     public static Character[] charsToCharacters(final char[] chars) {
         if (chars != null) {
-            // 获取数组长度
             int len = chars.length;
             // 创建数组
             Character[] array = new Character[len];
@@ -1749,7 +1822,6 @@ public final class ArrayUtils {
      */
     public static Short[] shortsToShorts(final short[] shorts) {
         if (shorts != null) {
-            // 获取数组长度
             int len = shorts.length;
             // 创建数组
             Short[] array = new Short[len];
@@ -1768,7 +1840,6 @@ public final class ArrayUtils {
      */
     public static Long[] longsToLongs(final long[] longs) {
         if (longs != null) {
-            // 获取数组长度
             int len = longs.length;
             // 创建数组
             Long[] array = new Long[len];
@@ -1787,7 +1858,6 @@ public final class ArrayUtils {
      */
     public static Float[] floatsToFloats(final float[] floats) {
         if (floats != null) {
-            // 获取数组长度
             int len = floats.length;
             // 创建数组
             Float[] array = new Float[len];
@@ -1806,7 +1876,6 @@ public final class ArrayUtils {
      */
     public static Double[] doublesToDoubles(final double[] doubles) {
         if (doubles != null) {
-            // 获取数组长度
             int len = doubles.length;
             // 创建数组
             Double[] array = new Double[len];
@@ -1825,7 +1894,6 @@ public final class ArrayUtils {
      */
     public static Boolean[] booleansToBooleans(final boolean[] booleans) {
         if (booleans != null) {
-            // 获取数组长度
             int len = booleans.length;
             // 创建数组
             Boolean[] array = new Boolean[len];
@@ -1847,7 +1915,6 @@ public final class ArrayUtils {
      */
     public static int[] integersToInts(final Integer[] integers, final int defaultValue) {
         if (integers != null) {
-            // 获取数组长度
             int len = integers.length;
             // 创建数组
             int[] array = new int[len];
@@ -1871,7 +1938,6 @@ public final class ArrayUtils {
      */
     public static byte[] bytesToBytes(final Byte[] bytes, final byte defaultValue) {
         if (bytes != null) {
-            // 获取数组长度
             int len = bytes.length;
             // 创建数组
             byte[] array = new byte[len];
@@ -1895,7 +1961,6 @@ public final class ArrayUtils {
      */
     public static char[] charactersToChars(final Character[] characters, final char defaultValue) {
         if (characters != null) {
-            // 获取数组长度
             int len = characters.length;
             // 创建数组
             char[] array = new char[len];
@@ -1919,7 +1984,6 @@ public final class ArrayUtils {
      */
     public static short[] shortsToShorts(final Short[] shorts, final short defaultValue) {
         if (shorts != null) {
-            // 获取数组长度
             int len = shorts.length;
             // 创建数组
             short[] array = new short[len];
@@ -1943,7 +2007,6 @@ public final class ArrayUtils {
      */
     public static long[] longsToLongs(final Long[] longs, final long defaultValue) {
         if (longs != null) {
-            // 获取数组长度
             int len = longs.length;
             // 创建数组
             long[] array = new long[len];
@@ -1967,7 +2030,6 @@ public final class ArrayUtils {
      */
     public static float[] floatsToFloats(final Float[] floats, final float defaultValue) {
         if (floats != null) {
-            // 获取数组长度
             int len = floats.length;
             // 创建数组
             float[] array = new float[len];
@@ -1991,7 +2053,6 @@ public final class ArrayUtils {
      */
     public static double[] doublesToDoubles(final Double[] doubles, final double defaultValue) {
         if (doubles != null) {
-            // 获取数组长度
             int len = doubles.length;
             // 创建数组
             double[] array = new double[len];
@@ -2015,7 +2076,6 @@ public final class ArrayUtils {
      */
     public static boolean[] booleansToBooleans(final Boolean[] booleans, final boolean defaultValue) {
         if (booleans != null) {
-            // 获取数组长度
             int len = booleans.length;
             // 创建数组
             boolean[] array = new boolean[len];
