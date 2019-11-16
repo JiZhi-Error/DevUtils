@@ -3096,8 +3096,7 @@ public final class ViewUtils {
      * @return {@link Animation}
      */
     public static Animation getAnimation(final View view) {
-        if (view != null) return view.getAnimation();
-        return null;
+        return (view != null) ? view.getAnimation() : null;
     }
 
     /**
