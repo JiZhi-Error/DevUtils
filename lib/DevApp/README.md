@@ -2,10 +2,10 @@
 ## Gradle
 
 ```java
-implementation 'com.afkt:DevApp:1.8.4'
+implementation 'com.afkt:DevApp:1.8.5'
 
 // AndroidX
-implementation 'com.afkt:DevAppX:1.8.4'
+implementation 'com.afkt:DevAppX:1.8.5'
 ```
 
 ## 目录结构
@@ -286,6 +286,7 @@ DevUtils.openDebug();
 | 方法 | 注释 |
 | :- | :- |
 | init | 初始化操作 ( 内部已调用 ) |
+| setCallBack | 设置文件记录回调 |
 | record | 日志记录 |
 | isHandler | 判断是否处理日志记录 |
 | setHandler | 设置是否处理日志记录 |
@@ -309,6 +310,8 @@ DevUtils.openDebug();
 
 | 方法 | 注释 |
 | :- | :- |
+| getAppDeviceInfo | 获取应用、设备信息 |
+| refreshAppDeviceInfo | 刷新应用、设备信息 |
 | getUUID | 获取设备唯一 UUID |
 | getFormatRes | 获取 R.string 资源的格式化字符串 |
 | getSDKVersion | 获取 SDK 版本 |
@@ -339,9 +342,31 @@ DevUtils.openDebug();
 | 方法 | 注释 |
 | :- | :- |
 | getWindowManager | 获取 WindowManager |
+| getAudioManager | 获取 AudioManager |
+| getSensorManager | 获取 SensorManager |
+| getStorageManager | 获取 StorageManager |
+| getWifiManager | 获取 WifiManager |
+| getConnectivityManager | 获取 ConnectivityManager |
+| getTelephonyManager | 获取 TelephonyManager |
+| getAppOpsManager | 获取 AppOpsManager |
+| getNotificationManager | 获取 NotificationManager |
+| getShortcutManager | 获取 ShortcutManager |
+| getActivityManager | 获取 ActivityManager |
+| getPowerManager | 获取 PowerManager |
+| getKeyguardManager | 获取 KeyguardManager |
+| getInputMethodManager | 获取 InputMethodManager |
+| getClipboardManager | 获取 ClipboardManager |
+| getUsageStatsManager | 获取 UsageStatsManager |
+| getAlarmManager | 获取 AlarmManager |
+| getLocationManager | 获取 LocationManager |
+| getVibrator | 获取 Vibrator |
 | getSystemService | 获取 SystemService |
 | getPackageManager | 获取 PackageManager |
-| getAppPackageName | 获取 APP 包名 |
+| getApplicationInfo | 获取 ApplicationInfo |
+| getPackageInfo | 获取 PackageInfo |
+| getSharedPreferences | 获取 SharedPreferences |
+| deleteDatabase | 根据名称清除数据库 |
+| getPackageName | 获取 APP 包名 |
 | getAppIcon | 获取 APP 图标 |
 | getAppName | 获取 APP 应用名 |
 | getAppVersionName | 获取 APP versionName |
@@ -351,6 +376,7 @@ DevUtils.openDebug();
 | getAppSignatureMD5 | 获取 APP 签名 MD5 值 |
 | getAppSignatureSHA1 | 获取 APP 签名 SHA1 值 |
 | getAppSignatureSHA256 | 获取 APP 签名 SHA256 值 |
+| getAppSignatureHash | 获取应用签名 Hash 值 |
 | isAppDebug | 判断 APP 是否 debug 模式 |
 | isAppRelease | 判断 APP 是否 release 模式 |
 | isAppSystem | 判断 APP 是否系统 app |
@@ -359,6 +385,11 @@ DevUtils.openDebug();
 | isInstalledApp2 | 判断是否安装了 APP |
 | startActivity | Activity 跳转 |
 | startActivityForResult | Activity 跳转回传 |
+| registerReceiver | 注册广播监听 |
+| unregisterReceiver | 注销广播监听 |
+| sendBroadcast | 发送广播 |
+| startService | 启动服务 |
+| stopService | 停止服务 |
 | installApp | 安装 APP( 支持 8.0) 的意图 |
 | installAppSilent | 静默安装应用 |
 | uninstallApp | 卸载应用 |
@@ -380,7 +411,6 @@ DevUtils.openDebug();
 
 | 方法 | 注释 |
 | :- | :- |
-| getAudioManager | 获取 AudioManager |
 | getStreamMaxVolume | 获取指定声音流最大音量大小 |
 | getStreamVolume | 获取指定声音流音量大小 |
 | setStreamVolume | 设置指定声音流音量大小 |
@@ -441,7 +471,7 @@ DevUtils.openDebug();
 | setStatusBarCustom | 设置自定义状态栏 |
 | setStatusBarColor4Drawer | 设置状态栏的颜色 |
 | setStatusBarAlpha4Drawer | 设置状态栏透明度 |
-| getActionBarHeight | 获取 ActionBase 高度 |
+| getActionBarHeight | 获取 ActionBar 高度 |
 | setNotificationBarVisibility | 设置通知栏是否显示 |
 | getNavBarHeight | 获取 NavigationView 高度 |
 | setNavBarVisibility | 设置导航栏是否可见 ( 图标显示 ) |
@@ -491,12 +521,12 @@ DevUtils.openDebug();
 
 | 方法 | 注释 |
 | :- | :- |
+| cleanExternalCache | 清除外部缓存 - path /storage/emulated/0/android/data/package/cache |
 | cleanInternalCache | 清除内部缓存 - path /data/data/package/cache |
 | cleanInternalFiles | 清除内部文件 - path /data/data/package/files |
+| cleanInternalSp | 清除内部 SP - path /data/data/package/shared_prefs |
 | cleanInternalDbs | 清除内部数据库 - path /data/data/package/databases |
 | cleanInternalDbByName | 根据名称清除数据库 - path /data/data/package/databases/dbName |
-| cleanInternalSp | 清除内部 SP - path /data/data/package/shared_prefs |
-| cleanExternalCache | 清除外部缓存 - path /storage/emulated/0/android/data/package/cache |
 | cleanCustomDir | 清除自定义路径下的文件, 使用需小心请不要误删, 而且只支持目录下的文件删除 |
 | cleanApplicationData | 清除本应用所有的数据 |
 
@@ -506,6 +536,7 @@ DevUtils.openDebug();
 | 方法 | 注释 |
 | :- | :- |
 | addTouchArea | 增加控件的触摸范围, 最大范围只能是父布局所包含的的区域 |
+| setGlobalIntervalTime | 设置全局双击间隔时间 |
 | get | 获取对应功能模块点击辅助类 |
 | remove | 移除对应功能模块点击辅助类 |
 | isFastDoubleClick | 判断是否双击 ( 无效点击 - 短时间内多次点击 ) |
@@ -561,9 +592,10 @@ DevUtils.openDebug();
 
 | 方法 | 注释 |
 | :- | :- |
+| getInternalAppDbsPath | 获取内存应用数据库路径 - path /data/data/package/databases |
+| getInternalAppDbPath | 获取内存应用数据库路径 - path /data/data/package/databases/name |
 | startExportDatabase | 导出数据库 |
 | startImportDatabase | 导入数据库 |
-| getDBPath | 获取数据库路径 |
 
 
 * **设备相关工具类 ->** [DeviceUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/DeviceUtils.java)
@@ -628,6 +660,7 @@ DevUtils.openDebug();
 | setCancelable | 设置是否允许返回键关闭 |
 | setCanceledOnTouchOutside | 设置是否允许点击其他地方自动关闭 |
 | setCancelableAndTouchOutside | 设置是否允许 返回键关闭、点击其他地方自动关闭 |
+| isShowing | 获取 Dialog 是否显示 |
 | showDialog | 显示 Dialog |
 | closeDialog | 关闭 Dialog |
 | closeDialogs | 关闭多个 Dialog |
@@ -676,15 +709,6 @@ DevUtils.openDebug();
 | createDigitsKeyListener | 创建 DigitsKeyListener |
 
 
-* **文件记录工具类 ->** [FileRecordUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/FileRecordUtils.java)
-
-| 方法 | 注释 |
-| :- | :- |
-| init | 初始化调用方法 ( 内部已调用 ) |
-| saveErrorLog | 保存异常日志 |
-| saveLog | 保存日志 |
-
-
 * **手电筒工具类 ->** [FlashlightUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/FlashlightUtils.java)
 
 | 方法 | 注释 |
@@ -692,10 +716,10 @@ DevUtils.openDebug();
 | getInstance | 获取 FlashlightUtils 实例 |
 | register | 注册摄像头 |
 | unregister | 注销摄像头 |
+| isFlashlightEnable | 是否支持手机闪光灯 |
 | setFlashlightOn | 打开闪光灯 |
 | setFlashlightOff | 关闭闪光灯 |
 | isFlashlightOn | 是否打开闪光灯 |
-| isFlashlightEnable | 是否支持手机闪光灯 |
 
 
 * **Handler 工具类 ->** [HandlerUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/HandlerUtils.java)
@@ -705,19 +729,6 @@ DevUtils.openDebug();
 | getMainHandler | 获取主线程 Handler |
 | postRunnable | 在主线程 Handler 中执行任务 |
 | removeRunnable | 在主线程 Handler 中清除任务 |
-
-
-* **Html 工具类 ->** [HtmlUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/HtmlUtils.java)
-
-| 方法 | 注释 |
-| :- | :- |
-| setHtmlText | 设置 Html 内容 |
-| addHtmlColor | 为给定的字符串添加 HTML 颜色标记 |
-| addHtmlBold | 为给定的字符串添加 HTML 加粗标记 |
-| addHtmlColorAndBlod | 为给定的字符串添加 HTML 颜色标记并加粗 |
-| addHtmlUnderline | 为给定的字符串添加 HTML 下划线 |
-| addHtmlIncline | 为给定的字符串添加 HTML 字体倾斜 |
-| keywordReplaceHtmlColor | 将给定的字符串中所有给定的关键字标色 |
 
 
 * **ImageView 工具类 ->** [ImageViewUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/ImageViewUtils.java)
@@ -801,6 +812,14 @@ DevUtils.openDebug();
 | wrap | 包装转换 Object - {@link JSONObject#wrap(Object)} |
 | stringJSONEscape | 字符串 JSON 转义处理 |
 | isJSON | 判断字符串是否 JSON 格式 |
+| isJSONObject | 判断字符串是否 JSON Object 格式 |
+| isJSONArray | 判断字符串是否 JSON Array 格式 |
+| jsonToMap | 将 JSON 格式字符串转化为 Map |
+| jsonToList | 将 JSON 格式字符串转化为 List |
+| getJSONObject | 获取 JSONObject |
+| getJSONArray | 获取 JSONArray |
+| get | 获取指定 key 数据 |
+| opt | 获取指定 key 数据 |
 
 
 * **软键盘相关工具类 ->** [KeyBoardUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/KeyBoardUtils.java)
@@ -842,7 +861,7 @@ DevUtils.openDebug();
 | :- | :- |
 | getSystemLanguage | 获取系统语言 |
 | getSystemPreferredLanguage | 获取系统首选语言 |
-| applyLanguage | 修改系统语言 (APP 多语言, 单独改变 APP 语言 ) |
+| applyLanguage | 修改系统语言 ( APP 多语言, 单独改变 APP 语言 ) |
 | getSupportLanguages | 获取支持的语言 |
 | putSupportLanguage | 添加支持的语言 |
 | removeSupportLanguage | 移除支持的语言 |
@@ -855,10 +874,12 @@ DevUtils.openDebug();
 | 方法 | 注释 |
 | :- | :- |
 | getTouchListener | 获取 View 设置的 OnTouchListener 事件对象 |
+| getClickListener | 获取 View 设置的 OnClickListener 事件对象 |
 | getListenerInfo | 获取 View ListenerInfo 对象 ( 内部类 ) |
 | getListenerInfoListener | 获取 View ListenerInfo 对象内部事件对象 |
 | setOnClicks | 设置点击事件 |
 | setOnLongClicks | 设置长按事件 |
+| setOnTouchs | 设置触摸事件 |
 
 
 * **List View ( 列表 View ) 相关工具类 ->** [ListViewUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/ListViewUtils.java)
@@ -884,18 +905,20 @@ DevUtils.openDebug();
 | getScrollY | 获取 View 滑动的 Y 轴坐标 |
 | setDescendantFocusability | 设置 ViewGroup 和其子控件两者之间的关系 |
 | setOverScrollMode | 设置 View 滚动模式 |
+| calcListViewHeight | 计算 ListView 高度 |
+| calcGridViewHeight | 计算 GridView 高度 |
 
 
 * **定位相关工具类 ->** [LocationUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/LocationUtils.java)
 
 | 方法 | 注释 |
 | :- | :- |
-| getLocation | 获取位置, 需要先判断是否开启了定位 |
 | isGpsEnabled | 判断 GPS 是否可用 |
 | isLocationEnabled | 判断定位是否可用 |
 | openGpsSettings | 打开 GPS 设置界面 |
 | register | 注册 - 使用完记得调用 {@link #unregister()} |
 | unregister | 注销监听 |
+| getLocation | 获取位置 ( 需要先判断是否开启了定位 ) |
 | getAddress | 根据经纬度获取地理位置 |
 | getCountryName | 根据经纬度获取所在国家 |
 | getLocality | 根据经纬度获取所在地 |
@@ -942,7 +965,7 @@ DevUtils.openDebug();
 | 方法 | 注释 |
 | :- | :- |
 | getMobileDataEnabled | 获取移动网络打开状态 ( 默认属于未打开 ) |
-| setMobileDataEnabled | 设置移动网络开关 ( 无判断是否已开启移动网络 ) - 实际无效果, 非系统应用无权限 |
+| setMobileDataEnabled | 设置移动网络开关 ( 无判断是否已开启移动网络 ) |
 | isConnect | 判断是否连接了网络 |
 | getConnectType | 获取连接的网络类型 |
 | isConnWifi | 判断是否连接 Wifi( 连接上、连接中 ) |
@@ -950,7 +973,7 @@ DevUtils.openDebug();
 | isAvailable | 判断网络是否可用 |
 | isAvailableByPing | 使用 ping ip 方式判断网络是否可用 |
 | getActiveNetworkInfo | 获取活动网络信息 |
-| getActiveNetwork | 获取活动网络信息 |
+| getActiveNetwork | 获取活动网络 |
 | is4G | 判断是否 4G 网络 |
 | getWifiEnabled | 判断 wifi 是否打开 |
 | isWifiAvailable | 判断 wifi 数据是否可用 |
@@ -972,8 +995,8 @@ DevUtils.openDebug();
 | :- | :- |
 | getNotificationManager | 获取通知栏管理对象 |
 | isNotificationEnabled | 检查通知栏权限是否开启 |
-| cancelAll | 移除通知 - 移除所有通知 ( 只是针对当前 Context 下的 Notification) |
-| cancel | 移除通知 - 移除标记为 id 的通知 ( 只是针对当前 Context 下的所有 Notification) |
+| cancelAll | 移除通知 - 移除所有通知 |
+| cancel | 移除通知 - 移除标记为 id 的通知 |
 | notify | 进行通知 |
 | createPendingIntent | 获取 PendingIntent |
 | createNotification | 创建通知栏对象 |
@@ -997,6 +1020,7 @@ DevUtils.openDebug();
 | getRootPath | 获取 Android 系统根目录 - path /system |
 | getDataPath | 获取 data 目录 - path /data |
 | getDownloadCachePath | 获取下载缓存目录 - path data/cache |
+| getInternalCachePath | 获取内存应用缓存路径 - path /data/data/package/cache |
 | getInternalAppDataPath | 获取内存应用数据路径 - path /data/data/package |
 | getInternalAppCodeCacheDir | 获取内存应用代码缓存路径 - path /data/data/package/code_cache |
 | getInternalAppDbsPath | 获取内存应用数据库路径 - path /data/data/package/databases |
@@ -1035,7 +1059,6 @@ DevUtils.openDebug();
 
 | 方法 | 注释 |
 | :- | :- |
-| getTelephonyManager | 获取 TelephonyManager |
 | isPhone | 判断设备是否是手机 |
 | getSimState | 获取 SIM 卡状态 |
 | isSimReady | 判断是否装载 SIM 卡 |
@@ -1078,7 +1101,7 @@ DevUtils.openDebug();
 | getInstance | 获取 PowerManagerUtils 实例 |
 | isScreenOn | 屏幕是否打开 ( 亮屏 ) |
 | turnScreenOn | 唤醒 / 点亮 屏幕 |
-| turnScreenOff | 释放屏幕锁, 允许休眠时间自动黑屏 |
+| turnScreenOff | 释放屏幕锁 ( 允许休眠时间自动黑屏 ) |
 | getWakeLock | 获取 PowerManager.WakeLock |
 | setWakeLock | 设置 PowerManager.WakeLock |
 | getPowerManager | 获取 PowerManager |
@@ -1092,6 +1115,7 @@ DevUtils.openDebug();
 | 方法 | 注释 |
 | :- | :- |
 | kill | 销毁自身进程 |
+| myPid | 获取自身进程 id |
 | isCurProcess | 判断是否当前进程 |
 | getCurProcessName | 获取当前进程名 |
 | getProcessName | 获取进程 id 对应的进程名 |
@@ -1117,6 +1141,7 @@ DevUtils.openDebug();
 | getString | 获取 String |
 | getColor | 获取 Color |
 | getDrawable | 获取 Drawable |
+| getNinePatchDrawable | 获取 .9 Drawable |
 | getColorDrawable | 获取指定颜色 Drawable |
 | getBitmap | 获取 Bitmap |
 | getDimension | 获取 Dimension |
@@ -1143,7 +1168,9 @@ DevUtils.openDebug();
 | getBoolId | 获取 bool id |
 | getIntegerId | 获取 integer id |
 | getIdentifier | 获取资源 id |
-| openAssetsResource | 获取 AssetManager 指定资源 InputStream |
+| open | 获取 AssetManager 指定资源 InputStream |
+| openFd | 获取 AssetManager 指定资源 AssetFileDescriptor |
+| openNonAssetFd | 获取 AssetManager 指定资源 AssetFileDescriptor |
 | openRawResource | 获取对应资源 InputStream |
 | openRawResourceFd | 获取对应资源 AssetFileDescriptor |
 | readBytesFromAssets | 获取 Assets 资源文件数据 |
@@ -1160,7 +1187,6 @@ DevUtils.openDebug();
 
 | 方法 | 注释 |
 | :- | :- |
-| getWindowManager | 获取 WindowManager |
 | getDisplayMetrics | 获取 DisplayMetrics |
 | getScreenWidth | 获取屏幕宽度 |
 | getScreenHeight | 获取屏幕高度 |
@@ -1204,16 +1230,13 @@ DevUtils.openDebug();
 | getSDCardPathSeparator | 获取内置 SDCard 绝对路径 |
 | isSDCardEnablePath | 判断 SDCard 是否可用 |
 | getSDCardPaths | 获取 SDCard 路径 |
-| getAllBlockSizeFormat | 获取内置 SDCard 空间总大小 |
-| getAvailableBlocksFormat | 获取内置 SDCard 空闲空间大小 |
-| getUsedBlocksFormat | 获取内置 SDCard 已使用空间大小 |
 | getAllBlockSize | 获取内置 SDCard 空间总大小 |
+| getAllBlockSizeFormat | 获取内置 SDCard 空间总大小 |
 | getAvailableBlocks | 获取内置 SDCard 空闲空间大小 |
+| getAvailableBlocksFormat | 获取内置 SDCard 空闲空间大小 |
 | getUsedBlocks | 获取内置 SDCard 已使用空间大小 |
+| getUsedBlocksFormat | 获取内置 SDCard 已使用空间大小 |
 | getBlockSizeInfos | 返回内置 SDCard 空间大小信息 |
-| getDiskCacheDir | 获取 APP Cache 文件夹地址 |
-| getCacheFile | 获取 APP Cache 路径 File |
-| getCachePath | 获取 APP Cache 路径 |
 
 
 * **服务相关工具类 ->** [ServiceUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/ServiceUtils.java)
@@ -1275,6 +1298,7 @@ DevUtils.openDebug();
 
 | 方法 | 注释 |
 | :- | :- |
+| getAppSignature | 获取 APP Signature |
 | signatureMD5 | 获取 MD5 签名 |
 | signatureSHA1 | 获取签名 SHA1 加密字符串 |
 | signatureSHA256 | 获取签名 SHA256 加密字符串 |
@@ -1315,7 +1339,7 @@ DevUtils.openDebug();
 | getSnackbarView | 获取 Snackbar View |
 | getTextView | 获取 Snackbar TextView(snackbar_text) |
 | getActionButton | 获取 Snackbar Action Button(snackbar_action) |
-| addView | 向 Snackbar 布局中添加 View (Google 不建议, 复杂的布局应该使用 DialogFragment 进行展示 ) |
+| addView | 向 Snackbar 布局中添加 View ( Google 不建议, 复杂的布局应该使用 DialogFragment 进行展示 ) |
 | setCallback | 设置 Snackbar 展示完成、隐藏完成 的监听 |
 | setAction | 设置 Action 按钮文字内容及点击监听 |
 | dismiss | 关闭 Snackbar |
@@ -1386,20 +1410,20 @@ DevUtils.openDebug();
 | :- | :- |
 | getTextView | 获取 TextView |
 | getHint | 获取 Hint 文本 |
-| getText | 获取文本 |
 | getHints | 获取多个 TextView Hint 文本 |
-| getTexts | 获取多个 TextView 文本 |
 | setHint | 设置 Hint 文本 |
-| setText | 设置文本 |
-| setTexts | 设置多个 TextView 文本 |
-| setHtmlText | 设置 Html 内容 |
-| setHtmlTexts | 设置多个 TextView Html 内容 |
 | getHintTextColors | 获取 Hint 字体颜色 |
 | setHintTextColor | 设置 Hint 字体颜色 |
+| setHintTextColors | 设置多个 TextView Hint 字体颜色 |
+| getText | 获取文本 |
+| getTexts | 获取多个 TextView 文本 |
+| setText | 设置文本 |
+| setTexts | 设置多个 TextView 文本 |
 | getTextColors | 获取字体颜色 |
 | setTextColor | 设置字体颜色 |
-| setHintTextColors | 设置多个 TextView Hint 字体颜色 |
 | setTextColors | 设置多个 TextView 字体颜色 |
+| setHtmlText | 设置 Html 内容 |
+| setHtmlTexts | 设置多个 TextView Html 内容 |
 | getTypeface | 获取字体 |
 | setTypeface | 设置字体 |
 | setTextSizeByPx | 设置字体大小 - px 像素 |
@@ -1637,8 +1661,6 @@ DevUtils.openDebug();
 | clearAnimation | 清空动画 |
 | startAnimation | 启动动画 |
 | cancel | 取消动画 |
-| calcListViewHeight | 计算 ListView 高度 |
-| calcGridViewHeight | 计算 GridView 高度 |
 
 
 ## <span id="devutilsappanim">**`dev.utils.app.anim`**</span>
@@ -1763,12 +1785,12 @@ DevUtils.openDebug();
 
 | 方法 | 注释 |
 | :- | :- |
-| getCacheDir | 获取缓存地址 |
-| get | 默认缓存地址 |
+| obtain | 获取 DevCache - 默认缓存文件名 |
 | put | 保存 String 数据到缓存中 |
 | getAsString | 读取 String 数据 |
 | getAsJSONObject | 读取 JSONObject 数据 |
 | getAsJSONArray | 读取 JSONArray 数据 |
+| get | 获取对应 key 的 File 输入流 |
 | getAsBinary | 获取 byte[] 数据 |
 | getAsObject | 读取 Serializable 数据 |
 | getAsBitmap | 读取 Bitmap 数据 |
@@ -1809,10 +1831,10 @@ DevUtils.openDebug();
 | setAutoFocus | 设置是否开启自动对焦 |
 | isPreviewing | 是否预览中 |
 | setAutoInterval | 设置自动对焦时间间隔 |
+| isFlashlightEnable | 是否支持手机闪光灯 |
 | setFlashlightOn | 打开闪光灯 |
 | setFlashlightOff | 关闭闪光灯 |
 | isFlashlightOn | 是否打开闪光灯 |
-| isFlashlightEnable | 是否支持手机闪光灯 |
 
 
 * **摄像头 ( 预览、输出大小 ) 辅助类 ->** [CameraSizeAssist.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/camera1/CameraSizeAssist.java)
@@ -1895,6 +1917,7 @@ DevUtils.openDebug();
 | applyLanguage | 修改系统语言 (APP 多语言, 单独改变 APP 语言 ) |
 | setOnClicks | 设置点击事件 |
 | setOnLongClicks | 设置长按事件 |
+| setOnTouchs | 设置触摸事件 |
 | addTouchArea | 增加控件的触摸范围, 最大范围只能是父布局所包含的的区域 |
 | cancelAllNotification | 移除通知 - 移除所有通知 ( 只是针对当前 Context 下的 Notification) |
 | cancelNotification | 移除通知 - 移除标记为 id 的通知 ( 只是针对当前 Context 下的所有 Notification) |
@@ -2076,6 +2099,7 @@ DevUtils.openDebug();
 | startAnimation | 启动动画 |
 | setOnClicks | 设置点击事件 |
 | setOnLongClicks | 设置长按事件 |
+| setOnTouchs | 设置触摸事件 |
 | addTouchArea | 增加控件的触摸范围, 最大范围只能是父布局所包含的的区域 |
 | smoothScrollToPosition | 滑动到指定索引 ( 有滚动过程 ) |
 | scrollToPosition | 滑动到指定索引 ( 无滚动过程 ) |
@@ -2125,6 +2149,7 @@ DevUtils.openDebug();
 | round | 图片圆形处理 |
 | addCornerBorder | 添加圆角边框 |
 | addCircleBorder | 添加圆形边框 |
+| addBorder | 添加边框 |
 | addTextWatermark | 添加文字水印 |
 | addImageWatermark | 添加图片水印 |
 | compressByZoom | 按缩放宽高压缩 |
@@ -2329,17 +2354,14 @@ DevUtils.openDebug();
 | xmlTag | 格式化 XML 格式数据, 并打印 |
 
 
-* **日志操作工具类 ->** [DevLoggerUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/logger/DevLoggerUtils.java)
+* **日志配置类 ->** [LogConfig.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/logger/LogConfig.java)
 
 | 方法 | 注释 |
 | :- | :- |
-| init | 初始化调用方法 ( 内部已调用 ) |
 | getReleaseLogConfig | 获取 Release Log 配置 ( 打印线程信息、显示方法总数 3、从 0 开始、不进行排序、默认只打印 ERROR 级别日志 ) |
 | getDebugLogConfig | 获取 Debug Log 配置 ( 打印线程信息、显示方法总数 3、从 0 开始、不进行排序、默认只打印 ERROR 级别日志 ) |
 | getSortLogConfig | 获取 Log 配置 ( 打印线程信息、显示方法总数 3、从 0 开始、并且美化日志信息、默认打印 DEBUG 级别及以上日志 ) |
 | getLogConfig | 获取 Log 配置 |
-| saveErrorLog | 保存异常日志 |
-| saveLog | 保存日志 |
 
 
 ## <span id="devutilsapppermission">**`dev.utils.app.permission`**</span>
@@ -2559,7 +2581,6 @@ DevUtils.openDebug();
 
 | 方法 | 注释 |
 | :- | :- |
-| getWifiManager | 获取 WifiManager |
 | isOpenWifi | 判断是否打开 wifi |
 | openWifi | 打开 wifi |
 | closeWifi | 关闭 wifi |
@@ -2603,6 +2624,7 @@ DevUtils.openDebug();
 | isNotEmpty | 判断数组是否不为 null |
 | length | 获取数组长度 |
 | isLength | 判断数组长度是否等于期望长度 |
+| getCount | 获取数组长度总和 |
 | get | 获取数组对应索引数据 |
 | getFirst | 获取数组第一条数据 |
 | getLast | 获取数组最后一条数据 |
@@ -2636,13 +2658,19 @@ DevUtils.openDebug();
 
 | 方法 | 注释 |
 | :- | :- |
+| setScale | 设置小数点位数 |
+| setRoundingMode | 设置舍入模式 |
+| getBigDecimal | 获取 BigDecimal |
+| toString | 获取此 BigDecimal 的字符串表示形式科学记数法 |
+| toPlainString | 获取此 BigDecimal 的字符串表示形式不带指数字段 |
+| toEngineeringString | 获取此 BigDecimal 的字符串表示形式工程计数法 |
 | add | 提供精确的加法运算 |
-| substract | 提供精确的减法运算 |
+| subtract | 提供精确的减法运算 |
 | multiply | 提供精确的乘法运算 |
-| divide | 提供 ( 相对 ) 精确的除法运算 |
+| divide | 提供精确的除法运算 |
+| remainder | 提供精确的取余运算 |
 | round | 提供精确的小数位四舍五入处理 |
-| remainder | 取余数 |
-| compare | 比较大小 |
+| compareTo | 比较大小 |
 | formatMoney | 金额分割, 四舍五入金额 |
 | adjustDouble | 获取自己想要的数据格式 |
 
@@ -2651,11 +2679,13 @@ DevUtils.openDebug();
 
 | 方法 | 注释 |
 | :- | :- |
-| isBaseDataType | 判断类是否是基础数据类型 - 目前支持 11 种 |
 | newInstance | 根据类获取对象, 不再必须一个无参构造 |
-| getDefaultPrimiticeValue | 判断 Class 是否为原始类型 (boolean、char、byte、short、int、long、float、double) |
-| isCollection | 判断是否集合类型 |
-| isArray | 判断是否数组类型 |
+| getDefaultPrimiticeValue | 获取 Class 原始类型值 |
+| getClass | 获取 Object Class |
+| isPrimitive | 判断 Class 是否为原始类型 |
+| isCollection | 判断是否 Collection 类型 |
+| isMap | 判断是否 Map 类型 |
+| isArray | 判断是否 Array 类型 |
 | getGenericSuperclass | 获取父类泛型类型 |
 | getGenericInterfaces | 获取接口泛型类型 |
 
@@ -2683,11 +2713,12 @@ DevUtils.openDebug();
 | isEmpty | 判断 Collection 是否为 null |
 | isNotEmpty | 判断 Collection 是否不为 null |
 | length | 获取 Collection 长度 |
-| isLength | 获取长度 to Collection 是否等于期望长度 |
+| isLength | 获取长度 Collection 是否等于期望长度 |
 | greaterThan | 判断 Collection 长度是否大于指定长度 |
 | greaterThanOrEqual | 判断 Collection 长度是否大于等于指定长度 |
 | lessThan | 判断 Collection 长度是否小于指定长度 |
 | lessThanOrEqual | 判断 Collection 长度是否小于等于指定长度 |
+| getCount | 获取 Collection 数组长度总和 |
 | get | 获取数据 |
 | getFirst | 获取第一条数据 |
 | getLast | 获取最后一条数据 |
@@ -2716,6 +2747,7 @@ DevUtils.openDebug();
 | subtract | 两个集合差集 ( 扣除 ) 处理 |
 | equals | 判断两个值是否一样 |
 | toArray | 转换数组 to Object |
+| toArrayT | 转换数组 to T |
 | reverse | 集合翻转处理 |
 | getMinimumIndexI | 获取集合中最小值索引 |
 | getMinimumIndexL | 获取集合中最小值索引 |
@@ -2890,23 +2922,8 @@ DevUtils.openDebug();
 | randomUUIDToHashCode | 获取随机唯一数 HashCode |
 | getRandomUUID | 获取随机规则生成 UUID |
 | getRandomUUIDToString | 获取随机规则生成 UUID 字符串 |
-| converHideMobile | 转换手机号 |
-| converSymbolHide | 转换符号处理 |
-| subEllipsize | 裁剪超出的内容, 并且追加符号 ( 如 ...) |
-| subSymbolHide | 裁剪符号处理 |
-| subSetSymbol | 裁剪内容, 设置符号处理 |
-| substring | 裁剪字符串 |
-| toReplaceSEWith | 替换 ( 删除 - 替换成 "") 字符串中符合 特定标记字符的 startsWith - endsWith |
-| toReplaceStartsWith | 替换开头字符串 |
-| toReplaceEndsWith | 替换结尾字符串 |
-| toClearSEWiths | 这个方法功能主要把字符符合标记的 头部和尾部都替换成 "" |
-| toClearStartsWith | 清空属于特定字符串开头的字段 |
-| toClearEndsWith | 清空属于特定字符串结尾的字段 |
-| replaceStr | 替换字符串 |
-| replaceStrToNull | 替换字符串 |
-| replaceStrs | 替换字符串 |
-| isEmpty | 判断数组是否为 null |
-| isNotEmpty | 判断数组是否不为 null |
+| isEmpty | 判断对象是否为空 |
+| isNotEmpty | 判断对象是否非空 |
 | length | 获取数组长度 |
 | isLength | 判断数组长度是否等于期望长度 |
 | equals | 判断两个值是否一样 |
@@ -2928,6 +2945,21 @@ DevUtils.openDebug();
 | getAutoFormatString | 获取自动数量格式化后的字符串 ( 可变参数 ) |
 | getAutoFormatString2 | 获取自动数量格式化后的字符串 ( 可变参数 ) |
 | appends | StringBuilder 拼接处理 |
+| converHideMobile | 转换手机号 |
+| converSymbolHide | 转换符号处理 |
+| subEllipsize | 裁剪超出的内容, 并且追加符号 ( 如 ...) |
+| subSymbolHide | 裁剪符号处理 |
+| subSetSymbol | 裁剪内容, 设置符号处理 |
+| substring | 裁剪字符串 |
+| toReplaceSEWith | 替换 ( 删除 - 替换成 "") 字符串中符合 特定标记字符的 startsWith - endsWith |
+| toReplaceStartsWith | 替换开头字符串 |
+| toReplaceEndsWith | 替换结尾字符串 |
+| toClearSEWiths | 这个方法功能主要把字符符合标记的 头部和尾部都替换成 "" |
+| toClearStartsWith | 清空属于特定字符串开头的字段 |
+| toClearEndsWith | 清空属于特定字符串结尾的字段 |
+| replaceStr | 替换字符串 |
+| replaceStrToNull | 替换字符串 |
+| replaceStrs | 替换字符串 |
 
 
 * **编码工具类 ->** [EncodeUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/common/EncodeUtils.java)
@@ -2945,18 +2977,30 @@ DevUtils.openDebug();
 
 | 方法 | 注释 |
 | :- | :- |
-| isSerializable | 判断是否序列化 |
+| getField | 获取变量对象 |
+| getDeclaredField | 获取变量对象 |
+| getFields | 获取变量对象数组 |
+| getDeclaredFields | 获取变量对象数组 |
 | set | 设置字段的值 |
 | get | 获取字段的值 |
 | isLong | 是否 long/Long 类型 |
 | isFloat | 是否 float/Float 类型 |
 | isDouble | 是否 double/Double 类型 |
 | isInteger | 是否 int/Integer 类型 |
+| isBoolean | 是否 boolean/Boolean 类型 |
+| isCharacter | 是否 char/Character 类型 |
+| isByte | 是否 byte/Byte 类型 |
+| isShort | 是否 short/Short 类型 |
 | isString | 是否 String 类型 |
+| isSerializable | 判断是否序列化 |
+| isInvalid | 是否静态常量或者内部结构属性 |
+| isStatic | 是否静态变量 |
+| isFinal | 是否常量 |
+| isStaticFinal | 是否静态变量 |
+| isSynthetic | 是否内部结构属性 |
 | getGenericType | 获取字段的泛型类型, 如果不带泛型返回 null |
 | getComponentType | 获取数组的类型 |
 | getAllDeclaredFields | 获取全部 Field, 包括父类 |
-| isInvalid | 是静态常量或者内部结构属性 |
 
 
 * **文件 (IO 流 ) 工具类 ->** [FileIOUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/common/FileIOUtils.java)
@@ -2974,6 +3018,16 @@ DevUtils.openDebug();
 | readFileToBytesByStream | 读取文件内容, 返回 byte[] |
 | readFileToBytesByChannel | 通过 FileChannel, 读取文件内容, 返回 byte[] |
 | readFileToBytesByMap | 通过 MappedByteBuffer, 读取文件内容, 返回 byte[] |
+
+
+* **文件记录工具类 ->** [FileRecordUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/common/FileRecordUtils.java)
+
+| 方法 | 注释 |
+| :- | :- |
+| setInsertInfo | 设置插入信息 |
+| setCallBack | 设置文件记录回调 |
+| saveErrorLog | 保存异常日志 |
+| saveLog | 保存日志 |
 
 
 * **文件操作工具类 ->** [FileUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/common/FileUtils.java)
@@ -3044,6 +3098,29 @@ DevUtils.openDebug();
 | getFileMD5ToHexString | 获取文件 MD5 值 |
 
 
+* **Html 工具类 ->** [HtmlUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/common/HtmlUtils.java)
+
+| 方法 | 注释 |
+| :- | :- |
+| addHtmlColor | 为给定的字符串添加 HTML 颜色标记 |
+| addHtmlBold | 为给定的字符串添加 HTML 加粗标记 |
+| addHtmlColorAndBlod | 为给定的字符串添加 HTML 颜色标记并加粗 |
+| addHtmlUnderline | 为给定的字符串添加 HTML 下划线 |
+| addHtmlStrikeThruline | 为给定的字符串添加 HTML 中划线 |
+| addHtmlOverline | 为给定的字符串添加 HTML 上划线 |
+| addHtmlIncline | 为给定的字符串添加 HTML 字体倾斜 |
+| addHtmlSPAN | 为给定的字符串添加 HTML SPAN 标签 |
+| addHtmlP | 为给定的字符串添加 HTML P 标签 |
+| addHtmlIMG | 为给定的字符串添加 HTML IMG 标签 |
+| addHtmlIMGByWidth | 为给定的字符串添加 HTML IMG 标签 |
+| addHtmlIMGByHeight | 为给定的字符串添加 HTML IMG 标签 |
+| addHtmlDIV | 为给定的字符串添加 HTML DIV 标签 |
+| addHtmlDIVByMargin | 为给定的字符串添加 HTML DIV 标签 |
+| addHtmlDIVByPadding | 为给定的字符串添加 HTML DIV 标签 |
+| addHtmlDIVByMarginPadding | 为给定的字符串添加 HTML DIV 标签 |
+| keywordReplaceHtmlColor | 将给定的字符串中所有给定的关键字标色 |
+
+
 * **Http 参数工具类 ->** [HttpParamsUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/common/HttpParamsUtils.java)
 
 | 方法 | 注释 |
@@ -3073,11 +3150,12 @@ DevUtils.openDebug();
 | isEmpty | 判断 Map 是否为 null |
 | isNotEmpty | 判断 Map 是否不为 null |
 | length | 获取 Map 长度 |
-| isLength | 获取长度 to Map 是否等于期望长度 |
+| isLength | 获取长度 Map 是否等于期望长度 |
 | greaterThan | 判断 Map 长度是否大于指定长度 |
 | greaterThanOrEqual | 判断 Map 长度是否大于等于指定长度 |
 | lessThan | 判断 Map 长度是否小于指定长度 |
 | lessThanOrEqual | 判断 Map 长度是否小于等于指定长度 |
+| getCount | 获取 Map 数组长度总和 |
 | get | 获取 value |
 | getKeyByValue | 通过 value 获取 key |
 | getKeysByValue | 通过 value 获取 key 集合 ( 返回等于 value 的 key 集合 ) |
@@ -3142,7 +3220,7 @@ DevUtils.openDebug();
 | getOrDefault | 获取非空或默认对象 |
 | hashCode | 获取对象哈希值 |
 | getObjectTag | 获取一个对象的独一无二的标记 |
-| converObj | 获取转换对象 |
+| convert | Object 转换所需类型对象 |
 
 
 * **随机工具类 ->** [RandomUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/common/RandomUtils.java)
@@ -3162,8 +3240,8 @@ DevUtils.openDebug();
 | getRandomLetters | 获取大小写字母自定义长度的随机数 |
 | getRandomNumbersAndLetters | 获取数字、大小写字母自定义长度的随机数 |
 | getRandom | 获取自定义数据自定义长度的随机数 |
-| shuffle | 洗牌算法 ( 第一种 ), 随机置换指定的数组使用的默认源的随机性 ( 随机数据源小于三个, 则无效 ) |
-| shuffle2 | 洗牌算法 ( 第二种 ), 随机置换指定的数组使用的默认源的随机性 |
+| shuffle | 洗牌算法 ( 第一种 ) 随机置换指定的数组使用的默认源的随机性 ( 随机数据源小于三个, 则无效 ) |
+| shuffle2 | 洗牌算法 ( 第二种 ) 随机置换指定的数组使用的默认源的随机性 |
 | nextIntRange | 获取指定范围 int 值 |
 | nextLongRange | 获取指定范围 long 值 |
 | nextDoubleRange | 获取指定范围 double 值 |
@@ -3283,6 +3361,21 @@ DevUtils.openDebug();
 | underScoreCaseToCamelCase | 下划线命名转为驼峰命名 |
 | camelCaseToUnderScoreCase | 驼峰命名法转为下划线命名 |
 | sqliteEscape | 字符串数据库字符转义 |
+| converHideMobile | 转换手机号 |
+| converSymbolHide | 转换符号处理 |
+| subEllipsize | 裁剪超出的内容, 并且追加符号 ( 如 ...) |
+| subSymbolHide | 裁剪符号处理 |
+| subSetSymbol | 裁剪内容, 设置符号处理 |
+| substring | 裁剪字符串 |
+| toReplaceSEWith | 替换 ( 删除 - 替换成 "") 字符串中符合 特定标记字符的 startsWith - endsWith |
+| toReplaceStartsWith | 替换开头字符串 |
+| toReplaceEndsWith | 替换结尾字符串 |
+| toClearSEWiths | 这个方法功能主要把字符符合标记的 头部和尾部都替换成 "" |
+| toClearStartsWith | 清空属于特定字符串开头的字段 |
+| toClearEndsWith | 清空属于特定字符串结尾的字段 |
+| replaceStr | 替换字符串 |
+| replaceStrToNull | 替换字符串 |
+| replaceStrs | 替换字符串 |
 
 
 * **异常处理工具类 ->** [ThrowableUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/common/ThrowableUtils.java)
@@ -3460,6 +3553,7 @@ DevUtils.openDebug();
 | encryptSHA384ToHexString | SHA384 加密 |
 | encryptSHA512 | SHA512 加密 |
 | encryptSHA512ToHexString | SHA512 加密 |
+| hashTemplate | Hash 加密模版方法 |
 | encryptHmacMD5 | HmacMD5 加密 |
 | encryptHmacMD5ToHexString | HmacMD5 加密 |
 | encryptHmacSHA1 | HmacSHA1 加密 |
@@ -3472,6 +3566,7 @@ DevUtils.openDebug();
 | encryptHmacSHA384ToHexString | HmacSHA384 加密 |
 | encryptHmacSHA512 | HmacSHA512 加密 |
 | encryptHmacSHA512ToHexString | HmacSHA512 加密 |
+| hmacTemplate | Hmac 加密模版方法 |
 | encryptDES | DES 加密 |
 | encryptDESToBase64 | DES 加密 |
 | encryptDESToHexString | DES 加密 |
@@ -3490,12 +3585,14 @@ DevUtils.openDebug();
 | decryptAES | AES 解密 |
 | decryptAESToBase64 | AES 解密 |
 | decryptAESToHexString | AES 解密 |
+| symmetricTemplate | 对称加密模版方法 |
 | encryptRSA | RSA 加密 |
 | encryptRSAToBase64 | RSA 加密 |
 | encryptRSAToHexString | RSA 加密 |
 | decryptRSA | RSA 解密 |
 | decryptRSAToBase64 | RSA 解密 |
 | decryptRSAToHexString | RSA 解密 |
+| rsaTemplate | RSA 加解密模版方法 |
 
 
 * **字符串 ( 编解码 ) 工具类 ->** [EscapeUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/common/encrypt/EscapeUtils.java)
