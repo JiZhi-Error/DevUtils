@@ -14,10 +14,7 @@ import android.view.ViewParent;
 import android.view.Window;
 import android.view.animation.Animation;
 import android.widget.FrameLayout;
-import android.widget.GridView;
 import android.widget.LinearLayout;
-import android.widget.ListAdapter;
-import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -1790,21 +1787,24 @@ public final class ViewUtils {
      * 切换 View 显示的状态
      * @param view  {@link View}
      * @param views View[]
+     * @return {@code true} success, {@code false} fail
      */
-    public static void toggleVisibilitys(final View view, final View... views) {
+    public static boolean toggleVisibilitys(final View view, final View... views) {
         if (view != null) {
             view.setVisibility(View.VISIBLE);
         }
         setVisibilitys(View.GONE, views);
+        return true;
     }
 
     /**
      * 切换 View 显示的状态
      * @param viewArys View[]
      * @param views    View[]
+     * @return {@code true} success, {@code false} fail
      */
-    public static void toggleVisibilitys(final View[] viewArys, final View... views) {
-        toggleVisibilitys(View.GONE, viewArys, views);
+    public static boolean toggleVisibilitys(final View[] viewArys, final View... views) {
+        return toggleVisibilitys(View.GONE, viewArys, views);
     }
 
     /**
@@ -1812,12 +1812,14 @@ public final class ViewUtils {
      * @param status   {@link View#VISIBLE}、{@link View#INVISIBLE}、{@link View#GONE}
      * @param viewArys View[]
      * @param views    View[]
+     * @return {@code true} success, {@code false} fail
      */
-    public static void toggleVisibilitys(final int status, final View[] viewArys, final View... views) {
+    public static boolean toggleVisibilitys(final int status, final View[] viewArys, final View... views) {
         // 默认显示
         setVisibilitys(View.VISIBLE, viewArys);
         // 根据状态处理
         setVisibilitys(status, views);
+        return true;
     }
 
     // =
@@ -2030,9 +2032,10 @@ public final class ViewUtils {
      * 测量 View
      * @param view           {@link View}
      * @param specifiedWidth 指定宽度
+     * @return {@code true} success, {@code false} fail
      */
-    public static void measureView(final View view, final int specifiedWidth) {
-        measureView(view, specifiedWidth, 0);
+    public static boolean measureView(final View view, final int specifiedWidth) {
+        return measureView(view, specifiedWidth, 0);
     }
 
     /**
@@ -2040,8 +2043,9 @@ public final class ViewUtils {
      * @param view            {@link View}
      * @param specifiedWidth  指定宽度
      * @param specifiedHeight 指定高度
+     * @return {@code true} success, {@code false} fail
      */
-    public static void measureView(final View view, final int specifiedWidth, final int specifiedHeight) {
+    public static boolean measureView(final View view, final int specifiedWidth, final int specifiedHeight) {
         try {
             ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
             // MeasureSpec
@@ -2070,9 +2074,11 @@ public final class ViewUtils {
             }
             view.measure(widthMeasureSpec, heightMeasureSpec);
             view.layout(0, 0, view.getMeasuredWidth(), view.getMeasuredHeight());
+            return true;
         } catch (Exception e) {
             LogPrintUtils.eTag(TAG, e, "measureView");
         }
+        return false;
     }
 
     // ==================
@@ -2440,18 +2446,20 @@ public final class ViewUtils {
      * @param views     View[]
      * @param leftRight Left and Right Margin
      * @param topBottom Top and bottom Margin
+     * @return {@code true} success, {@code false} fail
      */
-    public static void setMargin(final View[] views, final int leftRight, final int topBottom) {
-        setMargin(views, leftRight, topBottom, leftRight, topBottom);
+    public static boolean setMargin(final View[] views, final int leftRight, final int topBottom) {
+        return setMargin(views, leftRight, topBottom, leftRight, topBottom);
     }
 
     /**
      * 设置 Margin 边距
      * @param views  View[]
      * @param margin Margin
+     * @return {@code true} success, {@code false} fail
      */
-    public static void setMargin(final View[] views, final int margin) {
-        setMargin(views, margin, margin, margin, margin);
+    public static boolean setMargin(final View[] views, final int margin) {
+        return setMargin(views, margin, margin, margin, margin);
     }
 
     /**
@@ -2461,13 +2469,16 @@ public final class ViewUtils {
      * @param top    Top Margin
      * @param right  Right Margin
      * @param bottom Bottom Margin
+     * @return {@code true} success, {@code false} fail
      */
-    public static void setMargin(final View[] views, final int left, final int top, final int right, final int bottom) {
+    public static boolean setMargin(final View[] views, final int left, final int top, final int right, final int bottom) {
         if (views != null) {
             for (int i = 0, len = views.length; i < len; i++) {
                 setMargin(views[i], left, top, right, bottom);
             }
+            return true;
         }
+        return false;
     }
 
     // ================
@@ -2729,18 +2740,20 @@ public final class ViewUtils {
      * @param views     View[]
      * @param leftRight Left and Right Padding
      * @param topBottom Top and bottom Padding
+     * @return {@code true} success, {@code false} fail
      */
-    public static void setPadding(final View[] views, final int leftRight, final int topBottom) {
-        setPadding(views, leftRight, topBottom, leftRight, topBottom);
+    public static boolean setPadding(final View[] views, final int leftRight, final int topBottom) {
+        return setPadding(views, leftRight, topBottom, leftRight, topBottom);
     }
 
     /**
      * 设置 Padding 边距
      * @param views   View[]
      * @param padding Padding
+     * @return {@code true} success, {@code false} fail
      */
-    public static void setPadding(final View[] views, final int padding) {
-        setPadding(views, padding, padding, padding, padding);
+    public static boolean setPadding(final View[] views, final int padding) {
+        return setPadding(views, padding, padding, padding, padding);
     }
 
     /**
@@ -2750,13 +2763,16 @@ public final class ViewUtils {
      * @param top    Top Padding
      * @param right  Right Padding
      * @param bottom Bottom Padding
+     * @return {@code true} success, {@code false} fail
      */
-    public static void setPadding(final View[] views, final int left, final int top, final int right, final int bottom) {
+    public static boolean setPadding(final View[] views, final int left, final int top, final int right, final int bottom) {
         if (views != null) {
             for (int i = 0, len = views.length; i < len; i++) {
                 setPadding(views[i], left, top, right, bottom);
             }
+            return true;
         }
+        return false;
     }
 
     // =====================
@@ -2842,6 +2858,7 @@ public final class ViewUtils {
      * <pre>
      *     CompoundDrawable 的大小控制是通过 drawable.setBounds() 控制
      *     需要先设置 Drawable 的 setBounds
+     *     {@link dev.utils.app.image.ImageUtils#setBounds}
      * </pre>
      * @param textView {@link TextView}
      * @param left     left Drawable
@@ -3018,9 +3035,10 @@ public final class ViewUtils {
      * 设置多个 RelativeLayout View 布局规则
      * @param verb  布局位置
      * @param views View[]
+     * @return {@code true} success, {@code false} fail
      */
-    public static void addRules(final int verb, final View... views) {
-        addRules(verb, -1, views);
+    public static boolean addRules(final int verb, final View... views) {
+        return addRules(verb, -1, views);
     }
 
     /**
@@ -3028,26 +3046,32 @@ public final class ViewUtils {
      * @param verb    布局位置
      * @param subject 关联 View id
      * @param views   View[]
+     * @return {@code true} success, {@code false} fail
      */
-    public static void addRules(final int verb, final int subject, final View... views) {
+    public static boolean addRules(final int verb, final int subject, final View... views) {
         if (views != null) {
             for (int i = 0, len = views.length; i < len; i++) {
                 addRule(views[i], verb, subject);
             }
+            return true;
         }
+        return false;
     }
 
     /**
      * 移除多个 RelativeLayout View 布局规则
      * @param verb  布局位置
      * @param views View[]
+     * @return {@code true} success, {@code false} fail
      */
-    public static void removeRules(final int verb, final View... views) {
+    public static boolean removeRules(final int verb, final View... views) {
         if (views != null) {
             for (int i = 0, len = views.length; i < len; i++) {
                 removeRule(views[i], verb);
             }
+            return true;
         }
+        return false;
     }
 
     // =============
@@ -3071,8 +3095,7 @@ public final class ViewUtils {
      * @return {@link Animation}
      */
     public static Animation getAnimation(final View view) {
-        if (view != null) return view.getAnimation();
-        return null;
+        return (view != null) ? view.getAnimation() : null;
     }
 
     /**
@@ -3140,167 +3163,5 @@ public final class ViewUtils {
             }
         }
         return animation;
-    }
-
-    // ============
-    // = ListView =
-    // ============
-
-    /**
-     * 计算 ListView 高度
-     * @param listView {@link ListView}
-     * @return ListView 高度
-     */
-    public static int calcListViewHeight(final ListView listView) {
-        return calcListViewHeight(listView, false);
-    }
-
-    /**
-     * 计算 ListView 高度
-     * @param listView  {@link ListView}
-     * @param setParams 是否 setLayoutParams
-     * @return ListView 高度
-     */
-    public static int calcListViewHeight(final ListView listView, final boolean setParams) {
-        if (listView == null) return 0;
-        try {
-            // Adapter
-            ListAdapter listAdapter = listView.getAdapter();
-            // Item 总条数
-            int itemCount = listAdapter.getCount();
-            // 没数据则直接跳过
-            if (itemCount == 0) return 0;
-            // 高度
-            int height = 0;
-            // 获取子项间分隔符占用的高度
-            int dividerHeight = listView.getDividerHeight();
-
-            // 循环绘制每个 Item 并保存 Bitmap
-            for (int i = 0; i < itemCount; i++) {
-                View childView = listAdapter.getView(i, null, listView);
-                measureView(childView, listView.getWidth());
-                height += childView.getMeasuredHeight();
-            }
-            // 追加子项间分隔符占用的高度
-            height += (dividerHeight * (itemCount - 1));
-
-            // 是否需要设置高度
-            if (setParams) {
-                ViewGroup.LayoutParams params = listView.getLayoutParams();
-                params.height = height;
-                listView.setLayoutParams(params);
-            }
-            return height;
-        } catch (Exception e) {
-            LogPrintUtils.eTag(TAG, e, "calcListViewHeight");
-        }
-        return 0;
-    }
-
-    // ============
-    // = GridView =
-    // ============
-
-    /**
-     * 计算 GridView 高度
-     * @param gridView {@link GridView}
-     * @return GridView 高度
-     */
-    public static int calcGridViewHeight(final GridView gridView) {
-        return calcGridViewHeight(gridView, false);
-    }
-
-    /**
-     * 计算 GridView 高度
-     * @param gridView  {@link GridView}
-     * @param setParams 是否 setLayoutParams
-     * @return GridView 高度
-     */
-    public static int calcGridViewHeight(final GridView gridView, final boolean setParams) {
-        if (gridView == null) return 0;
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) return 0;
-        try {
-            // Adapter
-            ListAdapter listAdapter = gridView.getAdapter();
-            // Item 总条数
-            int itemCount = listAdapter.getCount();
-            // 没数据则直接跳过
-            if (itemCount == 0) return 0;
-            // 高度
-            int height = 0;
-            // 获取一共多少列
-            int numColumns = gridView.getNumColumns();
-            // 每列之间的间隔 |
-            int horizontalSpacing = gridView.getHorizontalSpacing();
-            // 每行之间的间隔 -
-            int verticalSpacing = gridView.getVerticalSpacing();
-            // 获取倍数 ( 行数 )
-            int lineNumber = getMultiple(itemCount, numColumns);
-            // 计算总共的宽度 - (GridView 宽度 - 列分割间距 ) / numColumns
-            int childWidth = (gridView.getWidth() - (numColumns - 1) * horizontalSpacing) / numColumns;
-
-            // 记录每行最大高度
-            int[] rowHeightArrays = new int[lineNumber];
-            // 临时高度 - 保存行中最高的列高度
-            int tempHeight;
-            // 循环每一行绘制每个 Item 并保存 Bitmap
-            for (int i = 0; i < lineNumber; i++) {
-                // 清空高度
-                tempHeight = 0;
-                // 循环列数
-                for (int j = 0; j < numColumns; j++) {
-                    // 获取对应的索引
-                    int position = i * numColumns + j;
-                    // 如果大于总数据则跳过
-                    if (position < itemCount) {
-                        View childView = listAdapter.getView(position, null, gridView);
-                        measureView(childView, childWidth);
-
-                        int itemHeight = childView.getMeasuredHeight();
-                        // 保留最大高度
-                        tempHeight = Math.max(itemHeight, tempHeight);
-                    }
-
-                    // 记录高度并累加
-                    if (j == numColumns - 1) {
-                        height += tempHeight;
-                        rowHeightArrays[i] = tempHeight;
-                    }
-                }
-            }
-            // 追加子项间分隔符占用的高度
-            height += (verticalSpacing * (lineNumber - 1));
-
-            // 是否需要设置高度
-            if (setParams) {
-                ViewGroup.LayoutParams params = gridView.getLayoutParams();
-                params.height = height;
-                gridView.setLayoutParams(params);
-            }
-            return height;
-        } catch (Exception e) {
-            LogPrintUtils.eTag(TAG, e, "calcGridViewHeight");
-        }
-        return 0;
-    }
-
-    // ======================
-    // = 其他工具类实现代码 =
-    // ======================
-
-    // ===============
-    // = NumberUtils =
-    // ===============
-
-    /**
-     * 获取倍数 ( 自动补 1)
-     * @param value   被除数
-     * @param divisor 除数
-     * @return 倍数
-     */
-    private static int getMultiple(final int value, final int divisor) {
-        if (value <= 0 || divisor <= 0) return 0;
-        if (value <= divisor) return 1;
-        return (value % divisor == 0) ? (value / divisor) : (value / divisor) + 1;
     }
 }
