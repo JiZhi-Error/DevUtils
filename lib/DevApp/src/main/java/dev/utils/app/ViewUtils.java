@@ -151,6 +151,47 @@ public final class ViewUtils {
         return null;
     }
 
+    /**
+     * 获取 View
+     * @param context  {@link Context}
+     * @param resource R.layout.id
+     * @return {@link View}
+     */
+    public static View inflate(final Context context, @LayoutRes final int resource) {
+        return inflate(context, resource, null, false);
+    }
+
+    /**
+     * 获取 View
+     * @param context  {@link Context}
+     * @param resource R.layout.id
+     * @param root     {@link ViewGroup}
+     * @return {@link View}
+     */
+    public static View inflate(final Context context, @LayoutRes final int resource, final ViewGroup root) {
+        return inflate(context, resource, root, root != null);
+    }
+
+    /**
+     * 获取 View
+     * <pre>
+     *     获取含有 android.support View 需要传入当前 Activity Context
+     * </pre>
+     * @param context      {@link Context}
+     * @param resource     R.layout.id
+     * @param root         {@link ViewGroup}
+     * @param attachToRoot 是否添加到 root 上
+     * @return {@link View}
+     */
+    public static View inflate(final Context context, @LayoutRes final int resource, final ViewGroup root, final boolean attachToRoot) {
+        try {
+            return LayoutInflater.from(context).inflate(resource, root, attachToRoot);
+        } catch (Exception e) {
+            LogPrintUtils.eTag(TAG, e, "inflate");
+        }
+        return null;
+    }
+
     // =
 
     /**
@@ -2041,7 +2082,7 @@ public final class ViewUtils {
             float motionX = ev.getRawX();
             float motionY = ev.getRawY();
             return motionX >= locations[0] && motionX <= (locations[0] + view.getWidth())
-                    && motionY >= locations[1] && motionY <= (locations[1] + view.getHeight());
+                && motionY >= locations[1] && motionY <= (locations[1] + view.getHeight());
         }
         return false;
     }
@@ -2341,8 +2382,8 @@ public final class ViewUtils {
                         ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) view.getLayoutParams();
                         // 设置边距
                         ((ViewGroup.MarginLayoutParams) view.getLayoutParams())
-                                .setMargins(leftMargin, layoutParams.topMargin,
-                                        layoutParams.rightMargin, layoutParams.bottomMargin);
+                            .setMargins(leftMargin, layoutParams.topMargin,
+                                layoutParams.rightMargin, layoutParams.bottomMargin);
                         return true;
                     } catch (Exception e) {
                         LogPrintUtils.eTag(TAG, e, "setMarginLeft");
@@ -2386,8 +2427,8 @@ public final class ViewUtils {
                         ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) view.getLayoutParams();
                         // 设置边距
                         ((ViewGroup.MarginLayoutParams) view.getLayoutParams())
-                                .setMargins(layoutParams.leftMargin, topMargin,
-                                        layoutParams.rightMargin, layoutParams.bottomMargin);
+                            .setMargins(layoutParams.leftMargin, topMargin,
+                                layoutParams.rightMargin, layoutParams.bottomMargin);
                         return true;
                     } catch (Exception e) {
                         LogPrintUtils.eTag(TAG, e, "setMarginTop");
@@ -2431,8 +2472,8 @@ public final class ViewUtils {
                         ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) view.getLayoutParams();
                         // 设置边距
                         ((ViewGroup.MarginLayoutParams) view.getLayoutParams())
-                                .setMargins(layoutParams.leftMargin, layoutParams.topMargin,
-                                        rightMargin, layoutParams.bottomMargin);
+                            .setMargins(layoutParams.leftMargin, layoutParams.topMargin,
+                                rightMargin, layoutParams.bottomMargin);
                         return true;
                     } catch (Exception e) {
                         LogPrintUtils.eTag(TAG, e, "setMarginRight");
@@ -2476,8 +2517,8 @@ public final class ViewUtils {
                         ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) view.getLayoutParams();
                         // 设置边距
                         ((ViewGroup.MarginLayoutParams) view.getLayoutParams())
-                                .setMargins(layoutParams.leftMargin, layoutParams.topMargin,
-                                        layoutParams.rightMargin, bottomMargin);
+                            .setMargins(layoutParams.leftMargin, layoutParams.topMargin,
+                                layoutParams.rightMargin, bottomMargin);
                         return true;
                     } catch (Exception e) {
                         LogPrintUtils.eTag(TAG, e, "setMarginBottom");
