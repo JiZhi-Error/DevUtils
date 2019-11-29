@@ -975,8 +975,8 @@ DevUtils.openDebug();
 | getActiveNetworkInfo | 获取活动网络信息 |
 | getActiveNetwork | 获取活动网络 |
 | is4G | 判断是否 4G 网络 |
-| getWifiEnabled | 判断 wifi 是否打开 |
-| isWifiAvailable | 判断 wifi 数据是否可用 |
+| getWifiEnabled | 判断 Wifi 是否打开 |
+| isWifiAvailable | 判断 Wifi 数据是否可用 |
 | getNetworkOperatorName | 获取网络运营商名称 - 中国移动、如中国联通、中国电信 |
 | getNetworkType | 获取当前网络类型 |
 | getNetworkClass | 获取移动网络连接类型 |
@@ -2559,42 +2559,42 @@ DevUtils.openDebug();
 
 | 方法 | 注释 |
 | :- | :- |
-| createWifiConfigToAp | 创建 wifi 热点配置 ( 支持 无密码 /WPA2 PSK) |
-| stratWifiAp | 开启 wifi 热点 |
-| closeWifiAp | 关闭 wifi 热点 |
-| getWifiApState | 获取 wifi 热点状态 |
-| getWifiApConfiguration | 获取 wifi 热点配置信息 |
-| setWifiApConfiguration | 设置 wifi 热点配置信息 |
-| isOpenWifiAp | 判断是否打开 wifi 热点 |
-| closeWifiApCheck | 关闭 wifi 热点 ( 判断当前状态 ) |
+| createWifiConfigToAp | 创建 Wifi 热点配置 ( 支持 无密码 /WPA2 PSK) |
+| stratWifiAp | 开启 Wifi 热点 |
+| closeWifiAp | 关闭 Wifi 热点 |
+| getWifiApState | 获取 Wifi 热点状态 |
+| getWifiApConfiguration | 获取 Wifi 热点配置信息 |
+| setWifiApConfiguration | 设置 Wifi 热点配置信息 |
+| isOpenWifiAp | 判断是否打开 Wifi 热点 |
+| closeWifiApCheck | 关闭 Wifi 热点 ( 判断当前状态 ) |
 | isConnectHot | 是否有设备连接热点 |
 | getHotspotServiceIp | 获取热点主机 IP 地址 |
 | getHotspotAllotIp | 获取连接上的子网关热点 IP ( 一个 ) |
 | getConnectHotspotMsg | 获取连接的热点信息 |
 | getHotspotSplitIpMask | 获取热点拼接后的 IP 网关掩码 |
-| getApWifiSSID | 获取 wifi 热点名 |
-| getApWifiPwd | 获取 wifi 热点密码 |
-| setOnWifiAPListener | 设置 wifi 热点监听事件 |
+| getApWifiSSID | 获取 Wifi 热点名 |
+| getApWifiPwd | 获取 Wifi 热点密码 |
+| setOnWifiAPListener | 设置 Wifi 热点监听事件 |
 
 
 * **Wifi 工具类 ->** [WifiUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/wifi/WifiUtils.java)
 
 | 方法 | 注释 |
 | :- | :- |
-| isOpenWifi | 判断是否打开 wifi |
-| openWifi | 打开 wifi |
-| closeWifi | 关闭 wifi |
-| toggleWifiEnabled | 自动切换 wifi 开关状态 |
-| getWifiState | 获取当前 wifi 连接状态 |
-| startScan | 开始扫描 wifi |
-| getConfiguration | 获取已配置 ( 连接过 ) 的 wifi 配置 |
-| getWifiList | 获取附近的 wifi 列表 |
+| isOpenWifi | 判断是否打开 Wifi |
+| openWifi | 打开 Wifi |
+| closeWifi | 关闭 Wifi |
+| toggleWifiEnabled | 自动切换 Wifi 开关状态 |
+| getWifiState | 获取当前 Wifi 连接状态 |
+| startScan | 开始扫描 Wifi |
+| getConfiguration | 获取已配置 ( 连接过 ) 的 Wifi 配置 |
+| getWifiList | 获取附近的 Wifi 列表 |
 | getWifiInfo | 获取连接的 WifiInfo |
 | getMacAddress | 获取 MAC 地址 |
 | getBSSID | 获取连接的 BSSID |
 | getIPAddress | 获取 IP 地址 |
 | getNetworkId | 获取连接的 Network Id |
-| getSSID | 获取 wifi SSID |
+| getSSID | 获取 Wifi SSID |
 | formatSSID | 判断是否存在 \"ssid\", 存在则裁剪返回 |
 | getPassword | 获取处理后的密码 |
 | isHexWepKey | 判断是否 wep 加密 |
@@ -2602,14 +2602,14 @@ DevUtils.openDebug();
 | getWifiTypeInt | 获取加密类型 |
 | getWifiTypeStr | 获取加密类型 |
 | isConnNull | 判断是否连接为 null - unknown ssid |
-| isConnectAphot | 获取连接的 wifi 热点 SSID |
-| getSecurity | 获取 wifi 加密类型 |
-| isExistsPwd | 判断 wifi 加密类型, 是否为加密类型 |
+| isConnectAphot | 获取连接的 Wifi 热点 SSID |
+| getSecurity | 获取 Wifi 加密类型 |
+| isExistsPwd | 判断 Wifi 加密类型, 是否为加密类型 |
 | isExists | 获取指定的 ssid 网络配置 ( 需连接保存过, 才存在 ) |
 | delWifiConfig | 删除指定的 wifi(SSID) 配置信息 |
-| quickConnWifi | 快速连接 wifi ( 不使用静态 IP 方式 ) |
-| createWifiConfig | 创建 wifi 配置信息 |
-| removeWifiConfig | 移除 wifi 配置信息 |
+| quickConnWifi | 快速连接 Wifi ( 不使用静态 IP 方式 ) |
+| createWifiConfig | 创建 Wifi 配置信息 |
+| removeWifiConfig | 移除 Wifi 配置信息 |
 | disconnectWifi | 断开指定 networkId 的网络 |
 
 
