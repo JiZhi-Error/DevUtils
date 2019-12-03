@@ -266,6 +266,19 @@ public final class ViewUtils {
         return viewGroup;
     }
 
+    /**
+     * 获取全部子 View
+     * @param viewGroup {@link ViewGroup}
+     * @return View[]
+     */
+    public static View[] getChilds(final ViewGroup viewGroup) {
+        View[] views = new View[getChildCount(viewGroup)];
+        for (int i = 0, len = views.length; i < len; i++) {
+            views[i] = getChildAt(viewGroup, i);
+        }
+        return views;
+    }
+
     // =
 
     /**
