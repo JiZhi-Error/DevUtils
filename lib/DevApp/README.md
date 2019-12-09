@@ -313,6 +313,7 @@ DevUtils.openDebug();
 | getAppDeviceInfo | 获取应用、设备信息 |
 | refreshAppDeviceInfo | 刷新应用、设备信息 |
 | getUUID | 获取设备唯一 UUID |
+| getUUIDDevice | 获取设备唯一 UUID ( 使用硬件信息拼凑出来的 ) |
 | getFormatRes | 获取 R.string 资源的格式化字符串 |
 | getSDKVersion | 获取 SDK 版本 |
 | isFroyo | 是否在 2.2 版本及以上 |
@@ -742,15 +743,6 @@ DevUtils.openDebug();
 | setMaxHeight | 设置 ImageView 最大高度 |
 | getMaxWidth | 获取 ImageView 最大宽度 |
 | setMaxWidth | 设置 ImageView 最大宽度 |
-| setBackground | 设置背景图片 |
-| setBackgroundColor | 设置背景颜色 |
-| setBackgroundResource | 设置背景资源 |
-| setBackgroundTintList | 设置背景着色颜色 |
-| setBackgroundTintMode | 设置背景着色模式 |
-| setForeground | 设置前景图片 |
-| setForegroundGravity | 设置前景重心 |
-| setForegroundTintList | 设置前景着色颜色 |
-| setForegroundTintMode | 设置前景着色模式 |
 | setImageBitmap | 设置 ImageView Bitmap |
 | setImageDrawable | 设置 ImageView Drawable |
 | setImageResource | 设置 ImageView 资源 |
@@ -758,19 +750,11 @@ DevUtils.openDebug();
 | setImageTintList | 设置 ImageView 着色颜色 |
 | setImageTintMode | 设置 ImageView 着色模式 |
 | setScaleType | 设置 ImageView 缩放类型 |
-| getBackground | 获取 View 背景 Drawable |
-| getBackgroundTintList | 获取 View 背景着色颜色 |
-| getBackgroundTintMode | 获取 View 背景着色模式 |
-| getForeground | 获取 View 前景 Drawable |
-| getForegroundGravity | 获取 View 前景重心 |
-| getForegroundTintList | 获取 View 前景着色颜色 |
-| getForegroundTintMode | 获取 View 前景着色模式 |
 | getImageMatrix | 获取 ImageView Matrix |
 | getImageTintList | 获取 ImageView 着色颜色 |
 | getImageTintMode | 获取 ImageView 着色模式 |
 | getScaleType | 获取 ImageView 缩放模式 |
 | getDrawable | 获取 ImageView Drawable |
-| setColorFilter | ImageView 着色处理 |
 | setBackgroundResources | 设置 View 图片资源 |
 | setImageResources | 设置 View 图片资源 |
 | setImageBitmaps | 设置 View Bitmap |
@@ -791,6 +775,7 @@ DevUtils.openDebug();
 | getSystemSettingIntent | 获取跳转到系统设置的意图 |
 | getLaunchAppInstallPermissionSettingsIntent | 获取 APP 安装权限设置的意图 |
 | getLaunchAppNotificationSettingsIntent | 获取 APP 通知权限设置的意图 |
+| getLaunchAppNotificationListenSettingsIntent | 获取 APP 通知使用权页面 |
 | getLaunchAppDetailsSettingsIntent | 获取 APP 具体设置的意图 |
 | getLaunchAppDetailIntent | 获取到应用商店 APP 详情界面的意图 |
 | getShareTextIntent | 获取分享文本的意图 |
@@ -995,6 +980,9 @@ DevUtils.openDebug();
 | :- | :- |
 | getNotificationManager | 获取通知栏管理对象 |
 | isNotificationEnabled | 检查通知栏权限是否开启 |
+| checkAndIntentSetting | 检查是否有获取通知栏信息权限并跳转设置页面 |
+| isNotificationListenerEnabled | 判断是否有获取通知栏信息权限 |
+| startNotificationListenSettings | 跳转到设置页面, 开启获取通知栏信息权限 |
 | cancelAll | 移除通知 - 移除所有通知 |
 | cancel | 移除通知 - 移除标记为 id 的通知 |
 | notify | 进行通知 |
@@ -1480,6 +1468,19 @@ DevUtils.openDebug();
 | reckonTextSize | 通过需要的高度, 计算字体大小 |
 | calcTextWidth | 计算第几位超过宽度 |
 | calcTextLine | 计算文本换行行数 |
+| getCompoundDrawables | 获取 CompoundDrawables |
+| getCompoundDrawablePadding | 获取 CompoundDrawables Padding |
+| setCompoundDrawablePadding | 设置 CompoundDrawables Padding |
+| setCompoundDrawablesByLeft | 设置 Left CompoundDrawables |
+| setCompoundDrawablesByTop | 设置 Top CompoundDrawables |
+| setCompoundDrawablesByRight | 设置 Right CompoundDrawables |
+| setCompoundDrawablesByBottom | 设置 Bottom CompoundDrawables |
+| setCompoundDrawables | 设置 CompoundDrawables |
+| setCompoundDrawablesWithIntrinsicBoundsByLeft | 设置 Left CompoundDrawables - 按照原有比例大小显示图片 |
+| setCompoundDrawablesWithIntrinsicBoundsByTop | 设置 Top CompoundDrawables - 按照原有比例大小显示图片 |
+| setCompoundDrawablesWithIntrinsicBoundsByRight | 设置 Right CompoundDrawables - 按照原有比例大小显示图片 |
+| setCompoundDrawablesWithIntrinsicBoundsByBottom | 设置 Bottom CompoundDrawables - 按照原有比例大小显示图片 |
+| setCompoundDrawablesWithIntrinsicBounds | 设置 CompoundDrawables - 按照原有比例大小显示图片 |
 
 
 * **Uri 工具类 ->** [UriUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/UriUtils.java)
@@ -1510,6 +1511,7 @@ DevUtils.openDebug();
 | getChildCount | 获取子 View 总数 |
 | getChildAt | 获取指定索引 View |
 | removeAllViews | 移除全部子 View |
+| getChilds | 获取全部子 View |
 | getLayoutParams | 获取 LayoutParams |
 | setLayoutParams | 设置 View LayoutParams |
 | findViewById | 初始化 View |
@@ -1589,14 +1591,19 @@ DevUtils.openDebug();
 | setFocusableInTouchMode | 设置 View 是否在触摸模式下获得焦点 |
 | isFocusable | 获取 View 是否可以获取焦点 |
 | setFocusable | 设置 View 是否可以获取焦点 |
+| toggleFocusable | 切换获取焦点状态 |
 | isSelected | 获取 View 是否选中 |
 | setSelected | 设置 View 是否选中 |
+| toggleSelected | 切换选中状态 |
 | isEnabled | 获取 View 是否启用 |
 | setEnabled | 设置 View 是否启用 |
+| toggleEnabled | 切换 View 是否启用状态 |
 | isClickable | 获取 View 是否可以点击 |
 | setClickable | 设置 View 是否可以点击 |
+| toggleClickable | 切换 View 是否可以点击状态 |
 | isLongClickable | 获取 View 是否可以长按 |
 | setLongClickable | 设置 View 是否可以长按 |
+| toggleLongClickable | 切换 View 是否可以长按状态 |
 | isVisibility | 判断 View 是否显示 |
 | isVisibilitys | 判断 View 是否都显示 |
 | isVisibilityIN | 判断 View 是否隐藏占位 |
@@ -1639,18 +1646,6 @@ DevUtils.openDebug();
 | setPaddingRight | 设置 View Right Padding |
 | setPaddingBottom | 设置 View Bottom Padding |
 | setPadding | 设置 Padding 边距 |
-| getCompoundDrawables | 获取 CompoundDrawables |
-| getCompoundDrawablePadding | 获取 CompoundDrawables Padding |
-| setCompoundDrawablesByLeft | 设置 Left CompoundDrawables |
-| setCompoundDrawablesByTop | 设置 Top CompoundDrawables |
-| setCompoundDrawablesByRight | 设置 Right CompoundDrawables |
-| setCompoundDrawablesByBottom | 设置 Bottom CompoundDrawables |
-| setCompoundDrawables | 设置 CompoundDrawables |
-| setCompoundDrawablesWithIntrinsicBoundsByLeft | 设置 Left CompoundDrawables - 按照原有比例大小显示图片 |
-| setCompoundDrawablesWithIntrinsicBoundsByTop | 设置 Top CompoundDrawables - 按照原有比例大小显示图片 |
-| setCompoundDrawablesWithIntrinsicBoundsByRight | 设置 Right CompoundDrawables - 按照原有比例大小显示图片 |
-| setCompoundDrawablesWithIntrinsicBoundsByBottom | 设置 Bottom CompoundDrawables - 按照原有比例大小显示图片 |
-| setCompoundDrawablesWithIntrinsicBounds | 设置 CompoundDrawables - 按照原有比例大小显示图片 |
 | addRule | 设置 RelativeLayout View 布局规则 |
 | removeRule | 移除 RelativeLayout View 布局规则 |
 | getRule | 获取 RelativeLayout View 指定布局位置 View id |
@@ -1661,6 +1656,23 @@ DevUtils.openDebug();
 | clearAnimation | 清空动画 |
 | startAnimation | 启动动画 |
 | cancel | 取消动画 |
+| setBackground | 设置背景图片 |
+| setBackgroundColor | 设置背景颜色 |
+| setBackgroundResource | 设置背景资源 |
+| setBackgroundTintList | 设置背景着色颜色 |
+| setBackgroundTintMode | 设置背景着色模式 |
+| setForeground | 设置前景图片 |
+| setForegroundGravity | 设置前景重心 |
+| setForegroundTintList | 设置前景着色颜色 |
+| setForegroundTintMode | 设置前景着色模式 |
+| getBackground | 获取 View 背景 Drawable |
+| getBackgroundTintList | 获取 View 背景着色颜色 |
+| getBackgroundTintMode | 获取 View 背景着色模式 |
+| getForeground | 获取 View 前景 Drawable |
+| getForegroundGravity | 获取 View 前景重心 |
+| getForegroundTintList | 获取 View 前景着色颜色 |
+| getForegroundTintMode | 获取 View 前景着色模式 |
+| setColorFilter | View 着色处理 |
 
 
 ## <span id="devutilsappanim">**`dev.utils.app.anim`**</span>
@@ -2060,10 +2072,15 @@ DevUtils.openDebug();
 | setLayoutParams | 设置 View LayoutParams |
 | setFocusableInTouchMode | 设置 View 是否在触摸模式下获得焦点 |
 | setFocusable | 设置 View 是否可以获取焦点 |
+| toggleFocusable | 切换获取焦点状态 |
 | setSelected | 设置 View 是否选中 |
+| toggleSelected | 切换选中状态 |
 | setEnabled | 设置 View 是否启用 |
+| toggleEnabled | 切换 View 是否启用状态 |
 | setClickable | 设置 View 是否可以点击 |
+| toggleClickable | 切换 View 是否可以点击状态 |
 | setLongClickable | 设置 View 是否可以长按 |
+| toggleLongClickable | 切换 View 是否可以长按状态 |
 | setVisibility | 设置 View 显示的状态 |
 | setVisibilitys | 设置 View 显示的状态 |
 | toggleVisibilitys | 切换 View 显示的状态 |
@@ -2080,6 +2097,7 @@ DevUtils.openDebug();
 | setPaddingRight | 设置 View Right Padding |
 | setPaddingBottom | 设置 View Bottom Padding |
 | setPadding | 设置 Padding 边距 |
+| setCompoundDrawablePadding | 设置 CompoundDrawables Padding |
 | setCompoundDrawablesByLeft | 设置 Left CompoundDrawables |
 | setCompoundDrawablesByTop | 设置 Top CompoundDrawables |
 | setCompoundDrawablesByRight | 设置 Right CompoundDrawables |
@@ -2581,12 +2599,12 @@ DevUtils.openDebug();
 
 | 方法 | 注释 |
 | :- | :- |
-| isOpenWifi | 判断是否打开 Wifi |
-| openWifi | 打开 Wifi |
-| closeWifi | 关闭 Wifi |
+| isOpenWifi | 判断是否打开 wifi |
+| openWifi | 打开 wifi |
+| closeWifi | 关闭 wifi |
 | toggleWifiEnabled | 自动切换 Wifi 开关状态 |
 | getWifiState | 获取当前 Wifi 连接状态 |
-| startScan | 开始扫描 Wifi |
+| startScan | 开始扫描 wifi |
 | getConfiguration | 获取已配置 ( 连接过 ) 的 Wifi 配置 |
 | getWifiList | 获取附近的 Wifi 列表 |
 | getWifiInfo | 获取连接的 WifiInfo |
@@ -3321,11 +3339,11 @@ DevUtils.openDebug();
 | equals | 判断两个值是否一样 |
 | isEquals | 判断多个字符串是否相等, 只有全相等才返回 true - 对比大小写 |
 | isOrEquals | 判断多个字符串, 只要有一个符合条件则通过 |
-| countMatches | 统计字符串匹配个数 |
-| countMatches2 | 统计字符串匹配个数 |
 | isContains | 判断一堆值中, 是否存在符合该条件的 ( 包含 ) |
 | isStartsWith | 判断内容, 是否属于特定字符串开头 - 对比大小写 |
 | isEndsWith | 判断内容, 是否属于特定字符串结尾 - 对比大小写 |
+| countMatches | 统计字符串匹配个数 |
+| countMatches2 | 统计字符串匹配个数 |
 | isSpace | 判断字符串是否为 null 或全为空白字符 |
 | toClearSpace | 清空字符串全部空格 |
 | toClearSpaceTrim | 清空字符串前后所有空格 |
