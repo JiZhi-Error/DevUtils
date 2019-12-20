@@ -396,7 +396,7 @@ public final class ViewUtils {
     /**
      * 判断 View 是否为 null
      * @param view {@link View}
-     * @return {@code true} is null, {@code false} not null
+     * @return {@code true} yes, {@code false} no
      */
     public static boolean isEmpty(final View view) {
         return view == null;
@@ -405,7 +405,7 @@ public final class ViewUtils {
     /**
      * 判断 View 是否为 null
      * @param views View[]
-     * @return {@code true} is null, {@code false} not null
+     * @return {@code true} yes, {@code false} no
      */
     public static boolean isEmpty(final View... views) {
         if (views != null && views.length != 0) {
@@ -423,7 +423,7 @@ public final class ViewUtils {
     /**
      * 判断 View 是否不为 null
      * @param view {@link View}
-     * @return {@code true} not null, {@code false} is null
+     * @return {@code true} yes, {@code false} no
      */
     public static boolean isNotEmpty(final View view) {
         return view != null;
@@ -432,7 +432,7 @@ public final class ViewUtils {
     /**
      * 判断 View 是否不为 null
      * @param views View[]
-     * @return {@code true} not null, {@code false} is null
+     * @return {@code true} yes, {@code false} no
      */
     public static boolean isNotEmpty(final View... views) {
         if (views != null && views.length != 0) {
