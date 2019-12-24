@@ -1958,16 +1958,16 @@ public final class ViewUtils {
 
     /**
      * 切换 View 显示的状态
-     * @param status   {@link View#VISIBLE}、{@link View#INVISIBLE}、{@link View#GONE}
+     * @param state   {@link View#VISIBLE}、{@link View#INVISIBLE}、{@link View#GONE}
      * @param viewArys View[]
      * @param views    View[]
      * @return {@code true} success, {@code false} fail
      */
-    public static boolean toggleVisibilitys(final int status, final View[] viewArys, final View... views) {
+    public static boolean toggleVisibilitys(final int state, final View[] viewArys, final View... views) {
         // 默认显示
         setVisibilitys(View.VISIBLE, viewArys);
         // 根据状态处理
-        setVisibilitys(status, views);
+        setVisibilitys(state, views);
         return true;
     }
 
@@ -1975,13 +1975,13 @@ public final class ViewUtils {
 
     /**
      * 反转 View 显示的状态
-     * @param status   {@link View#VISIBLE}、{@link View#INVISIBLE}、{@link View#GONE}
+     * @param state   {@link View#VISIBLE}、{@link View#INVISIBLE}、{@link View#GONE}
      * @param viewArys View[]
      * @param views    View[]
      * @return isVisibility
      */
-    public static boolean reverseVisibilitys(final int status, final View[] viewArys, final View... views) {
-        return reverseVisibilitys(status == View.VISIBLE, viewArys, views);
+    public static boolean reverseVisibilitys(final int state, final View[] viewArys, final View... views) {
+        return reverseVisibilitys(state == View.VISIBLE, viewArys, views);
     }
 
     /**
@@ -2001,13 +2001,13 @@ public final class ViewUtils {
 
     /**
      * 反转 View 显示的状态
-     * @param status {@link View#VISIBLE}、{@link View#INVISIBLE}、{@link View#GONE}
+     * @param state {@link View#VISIBLE}、{@link View#INVISIBLE}、{@link View#GONE}
      * @param view   {@link View}
      * @param views  View[]
      * @return isVisibility
      */
-    public static boolean reverseVisibilitys(final int status, final View view, final View... views) {
-        return reverseVisibilitys(status == View.VISIBLE, view, views);
+    public static boolean reverseVisibilitys(final int state, final View view, final View... views) {
+        return reverseVisibilitys(state == View.VISIBLE, view, views);
     }
 
     /**
