@@ -2,10 +2,10 @@
 ## Gradle
 
 ```java
-implementation 'com.afkt:DevApp:1.8.5'
+implementation 'com.afkt:DevApp:1.8.6'
 
 // AndroidX
-implementation 'com.afkt:DevAppX:1.8.5'
+implementation 'com.afkt:DevAppX:1.8.6'
 ```
 
 ## 目录结构
@@ -217,7 +217,7 @@ DevUtils.openDebug();
 | text | 输入文本 - 不支持中文 |
 | keyevent | 触发某些按键 |
 | screencap | 屏幕截图 |
-| screenrecord | 录制屏幕 ( 以 mp4 格式保存到 /sdcard) |
+| screenrecord | 录制屏幕 ( 以 mp4 格式保存 ) |
 | wifiConf | 查看连接过的 Wifi 密码 |
 | wifiSwitch | 开启 / 关闭 Wifi |
 | setSystemTime | 设置系统时间 |
@@ -522,12 +522,12 @@ DevUtils.openDebug();
 
 | 方法 | 注释 |
 | :- | :- |
-| cleanExternalCache | 清除外部缓存 - path /storage/emulated/0/android/data/package/cache |
-| cleanInternalCache | 清除内部缓存 - path /data/data/package/cache |
-| cleanInternalFiles | 清除内部文件 - path /data/data/package/files |
-| cleanInternalSp | 清除内部 SP - path /data/data/package/shared_prefs |
-| cleanInternalDbs | 清除内部数据库 - path /data/data/package/databases |
-| cleanInternalDbByName | 根据名称清除数据库 - path /data/data/package/databases/dbName |
+| cleanCache | 清除外部缓存 - path /storage/emulated/0/android/data/package/cache |
+| cleanAppCache | 清除内部缓存 - path /data/data/package/cache |
+| cleanAppFiles | 清除内部文件 - path /data/data/package/files |
+| cleanAppSp | 清除内部 SP - path /data/data/package/shared_prefs |
+| cleanAppDbs | 清除内部数据库 - path /data/data/package/databases |
+| cleanAppDbByName | 根据名称清除数据库 - path /data/data/package/databases/dbName |
 | cleanCustomDir | 清除自定义路径下的文件, 使用需小心请不要误删, 而且只支持目录下的文件删除 |
 | cleanApplicationData | 清除本应用所有的数据 |
 
@@ -567,10 +567,18 @@ DevUtils.openDebug();
 
 | 方法 | 注释 |
 | :- | :- |
-| notifyMediaStore | 通知刷新本地资源 |
-| insertImageIntoMediaStore | 添加图片到系统相册 ( 包含原图、相册图, 会存在两张 ) - 想要一张, 直接调用 notifyMediaStore() |
-| insertVideoIntoMediaStore | 添加视频到系统相册 |
-| insertIntoMediaStore | 保存到系统相册 |
+| getDataColumn | 获取 Uri Cursor 对应条件的数据行 data 字段 |
+| delete | 删除多媒体资源 |
+| update | 更新多媒体资源 |
+| deleteDocument | 删除文件 |
+| query | 获取 Uri Cursor |
+| getMediaUri | 通过 File 获取 Media Uri |
+| mediaQuery | 通过 File 获取 Media 信息 |
+| getResult | 获取查询结果 |
+| getProjection | 获取查询的字段 |
+| getSelection | 获取查询条件 |
+| getSelectionArgs | 获取查询条件的参数 |
+| getSortOrder | 获取排序方式 |
 
 
 * **获取 CPU 信息工具类 ->** [CPUUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/CPUUtils.java)
@@ -589,12 +597,22 @@ DevUtils.openDebug();
 | getCMDOutputString | 获取 CMD 指令回调数据 |
 
 
+* **UncaughtException 处理工具类 ->** [CrashUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/CrashUtils.java)
+
+| 方法 | 注释 |
+| :- | :- |
+| getInstance | 获取 CrashUtils 实例 |
+| init | 初始化方法 |
+| uncaughtException | 当 UncaughtException 发生时会转入该函数来处理 |
+| handleException | 处理异常 |
+
+
 * **数据库工具类 ( 导入导出等 ) ->** [DBUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/DBUtils.java)
 
 | 方法 | 注释 |
 | :- | :- |
-| getInternalAppDbsPath | 获取内存应用数据库路径 - path /data/data/package/databases |
-| getInternalAppDbPath | 获取内存应用数据库路径 - path /data/data/package/databases/name |
+| getAppDbsPath | 获取应用内部存储数据库路径 - path /data/data/package/databases |
+| getAppDbPath | 获取应用内部存储数据库路径 - path /data/data/package/databases/name |
 | startExportDatabase | 导出数据库 |
 | startImportDatabase | 导入数据库 |
 
@@ -786,6 +804,10 @@ DevUtils.openDebug();
 | getCallIntent | 获取拨打电话意图 |
 | getSendSmsIntent | 获取发送短信界面的意图 |
 | getCaptureIntent | 获取拍照的意图 |
+| getOpenDocumentIntent | 获取存储访问框架的意图 |
+| getCreateDocumentIntent | 获取创建文件的意图 |
+| getOpenBrowserIntent | 获取打开浏览器的意图 |
+| getOpenAndroidBrowserIntent | 获取打开 Android 浏览器的意图 |
 
 
 * **Android 原生 JSONObject 工具类 ->** [JSONObjectUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/JSONObjectUtils.java)
@@ -929,6 +951,29 @@ DevUtils.openDebug();
 | getAppVersionName | 获取 APP versionName |
 
 
+* **MediaStore 工具类 ->** [MediaStoreUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/MediaStoreUtils.java)
+
+| 方法 | 注释 |
+| :- | :- |
+| notifyMediaStore | 通知刷新本地资源 |
+| getDisplayName | 获取待显示名 |
+| getImageDisplayName | 获取 Image 显示名 |
+| getVideoDisplayName | 获取 Video 显示名 |
+| getAudioDisplayName | 获取 Audio 显示名 |
+| createImageUri | 创建图片 Uri |
+| createVideoUri | 创建视频 Uri |
+| createAudioUri | 创建音频 Uri |
+| createMediaUri | 创建预存储 Media Uri |
+| insertImage | 插入一张图片 |
+| insertVideo | 插入一条视频 |
+| insertAudio | 插入一条音频 |
+| insertMedia | 插入一条多媒体资源 |
+| getVideoDuration | 获取本地视频时长 |
+| getVideoSize | 获取本地视频宽高 |
+| getImageWidthHeight | 获取本地图片宽高 |
+| getMediaInfo | 获取多媒体资源信息 |
+
+
 * **内存信息工具类 ->** [MemoryUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/MemoryUtils.java)
 
 | 方法 | 注释 |
@@ -1005,42 +1050,85 @@ DevUtils.openDebug();
 
 | 方法 | 注释 |
 | :- | :- |
+| getInternal | 获取内部存储路径类 |
+| getAppExternal | 获取应用外部存储路径类 |
+| getSDCard | 获取 SDCard 外部存储路径类 |
+| isSDCardEnable | 判断 SDCard 是否正常挂载 |
+| getSDCardFile | 获取 SDCard 外部存储路径 - path /storage/emulated/0/ |
+| getSDCardPath | 获取 SDCard 外部存储路径 - path /storage/emulated/0/ |
+| getExternalStoragePublicPath | 获取 SDCard 外部存储文件路径 - path /storage/emulated/0/ |
+| getExternalStoragePublicDir | 获取 SDCard 外部存储文件路径 - path /storage/emulated/0/ |
+| getMusicPath | 获取 SDCard 外部存储音乐路径 - path /storage/emulated/0/Music |
+| getMusicDir | 获取 SDCard 外部存储音乐路径 - path /storage/emulated/0/Music |
+| getPodcastsPath | 获取 SDCard 外部存储播客路径 - path /storage/emulated/0/Podcasts |
+| getPodcastsDir | 获取 SDCard 外部存储播客路径 - path /storage/emulated/0/Podcasts |
+| getRingtonesPath | 获取 SDCard 外部存储铃声路径 - path /storage/emulated/0/Ringtones |
+| getRingtonesDir | 获取 SDCard 外部存储铃声路径 - path /storage/emulated/0/Ringtones |
+| getAlarmsPath | 获取 SDCard 外部存储闹铃路径 - path /storage/emulated/0/Alarms |
+| getAlarmsDir | 获取 SDCard 外部存储闹铃路径 - path /storage/emulated/0/Alarms |
+| getNotificationsPath | 获取 SDCard 外部存储通知路径 - path /storage/emulated/0/Notifications |
+| getNotificationsDir | 获取 SDCard 外部存储通知路径 - path /storage/emulated/0/Notifications |
+| getPicturesPath | 获取 SDCard 外部存储图片路径 - path /storage/emulated/0/Pictures |
+| getPicturesDir | 获取 SDCard 外部存储图片路径 - path /storage/emulated/0/Pictures |
+| getMoviesPath | 获取 SDCard 外部存储影片路径 - path /storage/emulated/0/Movies |
+| getMoviesDir | 获取 SDCard 外部存储影片路径 - path /storage/emulated/0/Movies |
+| getDownloadPath | 获取 SDCard 外部存储下载路径 - path /storage/emulated/0/Download |
+| getDownloadDir | 获取 SDCard 外部存储下载路径 - path /storage/emulated/0/Download |
+| getDCIMPath | 获取 SDCard 外部存储数码相机图片路径 - path /storage/emulated/0/DCIM |
+| getDCIMDir | 获取 SDCard 外部存储数码相机图片路径 - path /storage/emulated/0/DCIM |
+| getDocumentsPath | 获取 SDCard 外部存储文档路径 - path /storage/emulated/0/Documents |
+| getDocumentsDir | 获取 SDCard 外部存储文档路径 - path /storage/emulated/0/Documents |
+| getAudiobooksPath | 获取 SDCard 外部存储有声读物路径 - path /storage/emulated/0/Audiobooks |
+| getAudiobooksDir | 获取 SDCard 外部存储有声读物路径 - path /storage/emulated/0/Audiobooks |
+| getAppDataPath | 获取应用外部存储数据路径 - path /storage/emulated/0/Android/data/package |
+| getAppDataDir | 获取应用外部存储数据路径 - path /storage/emulated/0/Android/data/package |
+| getAppCachePath | 获取应用外部存储缓存路径 - path /storage/emulated/0/Android/data/package/cache |
+| getAppCacheDir | 获取应用外部存储缓存路径 - path /storage/emulated/0/Android/data/package/cache |
+| getExternalFilesPath | 获取应用外部存储文件路径 - path /storage/emulated/0/Android/data/package/files |
+| getExternalFilesDir | 获取应用外部存储文件路径 - path /storage/emulated/0/Android/data/package/files |
+| getAppFilesPath | 获取应用外部存储文件路径 - path /storage/emulated/0/Android/data/package/files |
+| getAppFilesDir | 获取应用外部存储文件路径 - path /storage/emulated/0/Android/data/package/files |
+| getAppMusicPath | 获取应用外部存储音乐路径 - path /storage/emulated/0/Android/data/package/files/Music |
+| getAppMusicDir | 获取应用外部存储音乐路径 - path /storage/emulated/0/Android/data/package/files/Music |
+| getAppPodcastsPath | 获取应用外部存储播客路径 - path /storage/emulated/0/Android/data/package/files/Podcasts |
+| getAppPodcastsDir | 获取应用外部存储播客路径 - path /storage/emulated/0/Android/data/package/files/Podcasts |
+| getAppRingtonesPath | 获取应用外部存储铃声路径 - path /storage/emulated/0/Android/data/package/files/Ringtones |
+| getAppRingtonesDir | 获取应用外部存储铃声路径 - path /storage/emulated/0/Android/data/package/files/Ringtones |
+| getAppAlarmsPath | 获取应用外部存储闹铃路径 - path /storage/emulated/0/Android/data/package/files/Alarms |
+| getAppAlarmsDir | 获取应用外部存储闹铃路径 - path /storage/emulated/0/Android/data/package/files/Alarms |
+| getAppNotificationsPath | 获取应用外部存储通知路径 - path /storage/emulated/0/Android/data/package/files/Notifications |
+| getAppNotificationsDir | 获取应用外部存储通知路径 - path /storage/emulated/0/Android/data/package/files/Notifications |
+| getAppPicturesPath | 获取应用外部存储图片路径 - path /storage/emulated/0/Android/data/package/files/Pictures |
+| getAppPicturesDir | 获取应用外部存储图片路径 - path /storage/emulated/0/Android/data/package/files/Pictures |
+| getAppMoviesPath | 获取应用外部存储影片路径 - path /storage/emulated/0/Android/data/package/files/Movies |
+| getAppMoviesDir | 获取应用外部存储影片路径 - path /storage/emulated/0/Android/data/package/files/Movies |
+| getAppDownloadPath | 获取应用外部存储下载路径 - path /storage/emulated/0/Android/data/package/files/Download |
+| getAppDownloadDir | 获取应用外部存储下载路径 - path /storage/emulated/0/Android/data/package/files/Download |
+| getAppDCIMPath | 获取应用外部存储数码相机图片路径 - path /storage/emulated/0/Android/data/package/files/DCIM |
+| getAppDCIMDir | 获取应用外部存储数码相机图片路径 - path /storage/emulated/0/Android/data/package/files/DCIM |
+| getAppDocumentsPath | 获取应用外部存储文档路径 - path /storage/emulated/0/Android/data/package/files/Documents |
+| getAppDocumentsDir | 获取应用外部存储文档路径 - path /storage/emulated/0/Android/data/package/files/Documents |
+| getAppAudiobooksPath | 获取应用外部存储有声读物路径 - path /storage/emulated/0/Android/data/package/files/Audiobooks |
+| getAppAudiobooksDir | 获取应用外部存储有声读物路径 - path /storage/emulated/0/Android/data/package/files/Audiobooks |
+| getAppObbPath | 获取应用外部存储 OBB 路径 - path /storage/emulated/0/Android/obb/package |
+| getAppObbDir | 获取应用外部存储 OBB 路径 - path /storage/emulated/0/Android/obb/package |
 | getRootPath | 获取 Android 系统根目录 - path /system |
+| getRootDirectory | 获取 Android 系统根目录 - path /system |
 | getDataPath | 获取 data 目录 - path /data |
+| getDataDirectory | 获取 data 目录 - path /data |
 | getDownloadCachePath | 获取下载缓存目录 - path data/cache |
-| getInternalCachePath | 获取内存应用缓存路径 - path /data/data/package/cache |
-| getInternalAppDataPath | 获取内存应用数据路径 - path /data/data/package |
-| getInternalAppCodeCacheDir | 获取内存应用代码缓存路径 - path /data/data/package/code_cache |
-| getInternalAppDbsPath | 获取内存应用数据库路径 - path /data/data/package/databases |
-| getInternalAppDbPath | 获取内存应用数据库路径 - path /data/data/package/databases/name |
-| getInternalAppFilesPath | 获取内存应用文件路径 - path/data/data/package/files |
-| getInternalAppSpPath | 获取内存应用 SP 路径 - path/data/data/package/shared_prefs |
-| getInternalAppNoBackupFilesPath | 获取内存应用未备份文件路径 - path/data/data/package/no_backup |
-| getExternalStoragePath | 获取外存路径 - path/storage/emulated/0 |
-| getExternalMusicPath | 获取外存音乐路径 - path/storage/emulated/0/Music |
-| getExternalPodcastsPath | 获取外存播客路径 - path/storage/emulated/0/Podcasts |
-| getExternalRingtonesPath | 获取外存铃声路径 - path/storage/emulated/0/Ringtones |
-| getExternalAlarmsPath | 获取外存闹铃路径 - path/storage/emulated/0/Alarms |
-| getExternalNotificationsPath | 获取外存通知路径 - path/storage/emulated/0/Notifications |
-| getExternalPicturesPath | 获取外存图片路径 - path/storage/emulated/0/Pictures |
-| getExternalMoviesPath | 获取外存影片路径 - path/storage/emulated/0/Movies |
-| getExternalDownloadsPath | 获取外存下载路径 - path/storage/emulated/0/Download |
-| getExternalDcimPath | 获取外存数码相机图片路径 - path/storage/emulated/0/DCIM |
-| getExternalDocumentsPath | 获取外存文档路径 - path/storage/emulated/0/Documents |
-| getExternalAppDataPath | 获取外存应用数据路径 - path/storage/emulated/0/Android/data/package |
-| getExternalAppCachePath | 获取外存应用缓存路径 - path/storage/emulated/0/Android/data/package/cache |
-| getExternalAppFilesPath | 获取外存应用文件路径 - path/storage/emulated/0/Android/data/package/files |
-| getExternalAppMusicPath | 获取外存应用音乐路径 - path/storage/emulated/0/Android/data/package/files/Music |
-| getExternalAppPodcastsPath | 获取外存应用播客路径 - path/storage/emulated/0/Android/data/package/files/Podcasts |
-| getExternalAppRingtonesPath | 获取外存应用铃声路径 - path/storage/emulated/0/Android/data/package/files/Ringtones |
-| getExternalAppAlarmsPath | 获取外存应用闹铃路径 - path/storage/emulated/0/Android/data/package/files/Alarms |
-| getExternalAppNotificationsPath | 获取外存应用通知路径 - path/storage/emulated/0/Android/data/package/files/Notifications |
-| getExternalAppPicturesPath | 获取外存应用图片路径 - path/storage/emulated/0/Android/data/package/files/Pictures |
-| getExternalAppMoviesPath | 获取外存应用影片路径 - path/storage/emulated/0/Android/data/package/files/Movies |
-| getExternalAppDownloadPath | 获取外存应用下载路径 - path/storage/emulated/0/Android/data/package/files/Download |
-| getExternalAppDcimPath | 获取外存应用数码相机图片路径 - path/storage/emulated/0/Android/data/package/files/DCIM |
-| getExternalAppDocumentsPath | 获取外存应用文档路径 - path/storage/emulated/0/Android/data/package/files/Documents |
-| getExternalAppObbPath | 获取外存应用 OBB 路径 - path/storage/emulated/0/Android/obb/package |
+| getDownloadCacheDirectory | 获取下载缓存目录 - path data/cache |
+| getAppCodeCachePath | 获取应用内部存储代码缓存路径 - path /data/data/package/code_cache |
+| getAppCodeCacheDir | 获取应用内部存储代码缓存路径 - path /data/data/package/code_cache |
+| getAppDbsPath | 获取应用内部存储数据库路径 - path /data/data/package/databases |
+| getAppDbsDir | 获取应用内部存储数据库路径 - path /data/data/package/databases |
+| getAppDbPath | 获取应用内部存储数据库路径 - path /data/data/package/databases/name |
+| getAppDbFile | 获取应用内部存储数据库路径 - path /data/data/package/databases/name |
+| getAppSpPath | 获取应用内部存储 SP 路径 - path /data/data/package/shared_prefs |
+| getAppSpDir | 获取应用内部存储 SP 路径 - path /data/data/package/shared_prefs |
+| getAppSpFile | 获取应用内部存储 SP 路径 - path /data/data/package/shared_prefs |
+| getAppNoBackupFilesPath | 获取应用内部存储未备份文件路径 - path /data/data/package/no_backup |
+| getAppNoBackupFilesDir | 获取应用内部存储未备份文件路径 - path /data/data/package/no_backup |
 
 
 * **手机相关工具类 ->** [PhoneUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/PhoneUtils.java)
@@ -1161,6 +1249,10 @@ DevUtils.openDebug();
 | openNonAssetFd | 获取 AssetManager 指定资源 AssetFileDescriptor |
 | openRawResource | 获取对应资源 InputStream |
 | openRawResourceFd | 获取对应资源 AssetFileDescriptor |
+| openInputStream | 获取 Uri InputStream |
+| openOutputStream | 获取 Uri OutputStream |
+| openFileDescriptor | 获取 Uri ParcelFileDescriptor |
+| openAssetFileDescriptor | 获取 Uri AssetFileDescriptor |
 | readBytesFromAssets | 获取 Assets 资源文件数据 |
 | readStringFromAssets | 获取 Assets 资源文件数据 |
 | readBytesFromRaw | 获取 Raw 资源文件数据 |
@@ -1212,10 +1304,9 @@ DevUtils.openDebug();
 
 | 方法 | 注释 |
 | :- | :- |
-| isSDCardEnable | 判断内置 SDCard 是否正常挂载 |
-| getSDCardFile | 获取内置 SDCard File |
-| getSDCardPath | 获取内置 SDCard 绝对路径 |
-| getSDCardPathSeparator | 获取内置 SDCard 绝对路径 |
+| isSDCardEnable | 判断 SDCard 是否正常挂载 |
+| getSDCardFile | 获取 SDCard 外部存储路径 - path /storage/emulated/0/ |
+| getSDCardPath | 获取 SDCard 外部存储路径 - path /storage/emulated/0/ |
 | isSDCardEnablePath | 判断 SDCard 是否可用 |
 | getSDCardPaths | 获取 SDCard 路径 |
 | getAllBlockSize | 获取内置 SDCard 空间总大小 |
@@ -1487,9 +1578,16 @@ DevUtils.openDebug();
 
 | 方法 | 注释 |
 | :- | :- |
-| getUriForFileToName | 获取文件 Uri ( 自动添加包名 ${applicationId}) |
-| getUriForFile | 获取文件 Uri |
+| getUriForFile | 获取 FileProvider File Uri |
+| getUriForPath | 获取 FileProvider File Path Uri |
+| getUriForFileToName | 获取 FileProvider File Path Uri ( 自动添加包名 ${applicationId} ) |
+| isUriExists | 判断 Uri 路径资源是否存在 |
+| getMediaUri | 通过 File 获取 Media Uri |
 | getFilePathByUri | 通过 Uri 获取文件路径 |
+| isExternalStorageDocument | 判读 Uri authority 是否为 ExternalStorage Provider |
+| isDownloadsDocument | 判读 Uri authority 是否为 Downloads Provider |
+| isMediaDocument | 判断 Uri authority 是否为 Media Provider |
+| isGooglePhotosUri | 判断 Uri authority 是否为 Google Photos Provider |
 
 
 * **震动相关工具类 ->** [VibrationUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/VibrationUtils.java)
@@ -1898,21 +1996,18 @@ DevUtils.openDebug();
 | removeTextChangedListener | 移除输入监听事件 |
 | setKeyListener | 设置 KeyListener |
 | record | 日志记录 |
-| cleanInternalCache | 清除内部缓存 - path /data/data/package/cache |
-| cleanInternalFiles | 清除内部文件 - path /data/data/package/files |
-| cleanInternalDbs | 清除内部数据库 - path /data/data/package/databases |
-| cleanInternalDbByName | 根据名称清除数据库 - path /data/data/package/databases/dbName |
-| cleanInternalSp | 清除内部 SP - path /data/data/package/shared_prefs |
-| cleanExternalCache | 清除外部缓存 - path /storage/emulated/0/android/data/package/cache |
+| cleanAppCache | 清除内部缓存 - path /data/data/package/cache |
+| cleanAppFiles | 清除内部文件 - path /data/data/package/files |
+| cleanAppDbs | 清除内部数据库 - path /data/data/package/databases |
+| cleanAppDbByName | 根据名称清除数据库 - path /data/data/package/databases/dbName |
+| cleanAppSp | 清除内部 SP - path /data/data/package/shared_prefs |
+| cleanCache | 清除外部缓存 - path /storage/emulated/0/android/data/package/cache |
 | cleanCustomDir | 清除自定义路径下的文件, 使用需小心请不要误删, 而且只支持目录下的文件删除 |
 | cleanApplicationData | 清除本应用所有的数据 |
 | copyText | 复制文本到剪贴板 |
 | copyUri | 复制 URI 到剪贴板 |
 | copyIntent | 复制意图到剪贴板 |
 | notifyMediaStore | 通知刷新本地资源 |
-| insertImageIntoMediaStore | 添加图片到系统相册 ( 包含原图、相册图, 会存在两张 ) - 想要一张, 直接调用 notifyMediaStore() |
-| insertVideoIntoMediaStore | 添加视频到系统相册 |
-| insertIntoMediaStore | 保存到系统相册 |
 | showDialog | 显示 Dialog |
 | closeDialog | 关闭 Dialog |
 | closeDialogs | 关闭多个 Dialog |
@@ -2229,6 +2324,10 @@ DevUtils.openDebug();
 | saveBitmapToSDCardPNG | 保存图片到 SDCard - PNG |
 | saveBitmapToSDCardWEBP | 保存图片到 SDCard - WEBP |
 | saveBitmapToSDCard | 保存图片到 SDCard |
+| saveBitmapToStreamJPEG | 保存 JPEG 图片 |
+| saveBitmapToStreamPNG | 保存 PNG 图片 |
+| saveBitmapToStreamWEBP | 保存 WEBP 图片 |
+| saveBitmapToStream | 保存图片 |
 | get9PatchDrawable | 获取 .9 Drawable |
 | setColorFilter | 图片着色 - tint |
 | getBitmap | 获取 Bitmap |
@@ -2599,12 +2698,12 @@ DevUtils.openDebug();
 
 | 方法 | 注释 |
 | :- | :- |
-| isOpenWifi | 判断是否打开 wifi |
-| openWifi | 打开 wifi |
-| closeWifi | 关闭 wifi |
+| isOpenWifi | 判断是否打开 Wifi |
+| openWifi | 打开 Wifi |
+| closeWifi | 关闭 Wifi |
 | toggleWifiEnabled | 自动切换 Wifi 开关状态 |
 | getWifiState | 获取当前 Wifi 连接状态 |
-| startScan | 开始扫描 wifi |
+| startScan | 开始扫描 Wifi |
 | getConfiguration | 获取已配置 ( 连接过 ) 的 Wifi 配置 |
 | getWifiList | 获取附近的 Wifi 列表 |
 | getWifiInfo | 获取连接的 WifiInfo |
@@ -2624,7 +2723,7 @@ DevUtils.openDebug();
 | getSecurity | 获取 Wifi 加密类型 |
 | isExistsPwd | 判断 Wifi 加密类型, 是否为加密类型 |
 | isExists | 获取指定的 ssid 网络配置 ( 需连接保存过, 才存在 ) |
-| delWifiConfig | 删除指定的 wifi(SSID) 配置信息 |
+| delWifiConfig | 删除指定的 Wifi(SSID) 配置信息 |
 | quickConnWifi | 快速连接 Wifi ( 不使用静态 IP 方式 ) |
 | createWifiConfig | 创建 Wifi 配置信息 |
 | removeWifiConfig | 移除 Wifi 配置信息 |
@@ -2794,6 +2893,7 @@ DevUtils.openDebug();
 | 方法 | 注释 |
 | :- | :- |
 | toHexAlpha | 获取十六进制透明度字符串 |
+| getARGB | 返回一个颜色 ARGB 色值数组 ( 返回十进制 ) |
 | alpha | 返回一个颜色中的透明度值 ( 返回十进制 ) |
 | alphaPercent | 返回一个颜色中的透明度百分比值 |
 | red | 返回一个颜色中红色的色值 ( 返回十进制 ) |
@@ -2819,6 +2919,24 @@ DevUtils.openDebug();
 | setLight | 颜色变浅, 变亮 ( 单独修改 RGB 值, 不变动透明度 ) |
 | setAlphaDark | 设置透明度加深 |
 | setAlphaLight | 设置透明度变浅 |
+| grayLevel | 获取灰度值 |
+| setParser | 设置 Color 解析器 |
+| sortGray | 灰度值排序 |
+| sortHSB | HSB ( HSV) 排序 |
+| getKey | 获取 Key |
+| getValue | 获取 Value |
+| getValueParser | 获取 Value 解析后的值 ( 如: #000 => #000000 ) |
+| getValueColor | 获取 ARGB/RGB color |
+| getAlpha | 返回颜色中的透明度值 ( 返回十进制 ) |
+| getRed | 返回颜色中红色的色值 ( 返回十进制 ) |
+| getGreen | 返回颜色中绿色的色值 ( 返回十进制 ) |
+| getBlue | 返回颜色中蓝色的色值 ( 返回十进制 ) |
+| getGrayLevel | 获取灰度值 |
+| getHue | 获取颜色色调 |
+| getSaturation | 获取颜色饱和度 |
+| getBrightness | 获取颜色亮度 |
+| toString | toString |
+| handleColor | 处理 color |
 
 
 * **转换工具类 (Byte、Hex 等 ) ->** [ConvertUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/common/ConvertUtils.java)
@@ -2868,7 +2986,7 @@ DevUtils.openDebug();
 | bytesBitwiseAND | 按位求补 byte[] 位移编解码 ( 共用同一个方法 ) |
 
 
-* **坐标 (GPS 纠偏 ) 相关工具类 ->** [CoordinateUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/common/CoordinateUtils.java)
+* **坐标 ( GPS 纠偏 ) 相关工具类 ->** [CoordinateUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/common/CoordinateUtils.java)
 
 | 方法 | 注释 |
 | :- | :- |
@@ -2879,6 +2997,10 @@ DevUtils.openDebug();
 | bd09ToWGS84 | BD09 坐标转 WGS84 坐标 |
 | wgs84ToBd09 | WGS84 坐标转 BD09 坐标 |
 | outOfChina | 判断是否中国境外 |
+| getDistance | 计算两个坐标相距距离 ( 单位: 米 ) |
+| getAngle | 计算两个坐标的方向角度 |
+| getDirection | 计算两个坐标的方向 |
+| getValue | 获取中文方向值 |
 
 
 * **日期工具类 ->** [DateUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/common/DateUtils.java)
@@ -2963,6 +3085,7 @@ DevUtils.openDebug();
 | getAutoFormatString | 获取自动数量格式化后的字符串 ( 可变参数 ) |
 | getAutoFormatString2 | 获取自动数量格式化后的字符串 ( 可变参数 ) |
 | appends | StringBuilder 拼接处理 |
+| appendsIgnoreLast | StringBuilder 拼接处理 ( 最后一个不追加间隔 ) |
 | converHideMobile | 转换手机号 |
 | converSymbolHide | 转换符号处理 |
 | subEllipsize | 裁剪超出的内容, 并且追加符号 ( 如 ...) |
@@ -3036,6 +3159,7 @@ DevUtils.openDebug();
 | readFileToBytesByStream | 读取文件内容, 返回 byte[] |
 | readFileToBytesByChannel | 通过 FileChannel, 读取文件内容, 返回 byte[] |
 | readFileToBytesByMap | 通过 MappedByteBuffer, 读取文件内容, 返回 byte[] |
+| copyLarge | 复制 InputStream 到 OutputStream |
 
 
 * **文件记录工具类 ->** [FileRecordUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/common/FileRecordUtils.java)
@@ -3358,6 +3482,7 @@ DevUtils.openDebug();
 | getAutoFormatString | 获取自动数量格式化后的字符串 ( 可变参数 ) |
 | getAutoFormatString2 | 获取自动数量格式化后的字符串 ( 可变参数 ) |
 | appends | StringBuilder 拼接处理 |
+| appendsIgnoreLast | StringBuilder 拼接处理 ( 最后一个不追加间隔 ) |
 | toGBKEncode | 字符串进行 GBK 编码 |
 | toGBK2312Encode | 字符串进行 GBK2312 编码 |
 | toUTF8Encode | 字符串进行 UTF-8 编码 |
