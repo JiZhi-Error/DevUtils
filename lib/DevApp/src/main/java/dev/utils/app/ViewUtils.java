@@ -3,9 +3,22 @@ package dev.utils.app;
 import android.app.Activity;
 import android.content.Context;
 import android.content.ContextWrapper;
+import android.content.res.ColorStateList;
+import android.graphics.ColorFilter;
 import android.graphics.Paint;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.support.annotation.ColorInt;
+import android.support.annotation.DrawableRes;
+import android.support.annotation.FloatRange;
+import android.support.annotation.IdRes;
+import android.support.annotation.LayoutRes;
+import android.support.annotation.RequiresApi;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -16,18 +29,10 @@ import android.view.animation.Animation;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
-
-import androidx.annotation.FloatRange;
-import androidx.annotation.IdRes;
-import androidx.annotation.LayoutRes;
-import androidx.annotation.RequiresApi;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.viewpager.widget.ViewPager;
 
 import dev.DevUtils;
 import dev.utils.LogPrintUtils;
+import dev.utils.app.image.ImageUtils;
 
 /**
  * detail: View 操作相关工具类
@@ -146,6 +151,47 @@ public final class ViewUtils {
         return null;
     }
 
+    /**
+     * 获取 View
+     * @param context  {@link Context}
+     * @param resource R.layout.id
+     * @return {@link View}
+     */
+    public static View inflate(final Context context, @LayoutRes final int resource) {
+        return inflate(context, resource, null, false);
+    }
+
+    /**
+     * 获取 View
+     * @param context  {@link Context}
+     * @param resource R.layout.id
+     * @param root     {@link ViewGroup}
+     * @return {@link View}
+     */
+    public static View inflate(final Context context, @LayoutRes final int resource, final ViewGroup root) {
+        return inflate(context, resource, root, root != null);
+    }
+
+    /**
+     * 获取 View
+     * <pre>
+     *     获取含有 android.support View 需要传入当前 Activity Context
+     * </pre>
+     * @param context      {@link Context}
+     * @param resource     R.layout.id
+     * @param root         {@link ViewGroup}
+     * @param attachToRoot 是否添加到 root 上
+     * @return {@link View}
+     */
+    public static View inflate(final Context context, @LayoutRes final int resource, final ViewGroup root, final boolean attachToRoot) {
+        try {
+            return LayoutInflater.from(context).inflate(resource, root, attachToRoot);
+        } catch (Exception e) {
+            LogPrintUtils.eTag(TAG, e, "inflate");
+        }
+        return null;
+    }
+
     // =
 
     /**
@@ -218,6 +264,19 @@ public final class ViewUtils {
             viewGroup.removeAllViews();
         }
         return viewGroup;
+    }
+
+    /**
+     * 获取全部子 View
+     * @param viewGroup {@link ViewGroup}
+     * @return View[]
+     */
+    public static View[] getChilds(final ViewGroup viewGroup) {
+        View[] views = new View[getChildCount(viewGroup)];
+        for (int i = 0, len = views.length; i < len; i++) {
+            views[i] = getChildAt(viewGroup, i);
+        }
+        return views;
     }
 
     // =
@@ -337,7 +396,7 @@ public final class ViewUtils {
     /**
      * 判断 View 是否为 null
      * @param view {@link View}
-     * @return {@code true} is null, {@code false} not null
+     * @return {@code true} yes, {@code false} no
      */
     public static boolean isEmpty(final View view) {
         return view == null;
@@ -346,7 +405,7 @@ public final class ViewUtils {
     /**
      * 判断 View 是否为 null
      * @param views View[]
-     * @return {@code true} is null, {@code false} not null
+     * @return {@code true} yes, {@code false} no
      */
     public static boolean isEmpty(final View... views) {
         if (views != null && views.length != 0) {
@@ -364,7 +423,7 @@ public final class ViewUtils {
     /**
      * 判断 View 是否不为 null
      * @param view {@link View}
-     * @return {@code true} not null, {@code false} is null
+     * @return {@code true} yes, {@code false} no
      */
     public static boolean isNotEmpty(final View view) {
         return view != null;
@@ -373,7 +432,7 @@ public final class ViewUtils {
     /**
      * 判断 View 是否不为 null
      * @param views View[]
-     * @return {@code true} not null, {@code false} is null
+     * @return {@code true} yes, {@code false} no
      */
     public static boolean isNotEmpty(final View... views) {
         if (views != null && views.length != 0) {
@@ -1447,6 +1506,24 @@ public final class ViewUtils {
         return focusable;
     }
 
+    /**
+     * 切换获取焦点状态
+     * @param views View[]
+     * @return {@code true} success, {@code false} fail
+     */
+    public static boolean toggleFocusable(final View... views) {
+        if (views != null) {
+            for (int i = 0, len = views.length; i < len; i++) {
+                View view = views[i];
+                if (view != null) {
+                    view.setFocusable(!view.isFocusable());
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+
     // =
 
     /**
@@ -1477,6 +1554,24 @@ public final class ViewUtils {
             }
         }
         return selected;
+    }
+
+    /**
+     * 切换选中状态
+     * @param views View[]
+     * @return {@code true} success, {@code false} fail
+     */
+    public static boolean toggleSelected(final View... views) {
+        if (views != null) {
+            for (int i = 0, len = views.length; i < len; i++) {
+                View view = views[i];
+                if (view != null) {
+                    view.setSelected(!view.isSelected());
+                }
+            }
+            return true;
+        }
+        return false;
     }
 
     // =
@@ -1511,6 +1606,24 @@ public final class ViewUtils {
         return enabled;
     }
 
+    /**
+     * 切换 View 是否启用状态
+     * @param views View[]
+     * @return {@code true} success, {@code false} fail
+     */
+    public static boolean toggleEnabled(final View... views) {
+        if (views != null) {
+            for (int i = 0, len = views.length; i < len; i++) {
+                View view = views[i];
+                if (view != null) {
+                    view.setEnabled(!view.isEnabled());
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+
     // =
 
     /**
@@ -1543,6 +1656,24 @@ public final class ViewUtils {
         return clickable;
     }
 
+    /**
+     * 切换 View 是否可以点击状态
+     * @param views View[]
+     * @return {@code true} success, {@code false} fail
+     */
+    public static boolean toggleClickable(final View... views) {
+        if (views != null) {
+            for (int i = 0, len = views.length; i < len; i++) {
+                View view = views[i];
+                if (view != null) {
+                    view.setClickable(!view.isClickable());
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+
     // =
 
     /**
@@ -1573,6 +1704,24 @@ public final class ViewUtils {
             }
         }
         return longClickable;
+    }
+
+    /**
+     * 切换 View 是否可以长按状态
+     * @param views View[]
+     * @return {@code true} success, {@code false} fail
+     */
+    public static boolean toggleLongClickable(final View... views) {
+        if (views != null) {
+            for (int i = 0, len = views.length; i < len; i++) {
+                View view = views[i];
+                if (view != null) {
+                    view.setLongClickable(!view.isLongClickable());
+                }
+            }
+            return true;
+        }
+        return false;
     }
 
     // =================
@@ -1809,16 +1958,16 @@ public final class ViewUtils {
 
     /**
      * 切换 View 显示的状态
-     * @param status   {@link View#VISIBLE}、{@link View#INVISIBLE}、{@link View#GONE}
+     * @param state    {@link View#VISIBLE}、{@link View#INVISIBLE}、{@link View#GONE}
      * @param viewArys View[]
      * @param views    View[]
      * @return {@code true} success, {@code false} fail
      */
-    public static boolean toggleVisibilitys(final int status, final View[] viewArys, final View... views) {
+    public static boolean toggleVisibilitys(final int state, final View[] viewArys, final View... views) {
         // 默认显示
         setVisibilitys(View.VISIBLE, viewArys);
         // 根据状态处理
-        setVisibilitys(status, views);
+        setVisibilitys(state, views);
         return true;
     }
 
@@ -1826,13 +1975,13 @@ public final class ViewUtils {
 
     /**
      * 反转 View 显示的状态
-     * @param status   {@link View#VISIBLE}、{@link View#INVISIBLE}、{@link View#GONE}
+     * @param state    {@link View#VISIBLE}、{@link View#INVISIBLE}、{@link View#GONE}
      * @param viewArys View[]
      * @param views    View[]
      * @return isVisibility
      */
-    public static boolean reverseVisibilitys(final int status, final View[] viewArys, final View... views) {
-        return reverseVisibilitys(status == View.VISIBLE, viewArys, views);
+    public static boolean reverseVisibilitys(final int state, final View[] viewArys, final View... views) {
+        return reverseVisibilitys(state == View.VISIBLE, viewArys, views);
     }
 
     /**
@@ -1852,13 +2001,13 @@ public final class ViewUtils {
 
     /**
      * 反转 View 显示的状态
-     * @param status {@link View#VISIBLE}、{@link View#INVISIBLE}、{@link View#GONE}
-     * @param view   {@link View}
-     * @param views  View[]
+     * @param state {@link View#VISIBLE}、{@link View#INVISIBLE}、{@link View#GONE}
+     * @param view  {@link View}
+     * @param views View[]
      * @return isVisibility
      */
-    public static boolean reverseVisibilitys(final int status, final View view, final View... views) {
-        return reverseVisibilitys(status == View.VISIBLE, view, views);
+    public static boolean reverseVisibilitys(final int state, final View view, final View... views) {
+        return reverseVisibilitys(state == View.VISIBLE, view, views);
     }
 
     /**
@@ -2775,183 +2924,6 @@ public final class ViewUtils {
         return false;
     }
 
-    // =====================
-    // = CompoundDrawables =
-    // =====================
-
-    /**
-     * 获取 CompoundDrawables
-     * @param textView {@link TextView}
-     * @param <T>      泛型
-     * @return Drawable[] { left, top, right, bottom }
-     */
-    public static <T extends TextView> Drawable[] getCompoundDrawables(final T textView) {
-        if (textView != null) {
-            return textView.getCompoundDrawables();
-        }
-        return new Drawable[]{null, null, null, null};
-    }
-
-    /**
-     * 获取 CompoundDrawables Padding
-     * @param textView {@link TextView}
-     * @param <T>      泛型
-     * @return CompoundDrawables Padding
-     */
-    public static <T extends TextView> int getCompoundDrawablePadding(final T textView) {
-        if (textView != null) {
-            return textView.getCompoundDrawablePadding();
-        }
-        return 0;
-    }
-
-    // ========================
-    // = setCompoundDrawables =
-    // ========================
-
-    /**
-     * 设置 Left CompoundDrawables
-     * @param textView {@link TextView}
-     * @param left     left Drawable
-     * @param <T>      泛型
-     * @return {@link View}
-     */
-    public static <T extends TextView> T setCompoundDrawablesByLeft(final T textView, final Drawable left) {
-        return setCompoundDrawables(textView, left, null, null, null);
-    }
-
-    /**
-     * 设置 Top CompoundDrawables
-     * @param textView {@link TextView}
-     * @param top      top Drawable
-     * @param <T>      泛型
-     * @return {@link View}
-     */
-    public static <T extends TextView> T setCompoundDrawablesByTop(final T textView, final Drawable top) {
-        return setCompoundDrawables(textView, null, top, null, null);
-    }
-
-    /**
-     * 设置 Right CompoundDrawables
-     * @param textView {@link TextView}
-     * @param right    right Drawable
-     * @param <T>      泛型
-     * @return {@link View}
-     */
-    public static <T extends TextView> T setCompoundDrawablesByRight(final T textView, final Drawable right) {
-        return setCompoundDrawables(textView, null, null, right, null);
-    }
-
-    /**
-     * 设置 Bottom CompoundDrawables
-     * @param textView {@link TextView}
-     * @param bottom   bottom Drawable
-     * @param <T>      泛型
-     * @return {@link View}
-     */
-    public static <T extends TextView> T setCompoundDrawablesByBottom(final T textView, final Drawable bottom) {
-        return setCompoundDrawables(textView, null, null, null, bottom);
-    }
-
-    /**
-     * 设置 CompoundDrawables
-     * <pre>
-     *     CompoundDrawable 的大小控制是通过 drawable.setBounds() 控制
-     *     需要先设置 Drawable 的 setBounds
-     *     {@link dev.utils.app.image.ImageUtils#setBounds}
-     * </pre>
-     * @param textView {@link TextView}
-     * @param left     left Drawable
-     * @param top      top Drawable
-     * @param right    right Drawable
-     * @param bottom   bottom Drawable
-     * @param <T>      泛型
-     * @return {@link View}
-     */
-    public static <T extends TextView> T setCompoundDrawables(final T textView,
-                                                              final Drawable left, final Drawable top,
-                                                              final Drawable right, final Drawable bottom) {
-        if (textView != null) {
-            try {
-                textView.setCompoundDrawables(left, top, right, bottom);
-            } catch (Exception e) {
-                LogPrintUtils.eTag(TAG, e, "setCompoundDrawables");
-            }
-        }
-        return textView;
-    }
-
-    // ===========================================
-    // = setCompoundDrawablesWithIntrinsicBounds =
-    // ===========================================
-
-    /**
-     * 设置 Left CompoundDrawables - 按照原有比例大小显示图片
-     * @param textView {@link TextView}
-     * @param left     left Drawable
-     * @param <T>      泛型
-     * @return {@link View}
-     */
-    public static <T extends TextView> T setCompoundDrawablesWithIntrinsicBoundsByLeft(final T textView, final Drawable left) {
-        return setCompoundDrawablesWithIntrinsicBounds(textView, left, null, null, null);
-    }
-
-    /**
-     * 设置 Top CompoundDrawables - 按照原有比例大小显示图片
-     * @param textView {@link TextView}
-     * @param top      top Drawable
-     * @param <T>      泛型
-     * @return {@link View}
-     */
-    public static <T extends TextView> T setCompoundDrawablesWithIntrinsicBoundsByTop(final T textView, final Drawable top) {
-        return setCompoundDrawablesWithIntrinsicBounds(textView, null, top, null, null);
-    }
-
-    /**
-     * 设置 Right CompoundDrawables - 按照原有比例大小显示图片
-     * @param textView {@link TextView}
-     * @param right    right Drawable
-     * @param <T>      泛型
-     * @return {@link View}
-     */
-    public static <T extends TextView> T setCompoundDrawablesWithIntrinsicBoundsByRight(final T textView, final Drawable right) {
-        return setCompoundDrawablesWithIntrinsicBounds(textView, null, null, right, null);
-    }
-
-    /**
-     * 设置 Bottom CompoundDrawables - 按照原有比例大小显示图片
-     * @param textView {@link TextView}
-     * @param bottom   bottom Drawable
-     * @param <T>      泛型
-     * @return {@link View}
-     */
-    public static <T extends TextView> T setCompoundDrawablesWithIntrinsicBoundsByBottom(final T textView, final Drawable bottom) {
-        return setCompoundDrawablesWithIntrinsicBounds(textView, null, null, null, bottom);
-    }
-
-    /**
-     * 设置 CompoundDrawables - 按照原有比例大小显示图片
-     * @param textView {@link TextView}
-     * @param left     left Drawable
-     * @param top      top Drawable
-     * @param right    right Drawable
-     * @param bottom   bottom Drawable
-     * @param <T>      泛型
-     * @return {@link View}
-     */
-    public static <T extends TextView> T setCompoundDrawablesWithIntrinsicBounds(final T textView,
-                                                                                 final Drawable left, final Drawable top,
-                                                                                 final Drawable right, final Drawable bottom) {
-        if (textView != null) {
-            try {
-                textView.setCompoundDrawablesWithIntrinsicBounds(left, top, right, bottom);
-            } catch (Exception e) {
-                LogPrintUtils.eTag(TAG, e, "setCompoundDrawablesWithIntrinsicBounds");
-            }
-        }
-        return textView;
-    }
-
     // ==================
     // = RelativeLayout =
     // ==================
@@ -3163,5 +3135,316 @@ public final class ViewUtils {
             }
         }
         return animation;
+    }
+
+    // ========
+    // = 背景 =
+    // ========
+
+    /**
+     * 设置背景图片
+     * @param view       {@link View}
+     * @param background 背景图片
+     * @return {@link View}
+     */
+    public static View setBackground(final View view, final Drawable background) {
+        if (view != null) {
+            try {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    view.setBackground(background);
+                } else {
+                    view.setBackgroundDrawable(background);
+                }
+            } catch (Exception e) {
+                LogPrintUtils.eTag(TAG, e, "setBackground");
+            }
+        }
+        return view;
+    }
+
+    /**
+     * 设置背景颜色
+     * @param view  {@link View}
+     * @param color 背景颜色
+     * @return {@link View}
+     */
+    public static View setBackgroundColor(final View view, @ColorInt final int color) {
+        if (view != null) {
+            try {
+                view.setBackgroundColor(color);
+            } catch (Exception e) {
+                LogPrintUtils.eTag(TAG, e, "setBackgroundColor");
+            }
+        }
+        return view;
+    }
+
+    /**
+     * 设置背景资源
+     * @param view  {@link View}
+     * @param resId resource identifier
+     * @return {@link View}
+     */
+    public static View setBackgroundResource(final View view, @DrawableRes final int resId) {
+        if (view != null) {
+            try {
+                view.setBackgroundResource(resId);
+            } catch (Exception e) {
+                LogPrintUtils.eTag(TAG, e, "setBackgroundResource");
+            }
+        }
+        return view;
+    }
+
+    /**
+     * 设置背景着色颜色
+     * @param view {@link View}
+     * @param tint 着色颜色
+     * @return {@link View}
+     */
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    public static View setBackgroundTintList(final View view, final ColorStateList tint) {
+        if (view != null) {
+            try {
+                view.setBackgroundTintList(tint);
+            } catch (Exception e) {
+                LogPrintUtils.eTag(TAG, e, "setBackgroundTintList");
+            }
+        }
+        return view;
+    }
+
+    /**
+     * 设置背景着色模式
+     * @param view     {@link View}
+     * @param tintMode 着色模式 {@link PorterDuff.Mode}
+     * @return {@link View}
+     */
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    public static View setBackgroundTintMode(final View view, final PorterDuff.Mode tintMode) {
+        if (view != null) {
+            try {
+                view.setBackgroundTintMode(tintMode);
+            } catch (Exception e) {
+                LogPrintUtils.eTag(TAG, e, "setBackgroundTintMode");
+            }
+        }
+        return view;
+    }
+
+    // ========
+    // = 前景 =
+    // ========
+
+    /**
+     * 设置前景图片
+     * @param view       {@link View}
+     * @param foreground 前景图片
+     * @return {@link View}
+     */
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    public static View setForeground(final View view, final Drawable foreground) {
+        if (view != null) {
+            try {
+                view.setForeground(foreground);
+            } catch (Exception e) {
+                LogPrintUtils.eTag(TAG, e, "setForeground");
+            }
+        }
+        return view;
+    }
+
+    /**
+     * 设置前景重心
+     * @param view    {@link View}
+     * @param gravity 重心
+     * @return {@link View}
+     */
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    public static View setForegroundGravity(final View view, final int gravity) {
+        if (view != null) {
+            try {
+                view.setForegroundGravity(gravity);
+            } catch (Exception e) {
+                LogPrintUtils.eTag(TAG, e, "setForegroundGravity");
+            }
+        }
+        return view;
+    }
+
+    /**
+     * 设置前景着色颜色
+     * @param view {@link View}
+     * @param tint 着色颜色
+     * @return {@link View}
+     */
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    public static View setForegroundTintList(final View view, final ColorStateList tint) {
+        if (view != null) {
+            try {
+                view.setForegroundTintList(tint);
+            } catch (Exception e) {
+                LogPrintUtils.eTag(TAG, e, "setForegroundTintList");
+            }
+        }
+        return view;
+    }
+
+    /**
+     * 设置前景着色模式
+     * @param view     {@link View}
+     * @param tintMode 着色模式 {@link PorterDuff.Mode}
+     * @return {@link View}
+     */
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    public static View setForegroundTintMode(final View view, final PorterDuff.Mode tintMode) {
+        if (view != null) {
+            try {
+                view.setForegroundTintMode(tintMode);
+            } catch (Exception e) {
+                LogPrintUtils.eTag(TAG, e, "setForegroundTintMode");
+            }
+        }
+        return view;
+    }
+
+    // ========
+    // = 获取 =
+    // ========
+
+    /**
+     * 获取 View 背景 Drawable
+     * @param view {@link View}
+     * @return 背景 Drawable
+     */
+    public static Drawable getBackground(final View view) {
+        if (view != null) return view.getBackground();
+        return null;
+    }
+
+    /**
+     * 获取 View 背景着色颜色
+     * @param view {@link View}
+     * @return 背景着色颜色 {@link ColorStateList}
+     */
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    public static ColorStateList getBackgroundTintList(final View view) {
+        if (view != null) return view.getBackgroundTintList();
+        return null;
+    }
+
+    /**
+     * 获取 View 背景着色模式
+     * @param view {@link View}
+     * @return 背景着色模式 {@link PorterDuff.Mode}
+     */
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    public static PorterDuff.Mode getBackgroundTintMode(final View view) {
+        if (view != null) return view.getBackgroundTintMode();
+        return null;
+    }
+
+    // =
+
+    /**
+     * 获取 View 前景 Drawable
+     * @param view {@link View}
+     * @return 前景 Drawable
+     */
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    public static Drawable getForeground(final View view) {
+        if (view != null) return view.getForeground();
+        return null;
+    }
+
+    /**
+     * 获取 View 前景重心
+     * @param view {@link View}
+     * @return 前景重心 {@link Gravity}
+     */
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    public static int getForegroundGravity(final View view) {
+        if (view != null) return view.getForegroundGravity();
+        return Gravity.FILL;
+    }
+
+    /**
+     * 获取 View 前景着色颜色
+     * @param view {@link View}
+     * @return 前景着色颜色 {@link ColorStateList}
+     */
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    public static ColorStateList getForegroundTintList(final View view) {
+        if (view != null) return view.getForegroundTintList();
+        return null;
+    }
+
+    /**
+     * 获取 View 前景着色模式
+     * @param view {@link View}
+     * @return 前景着色模式 {@link PorterDuff.Mode}
+     */
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    public static PorterDuff.Mode getForegroundTintMode(final View view) {
+        if (view != null) return view.getForegroundTintMode();
+        return null;
+    }
+
+    // ============
+    // = 着色处理 =
+    // ============
+
+    /**
+     * View 着色处理
+     * @param view  {@link View}
+     * @param color 颜色值
+     * @return {@link View}
+     */
+    public static View setColorFilter(final View view, @ColorInt final int color) {
+        return setColorFilter(view, getBackground(view), color);
+    }
+
+    /**
+     * View 着色处理, 并且设置 Background Drawable
+     * @param view     {@link View}
+     * @param drawable {@link Drawable}
+     * @param color    颜色值
+     * @return {@link View}
+     */
+    public static View setColorFilter(final View view, final Drawable drawable, @ColorInt final int color) {
+        try {
+            setBackground(view, ImageUtils.setColorFilter(drawable, color));
+        } catch (Exception e) {
+            LogPrintUtils.eTag(TAG, e, "setColorFilter");
+        }
+        return view;
+    }
+
+    // =
+
+    /**
+     * View 着色处理
+     * @param view        {@link View}
+     * @param colorFilter 颜色过滤 ( 效果 )
+     * @return {@link View}
+     */
+    public static View setColorFilter(final View view, final ColorFilter colorFilter) {
+        return setColorFilter(view, getBackground(view), colorFilter);
+    }
+
+    /**
+     * View 着色处理, 并且设置 Background Drawable
+     * @param view        {@link View}
+     * @param drawable    {@link Drawable}
+     * @param colorFilter 颜色过滤 ( 效果 )
+     * @return {@link View}
+     */
+    public static View setColorFilter(final View view, final Drawable drawable, final ColorFilter colorFilter) {
+        try {
+            setBackground(view, ImageUtils.setColorFilter(drawable, colorFilter));
+        } catch (Exception e) {
+            LogPrintUtils.eTag(TAG, e, "setColorFilter");
+        }
+        return view;
     }
 }
