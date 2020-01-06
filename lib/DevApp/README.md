@@ -167,11 +167,6 @@ DevUtils.openDebug();
 | exitApplication | 退出应用程序 |
 | restartApplication | 重启 APP |
 | startActivityForResult | Activity 跳转回传 |
-| onStartActivityForResult | 跳转 Activity 操作 |
-| onActivityResult | 回传处理 |
-| start | 跳转回传结果处理 Activity 内部方法 |
-| onCreate | onCreate |
-| onDestroy | onDestroy |
 
 
 * **ADB shell 工具类 ->** [ADBUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/ADBUtils.java)
