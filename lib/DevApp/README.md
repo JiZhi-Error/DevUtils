@@ -2,10 +2,10 @@
 ## Gradle
 
 ```java
-implementation 'com.afkt:DevApp:1.8.6'
+implementation 'com.afkt:DevApp:1.8.7'
 
 // AndroidX
-implementation 'com.afkt:DevAppX:1.8.6'
+implementation 'com.afkt:DevAppX:1.8.7'
 ```
 
 ## 目录结构
@@ -164,8 +164,14 @@ DevUtils.openDebug();
 | existActivitys | 检测是否包含指定的 Activity |
 | finishAllActivityToIgnore | 结束全部 Activity 除忽略的 Activity 外 |
 | finishAllActivity | 结束所有 Activity |
-| appExit | 退出应用程序 |
+| exitApplication | 退出应用程序 |
 | restartApplication | 重启 APP |
+| startActivityForResult | Activity 跳转回传 |
+| onStartActivityForResult | 跳转 Activity 操作 |
+| onActivityResult | 回传处理 |
+| start | 跳转回传结果处理 Activity 内部方法 |
+| onCreate | onCreate |
+| onDestroy | onDestroy |
 
 
 * **ADB shell 工具类 ->** [ADBUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/ADBUtils.java)
@@ -794,6 +800,7 @@ DevUtils.openDebug();
 | getLaunchAppInstallPermissionSettingsIntent | 获取 APP 安装权限设置的意图 |
 | getLaunchAppNotificationSettingsIntent | 获取 APP 通知权限设置的意图 |
 | getLaunchAppNotificationListenSettingsIntent | 获取 APP 通知使用权页面 |
+| getManageOverlayPermissionIntent | 获取 APP 悬浮窗口权限详情页的意图 |
 | getLaunchAppDetailsSettingsIntent | 获取 APP 具体设置的意图 |
 | getLaunchAppDetailIntent | 获取到应用商店 APP 详情界面的意图 |
 | getShareTextIntent | 获取分享文本的意图 |
@@ -2502,7 +2509,9 @@ DevUtils.openDebug();
 | onRequestPermissionsResult | 请求权限回调 - 需要在 Activity 的 onRequestPermissionsResult 回调中, 调用 PermissionUtils.onRequestPermissionsResult(this); |
 | notifyPermissionsChange | 刷新权限改变处理 ( 清空已拒绝的权限记录 ) |
 | isGranted | 判断是否授予了权限 |
-| shouldShowRequestPermissionRationale | 是否拒绝了权限 - 拒绝过一次, 再次申请时, 弹出选择不再提醒并拒绝才会触发 true |
+| shouldShowRequestPermissionRationale | 获取拒绝权限询问勾选状态 |
+| getDeniedPermissionStatus | 获取拒绝权限询问状态集合 |
+| againRequest | 再次请求处理操作 |
 | canRequestPackageInstalls | 是否存在 APK 安装权限 |
 | getAllPermissionToSet | 获取全部权限 |
 | getAllPermissionToList | 获取全部权限 |
