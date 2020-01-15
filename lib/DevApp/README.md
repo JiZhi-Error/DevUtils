@@ -2,10 +2,10 @@
 ## Gradle
 
 ```java
-implementation 'com.afkt:DevApp:1.8.7'
+implementation 'com.afkt:DevApp:1.8.8'
 
 // AndroidX
-implementation 'com.afkt:DevAppX:1.8.7'
+implementation 'com.afkt:DevAppX:1.8.8'
 ```
 
 ## 目录结构
@@ -2273,6 +2273,7 @@ DevUtils.openDebug();
 | compressByByteSize | 按质量压缩 ( 图片大小 ) |
 | compressBySampleSize | 按采样大小压缩 |
 | calculateInSampleSize | 计算采样大小 |
+| calculateQuality | 计算最佳压缩质量值 |
 
 
 * **图片格式转换工具类 ->** [ImageConvertUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/image/ImageConvertUtils.java)
@@ -3236,6 +3237,8 @@ DevUtils.openDebug();
 | deleteFilesInDirWithFilter | 删除目录下所有过滤的文件 |
 | listFilesInDir | 获取目录下所有文件 - 不递归进子目录 |
 | listFilesInDirWithFilter | 获取目录下所有过滤的文件 - 不递归进子目录 |
+| listFilesInDirBean | 获取目录下所有文件 - 不递归进子目录 |
+| listFilesInDirWithFilterBean | 获取目录下所有过滤的文件 - 不递归进子目录 |
 | isImageFormats | 根据文件名判断文件是否为图片 |
 | isAudioFormats | 根据文件名判断文件是否为音频 |
 | isVideoFormats | 根据文件名判断文件是否为视频 |
