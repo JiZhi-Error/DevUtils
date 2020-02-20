@@ -2,10 +2,10 @@
 ## Gradle
 
 ```java
-implementation 'com.afkt:DevApp:1.8.9'
+implementation 'com.afkt:DevApp:1.9.0'
 
 // AndroidX
-implementation 'com.afkt:DevAppX:1.8.9'
+implementation 'com.afkt:DevAppX:1.9.0'
 ```
 
 ## 目录结构
@@ -3160,6 +3160,8 @@ DevUtils.openDebug();
 | 方法 | 注释 |
 | :- | :- |
 | setBufferSize | 设置缓冲区的大小, 默认大小等于 8192 字节 |
+| getFileInputStream | 获取输入流 |
+| getFileOutputStream | 获取输出流 |
 | writeFileFromIS | 通过输入流写入文件 |
 | writeFileFromBytesByStream | 通过字节流写入文件 |
 | writeFileFromBytesByChannel | 通过 FileChannel 把字节流写入文件 |
@@ -3226,7 +3228,7 @@ DevUtils.openDebug();
 | deleteFiles | 删除多个文件 |
 | deleteFolder | 删除文件夹 |
 | saveFile | 保存文件 |
-| appendFile | 追加文件 ( 使用 FileWriter) |
+| appendFile | 追加文件 |
 | readFileBytes | 读取文件 |
 | readFile | 读取文件 |
 | copyFile | 复制单个文件 |
@@ -3482,6 +3484,7 @@ DevUtils.openDebug();
 | countMatches | 统计字符串匹配个数 |
 | countMatches2 | 统计字符串匹配个数 |
 | isSpace | 判断字符串是否为 null 或全为空白字符 |
+| getBytes | 字符串 转 byte[] |
 | toClearSpace | 清空字符串全部空格 |
 | toClearSpaceTrim | 清空字符串前后所有空格 |
 | appendSpace | 追加空格 |
