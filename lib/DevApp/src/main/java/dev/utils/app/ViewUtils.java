@@ -211,6 +211,34 @@ public final class ViewUtils {
         return null;
     }
 
+    /**
+     * 获取是否限制子 View 在其边界内绘制
+     * @param viewGroup {@link ViewGroup}
+     * @return {@code true} yes, {@code false} no
+     */
+    public static boolean getClipChildren(final ViewGroup viewGroup) {
+        if (viewGroup != null) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
+                return viewGroup.getClipChildren();
+            }
+        }
+        return true;
+    }
+
+    /**
+     * 设置是否限制子 View 在其边界内绘制
+     * @param viewGroup    {@link ViewGroup}
+     * @param clipChildren {@code true} yes, {@code false} no
+     * @return {@code true} success, {@code false} fail
+     */
+    public static boolean setClipChildren(final ViewGroup viewGroup, final boolean clipChildren) {
+        if (viewGroup != null) {
+            viewGroup.setClipChildren(clipChildren);
+            return true;
+        }
+        return false;
+    }
+
     // =
 
     /**
