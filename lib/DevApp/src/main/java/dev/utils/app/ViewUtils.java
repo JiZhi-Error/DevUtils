@@ -212,6 +212,91 @@ public final class ViewUtils {
         return null;
     }
 
+    /**
+     * 获取 android.R.id.content View
+     * @param activity {@link Activity}
+     * @param <T>      泛型
+     * @return {@link View}
+     */
+    public static <T extends View> T getContentView(final Activity activity) {
+        return ViewUtils.findViewById(activity, android.R.id.content);
+    }
+
+    /**
+     * 获取 android.R.id.content View
+     * @param view {@link View}
+     * @param <T>  泛型
+     * @return {@link View}
+     */
+    public static <T extends View> T getContentView(final View view) {
+        if (view != null) {
+            try {
+                ViewParent parent = view.getParent();
+                while (parent != null && parent instanceof View) {
+                    View root = (View) parent;
+                    if (root.getId() == android.R.id.content) {
+                        return (T) root;
+                    }
+                    parent = parent.getParent();
+                }
+            } catch (Exception e) {
+                LogPrintUtils.eTag(TAG, e, "getContentView");
+            }
+        }
+        return null;
+    }
+
+    /**
+     * 获取指定 View 根布局 ( 最底层布局 )
+     * @param view {@link View}
+     * @param <T>  泛型
+     * @return {@link View}
+     */
+    public static <T extends View> T getRootParent(final View view) {
+        if (view != null) {
+            try {
+                View root = null;
+                ViewParent parent = view.getParent();
+                while (parent != null && parent instanceof View) {
+                    root = (View) parent;
+                    parent = parent.getParent();
+                }
+                return (T) root;
+            } catch (Exception e) {
+                LogPrintUtils.eTag(TAG, e, "getRootParent");
+            }
+        }
+        return null;
+    }
+
+    /**
+     * 获取是否限制子 View 在其边界内绘制
+     * @param viewGroup {@link ViewGroup}
+     * @return {@code true} yes, {@code false} no
+     */
+    public static boolean getClipChildren(final ViewGroup viewGroup) {
+        if (viewGroup != null) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
+                return viewGroup.getClipChildren();
+            }
+        }
+        return true;
+    }
+
+    /**
+     * 设置是否限制子 View 在其边界内绘制
+     * @param viewGroup    {@link ViewGroup}
+     * @param clipChildren {@code true} yes, {@code false} no
+     * @return {@code true} success, {@code false} fail
+     */
+    public static boolean setClipChildren(final ViewGroup viewGroup, final boolean clipChildren) {
+        if (viewGroup != null) {
+            viewGroup.setClipChildren(clipChildren);
+            return true;
+        }
+        return false;
+    }
+
     // =
 
     /**
@@ -2160,27 +2245,7 @@ public final class ViewUtils {
      * @return int[] 0 = 宽度, 1 = 高度
      */
     public static int[] measureView(final View view) {
-        if (view != null) {
-            try {
-                ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
-                if (layoutParams == null) {
-                    layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                }
-                int widthSpec = ViewGroup.getChildMeasureSpec(0, 0, layoutParams.width);
-                int height = layoutParams.height;
-                int heightSpec;
-                if (height > 0) {
-                    heightSpec = View.MeasureSpec.makeMeasureSpec(height, View.MeasureSpec.EXACTLY);
-                } else {
-                    heightSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
-                }
-                view.measure(widthSpec, heightSpec);
-                return new int[]{view.getMeasuredWidth(), view.getMeasuredHeight()};
-            } catch (Exception e) {
-                LogPrintUtils.eTag(TAG, e, "measureView");
-            }
-        }
-        return new int[]{0, 0};
+        return WidgetUtils.measureView(view);
     }
 
     /**
@@ -2189,11 +2254,7 @@ public final class ViewUtils {
      * @return View 的宽度
      */
     public static int getMeasuredWidth(final View view) {
-        if (view != null) {
-            measureView(view);
-            return view.getMeasuredWidth();
-        }
-        return 0;
+        return WidgetUtils.getMeasuredWidth(view);
     }
 
     /**
@@ -2202,11 +2263,7 @@ public final class ViewUtils {
      * @return View 的高度
      */
     public static int getMeasuredHeight(final View view) {
-        if (view != null) {
-            measureView(view);
-            return view.getMeasuredHeight();
-        }
-        return 0;
+        return WidgetUtils.getMeasuredHeight(view);
     }
 
     /**
@@ -2216,7 +2273,7 @@ public final class ViewUtils {
      * @return {@code true} success, {@code false} fail
      */
     public static boolean measureView(final View view, final int specifiedWidth) {
-        return measureView(view, specifiedWidth, 0);
+        return WidgetUtils.measureView(view, specifiedWidth);
     }
 
     /**
@@ -2227,39 +2284,7 @@ public final class ViewUtils {
      * @return {@code true} success, {@code false} fail
      */
     public static boolean measureView(final View view, final int specifiedWidth, final int specifiedHeight) {
-        try {
-            ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
-            // MeasureSpec
-            int widthMeasureSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
-            int heightMeasureSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
-            // 如果大于 0
-            if (specifiedWidth > 0) {
-                widthMeasureSpec = View.MeasureSpec.makeMeasureSpec(specifiedWidth, View.MeasureSpec.EXACTLY);
-            }
-            // 如果大于 0
-            if (specifiedHeight > 0) {
-                heightMeasureSpec = View.MeasureSpec.makeMeasureSpec(specifiedHeight, View.MeasureSpec.EXACTLY);
-            }
-            // 判断是否存在自定义宽高
-            if (layoutParams != null) {
-                int width = layoutParams.width;
-                int height = layoutParams.height;
-                if (width > 0 && height > 0) {
-                    widthMeasureSpec = View.MeasureSpec.makeMeasureSpec(width, View.MeasureSpec.EXACTLY);
-                    heightMeasureSpec = View.MeasureSpec.makeMeasureSpec(height, View.MeasureSpec.EXACTLY);
-                } else if (width > 0) {
-                    widthMeasureSpec = View.MeasureSpec.makeMeasureSpec(width, View.MeasureSpec.EXACTLY);
-                } else if (height > 0) {
-                    heightMeasureSpec = View.MeasureSpec.makeMeasureSpec(height, View.MeasureSpec.EXACTLY);
-                }
-            }
-            view.measure(widthMeasureSpec, heightMeasureSpec);
-            view.layout(0, 0, view.getMeasuredWidth(), view.getMeasuredHeight());
-            return true;
-        } catch (Exception e) {
-            LogPrintUtils.eTag(TAG, e, "measureView");
-        }
-        return false;
+        return WidgetUtils.measureView(view, specifiedWidth, specifiedHeight);
     }
 
     // ==================
