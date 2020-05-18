@@ -2,10 +2,10 @@
 ## Gradle
 
 ```java
-implementation 'com.afkt:DevApp:1.9.3'
+implementation 'com.afkt:DevApp:1.9.4'
 
 // AndroidX
-implementation 'com.afkt:DevAppX:1.9.3'
+implementation 'com.afkt:DevAppX:1.9.4'
 ```
 
 ## 目录结构
