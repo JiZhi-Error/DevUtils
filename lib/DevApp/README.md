@@ -6,7 +6,7 @@
 //implementation 'com.afkt:DevApp:1.9.4'
 
 // AndroidX
-implementation 'com.afkt:DevAppX:1.9.8'
+implementation 'com.afkt:DevAppX:1.9.9'
 ```
 
 ## 目录结构
@@ -573,6 +573,7 @@ DevUtils.openDebug();
 | 方法 | 注释 |
 | :- | :- |
 | getDataColumn | 获取 Uri Cursor 对应条件的数据行 data 字段 |
+| getDisplayNameColumn | 获取 Uri Cursor 对应条件的数据行 display_name 字段 |
 | delete | 删除多媒体资源 |
 | update | 更新多媒体资源 |
 | deleteDocument | 删除文件 |
@@ -1626,6 +1627,7 @@ DevUtils.openDebug();
 | getUriForFileToName | 获取 FileProvider File Path Uri ( 自动添加包名 ${applicationId} ) |
 | isUriExists | 判断 Uri 路径资源是否存在 |
 | getMediaUri | 通过 File 获取 Media Uri |
+| copyByUri | 通过 Uri 复制文件 |
 | getFilePathByUri | 通过 Uri 获取文件路径 |
 | isExternalStorageDocument | 判读 Uri authority 是否为 ExternalStorage Provider |
 | isDownloadsDocument | 判读 Uri authority 是否为 Downloads Provider |
