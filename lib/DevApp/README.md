@@ -6,7 +6,7 @@
 //implementation 'com.afkt:DevApp:1.9.4'
 
 // AndroidX
-implementation 'com.afkt:DevAppX:1.9.9'
+implementation 'com.afkt:DevAppX:2.0.0'
 ```
 
 ## 目录结构
@@ -42,11 +42,11 @@ implementation 'com.afkt:DevAppX:1.9.9'
 
 ## 使用
 
-> ##### ~~只需要在 Application 中调用 `DevUtils.init()` 进行初始化就行~~ , 在 DevUtils FileProviderDevApp 中已初始化 , 无需主动调用
+> ##### ~~只需要在 Application 中调用 `DevUtils.init()` 进行初始化~~ , 在 DevUtils FileProviderDevApp 中已初始化 , 无需主动调用
 
 ## 事项
 
-- 内部存在两个日志工具类 (工具类内部调用)，对外使用 [DevLogger](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/utils_readme/logger/DevLogger.md)
+- 内部存在两个日志工具类 ( 工具类内部调用 )，对外使用 [DevLogger](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/utils_readme/logger/DevLogger.md)
 
 ```java
 // 整个工具类内部日志信息，都通过以下两个工具类输出打印，并且通过 DevUtils.openLog() 控制开关
@@ -3469,6 +3469,9 @@ DevUtils.openDebug();
 | isFile | 判断是否文件 |
 | isDirectory | 判断是否文件夹 |
 | isHidden | 判断是否隐藏文件 |
+| canRead | 文件是否可读 |
+| canWrite | 文件是否可写 |
+| canReadWrite | 文件是否可读写 |
 | getFileLastModified | 获取文件最后修改的毫秒时间戳 |
 | getFileCharsetSimple | 获取文件编码格式 |
 | getFileLines | 获取文件行数 |
