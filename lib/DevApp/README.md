@@ -59,7 +59,7 @@ JCLogUtils
 
 - 开启日志
 ```java
-// 打开 lib 内部日志 - 线上 (release) 环境，不调用方法就行
+// 打开 lib 内部日志 - 线上 (release) 环境，不调用方法
 DevUtils.openLog();
 // 标示 debug 模式
 DevUtils.openDebug();
