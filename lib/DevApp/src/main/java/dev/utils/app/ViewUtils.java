@@ -577,6 +577,7 @@ public final class ViewUtils {
                 if (layoutParams != null) {
                     layoutParams.width = width;
                     layoutParams.height = height;
+                    view.setLayoutParams(layoutParams);
                 } else {
                     if (nullNewLP) {
                         layoutParams = new ViewGroup.LayoutParams(width, height);
