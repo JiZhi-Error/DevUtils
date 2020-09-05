@@ -2392,8 +2392,6 @@ public final class ViewUtils {
         return getMargin(view)[3];
     }
 
-    // =
-
     /**
      * 获取 View Margin
      * @param view {@link View}
@@ -2433,31 +2431,9 @@ public final class ViewUtils {
      * @return {@code true} success, {@code false} fail
      */
     public static boolean setMarginLeft(final View view, final int leftMargin, final boolean reset) {
-        if (view != null) {
-            // 判断是否属于 ViewGroup.MarginLayoutParams
-            if (view.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
-                if (reset) {
-                    try {
-                        ((ViewGroup.MarginLayoutParams) view.getLayoutParams()).setMargins(leftMargin, 0, 0, 0);
-                        return true;
-                    } catch (Exception e) {
-                        LogPrintUtils.eTag(TAG, e, "setMarginLeft");
-                    }
-                } else {
-                    try {
-                        ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) view.getLayoutParams();
-                        // 设置边距
-                        ((ViewGroup.MarginLayoutParams) view.getLayoutParams())
-                                .setMargins(leftMargin, layoutParams.topMargin,
-                                        layoutParams.rightMargin, layoutParams.bottomMargin);
-                        return true;
-                    } catch (Exception e) {
-                        LogPrintUtils.eTag(TAG, e, "setMarginLeft");
-                    }
-                }
-            }
-        }
-        return false;
+        if (reset) return setMargin(view, leftMargin, 0, 0, 0);
+        int[] margin = getMargin(view);
+        return setMargin(view, leftMargin, margin[1], margin[2], margin[3]);
     }
 
     /**
@@ -2478,31 +2454,9 @@ public final class ViewUtils {
      * @return {@code true} success, {@code false} fail
      */
     public static boolean setMarginTop(final View view, final int topMargin, final boolean reset) {
-        if (view != null) {
-            // 判断是否属于 ViewGroup.MarginLayoutParams
-            if (view.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
-                if (reset) {
-                    try {
-                        ((ViewGroup.MarginLayoutParams) view.getLayoutParams()).setMargins(0, topMargin, 0, 0);
-                        return true;
-                    } catch (Exception e) {
-                        LogPrintUtils.eTag(TAG, e, "setMarginTop");
-                    }
-                } else {
-                    try {
-                        ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) view.getLayoutParams();
-                        // 设置边距
-                        ((ViewGroup.MarginLayoutParams) view.getLayoutParams())
-                                .setMargins(layoutParams.leftMargin, topMargin,
-                                        layoutParams.rightMargin, layoutParams.bottomMargin);
-                        return true;
-                    } catch (Exception e) {
-                        LogPrintUtils.eTag(TAG, e, "setMarginTop");
-                    }
-                }
-            }
-        }
-        return false;
+        if (reset) return setMargin(view, 0, topMargin, 0, 0);
+        int[] margin = getMargin(view);
+        return setMargin(view, margin[0], topMargin, margin[2], margin[3]);
     }
 
     /**
@@ -2523,31 +2477,9 @@ public final class ViewUtils {
      * @return {@code true} success, {@code false} fail
      */
     public static boolean setMarginRight(final View view, final int rightMargin, final boolean reset) {
-        if (view != null) {
-            // 判断是否属于 ViewGroup.MarginLayoutParams
-            if (view.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
-                if (reset) {
-                    try {
-                        ((ViewGroup.MarginLayoutParams) view.getLayoutParams()).setMargins(0, 0, rightMargin, 0);
-                        return true;
-                    } catch (Exception e) {
-                        LogPrintUtils.eTag(TAG, e, "setMarginRight");
-                    }
-                } else {
-                    try {
-                        ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) view.getLayoutParams();
-                        // 设置边距
-                        ((ViewGroup.MarginLayoutParams) view.getLayoutParams())
-                                .setMargins(layoutParams.leftMargin, layoutParams.topMargin,
-                                        rightMargin, layoutParams.bottomMargin);
-                        return true;
-                    } catch (Exception e) {
-                        LogPrintUtils.eTag(TAG, e, "setMarginRight");
-                    }
-                }
-            }
-        }
-        return false;
+        if (reset) return setMargin(view, 0, 0, rightMargin, 0);
+        int[] margin = getMargin(view);
+        return setMargin(view, margin[0], margin[1], rightMargin, margin[3]);
     }
 
     /**
