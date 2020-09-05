@@ -578,11 +578,9 @@ public final class ViewUtils {
                     layoutParams.width = width;
                     layoutParams.height = height;
                     view.setLayoutParams(layoutParams);
-                } else {
-                    if (nullNewLP) {
-                        layoutParams = new ViewGroup.LayoutParams(width, height);
-                        view.setLayoutParams(layoutParams);
-                    }
+                } else if (nullNewLP) {
+                    layoutParams = new ViewGroup.LayoutParams(width, height);
+                    view.setLayoutParams(layoutParams);
                 }
             } catch (Exception e) {
                 LogPrintUtils.eTag(TAG, e, "setWidthHeight");
@@ -628,11 +626,10 @@ public final class ViewUtils {
                 ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
                 if (layoutParams != null) {
                     layoutParams.width = width;
-                } else {
-                    if (nullNewLP) {
-                        layoutParams = new ViewGroup.LayoutParams(width, ViewGroup.LayoutParams.WRAP_CONTENT);
-                        view.setLayoutParams(layoutParams);
-                    }
+                    view.setLayoutParams(layoutParams);
+                } else if (nullNewLP) {
+                    layoutParams = new ViewGroup.LayoutParams(width, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    view.setLayoutParams(layoutParams);
                 }
             } catch (Exception e) {
                 LogPrintUtils.eTag(TAG, e, "setWidth");
@@ -678,11 +675,10 @@ public final class ViewUtils {
                 ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
                 if (layoutParams != null) {
                     layoutParams.height = height;
-                } else {
-                    if (nullNewLP) {
-                        layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, height);
-                        view.setLayoutParams(layoutParams);
-                    }
+                    view.setLayoutParams(layoutParams);
+                } else if (nullNewLP) {
+                    layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, height);
+                    view.setLayoutParams(layoutParams);
                 }
             } catch (Exception e) {
                 LogPrintUtils.eTag(TAG, e, "setHeight");
@@ -2404,22 +2400,17 @@ public final class ViewUtils {
      * @return new int[] {left, top, right, bottom}
      */
     public static int[] getMargin(final View view) {
-        int[] margins = new int[]{0, 0, 0, 0};
-        if (view != null) {
-            // 判断是否属于 ViewGroup.MarginLayoutParams
+        int[] margin = new int[]{0, 0, 0, 0};
+        if (view != null && view.getLayoutParams() != null) {
             if (view.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
-                try {
-                    ViewGroup.MarginLayoutParams layoutParams = ((ViewGroup.MarginLayoutParams) view.getLayoutParams());
-                    margins[0] = layoutParams.leftMargin;
-                    margins[1] = layoutParams.topMargin;
-                    margins[2] = layoutParams.rightMargin;
-                    margins[3] = layoutParams.bottomMargin;
-                } catch (Exception e) {
-                    LogPrintUtils.eTag(TAG, e, "getMargin");
-                }
+                ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) view.getLayoutParams();
+                margin[0] = layoutParams.leftMargin;
+                margin[1] = layoutParams.topMargin;
+                margin[2] = layoutParams.rightMargin;
+                margin[3] = layoutParams.bottomMargin;
             }
         }
-        return margins;
+        return margin;
     }
 
     // =
@@ -2577,31 +2568,9 @@ public final class ViewUtils {
      * @return {@code true} success, {@code false} fail
      */
     public static boolean setMarginBottom(final View view, final int bottomMargin, final boolean reset) {
-        if (view != null) {
-            // 判断是否属于 ViewGroup.MarginLayoutParams
-            if (view.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
-                if (reset) {
-                    try {
-                        ((ViewGroup.MarginLayoutParams) view.getLayoutParams()).setMargins(0, 0, 0, bottomMargin);
-                        return true;
-                    } catch (Exception e) {
-                        LogPrintUtils.eTag(TAG, e, "setMarginBottom");
-                    }
-                } else {
-                    try {
-                        ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) view.getLayoutParams();
-                        // 设置边距
-                        ((ViewGroup.MarginLayoutParams) view.getLayoutParams())
-                                .setMargins(layoutParams.leftMargin, layoutParams.topMargin,
-                                        layoutParams.rightMargin, bottomMargin);
-                        return true;
-                    } catch (Exception e) {
-                        LogPrintUtils.eTag(TAG, e, "setMarginBottom");
-                    }
-                }
-            }
-        }
-        return false;
+        if (reset) return setMargin(view, 0, 0, 0, bottomMargin);
+        int[] margin = getMargin(view);
+        return setMargin(view, margin[0], margin[1], margin[2], bottomMargin);
     }
 
     /**
@@ -2635,16 +2604,12 @@ public final class ViewUtils {
      * @return {@code true} success, {@code false} fail
      */
     public static boolean setMargin(final View view, final int left, final int top, final int right, final int bottom) {
-        if (view != null) {
-            // 判断是否属于 ViewGroup.MarginLayoutParams
+        if (view != null && view.getLayoutParams() != null) {
             if (view.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
-                try {
-                    // 设置边距
-                    ((ViewGroup.MarginLayoutParams) view.getLayoutParams()).setMargins(left, top, right, bottom);
-                    return true;
-                } catch (Exception e) {
-                    LogPrintUtils.eTag(TAG, e, "setMargin");
-                }
+                ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) view.getLayoutParams();
+                layoutParams.setMargins(left, top, right, bottom);
+                view.setLayoutParams(layoutParams);
+                return true;
             }
         }
         return false;
@@ -2738,14 +2703,14 @@ public final class ViewUtils {
      * @return new int[] {left, top, right, bottom}
      */
     public static int[] getPadding(final View view) {
-        int[] paddings = new int[]{0, 0, 0, 0};
+        int[] padding = new int[]{0, 0, 0, 0};
         if (view != null) {
-            paddings[0] = view.getPaddingLeft();
-            paddings[1] = view.getPaddingTop();
-            paddings[2] = view.getPaddingRight();
-            paddings[3] = view.getPaddingBottom();
+            padding[0] = view.getPaddingLeft();
+            padding[1] = view.getPaddingTop();
+            padding[2] = view.getPaddingRight();
+            padding[3] = view.getPaddingBottom();
         }
-        return paddings;
+        return padding;
     }
 
     // =
@@ -2768,24 +2733,9 @@ public final class ViewUtils {
      * @return {@code true} success, {@code false} fail
      */
     public static boolean setPaddingLeft(final View view, final int leftPadding, final boolean reset) {
-        if (view != null) {
-            if (reset) {
-                try {
-                    view.setPadding(leftPadding, 0, 0, 0);
-                    return true;
-                } catch (Exception e) {
-                    LogPrintUtils.eTag(TAG, e, "setPaddingLeft");
-                }
-            } else {
-                try {
-                    view.setPadding(leftPadding, view.getPaddingTop(), view.getPaddingRight(), view.getPaddingBottom());
-                    return true;
-                } catch (Exception e) {
-                    LogPrintUtils.eTag(TAG, e, "setPaddingLeft");
-                }
-            }
-        }
-        return false;
+        if (reset) return setPadding(view, leftPadding, 0, 0, 0);
+        int[] padding = getPadding(view);
+        return setPadding(view, leftPadding, padding[1], padding[2], padding[3]);
     }
 
     /**
@@ -2806,24 +2756,9 @@ public final class ViewUtils {
      * @return {@code true} success, {@code false} fail
      */
     public static boolean setPaddingTop(final View view, final int topPadding, final boolean reset) {
-        if (view != null) {
-            if (reset) {
-                try {
-                    view.setPadding(0, topPadding, 0, 0);
-                    return true;
-                } catch (Exception e) {
-                    LogPrintUtils.eTag(TAG, e, "setPaddingTop");
-                }
-            } else {
-                try {
-                    view.setPadding(view.getPaddingLeft(), topPadding, view.getPaddingRight(), view.getPaddingBottom());
-                    return true;
-                } catch (Exception e) {
-                    LogPrintUtils.eTag(TAG, e, "setPaddingTop");
-                }
-            }
-        }
-        return false;
+        if (reset) return setPadding(view, 0, topPadding, 0, 0);
+        int[] padding = getPadding(view);
+        return setPadding(view, padding[0], topPadding, padding[2], padding[3]);
     }
 
     /**
@@ -2844,24 +2779,9 @@ public final class ViewUtils {
      * @return {@code true} success, {@code false} fail
      */
     public static boolean setPaddingRight(final View view, final int rightPadding, final boolean reset) {
-        if (view != null) {
-            if (reset) {
-                try {
-                    view.setPadding(0, 0, rightPadding, 0);
-                    return true;
-                } catch (Exception e) {
-                    LogPrintUtils.eTag(TAG, e, "setPaddingRight");
-                }
-            } else {
-                try {
-                    view.setPadding(view.getPaddingLeft(), view.getPaddingTop(), rightPadding, view.getPaddingBottom());
-                    return true;
-                } catch (Exception e) {
-                    LogPrintUtils.eTag(TAG, e, "setPaddingRight");
-                }
-            }
-        }
-        return false;
+        if (reset) return setPadding(view, 0, 0, rightPadding, 0);
+        int[] padding = getPadding(view);
+        return setPadding(view, padding[0], padding[1], rightPadding, padding[3]);
     }
 
     /**
@@ -2882,24 +2802,9 @@ public final class ViewUtils {
      * @return {@code true} success, {@code false} fail
      */
     public static boolean setPaddingBottom(final View view, final int bottomPadding, final boolean reset) {
-        if (view != null) {
-            if (reset) {
-                try {
-                    view.setPadding(0, 0, 0, bottomPadding);
-                    return true;
-                } catch (Exception e) {
-                    LogPrintUtils.eTag(TAG, e, "setPaddingBottom");
-                }
-            } else {
-                try {
-                    view.setPadding(view.getPaddingLeft(), view.getPaddingTop(), view.getPaddingRight(), bottomPadding);
-                    return true;
-                } catch (Exception e) {
-                    LogPrintUtils.eTag(TAG, e, "setPaddingBottom");
-                }
-            }
-        }
-        return false;
+        if (reset) return setPadding(view, 0, 0, 0, bottomPadding);
+        int[] padding = getPadding(view);
+        return setPadding(view, padding[0], padding[1], padding[2], bottomPadding);
     }
 
     /**
@@ -2934,12 +2839,8 @@ public final class ViewUtils {
      */
     public static boolean setPadding(final View view, final int left, final int top, final int right, final int bottom) {
         if (view != null) {
-            try {
-                view.setPadding(left, top, right, bottom);
-                return true;
-            } catch (Exception e) {
-                LogPrintUtils.eTag(TAG, e, "setPadding");
-            }
+            view.setPadding(left, top, right, bottom);
+            return true;
         }
         return false;
     }
