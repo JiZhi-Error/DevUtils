@@ -3012,6 +3012,7 @@ public final class ViewUtils {
             try {
                 RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) view.getLayoutParams();
                 layoutParams.addRule(verb, subject);
+                view.setLayoutParams(layoutParams);
             } catch (Exception e) {
                 LogPrintUtils.eTag(TAG, e, "addRule");
             }
@@ -3034,6 +3035,7 @@ public final class ViewUtils {
                 } else {
                     layoutParams.addRule(verb, 0);
                 }
+                view.setLayoutParams(layoutParams);
             } catch (Exception e) {
                 LogPrintUtils.eTag(TAG, e, "removeRule");
             }
