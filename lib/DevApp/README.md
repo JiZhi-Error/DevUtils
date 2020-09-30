@@ -6,7 +6,7 @@
 //implementation 'com.afkt:DevApp:1.9.4'
 
 // AndroidX
-implementation 'com.afkt:DevAppX:2.0.4'
+implementation 'com.afkt:DevAppX:2.0.5'
 ```
 
 ## 目录结构
@@ -299,7 +299,7 @@ DevUtils.openDebug();
 | setLogFolderName | 设置日志文件夹名 |
 | getLogStoragePath | 获取日志存储路径 |
 | setLogStoragePath | 设置日志存储路径 |
-| obtain | 获取日志记录分析文件对象 |
+| get | 获取日志记录分析文件对象 |
 | getStoragePath | 获取存储路径 |
 | getFileName | 获取日志文件名 |
 | getFileFunction | 获取日志文件记录功能 |
@@ -1058,7 +1058,7 @@ DevUtils.openDebug();
 | notify | 进行通知 |
 | createPendingIntent | 获取 PendingIntent |
 | createNotification | 创建通知栏对象 |
-| obtain | 获取 Led 配置参数 |
+| get | 获取 Led 配置参数 |
 | isEmpty | 判断是否为 null |
 
 
@@ -1215,57 +1215,136 @@ DevUtils.openDebug();
 | killBackgroundProcesses | 杀死后台服务进程 |
 
 
+* **APK Resource 工具类 ->** [ResourcePluginUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/ResourcePluginUtils.java)
+
+| 方法 | 注释 |
+| :- | :- |
+| invokeByPackageName | 通过 packageName 获取 APK Resources |
+| invokeByAPKPath | 通过 APK 文件获取 APK Resources |
+| getResourceAssist | 获取 Resources 辅助类 |
+| getResources | 获取 Resources |
+| getPackageName | 获取 APK 包名 |
+| getAPKPath | 获取 APK 文件路径 |
+| getApkInfoItem | 获取 APK 信息 Item |
+| getDisplayMetrics | 获取 DisplayMetrics |
+| getConfiguration | 获取 Configuration |
+| getAssets | 获取 AssetManager |
+| getIdentifier | 获取资源 id |
+| getResourceName | 获取给定资源标识符的全名 |
+| getStringId | 获取 String id |
+| getString | 获取 String |
+| getDimenId | 获取 Dimension id |
+| getDimension | 获取 Dimension |
+| getDimensionInt | 获取 Dimension |
+| getColorId | 获取 Color id |
+| getColor | 获取 Color |
+| getDrawableId | 获取 Drawable id |
+| getDrawable | 获取 Drawable |
+| getNinePatchDrawable | 获取 .9 Drawable |
+| getBitmap | 获取 Bitmap |
+| getMipmapId | 获取 Mipmap id |
+| getDrawableMipmap | 获取 Mipmap Drawable |
+| getNinePatchDrawableMipmap | 获取 Mipmap .9 Drawable |
+| getBitmapMipmap | 获取 Mipmap Bitmap |
+| getAnimId | 获取 Anim id |
+| getAnimationXml | 获取 Animation Xml |
+| getAnimation | 获取 Animation |
+| getBooleanId | 获取 Boolean id |
+| getBoolean | 获取 Boolean |
+| getIntegerId | 获取 Integer id |
+| getInteger | 获取 Integer |
+| getArrayId | 获取 Array id |
+| getIntArray | 获取 int[] |
+| getStringArray | 获取 String[] |
+| getTextArray | 获取 CharSequence[] |
+| getId | 获取 id ( view ) |
+| getLayoutId | 获取 Layout id |
+| getMenuId | 获取 Menu id |
+| getRawId | 获取 Raw id |
+| getAttrId | 获取 Attr id |
+| getStyleId | 获取 Style id |
+| getStyleableId | 获取 Styleable id |
+| getAnimatorId | 获取 Animator id |
+| getXmlId | 获取 Xml id |
+| getInterpolatorId | 获取 Interpolator id |
+| getPluralsId | 获取 Plurals id |
+| getColorStateList | 获取 ColorStateList |
+| getColorDrawable | 获取十六进制颜色值 Drawable |
+| open | 获取 AssetManager 指定资源 InputStream |
+| openFd | 获取 AssetManager 指定资源 AssetFileDescriptor |
+| openNonAssetFd | 获取 AssetManager 指定资源 AssetFileDescriptor |
+| openRawResource | 获取对应资源 InputStream |
+| openRawResourceFd | 获取对应资源 AssetFileDescriptor |
+| readBytesFromAssets | 获取 Assets 资源文件数据 |
+| readStringFromAssets | 获取 Assets 资源文件数据 |
+| readBytesFromRaw | 获取 Raw 资源文件数据 |
+| readStringFromRaw | 获取 Raw 资源文件数据 |
+| geFileToListFromAssets | 获取 Assets 资源文件数据 ( 返回 List<String> 一行的全部内容属于一个索引 ) |
+| geFileToListFromRaw | 获取 Raw 资源文件数据 ( 返回 List<String> 一行的全部内容属于一个索引 ) |
+| saveAssetsFormFile | 获取 Assets 资源文件数据并保存到本地 |
+| saveRawFormFile | 获取 Raw 资源文件数据并保存到本地 |
+
+
 * **资源文件工具类 ->** [ResourceUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/ResourceUtils.java)
 
 | 方法 | 注释 |
 | :- | :- |
 | getResources | 获取 Resources |
 | getTheme | 获取 Resources.Theme |
-| getAssets | 获取 AssetManager |
 | getContentResolver | 获取 ContentResolver |
 | getDisplayMetrics | 获取 DisplayMetrics |
 | getConfiguration | 获取 Configuration |
-| getColorStateList | 获取 ColorStateList |
+| getAssets | 获取 AssetManager |
+| getIdentifier | 获取资源 id |
+| getResourceName | 获取给定资源标识符的全名 |
+| getStringId | 获取 String id |
 | getString | 获取 String |
-| getColor | 获取 Color |
-| getDrawable | 获取 Drawable |
-| getNinePatchDrawable | 获取 .9 Drawable |
-| getColorDrawable | 获取指定颜色 Drawable |
-| getBitmap | 获取 Bitmap |
+| getDimenId | 获取 Dimension id |
 | getDimension | 获取 Dimension |
 | getDimensionInt | 获取 Dimension |
-| getBoolean | 获取 Boolean |
-| getInteger | 获取 Integer |
+| getColorId | 获取 Color id |
+| getColor | 获取 Color |
+| getDrawableId | 获取 Drawable id |
+| getDrawable | 获取 Drawable |
+| getNinePatchDrawable | 获取 .9 Drawable |
+| getBitmap | 获取 Bitmap |
+| getMipmapId | 获取 Mipmap id |
+| getDrawableMipmap | 获取 Mipmap Drawable |
+| getNinePatchDrawableMipmap | 获取 Mipmap .9 Drawable |
+| getBitmapMipmap | 获取 Mipmap Bitmap |
+| getAnimId | 获取 Anim id |
+| getAnimationXml | 获取 Animation Xml |
 | getAnimation | 获取 Animation |
-| getResourceName | 获取给定资源标识符的全名 |
+| getBooleanId | 获取 Boolean id |
+| getBoolean | 获取 Boolean |
+| getIntegerId | 获取 Integer id |
+| getInteger | 获取 Integer |
+| getArrayId | 获取 Array id |
 | getIntArray | 获取 int[] |
 | getStringArray | 获取 String[] |
 | getTextArray | 获取 CharSequence[] |
-| getLayoutId | 获取 layout id |
-| getDrawableId | 获取 drawable id |
-| getMipmapId | 获取 mipmap id |
-| getMenuId | 获取 menu id |
-| getRawId | 获取 raw id |
-| getAnimId | 获取 anim id |
-| getColorId | 获取 color id |
-| getDimenId | 获取 dimen id |
-| getAttrId | 获取 attr id |
-| getStyleId | 获取 style id |
-| getStyleableId | 获取 styleable id |
-| getId | 获取 id |
-| getStringId | 获取 string id |
-| getBoolId | 获取 bool id |
-| getIntegerId | 获取 integer id |
-| getIdentifier | 获取资源 id |
+| getId | 获取 id ( view ) |
+| getLayoutId | 获取 Layout id |
+| getMenuId | 获取 Menu id |
+| getRawId | 获取 Raw id |
+| getAttrId | 获取 Attr id |
+| getStyleId | 获取 Style id |
+| getStyleableId | 获取 Styleable id |
+| getAnimatorId | 获取 Animator id |
+| getXmlId | 获取 Xml id |
+| getInterpolatorId | 获取 Interpolator id |
+| getPluralsId | 获取 Plurals id |
+| getColorStateList | 获取 ColorStateList |
+| getColorDrawable | 获取十六进制颜色值 Drawable |
+| openInputStream | 获取 Uri InputStream |
+| openOutputStream | 获取 Uri OutputStream |
+| openFileDescriptor | 获取 Uri ParcelFileDescriptor |
+| openAssetFileDescriptor | 获取 Uri AssetFileDescriptor |
 | open | 获取 AssetManager 指定资源 InputStream |
 | openFd | 获取 AssetManager 指定资源 AssetFileDescriptor |
 | openNonAssetFd | 获取 AssetManager 指定资源 AssetFileDescriptor |
 | openRawResource | 获取对应资源 InputStream |
 | openRawResourceFd | 获取对应资源 AssetFileDescriptor |
-| openInputStream | 获取 Uri InputStream |
-| openOutputStream | 获取 Uri OutputStream |
-| openFileDescriptor | 获取 Uri ParcelFileDescriptor |
-| openAssetFileDescriptor | 获取 Uri AssetFileDescriptor |
 | readBytesFromAssets | 获取 Assets 资源文件数据 |
 | readStringFromAssets | 获取 Assets 资源文件数据 |
 | readBytesFromRaw | 获取 Raw 资源文件数据 |
@@ -1911,6 +1990,84 @@ DevUtils.openDebug();
 | onDestroy | Activity 销毁处理 |
 
 
+* **Resources 辅助类 ->** [ResourceAssist.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/assist/ResourceAssist.java)
+
+| 方法 | 注释 |
+| :- | :- |
+| getInstance | 获取 ResourceAssist 实例 |
+| get | 获取 ResourceAssist |
+| staticResources | 获取 Resources |
+| staticTheme | 获取 Resources.Theme |
+| staticContentResolver | 获取 ContentResolver |
+| staticDisplayMetrics | 获取 DisplayMetrics |
+| staticConfiguration | 获取 Configuration |
+| staticAssets | 获取 AssetManager |
+| reset | 重置操作 |
+| getPackageName | 获取应用包名 |
+| getResources | 获取 Resources |
+| getDisplayMetrics | 获取 DisplayMetrics |
+| getConfiguration | 获取 Configuration |
+| getAssets | 获取 AssetManager |
+| getIdentifier | 获取资源 id |
+| getResourceName | 获取给定资源标识符的全名 |
+| getStringId | 获取 String id |
+| getString | 获取 String |
+| getDimenId | 获取 Dimension id |
+| getDimension | 获取 Dimension |
+| getDimensionInt | 获取 Dimension |
+| getColorId | 获取 Color id |
+| getColor | 获取 Color |
+| getDrawableId | 获取 Drawable id |
+| getDrawable | 获取 Drawable |
+| getNinePatchDrawable | 获取 .9 Drawable |
+| getBitmap | 获取 Bitmap |
+| getMipmapId | 获取 Mipmap id |
+| getDrawableMipmap | 获取 Mipmap Drawable |
+| getNinePatchDrawableMipmap | 获取 Mipmap .9 Drawable |
+| getBitmapMipmap | 获取 Mipmap Bitmap |
+| getAnimId | 获取 Anim id |
+| getAnimationXml | 获取 Animation Xml |
+| getAnimation | 获取 Animation |
+| getBooleanId | 获取 Boolean id |
+| getBoolean | 获取 Boolean |
+| getIntegerId | 获取 Integer id |
+| getInteger | 获取 Integer |
+| getArrayId | 获取 Array id |
+| getIntArray | 获取 int[] |
+| getStringArray | 获取 String[] |
+| getTextArray | 获取 CharSequence[] |
+| getId | 获取 id ( view ) |
+| getLayoutId | 获取 Layout id |
+| getMenuId | 获取 Menu id |
+| getRawId | 获取 Raw id |
+| getAttrId | 获取 Attr id |
+| getStyleId | 获取 Style id |
+| getStyleableId | 获取 Styleable id |
+| getAnimatorId | 获取 Animator id |
+| getXmlId | 获取 Xml id |
+| getInterpolatorId | 获取 Interpolator id |
+| getPluralsId | 获取 Plurals id |
+| getColorStateList | 获取 ColorStateList |
+| getColorDrawable | 获取十六进制颜色值 Drawable |
+| openInputStream | 获取 Uri InputStream |
+| openOutputStream | 获取 Uri OutputStream |
+| openFileDescriptor | 获取 Uri ParcelFileDescriptor |
+| openAssetFileDescriptor | 获取 Uri AssetFileDescriptor |
+| open | 获取 AssetManager 指定资源 InputStream |
+| openFd | 获取 AssetManager 指定资源 AssetFileDescriptor |
+| openNonAssetFd | 获取 AssetManager 指定资源 AssetFileDescriptor |
+| openRawResource | 获取对应资源 InputStream |
+| openRawResourceFd | 获取对应资源 AssetFileDescriptor |
+| readBytesFromAssets | 获取 Assets 资源文件数据 |
+| readStringFromAssets | 获取 Assets 资源文件数据 |
+| readBytesFromRaw | 获取 Raw 资源文件数据 |
+| readStringFromRaw | 获取 Raw 资源文件数据 |
+| geFileToListFromAssets | 获取 Assets 资源文件数据 ( 返回 List<String> 一行的全部内容属于一个索引 ) |
+| geFileToListFromRaw | 获取 Raw 资源文件数据 ( 返回 List<String> 一行的全部内容属于一个索引 ) |
+| saveAssetsFormFile | 获取 Assets 资源文件数据并保存到本地 |
+| saveRawFormFile | 获取 Raw 资源文件数据并保存到本地 |
+
+
 * **屏幕传感器辅助类 ( 监听是否横竖屏 ) ->** [ScreenSensorAssist.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/assist/ScreenSensorAssist.java)
 
 | 方法 | 注释 |
@@ -1962,7 +2119,7 @@ DevUtils.openDebug();
 
 | 方法 | 注释 |
 | :- | :- |
-| obtain | 获取 DevCache ( 默认缓存文件名 ) |
+| newCache | 获取 DevCache ( 默认缓存文件名 ) |
 | put | 保存 String 数据到缓存中 |
 | getAsString | 读取 String 数据 |
 | getAsJSONObject | 读取 JSONObject 数据 |
@@ -2604,7 +2761,7 @@ DevUtils.openDebug();
 
 | 方法 | 注释 |
 | :- | :- |
-| obtain | 获取 ApkInfoItem |
+| get | 获取 ApkInfoItem |
 | getAppInfoBean | 获取 AppInfoBean |
 | getListKeyValues | 获取 List 信息键对值集合 |
 | getAppMD5 | 获取 APP MD5 签名 |
@@ -2629,7 +2786,7 @@ DevUtils.openDebug();
 
 | 方法 | 注释 |
 | :- | :- |
-| obtain | 获取 AppInfoBean |
+| get | 获取 AppInfoBean |
 | getAppPackName | 获取 APP 包名 |
 | getAppName | 获取 APP 应用名 |
 | getAppIcon | 获取 APP 图标 |
@@ -2648,7 +2805,7 @@ DevUtils.openDebug();
 
 | 方法 | 注释 |
 | :- | :- |
-| obtain | 获取 AppInfoItem |
+| get | 获取 AppInfoItem |
 | getAppInfoBean | 获取 AppInfoBean |
 | getListKeyValues | 获取 List 信息键对值集合 |
 | getAppMD5 | 获取 APP MD5 签名 |
