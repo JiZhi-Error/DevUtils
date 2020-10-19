@@ -66,6 +66,16 @@ DevUtils.openLog();
 DevUtils.openDebug();
 ```
 
+- 如果出现 ```Failed to resolve: DevAppX-x.x.x``` 可在根目录 build.gradle 添加
+```java
+allprojects {
+    repositories {
+        // bintray maven 出现 Failed to resolve: DevAppX-x.x.x 可考虑加上这句
+        maven { url 'https://dl.bintray.com/afkt/maven' }
+    }
+}
+```
+
 - 工具类部分模块配置与使用 - [Use and Config](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/utils_readme/USE_CONFIG.md)
 
 - 部分 API 更新不及时或有遗漏等，`具体以对应的工具类为准`
