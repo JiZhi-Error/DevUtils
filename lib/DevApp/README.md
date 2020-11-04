@@ -3046,7 +3046,7 @@ allprojects {
 | pausePlayer | 暂停播放 |
 | stopPlayer | 停止播放 |
 | startPlayer | 开始播放 |
-| getSurfaceview | 获取 SurfaceView |
+| getSurfaceView | 获取 SurfaceView |
 | isPlaying | 是否播放中 |
 | isAutoPlay | 判断是否自动播放 |
 | setAutoPlay | 设置自动播放 |
