@@ -3170,7 +3170,7 @@ allprojects {
 | 方法 | 注释 |
 | :- | :- |
 | createWifiConfigToAp | 创建 Wifi 热点配置 ( 支持 无密码 /WPA2 PSK) |
-| stratWifiAp | 开启 Wifi 热点 |
+| startWifiAp | 开启 Wifi 热点 |
 | closeWifiAp | 关闭 Wifi 热点 |
 | getWifiApState | 获取 Wifi 热点状态 |
 | getWifiApConfiguration | 获取 Wifi 热点配置信息 |
@@ -3212,7 +3212,7 @@ allprojects {
 | getWifiTypeInt | 获取加密类型 |
 | getWifiTypeStr | 获取加密类型 |
 | isConnNull | 判断是否连接为 null ( unknown ssid ) |
-| isConnectAphot | 获取连接的 Wifi 热点 SSID |
+| isConnectAPHot | 获取连接的 Wifi 热点 SSID |
 | getSecurity | 获取 Wifi 加密类型 |
 | isExistsPwd | 判断 Wifi 加密类型, 是否为加密类型 |
 | isExists | 获取指定的 ssid 网络配置 ( 需连接保存过, 才存在 ) |
