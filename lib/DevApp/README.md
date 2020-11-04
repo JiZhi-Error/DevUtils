@@ -6,7 +6,7 @@
 //implementation 'com.afkt:DevApp:1.9.4'
 
 // AndroidX
-implementation 'com.afkt:DevAppX:2.0.8'
+implementation 'com.afkt:DevAppX:2.0.9'
 ```
 
 ## 目录结构
@@ -258,7 +258,7 @@ allprojects {
 | getIPAddress | 获取 IP 地址 |
 | getMac | 获取 Mac 地址 |
 | getCPU | 获取 CPU 信息 |
-| getMeminfo | 获取内存信息 |
+| getMemInfo | 获取内存信息 |
 | setScreenSize | 设置屏幕大小 |
 | resetScreen | 恢复原分辨率命令 |
 | setDensity | 设置屏幕密度 |
@@ -1032,7 +1032,7 @@ allprojects {
 | getTotalMemoryFormat | 获取总内存大小 ( 格式化 ) |
 | getMemoryAvailable | 获取可用内存大小 |
 | getMemoryAvailableFormat | 获取可用内存大小 ( 格式化 ) |
-| getMemInfoIype | 通过不同 type 获取对应的内存信息 |
+| getMemInfoType | 通过不同 type 获取对应的内存信息 |
 
 
 * **网络管理工具类 ->** [NetWorkUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/NetWorkUtils.java)
@@ -2848,10 +2848,10 @@ allprojects {
 | isEffective | 获取证书是否过期 |
 | getCertPrincipal | 获取证书发布方 |
 | getCertVersion | 获取证书版本号 |
-| getCertSigalgname | 获取证书算法名称 |
-| getCertSigalgoid | 获取证书算法 OID |
+| getCertSigAlgName | 获取证书算法名称 |
+| getCertSigAlgOID | 获取证书算法 OID |
 | getCertSerialnumber | 获取证书机器码 |
-| getCertDercode | 获取证书 DER 编码 |
+| getCertDERCode | 获取证书 DER 编码 |
 
 
 * **APP 信息实体类 ->** [AppInfoBean.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/info/AppInfoBean.java)
@@ -2892,10 +2892,10 @@ allprojects {
 | isEffective | 获取证书是否过期 |
 | getCertPrincipal | 获取证书发布方 |
 | getCertVersion | 获取证书版本号 |
-| getCertSigalgname | 获取证书算法名称 |
-| getCertSigalgoid | 获取证书算法 OID |
+| getCertSigAlgName | 获取证书算法名称 |
+| getCertSigAlgOID | 获取证书算法 OID |
 | getCertSerialnumber | 获取证书机器码 |
-| getCertDercode | 获取证书 DER 编码 |
+| getCertDERCode | 获取证书 DER 编码 |
 
 
 * **APP 信息获取工具类 ->** [AppInfoUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/info/AppInfoUtils.java)
@@ -3253,6 +3253,14 @@ allprojects {
 | charactersToChars | Character[] 转换 char[] |
 | asList | 转换数组为集合 |
 | asListArgs | 转换数组为集合 |
+| asListArgsInt | 转换数组为集合 |
+| asListArgsByte | 转换数组为集合 |
+| asListArgsChar | 转换数组为集合 |
+| asListArgsShort | 转换数组为集合 |
+| asListArgsLong | 转换数组为集合 |
+| asListArgsFloat | 转换数组为集合 |
+| asListArgsDouble | 转换数组为集合 |
+| asListArgsBoolean | 转换数组为集合 |
 | equals | 判断两个值是否一样 |
 | arraycopy | 拼接数组 |
 | newarray | 创建指定长度数组 |
@@ -3326,7 +3334,7 @@ allprojects {
 | 方法 | 注释 |
 | :- | :- |
 | newInstance | 根据类获取对象, 不再必须一个无参构造 |
-| getDefaultPrimiticeValue | 获取 Class 原始类型值 |
+| getDefaultPrimitiveValue | 获取 Class 原始类型值 |
 | getClass | 获取 Object Class |
 | isPrimitive | 判断 Class 是否为原始类型 |
 | isCollection | 判断是否 Collection 类型 |
@@ -3757,10 +3765,10 @@ allprojects {
 | :- | :- |
 | addHtmlColor | 为给定的字符串添加 HTML 颜色标记 |
 | addHtmlBold | 为给定的字符串添加 HTML 加粗标记 |
-| addHtmlColorAndBlod | 为给定的字符串添加 HTML 颜色标记并加粗 |
+| addHtmlColorAndBold | 为给定的字符串添加 HTML 颜色标记并加粗 |
 | addHtmlUnderline | 为给定的字符串添加 HTML 下划线 |
-| addHtmlStrikeThruline | 为给定的字符串添加 HTML 中划线 |
-| addHtmlOverline | 为给定的字符串添加 HTML 上划线 |
+| addHtmlStrikeThruLine | 为给定的字符串添加 HTML 中划线 |
+| addHtmlOverLine | 为给定的字符串添加 HTML 上划线 |
 | addHtmlIncline | 为给定的字符串添加 HTML 字体倾斜 |
 | addHtmlSPAN | 为给定的字符串添加 HTML SPAN 标签 |
 | addHtmlP | 为给定的字符串添加 HTML P 标签 |
@@ -4422,7 +4430,7 @@ allprojects {
 | 方法 | 注释 |
 | :- | :- |
 | checkBankCard | 校验银行卡卡号是否合法 |
-| getBankCardCheckCode | 从不含校验位的银行卡卡号采用 Luhm 校验算法获取校验位 |
+| getBankCardCheckCode | 从不含校验位的银行卡卡号采用 Luhn 校验算法获取校验位 |
 | getNameOfBank | 通过银行卡的 前六位确定 判断银行开户行及卡种 |
 
 
