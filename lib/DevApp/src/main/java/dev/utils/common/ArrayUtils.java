@@ -3062,7 +3062,9 @@ public final class ArrayUtils {
             int len = data.length;
             if (len != 0) {
                 if (len == 1) {
-                    return "\"" + ((data[0] == null) ? "null" : data[0].toString()) + "\"";
+                    StringBuilder builder = new StringBuilder();
+                    builder.append("\"").append(data[0]).append("\"");
+                    return builder.toString();
                 } else {
                     StringBuilder builder = new StringBuilder();
                     for (int i = 0; i < len - 1; i++) {
@@ -3086,7 +3088,9 @@ public final class ArrayUtils {
             int len = data.length;
             if (len != 0) {
                 if (len == 1) {
-                    return "\"" + data[0] + "\"";
+                    StringBuilder builder = new StringBuilder();
+                    builder.append("\"").append(data[0]).append("\"");
+                    return builder.toString();
                 } else {
                     StringBuilder builder = new StringBuilder();
                     for (int i = 0; i < len - 1; i++) {
@@ -3110,7 +3114,9 @@ public final class ArrayUtils {
             int len = data.length;
             if (len != 0) {
                 if (len == 1) {
-                    return "\"" + data[0] + "\"";
+                    StringBuilder builder = new StringBuilder();
+                    builder.append("\"").append(data[0]).append("\"");
+                    return builder.toString();
                 } else {
                     StringBuilder builder = new StringBuilder();
                     for (int i = 0; i < len - 1; i++) {
@@ -3134,7 +3140,9 @@ public final class ArrayUtils {
             int len = data.length;
             if (len != 0) {
                 if (len == 1) {
-                    return "\"" + data[0] + "\"";
+                    StringBuilder builder = new StringBuilder();
+                    builder.append("\"").append(data[0]).append("\"");
+                    return builder.toString();
                 } else {
                     StringBuilder builder = new StringBuilder();
                     for (int i = 0; i < len - 1; i++) {
@@ -3158,7 +3166,9 @@ public final class ArrayUtils {
             int len = data.length;
             if (len != 0) {
                 if (len == 1) {
-                    return "\"" + data[0] + "\"";
+                    StringBuilder builder = new StringBuilder();
+                    builder.append("\"").append(data[0]).append("\"");
+                    return builder.toString();
                 } else {
                     StringBuilder builder = new StringBuilder();
                     for (int i = 0; i < len - 1; i++) {
@@ -3182,7 +3192,9 @@ public final class ArrayUtils {
             int len = data.length;
             if (len != 0) {
                 if (len == 1) {
-                    return "\"" + data[0] + "\"";
+                    StringBuilder builder = new StringBuilder();
+                    builder.append("\"").append(data[0]).append("\"");
+                    return builder.toString();
                 } else {
                     StringBuilder builder = new StringBuilder();
                     for (int i = 0; i < len - 1; i++) {
@@ -3206,7 +3218,9 @@ public final class ArrayUtils {
             int len = data.length;
             if (len != 0) {
                 if (len == 1) {
-                    return "\"" + data[0] + "\"";
+                    StringBuilder builder = new StringBuilder();
+                    builder.append("\"").append(data[0]).append("\"");
+                    return builder.toString();
                 } else {
                     StringBuilder builder = new StringBuilder();
                     for (int i = 0; i < len - 1; i++) {
@@ -3230,7 +3244,9 @@ public final class ArrayUtils {
             int len = data.length;
             if (len != 0) {
                 if (len == 1) {
-                    return "\"" + data[0] + "\"";
+                    StringBuilder builder = new StringBuilder();
+                    builder.append("\"").append(data[0]).append("\"");
+                    return builder.toString();
                 } else {
                     StringBuilder builder = new StringBuilder();
                     for (int i = 0; i < len - 1; i++) {
@@ -3254,7 +3270,9 @@ public final class ArrayUtils {
             int len = data.length;
             if (len != 0) {
                 if (len == 1) {
-                    return "\"" + data[0] + "\"";
+                    StringBuilder builder = new StringBuilder();
+                    builder.append("\"").append(data[0]).append("\"");
+                    return builder.toString();
                 } else {
                     StringBuilder builder = new StringBuilder();
                     for (int i = 0; i < len - 1; i++) {
