@@ -3066,11 +3066,9 @@ public final class ArrayUtils {
                 } else {
                     StringBuilder builder = new StringBuilder();
                     for (int i = 0; i < len - 1; i++) {
-                        T t = data[i];
-                        builder.append("\"").append(((t == null) ? "null" : t.toString())).append("\",");
+                        builder.append("\"").append(data[i]).append("\",");
                     }
-                    T end = data[len - 1];
-                    builder.append("\"" + ((end == null) ? "null" : end.toString()) + "\"");
+                    builder.append("\"").append(data[len - 1]).append("\"");
                     return builder.toString();
                 }
             }
@@ -3094,7 +3092,7 @@ public final class ArrayUtils {
                     for (int i = 0; i < len - 1; i++) {
                         builder.append("\"").append(data[i]).append("\",");
                     }
-                    builder.append("\"" + data[len - 1] + "\"");
+                    builder.append("\"").append(data[len - 1]).append("\"");
                     return builder.toString();
                 }
             }
@@ -3118,7 +3116,7 @@ public final class ArrayUtils {
                     for (int i = 0; i < len - 1; i++) {
                         builder.append("\"").append(data[i]).append("\",");
                     }
-                    builder.append("\"" + data[len - 1] + "\"");
+                    builder.append("\"").append(data[len - 1]).append("\"");
                     return builder.toString();
                 }
             }
@@ -3142,7 +3140,7 @@ public final class ArrayUtils {
                     for (int i = 0; i < len - 1; i++) {
                         builder.append("\"").append(data[i]).append("\",");
                     }
-                    builder.append("\"" + data[len - 1] + "\"");
+                    builder.append("\"").append(data[len - 1]).append("\"");
                     return builder.toString();
                 }
             }
@@ -3166,7 +3164,7 @@ public final class ArrayUtils {
                     for (int i = 0; i < len - 1; i++) {
                         builder.append("\"").append(data[i]).append("\",");
                     }
-                    builder.append("\"" + data[len - 1] + "\"");
+                    builder.append("\"").append(data[len - 1]).append("\"");
                     return builder.toString();
                 }
             }
@@ -3190,7 +3188,7 @@ public final class ArrayUtils {
                     for (int i = 0; i < len - 1; i++) {
                         builder.append("\"").append(data[i]).append("\",");
                     }
-                    builder.append("\"" + data[len - 1] + "\"");
+                    builder.append("\"").append(data[len - 1]).append("\"");
                     return builder.toString();
                 }
             }
@@ -3214,7 +3212,7 @@ public final class ArrayUtils {
                     for (int i = 0; i < len - 1; i++) {
                         builder.append("\"").append(data[i]).append("\",");
                     }
-                    builder.append("\"" + data[len - 1] + "\"");
+                    builder.append("\"").append(data[len - 1]).append("\"");
                     return builder.toString();
                 }
             }
@@ -3238,7 +3236,7 @@ public final class ArrayUtils {
                     for (int i = 0; i < len - 1; i++) {
                         builder.append("\"").append(data[i]).append("\",");
                     }
-                    builder.append("\"" + data[len - 1] + "\"");
+                    builder.append("\"").append(data[len - 1]).append("\"");
                     return builder.toString();
                 }
             }
@@ -3262,7 +3260,7 @@ public final class ArrayUtils {
                     for (int i = 0; i < len - 1; i++) {
                         builder.append("\"").append(data[i]).append("\",");
                     }
-                    builder.append("\"" + data[len - 1] + "\"");
+                    builder.append("\"").append(data[len - 1]).append("\"");
                     return builder.toString();
                 }
             }
