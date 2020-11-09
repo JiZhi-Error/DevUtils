@@ -2413,7 +2413,7 @@ public final class ArrayUtils {
      * @param <T>    泛型
      * @return 拼接后的数组集合
      */
-    public static <T> T[] arraycopy(final T[] prefix, final T[] suffix) {
+    public static <T> T[] arrayCopy(final T[] prefix, final T[] suffix) {
         // 获取数据长度
         int prefixLength = (prefix != null) ? prefix.length : 0;
         int suffixLength = (suffix != null) ? suffix.length : 0;
@@ -2445,7 +2445,7 @@ public final class ArrayUtils {
      * @param suffix 第二个数组
      * @return 拼接后的数组
      */
-    public static int[] arraycopy(final int[] prefix, final int[] suffix) {
+    public static int[] arrayCopy(final int[] prefix, final int[] suffix) {
         // 获取数据长度
         int prefixLength = (prefix != null) ? prefix.length : 0;
         int suffixLength = (suffix != null) ? suffix.length : 0;
@@ -2469,7 +2469,7 @@ public final class ArrayUtils {
      * @param suffix 第二个数组
      * @return 拼接后的数组
      */
-    public static byte[] arraycopy(final byte[] prefix, final byte[] suffix) {
+    public static byte[] arrayCopy(final byte[] prefix, final byte[] suffix) {
         // 获取数据长度
         int prefixLength = (prefix != null) ? prefix.length : 0;
         int suffixLength = (suffix != null) ? suffix.length : 0;
@@ -2493,7 +2493,7 @@ public final class ArrayUtils {
      * @param suffix 第二个数组
      * @return 拼接后的数组
      */
-    public static char[] arraycopy(final char[] prefix, final char[] suffix) {
+    public static char[] arrayCopy(final char[] prefix, final char[] suffix) {
         // 获取数据长度
         int prefixLength = (prefix != null) ? prefix.length : 0;
         int suffixLength = (suffix != null) ? suffix.length : 0;
@@ -2517,7 +2517,7 @@ public final class ArrayUtils {
      * @param suffix 第二个数组
      * @return 拼接后的数组
      */
-    public static short[] arraycopy(final short[] prefix, final short[] suffix) {
+    public static short[] arrayCopy(final short[] prefix, final short[] suffix) {
         // 获取数据长度
         int prefixLength = (prefix != null) ? prefix.length : 0;
         int suffixLength = (suffix != null) ? suffix.length : 0;
@@ -2541,7 +2541,7 @@ public final class ArrayUtils {
      * @param suffix 第二个数组
      * @return 拼接后的数组
      */
-    public static long[] arraycopy(final long[] prefix, final long[] suffix) {
+    public static long[] arrayCopy(final long[] prefix, final long[] suffix) {
         // 获取数据长度
         int prefixLength = (prefix != null) ? prefix.length : 0;
         int suffixLength = (suffix != null) ? suffix.length : 0;
@@ -2565,7 +2565,7 @@ public final class ArrayUtils {
      * @param suffix 第二个数组
      * @return 拼接后的数组
      */
-    public static float[] arraycopy(final float[] prefix, final float[] suffix) {
+    public static float[] arrayCopy(final float[] prefix, final float[] suffix) {
         // 获取数据长度
         int prefixLength = (prefix != null) ? prefix.length : 0;
         int suffixLength = (suffix != null) ? suffix.length : 0;
@@ -2589,7 +2589,7 @@ public final class ArrayUtils {
      * @param suffix 第二个数组
      * @return 拼接后的数组
      */
-    public static double[] arraycopy(final double[] prefix, final double[] suffix) {
+    public static double[] arrayCopy(final double[] prefix, final double[] suffix) {
         // 获取数据长度
         int prefixLength = (prefix != null) ? prefix.length : 0;
         int suffixLength = (suffix != null) ? suffix.length : 0;
@@ -2613,7 +2613,7 @@ public final class ArrayUtils {
      * @param suffix 第二个数组
      * @return 拼接后的数组
      */
-    public static boolean[] arraycopy(final boolean[] prefix, final boolean[] suffix) {
+    public static boolean[] arrayCopy(final boolean[] prefix, final boolean[] suffix) {
         // 获取数据长度
         int prefixLength = (prefix != null) ? prefix.length : 0;
         int suffixLength = (suffix != null) ? suffix.length : 0;
@@ -2640,38 +2640,7 @@ public final class ArrayUtils {
      * @param <T>    泛型
      * @return 指定长度数组
      */
-    public static <T> T[] newarray(final T[] data, final int length) {
-        if (data != null && length >= 0) {
-            List<T> lists = new ArrayList<>();
-            // 获取数据长度
-            int dataLength = data.length;
-            // 判断是否超过需要的长度
-            if (dataLength >= length) {
-                for (int i = 0; i < length; i++) {
-                    lists.add(data[i]);
-                }
-            } else {
-                for (int i = 0; i < dataLength; i++) {
-                    lists.add(data[i]);
-                }
-                // 补充长度
-                for (int i = 0, len = length - dataLength; i < len; i++) {
-                    lists.add(null);
-                }
-            }
-            // 返回数据
-            return (T[]) Arrays.copyOf(lists.toArray(), length, data.getClass());
-        }
-        return null;
-    }
-
-    /**
-     * 创建指定长度数组
-     * @param data   待处理数组
-     * @param length 保留长度
-     * @return 指定长度数组
-     */
-    public static int[] newarray(final int[] data, final int length) {
+    public static <T> T[] newArray(final T[] data, final int length) {
         if (data != null && length >= 0) return Arrays.copyOf(data, length);
         return null;
     }
@@ -2682,7 +2651,7 @@ public final class ArrayUtils {
      * @param length 保留长度
      * @return 指定长度数组
      */
-    public static byte[] newarray(final byte[] data, final int length) {
+    public static int[] newArray(final int[] data, final int length) {
         if (data != null && length >= 0) return Arrays.copyOf(data, length);
         return null;
     }
@@ -2693,7 +2662,7 @@ public final class ArrayUtils {
      * @param length 保留长度
      * @return 指定长度数组
      */
-    public static char[] newarray(final char[] data, final int length) {
+    public static byte[] newArray(final byte[] data, final int length) {
         if (data != null && length >= 0) return Arrays.copyOf(data, length);
         return null;
     }
@@ -2704,7 +2673,7 @@ public final class ArrayUtils {
      * @param length 保留长度
      * @return 指定长度数组
      */
-    public static short[] newarray(final short[] data, final int length) {
+    public static char[] newArray(final char[] data, final int length) {
         if (data != null && length >= 0) return Arrays.copyOf(data, length);
         return null;
     }
@@ -2715,7 +2684,7 @@ public final class ArrayUtils {
      * @param length 保留长度
      * @return 指定长度数组
      */
-    public static long[] newarray(final long[] data, final int length) {
+    public static short[] newArray(final short[] data, final int length) {
         if (data != null && length >= 0) return Arrays.copyOf(data, length);
         return null;
     }
@@ -2726,7 +2695,7 @@ public final class ArrayUtils {
      * @param length 保留长度
      * @return 指定长度数组
      */
-    public static float[] newarray(final float[] data, final int length) {
+    public static long[] newArray(final long[] data, final int length) {
         if (data != null && length >= 0) return Arrays.copyOf(data, length);
         return null;
     }
@@ -2737,7 +2706,7 @@ public final class ArrayUtils {
      * @param length 保留长度
      * @return 指定长度数组
      */
-    public static double[] newarray(final double[] data, final int length) {
+    public static float[] newArray(final float[] data, final int length) {
         if (data != null && length >= 0) return Arrays.copyOf(data, length);
         return null;
     }
@@ -2748,7 +2717,18 @@ public final class ArrayUtils {
      * @param length 保留长度
      * @return 指定长度数组
      */
-    public static boolean[] newarray(final boolean[] data, final int length) {
+    public static double[] newArray(final double[] data, final int length) {
+        if (data != null && length >= 0) return Arrays.copyOf(data, length);
+        return null;
+    }
+
+    /**
+     * 创建指定长度数组
+     * @param data   待处理数组
+     * @param length 保留长度
+     * @return 指定长度数组
+     */
+    public static boolean[] newArray(final boolean[] data, final int length) {
         if (data != null && length >= 0) return Arrays.copyOf(data, length);
         return null;
     }
@@ -2763,7 +2743,7 @@ public final class ArrayUtils {
      * @param <T>    泛型
      * @return 裁剪后的数组
      */
-    public static <T> T[] subarray(final T[] data, final int off, final int length) {
+    public static <T> T[] subArray(final T[] data, final int off, final int length) {
         if (data == null || off < 0 || length < 0) return null;
         try {
             List<T> lists = new ArrayList<>(length);
@@ -2772,7 +2752,7 @@ public final class ArrayUtils {
             }
             return (T[]) Arrays.copyOf(lists.toArray(), length, data.getClass());
         } catch (Exception e) {
-            JCLogUtils.eTag(TAG, e, "subarray");
+            JCLogUtils.eTag(TAG, e, "subArray");
         }
         return null;
     }
@@ -2784,14 +2764,14 @@ public final class ArrayUtils {
      * @param length 所需长度
      * @return 裁剪后的数组
      */
-    public static int[] subarray(final int[] data, final int off, final int length) {
+    public static int[] subArray(final int[] data, final int off, final int length) {
         if (data == null || off < 0 || length < 0) return null;
         try {
             int[] arrays = new int[length];
             System.arraycopy(data, off, arrays, 0, length);
             return arrays;
         } catch (Exception e) {
-            JCLogUtils.eTag(TAG, e, "subarray");
+            JCLogUtils.eTag(TAG, e, "subArray");
         }
         return null;
     }
@@ -2803,14 +2783,14 @@ public final class ArrayUtils {
      * @param length 所需长度
      * @return 裁剪后的数组
      */
-    public static byte[] subarray(final byte[] data, final int off, final int length) {
+    public static byte[] subArray(final byte[] data, final int off, final int length) {
         if (data == null || off < 0 || length < 0) return null;
         try {
             byte[] arrays = new byte[length];
             System.arraycopy(data, off, arrays, 0, length);
             return arrays;
         } catch (Exception e) {
-            JCLogUtils.eTag(TAG, e, "subarray");
+            JCLogUtils.eTag(TAG, e, "subArray");
         }
         return null;
     }
@@ -2822,14 +2802,14 @@ public final class ArrayUtils {
      * @param length 所需长度
      * @return 裁剪后的数组
      */
-    public static char[] subarray(final char[] data, final int off, final int length) {
+    public static char[] subArray(final char[] data, final int off, final int length) {
         if (data == null || off < 0 || length < 0) return null;
         try {
             char[] arrays = new char[length];
             System.arraycopy(data, off, arrays, 0, length);
             return arrays;
         } catch (Exception e) {
-            JCLogUtils.eTag(TAG, e, "subarray");
+            JCLogUtils.eTag(TAG, e, "subArray");
         }
         return null;
     }
@@ -2841,14 +2821,14 @@ public final class ArrayUtils {
      * @param length 所需长度
      * @return 裁剪后的数组
      */
-    public static short[] subarray(final short[] data, final int off, final int length) {
+    public static short[] subArray(final short[] data, final int off, final int length) {
         if (data == null || off < 0 || length < 0) return null;
         try {
             short[] arrays = new short[length];
             System.arraycopy(data, off, arrays, 0, length);
             return arrays;
         } catch (Exception e) {
-            JCLogUtils.eTag(TAG, e, "subarray");
+            JCLogUtils.eTag(TAG, e, "subArray");
         }
         return null;
     }
@@ -2860,14 +2840,14 @@ public final class ArrayUtils {
      * @param length 所需长度
      * @return 裁剪后的数组
      */
-    public static long[] subarray(final long[] data, final int off, final int length) {
+    public static long[] subArray(final long[] data, final int off, final int length) {
         if (data == null || off < 0 || length < 0) return null;
         try {
             long[] arrays = new long[length];
             System.arraycopy(data, off, arrays, 0, length);
             return arrays;
         } catch (Exception e) {
-            JCLogUtils.eTag(TAG, e, "subarray");
+            JCLogUtils.eTag(TAG, e, "subArray");
         }
         return null;
     }
@@ -2879,14 +2859,14 @@ public final class ArrayUtils {
      * @param length 所需长度
      * @return 裁剪后的数组
      */
-    public static float[] subarray(final float[] data, final int off, final int length) {
+    public static float[] subArray(final float[] data, final int off, final int length) {
         if (data == null || off < 0 || length < 0) return null;
         try {
             float[] arrays = new float[length];
             System.arraycopy(data, off, arrays, 0, length);
             return arrays;
         } catch (Exception e) {
-            JCLogUtils.eTag(TAG, e, "subarray");
+            JCLogUtils.eTag(TAG, e, "subArray");
         }
         return null;
     }
@@ -2898,14 +2878,14 @@ public final class ArrayUtils {
      * @param length 所需长度
      * @return 裁剪后的数组
      */
-    public static double[] subarray(final double[] data, final int off, final int length) {
+    public static double[] subArray(final double[] data, final int off, final int length) {
         if (data == null || off < 0 || length < 0) return null;
         try {
             double[] arrays = new double[length];
             System.arraycopy(data, off, arrays, 0, length);
             return arrays;
         } catch (Exception e) {
-            JCLogUtils.eTag(TAG, e, "subarray");
+            JCLogUtils.eTag(TAG, e, "subArray");
         }
         return null;
     }
@@ -2917,14 +2897,14 @@ public final class ArrayUtils {
      * @param length 所需长度
      * @return 裁剪后的数组
      */
-    public static boolean[] subarray(final boolean[] data, final int off, final int length) {
+    public static boolean[] subArray(final boolean[] data, final int off, final int length) {
         if (data == null || off < 0 || length < 0) return null;
         try {
             boolean[] arrays = new boolean[length];
             System.arraycopy(data, off, arrays, 0, length);
             return arrays;
         } catch (Exception e) {
-            JCLogUtils.eTag(TAG, e, "subarray");
+            JCLogUtils.eTag(TAG, e, "subArray");
         }
         return null;
     }
@@ -3495,8 +3475,8 @@ public final class ArrayUtils {
      * @param data 数组
      * @return 数组总和
      */
-    public static int sumarray(final int[] data) {
-        return sumarray(data, 0, length(data), 0);
+    public static int sumArray(final int[] data) {
+        return sumArray(data, 0, length(data), 0);
     }
 
     /**
@@ -3505,8 +3485,8 @@ public final class ArrayUtils {
      * @param end  结束位置
      * @return 数组总和
      */
-    public static int sumarray(final int[] data, final int end) {
-        return sumarray(data, 0, end, 0);
+    public static int sumArray(final int[] data, final int end) {
+        return sumArray(data, 0, end, 0);
     }
 
     /**
@@ -3516,8 +3496,8 @@ public final class ArrayUtils {
      * @param extra 额外值
      * @return 数组总和
      */
-    public static int sumarray(final int[] data, final int end, final int extra) {
-        return sumarray(data, 0, end, extra);
+    public static int sumArray(final int[] data, final int end, final int extra) {
+        return sumArray(data, 0, end, extra);
     }
 
     /**
@@ -3528,14 +3508,14 @@ public final class ArrayUtils {
      * @param extra 额外值
      * @return 数组总和
      */
-    public static int sumarray(final int[] data, final int start, final int end, final int extra) {
+    public static int sumArray(final int[] data, final int start, final int end, final int extra) {
         int total = 0;
         if (data != null) {
             for (int i = start; i < end; i++) {
                 try {
                     total += (data[i] + extra);
                 } catch (Exception e) {
-                    JCLogUtils.eTag(TAG, e, "sumarray");
+                    JCLogUtils.eTag(TAG, e, "sumArray");
                 }
             }
         }
@@ -3549,8 +3529,8 @@ public final class ArrayUtils {
      * @param data 数组
      * @return 数组总和
      */
-    public static long sumarray(final long[] data) {
-        return sumarray(data, 0, length(data), 0);
+    public static long sumArray(final long[] data) {
+        return sumArray(data, 0, length(data), 0);
     }
 
     /**
@@ -3559,8 +3539,8 @@ public final class ArrayUtils {
      * @param end  结束位置
      * @return 数组总和
      */
-    public static long sumarray(final long[] data, final int end) {
-        return sumarray(data, 0, end, 0);
+    public static long sumArray(final long[] data, final int end) {
+        return sumArray(data, 0, end, 0);
     }
 
     /**
@@ -3570,8 +3550,8 @@ public final class ArrayUtils {
      * @param extra 额外值
      * @return 数组总和
      */
-    public static long sumarray(final long[] data, final int end, final long extra) {
-        return sumarray(data, 0, end, extra);
+    public static long sumArray(final long[] data, final int end, final long extra) {
+        return sumArray(data, 0, end, extra);
     }
 
     /**
@@ -3582,14 +3562,14 @@ public final class ArrayUtils {
      * @param extra 额外值
      * @return 数组总和
      */
-    public static long sumarray(final long[] data, final int start, final int end, final long extra) {
+    public static long sumArray(final long[] data, final int start, final int end, final long extra) {
         long total = 0;
         if (data != null) {
             for (int i = start; i < end; i++) {
                 try {
                     total += (data[i] + extra);
                 } catch (Exception e) {
-                    JCLogUtils.eTag(TAG, e, "sumarray");
+                    JCLogUtils.eTag(TAG, e, "sumArray");
                 }
             }
         }
@@ -3603,8 +3583,8 @@ public final class ArrayUtils {
      * @param data 数组
      * @return 数组总和
      */
-    public static float sumarray(final float[] data) {
-        return sumarray(data, 0, length(data), 0);
+    public static float sumArray(final float[] data) {
+        return sumArray(data, 0, length(data), 0);
     }
 
     /**
@@ -3613,8 +3593,8 @@ public final class ArrayUtils {
      * @param end  结束位置
      * @return 数组总和
      */
-    public static float sumarray(final float[] data, final int end) {
-        return sumarray(data, 0, end, 0);
+    public static float sumArray(final float[] data, final int end) {
+        return sumArray(data, 0, end, 0);
     }
 
     /**
@@ -3624,8 +3604,8 @@ public final class ArrayUtils {
      * @param extra 额外值
      * @return 数组总和
      */
-    public static float sumarray(final float[] data, final int end, final float extra) {
-        return sumarray(data, 0, end, extra);
+    public static float sumArray(final float[] data, final int end, final float extra) {
+        return sumArray(data, 0, end, extra);
     }
 
     /**
@@ -3636,14 +3616,14 @@ public final class ArrayUtils {
      * @param extra 额外值
      * @return 数组总和
      */
-    public static float sumarray(final float[] data, final int start, final int end, final float extra) {
+    public static float sumArray(final float[] data, final int start, final int end, final float extra) {
         float total = 0;
         if (data != null) {
             for (int i = start; i < end; i++) {
                 try {
                     total += (data[i] + extra);
                 } catch (Exception e) {
-                    JCLogUtils.eTag(TAG, e, "sumarray");
+                    JCLogUtils.eTag(TAG, e, "sumArray");
                 }
             }
         }
@@ -3657,8 +3637,8 @@ public final class ArrayUtils {
      * @param data 数组
      * @return 数组总和
      */
-    public static double sumarray(final double[] data) {
-        return sumarray(data, 0, length(data), 0);
+    public static double sumArray(final double[] data) {
+        return sumArray(data, 0, length(data), 0);
     }
 
     /**
@@ -3667,8 +3647,8 @@ public final class ArrayUtils {
      * @param end  结束位置
      * @return 数组总和
      */
-    public static double sumarray(final double[] data, final int end) {
-        return sumarray(data, 0, end, 0);
+    public static double sumArray(final double[] data, final int end) {
+        return sumArray(data, 0, end, 0);
     }
 
     /**
@@ -3678,8 +3658,8 @@ public final class ArrayUtils {
      * @param extra 额外值
      * @return 数组总和
      */
-    public static double sumarray(final double[] data, final int end, final double extra) {
-        return sumarray(data, 0, end, extra);
+    public static double sumArray(final double[] data, final int end, final double extra) {
+        return sumArray(data, 0, end, extra);
     }
 
     /**
@@ -3690,14 +3670,14 @@ public final class ArrayUtils {
      * @param extra 额外值
      * @return 数组总和
      */
-    public static double sumarray(final double[] data, final int start, final int end, final double extra) {
+    public static double sumArray(final double[] data, final int start, final int end, final double extra) {
         double total = 0;
         if (data != null) {
             for (int i = start; i < end; i++) {
                 try {
                     total += (data[i] + extra);
                 } catch (Exception e) {
-                    JCLogUtils.eTag(TAG, e, "sumarray");
+                    JCLogUtils.eTag(TAG, e, "sumArray");
                 }
             }
         }
