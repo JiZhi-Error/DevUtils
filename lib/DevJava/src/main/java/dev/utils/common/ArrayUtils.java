@@ -685,7 +685,7 @@ public final class ArrayUtils {
             try {
                 return array[pos];
             } catch (Exception e) {
-                JCLogUtils.eTag(TAG, e, "get - " + pos);
+                JCLogUtils.eTag(TAG, e, "get %s", pos);
             }
         }
         return defaultValue;
@@ -705,7 +705,7 @@ public final class ArrayUtils {
             try {
                 return ints[pos];
             } catch (Exception e) {
-                JCLogUtils.eTag(TAG, e, "get - " + pos);
+                JCLogUtils.eTag(TAG, e, "get %s", pos);
             }
         }
         return defaultValue;
@@ -725,7 +725,7 @@ public final class ArrayUtils {
             try {
                 return bytes[pos];
             } catch (Exception e) {
-                JCLogUtils.eTag(TAG, e, "get - " + pos);
+                JCLogUtils.eTag(TAG, e, "get %s", pos);
             }
         }
         return defaultValue;
@@ -745,7 +745,7 @@ public final class ArrayUtils {
             try {
                 return chars[pos];
             } catch (Exception e) {
-                JCLogUtils.eTag(TAG, e, "get - " + pos);
+                JCLogUtils.eTag(TAG, e, "get %s", pos);
             }
         }
         return defaultValue;
@@ -765,7 +765,7 @@ public final class ArrayUtils {
             try {
                 return shorts[pos];
             } catch (Exception e) {
-                JCLogUtils.eTag(TAG, e, "get - " + pos);
+                JCLogUtils.eTag(TAG, e, "get %s", pos);
             }
         }
         return defaultValue;
@@ -785,7 +785,7 @@ public final class ArrayUtils {
             try {
                 return longs[pos];
             } catch (Exception e) {
-                JCLogUtils.eTag(TAG, e, "get - " + pos);
+                JCLogUtils.eTag(TAG, e, "get %s", pos);
             }
         }
         return defaultValue;
@@ -805,7 +805,7 @@ public final class ArrayUtils {
             try {
                 return floats[pos];
             } catch (Exception e) {
-                JCLogUtils.eTag(TAG, e, "get - " + pos);
+                JCLogUtils.eTag(TAG, e, "get %s", pos);
             }
         }
         return defaultValue;
@@ -825,7 +825,7 @@ public final class ArrayUtils {
             try {
                 return doubles[pos];
             } catch (Exception e) {
-                JCLogUtils.eTag(TAG, e, "get - " + pos);
+                JCLogUtils.eTag(TAG, e, "get %s", pos);
             }
         }
         return defaultValue;
@@ -845,7 +845,7 @@ public final class ArrayUtils {
             try {
                 return booleans[pos];
             } catch (Exception e) {
-                JCLogUtils.eTag(TAG, e, "get - " + pos);
+                JCLogUtils.eTag(TAG, e, "get %s", pos);
             }
         }
         return defaultValue;
