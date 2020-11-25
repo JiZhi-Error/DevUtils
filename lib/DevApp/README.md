@@ -1789,6 +1789,7 @@ allprojects {
 | setClipChildren | 设置是否限制子 View 在其边界内绘制 |
 | getChildCount | 获取子 View 总数 |
 | getChildAt | 获取指定索引 View |
+| getChildAtLast | 获取最后一个索引 View |
 | removeAllViews | 移除全部子 View |
 | getChilds | 获取全部子 View |
 | getLayoutParams | 获取 LayoutParams |
@@ -2978,33 +2979,26 @@ allprojects {
 ## <span id="devutilsapppermission">**`dev.utils.app.permission`**</span>
 
 
-* **权限常量 ->** [PermissionConstants.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/permission/PermissionConstants.java)
-
-| 方法 | 注释 |
-| :- | :- |
-| getPermissions | 获取权限组 |
-
-
 * **权限请求工具类 ->** [PermissionUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/permission/PermissionUtils.java)
 
 | 方法 | 注释 |
 | :- | :- |
-| permission | 申请权限初始化 |
-| callBack | 设置回调方法 |
-| setRequestPermissionsResult | 设置是否需要在 Activity 的 onRequestPermissionsResult 回调中, 调用 PermissionUtils.onRequestPermissionsResult(this); |
-| request | 请求权限 |
-| onRequestPermissionsResult | 请求权限回调 ( 需要在 Activity 的 onRequestPermissionsResult 回调中, 调用 PermissionUtils.onRequestPermissionsResult(this); ) |
-| notifyPermissionsChange | 刷新权限改变处理 ( 清空已拒绝的权限记录 ) |
 | isGranted | 判断是否授予了权限 |
 | shouldShowRequestPermissionRationale | 获取拒绝权限询问勾选状态 |
 | getDeniedPermissionStatus | 获取拒绝权限询问状态集合 |
-| againRequest | 再次请求处理操作 |
 | canRequestPackageInstalls | 是否存在 APK 安装权限 |
 | getAllPermissionToSet | 获取全部权限 |
 | getAllPermissionToList | 获取全部权限 |
 | getAppPermissionToList | 获取 APP 注册的权限 |
 | getAppPermissionToSet | 获取 APP 注册的权限 |
 | getAppPermission | 获取 APP 注册的权限 |
+| permission | 申请权限初始化 |
+| callBack | 设置回调方法 |
+| setRequestPermissionsResult | 设置是否需要在 Activity 的 onRequestPermissionsResult 回调中, 调用 PermissionUtils.onRequestPermissionsResult(this); |
+| request | 请求权限 |
+| onRequestPermissionsResult | 请求权限回调 ( 需要在 Activity 的 onRequestPermissionsResult 回调中, 调用 PermissionUtils.onRequestPermissionsResult(this); ) |
+| notifyPermissionsChange | 刷新权限改变处理 ( 清空已拒绝的权限记录 ) |
+| againRequest | 再次请求处理操作 |
 
 
 ## <span id="devutilsappplayer">**`dev.utils.app.player`**</span>
