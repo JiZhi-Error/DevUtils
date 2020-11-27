@@ -202,6 +202,30 @@ public final class ViewUtils {
     // =
 
     /**
+     * 获取 View Id
+     * @param view {@link View}
+     * @return View Id
+     */
+    public static int getId(final View view) {
+        if (view != null) return view.getId();
+        return View.NO_ID;
+    }
+
+    /**
+     * 设置 View Id
+     * @param view {@link View}
+     * @param id   View Id
+     * @return {@code true} success, {@code false} fail
+     */
+    public static boolean setId(final View view, final int id) {
+        if (view != null) {
+            view.setId(id);
+            return true;
+        }
+        return false;
+    }
+
+    /**
      * 获取指定 View 父布局
      * @param view {@link View}
      * @param <T>  泛型
