@@ -6,7 +6,7 @@
 //implementation 'com.afkt:DevApp:1.9.4'
 
 // AndroidX
-implementation 'com.afkt:DevAppX:2.1.6'
+implementation 'com.afkt:DevAppX:2.1.7'
 ```
 
 ## 目录结构
@@ -3373,12 +3373,25 @@ allprojects {
 
 | 方法 | 注释 |
 | :- | :- |
-| setScale | 设置小数点位数 |
-| setRoundingMode | 设置舍入模式 |
+| setScale | 设置全局小数点保留位数、舍入模式 |
 | getBigDecimal | 获取 BigDecimal |
+| getOperation | 获取 Operation |
+| adjustDouble | 获取自己想要的数据格式 |
+| getScale | 获取小数点保留位数 |
+| getRoundingMode | 获取舍入模式 |
+| setBigDecimal | 设置 Value |
+| getConfig | 获取配置信息 |
+| setConfig | 设置配置信息 |
+| removeConfig | 移除配置信息 |
+| setScaleByConfig | 设置小数点保留位数、舍入模式 |
+| clone | 克隆对象 |
 | toString | 获取此 BigDecimal 的字符串表示形式科学记数法 |
 | toPlainString | 获取此 BigDecimal 的字符串表示形式不带指数字段 |
 | toEngineeringString | 获取此 BigDecimal 的字符串表示形式工程计数法 |
+| intValue | 获取指定类型值 |
+| floatValue | 获取指定类型值 |
+| longValue | 获取指定类型值 |
+| doubleValue | 获取指定类型值 |
 | add | 提供精确的加法运算 |
 | subtract | 提供精确的减法运算 |
 | multiply | 提供精确的乘法运算 |
@@ -3387,7 +3400,6 @@ allprojects {
 | round | 提供精确的小数位四舍五入处理 |
 | compareTo | 比较大小 |
 | formatMoney | 金额分割, 四舍五入金额 |
-| adjustDouble | 获取自己想要的数据格式 |
 
 
 * **日历工具类 ->** [CalendarUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/common/CalendarUtils.java)
@@ -3950,6 +3962,7 @@ allprojects {
 | 方法 | 注释 |
 | :- | :- |
 | addZero | 补 0 处理 ( 小于 10, 则自动补充 0x ) |
+| subZeroAndDot | 去掉结尾多余的 . 与 0 |
 | percentI | 计算百分比值 ( 最大 100%) |
 | percentD | 计算百分比值 ( 最大 100%) |
 | percentL | 计算百分比值 ( 最大 100%) |
