@@ -6,7 +6,7 @@
 //implementation 'com.afkt:DevApp:1.9.4'
 
 // AndroidX
-implementation 'com.afkt:DevAppX:2.1.7'
+implementation 'com.afkt:DevAppX:2.1.8'
 ```
 
 ## 目录结构
@@ -700,6 +700,7 @@ allprojects {
 | getLinuxCore_Ver | 获取内核版本 CORE-VER |
 | isDeviceRooted | 判断设备是否 root |
 | isAdbEnabled | 获取是否启用 ADB |
+| isDevelopmentSettingsEnabled | 是否打开开发者选项 |
 | getMacAddress | 获取设备 MAC 地址 |
 | shutdown | 关机 ( 需要 root 权限 ) |
 | reboot | 重启设备 ( 需要 root 权限 ) |
@@ -1104,6 +1105,7 @@ allprojects {
 | cancelAll | 移除通知 ( 移除所有通知 ) |
 | cancel | 移除通知 ( 移除标记为 id 的通知 ) |
 | notify | 进行通知 |
+| getNotificationChannel | 获取 NotificationChannel |
 | createPendingIntent | 获取 PendingIntent |
 | createNotification | 创建通知栏对象 |
 | get | 获取 Led 配置参数 |
