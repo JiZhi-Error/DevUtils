@@ -6,7 +6,7 @@
 //implementation 'com.afkt:DevApp:1.9.4'
 
 // AndroidX
-implementation 'com.afkt:DevAppX:2.1.9'
+implementation 'com.afkt:DevAppX:2.2.0'
 ```
 
 ## 目录结构
@@ -3172,8 +3172,9 @@ allprojects {
 | contains | 是否存在 key |
 | clear | 清除全部数据 |
 | getInt | 获取 int 类型的数据 |
-| getFloat | 获取 float 类型的数据 |
 | getLong | 获取 long 类型的数据 |
+| getFloat | 获取 float 类型的数据 |
+| getDouble | 获取 double 类型的数据 |
 | getBoolean | 获取 boolean 类型的数据 |
 | getString | 获取 String 类型的数据 |
 | getSet | 获取 Set 类型的数据 |
