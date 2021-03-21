@@ -15,6 +15,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
+import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
@@ -47,6 +48,8 @@ import dev.utils.common.FieldUtils;
  *     @see <a href="https://www.jianshu.com/p/78e2dfb6d244"/>
  *     Android 应用坐标系统全面详解
  *     @see <a href="https://blog.csdn.net/yanbober/article/details/50419117"/>
+ *     Android 获取 View 准确宽高的三种方法
+ *     @see <a href="https://blog.csdn.net/yztbydh/article/details/80857016"/>
  *     <p></p>
  *     RelativeLayout 的特有属性
  *     属性值为 true、false
@@ -673,6 +676,58 @@ public final class ViewUtils {
             }
         }
         return view;
+    }
+
+    /**
+     * 获取 View 宽高 ( 准确 )
+     * @param view     {@link View}
+     * @param listener 回调事件
+     * @return {@code true} success, {@code false} fail
+     */
+    public static boolean getWidthHeightExact(
+            final View view,
+            final OnWHListener listener
+    ) {
+        if (view != null && listener != null) {
+            view.post(new Runnable() {
+                @Override
+                public void run() {
+                    if (view != null && listener != null) {
+                        listener.onWidthHeight(view, view.getWidth(), view.getHeight());
+                    }
+                }
+            });
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * 获取 View 宽高 ( 准确 )
+     * @param view     {@link View}
+     * @param listener 回调事件
+     * @return {@code true} success, {@code false} fail
+     */
+    public static boolean getWidthHeightExact2(
+            final View view,
+            final OnWHListener listener
+    ) {
+        if (view != null && listener != null) {
+            final ViewTreeObserver viewTreeObserver = view.getViewTreeObserver();
+            viewTreeObserver.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                @Override
+                public void onGlobalLayout() {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                        viewTreeObserver.removeOnGlobalLayoutListener(this);
+                    }
+                    if (view != null && listener != null) {
+                        listener.onWidthHeight(view, view.getWidth(), view.getHeight());
+                    }
+                }
+            });
+            return true;
+        }
+        return false;
     }
 
     // =
@@ -3826,5 +3881,28 @@ public final class ViewUtils {
             LogPrintUtils.eTag(TAG, e, "setColorFilter");
         }
         return view;
+    }
+
+    // ===========
+    // = 接口相关 =
+    // ===========
+
+    /**
+     * detail: 宽高监听事件
+     * @author Ttt
+     */
+    public interface OnWHListener {
+
+        /**
+         * 获取宽高回调
+         * @param view   {@link View}
+         * @param width  宽度
+         * @param height 高度
+         */
+        void onWidthHeight(
+                View view,
+                int width,
+                int height
+        );
     }
 }
