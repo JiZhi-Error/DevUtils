@@ -713,12 +713,14 @@ public final class ViewUtils {
             final OnWHListener listener
     ) {
         if (view != null && listener != null) {
-            final ViewTreeObserver viewTreeObserver = view.getViewTreeObserver();
-            viewTreeObserver.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            view.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
                 @Override
                 public void onGlobalLayout() {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                        viewTreeObserver.removeOnGlobalLayoutListener(this);
+                        try {
+                            view.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                        } catch (Exception e) {
+                        }
                     }
                     if (view != null && listener != null) {
                         listener.onWidthHeight(view, view.getWidth(), view.getHeight());
