@@ -6,7 +6,7 @@
 //implementation 'com.afkt:DevApp:1.9.4'
 
 // AndroidX ( Maven Central ) 
-implementation 'io.github.afkt:DevAppX:2.2.5'
+implementation 'io.github.afkt:DevAppX:2.2.6'
 ```
 
 ## 目录结构
@@ -1775,6 +1775,9 @@ DevUtils.openDebug();
 | getUriForFile | 获取 FileProvider File Uri |
 | getUriForPath | 获取 FileProvider File Path Uri |
 | getUriForFileToName | 获取 FileProvider File Path Uri ( 自动添加包名 ${applicationId} ) |
+| getUriForString | 通过 String 获取 Uri |
+| isUri | 判断是否 Uri |
+| getUriScheme | 获取 Uri Scheme |
 | isUriExists | 判断 Uri 路径资源是否存在 |
 | getMediaUri | 通过 File 获取 Media Uri |
 | copyByUri | 通过 Uri 复制文件 |
