@@ -719,7 +719,7 @@ public final class ViewUtils {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                         try {
                             view.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                        } catch (Exception e) {
+                        } catch (Exception ignored) {
                         }
                     }
                     if (view != null && listener != null) {
