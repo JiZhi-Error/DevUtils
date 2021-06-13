@@ -313,7 +313,7 @@ public final class ViewUtils {
                 View       root   = null;
                 ViewParent parent = view.getParent();
                 while (parent instanceof View) {
-                    root = (View) parent;
+                    root   = (View) parent;
                     parent = parent.getParent();
                 }
                 return (T) root;
@@ -664,7 +664,7 @@ public final class ViewUtils {
             try {
                 ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
                 if (layoutParams != null) {
-                    layoutParams.width = width;
+                    layoutParams.width  = width;
                     layoutParams.height = height;
                     view.setLayoutParams(layoutParams);
                 } else if (nullNewLP) {

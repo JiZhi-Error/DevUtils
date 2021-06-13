@@ -3546,7 +3546,7 @@ public final class ArrayUtils {
                     int value = data[i];
                     if (value < temp) {
                         index = i;
-                        temp = value;
+                        temp  = value;
                     }
                 }
                 return index;
@@ -3570,7 +3570,7 @@ public final class ArrayUtils {
                     long value = data[i];
                     if (value < temp) {
                         index = i;
-                        temp = value;
+                        temp  = value;
                     }
                 }
                 return index;
@@ -3594,7 +3594,7 @@ public final class ArrayUtils {
                     float value = data[i];
                     if (value < temp) {
                         index = i;
-                        temp = value;
+                        temp  = value;
                     }
                 }
                 return index;
@@ -3618,7 +3618,7 @@ public final class ArrayUtils {
                     double value = data[i];
                     if (value < temp) {
                         index = i;
-                        temp = value;
+                        temp  = value;
                     }
                 }
                 return index;
@@ -3646,7 +3646,7 @@ public final class ArrayUtils {
                     int value = data[i];
                     if (value > temp) {
                         index = i;
-                        temp = value;
+                        temp  = value;
                     }
                 }
                 return index;
@@ -3670,7 +3670,7 @@ public final class ArrayUtils {
                     long value = data[i];
                     if (value > temp) {
                         index = i;
-                        temp = value;
+                        temp  = value;
                     }
                 }
                 return index;
@@ -3694,7 +3694,7 @@ public final class ArrayUtils {
                     float value = data[i];
                     if (value > temp) {
                         index = i;
-                        temp = value;
+                        temp  = value;
                     }
                 }
                 return index;
@@ -3718,7 +3718,7 @@ public final class ArrayUtils {
                     double value = data[i];
                     if (value > temp) {
                         index = i;
-                        temp = value;
+                        temp  = value;
                     }
                 }
                 return index;
