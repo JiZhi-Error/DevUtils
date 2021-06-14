@@ -313,34 +313,6 @@ DevUtils.openDebug();
 | getIntervalTimeFolder | 获取时间间隔所属的文件夹 |
 
 
-* **APP 通用工具类 ->** [AppCommonUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/AppCommonUtils.java)
-
-| 方法 | 注释 |
-| :- | :- |
-| getSDKVersion | 获取 SDK 版本 |
-| isFroyo | 是否在 2.2 版本及以上 |
-| isGingerbread | 是否在 2.3 版本及以上 |
-| isGingerbreadMR1 | 是否在 2.3.3 版本及以上 |
-| isHoneycomb | 是否在 3.0 版本及以上 |
-| isHoneycombMR1 | 是否在 3.1 版本及以上 |
-| isIceCreamSandwich | 是否在 4.0 版本及以上 |
-| isIceCreamSandwichMR1 | 是否在 4.0.3 版本及以上 |
-| isJellyBean | 是否在 4.1 版本及以上 |
-| isJellyBeanMR1 | 是否在 4.2 版本及以上 |
-| isJellyBeanMR2 | 是否在 4.3 版本及以上 |
-| isKitkat | 是否在 4.4.2 版本及以上 |
-| isLollipop | 是否在 5.0.1 版本及以上 |
-| isM | 是否在 6.0 版本及以上 |
-| isN | 是否在 7.0 版本及以上 |
-| isN_MR1 | 是否在 7.1.1 版本及以上 |
-| isO | 是否在 8.0 版本及以上 |
-| isO_MR1 | 是否在 8.1 版本及以上 |
-| isP | 是否在 9.0 版本及以上 |
-| isQ | 是否在 10.0 版本及以上 |
-| isR | 是否在 11.0 版本及以上 |
-| convertSDKVersion | 转换 SDK 版本 convertSDKVersion(14) = Android 4.0.0-2 |
-
-
 * **APP ( Android ) 工具类 ->** [AppUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/AppUtils.java)
 
 | 方法 | 注释 |
@@ -368,6 +340,8 @@ DevUtils.openDebug();
 | getWallpaperManager | 获取 WallpaperManager |
 | getSystemService | 获取 SystemService |
 | getPackageManager | 获取 PackageManager |
+| getCurrentWindowMetrics | 获取 Current WindowMetrics |
+| getMaximumWindowMetrics | 获取 Maximum WindowMetrics |
 | getApplicationInfo | 获取 ApplicationInfo |
 | getPackageInfo | 获取 PackageInfo |
 | getSharedPreferences | 获取 SharedPreferences |
@@ -468,6 +442,7 @@ DevUtils.openDebug();
 | 方法 | 注释 |
 | :- | :- |
 | getStatusBarHeight | 获取 StatusBar 高度 |
+| getStatusBarHeight2 | 获取 StatusBar 高度 |
 | isStatusBarVisible | 判断 StatusBar 是否显示 |
 | setStatusBarVisibility | 设置 StatusBar 是否显示 |
 | setStatusBarLightMode | 设置 StatusBar 是否高亮模式 |
@@ -1474,6 +1449,7 @@ DevUtils.openDebug();
 | isScreenLock | 判断是否锁屏 |
 | isTablet | 判断是否是平板 |
 | getStatusBarHeight | 获取 StatusBar 高度 |
+| getStatusBarHeight2 | 获取 StatusBar 高度 |
 | setSleepDuration | 设置进入休眠时长 |
 | getSleepDuration | 获取进入休眠时长 |
 | getNavigationBarHeight | 获取底部导航栏高度 |
@@ -4191,6 +4167,7 @@ DevUtils.openDebug();
 | strEncode | 进行字符串编码 |
 | urlEncode | 进行 URL 编码, 默认 UTF-8 |
 | urlDecode | 进行 URL 解码, 默认 UTF-8 |
+| urlDecodeWhile | 进行 URL 解码, 默认 UTF-8 ( 循环到非 URL 编码为止 ) |
 | ascii | 将字符串转移为 ASCII 码 |
 | unicode | 将字符串转移为 Unicode 码 |
 | unicodeString | 将字符数组转移为 Unicode 码 |
