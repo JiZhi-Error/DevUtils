@@ -559,9 +559,9 @@ public final class ViewUtils {
         return null;
     }
 
-    // =============
+    // ============
     // = View 判空 =
-    // =============
+    // ============
 
     /**
      * 判断 View 是否为 null
@@ -2079,9 +2079,9 @@ public final class ViewUtils {
         return false;
     }
 
-    // ================
+    // ===============
     // = View 显示状态 =
-    // ================
+    // ===============
 
     /**
      * 判断 View 是否显示 ( 如果存在父级则判断父级 )
@@ -3533,9 +3533,9 @@ public final class ViewUtils {
         return AnimationUtils.cancelAnimation(animation);
     }
 
-    // ========
+    // =======
     // = 背景 =
-    // ========
+    // =======
 
     /**
      * 设置背景图片
@@ -3643,9 +3643,9 @@ public final class ViewUtils {
         return view;
     }
 
-    // ========
+    // =======
     // = 前景 =
-    // ========
+    // =======
 
     /**
      * 设置前景图片
@@ -3813,9 +3813,9 @@ public final class ViewUtils {
         return null;
     }
 
-    // ===========
+    // ==========
     // = 着色处理 =
-    // ===========
+    // ==========
 
     /**
      * View 着色处理
