@@ -6,7 +6,7 @@
 //implementation 'com.afkt:DevApp:1.9.4'
 
 // AndroidX ( Maven Central ) 
-implementation 'io.github.afkt:DevAppX:2.2.6'
+implementation 'io.github.afkt:DevAppX:2.2.7'
 ```
 
 ## 目录结构
@@ -998,10 +998,14 @@ DevUtils.openDebug();
 | createImageUri | 创建图片 Uri |
 | createVideoUri | 创建视频 Uri |
 | createAudioUri | 创建音频 Uri |
+| createDownloadUri | 创建 Download Uri |
 | createMediaUri | 创建预存储 Media Uri |
+| createUriByPath | 通过 File Path 创建 Uri |
+| createUriByFile | 通过 File Path 创建 Uri |
 | insertImage | 插入一张图片 |
 | insertVideo | 插入一条视频 |
 | insertAudio | 插入一条音频 |
+| insertDownload | 插入一条文件资源 |
 | insertMedia | 插入一条多媒体资源 |
 | getVideoDuration | 获取本地视频时长 |
 | getVideoSize | 获取本地视频宽高 |
@@ -1011,6 +1015,11 @@ DevUtils.openDebug();
 | createFavoriteRequest | 获取用户将设备上指定的媒体文件标记为收藏的请求 |
 | createTrashRequest | 获取用户将指定的媒体文件放入设备垃圾箱的请求 |
 | createDeleteRequest | 获取用户立即永久删除指定的媒体文件 ( 而不是先将其放入垃圾箱 ) 的请求 |
+| getMimeTypeFromExtension | 通过后缀获取 MimeType |
+| getExtensionFromMimeType | 通过 MimeType 获取后缀 |
+| getFileExtensionFromUrl | 通过 Url 获取文件后缀 |
+| hasMimeType | 判断 MimeMap 是否存在指定的 MimeType |
+| hasExtension | 判断是否支持的 MimeType 后缀 |
 
 
 * **内存信息工具类 ->** [MemoryUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/MemoryUtils.java)
@@ -1752,6 +1761,7 @@ DevUtils.openDebug();
 | getUriForPath | 获取 FileProvider File Path Uri |
 | getUriForFileToName | 获取 FileProvider File Path Uri ( 自动添加包名 ${applicationId} ) |
 | getUriForString | 通过 String 获取 Uri |
+| fromFile | 通过 File Path 创建 Uri |
 | isUri | 判断是否 Uri |
 | getUriScheme | 获取 Uri Scheme |
 | isUriExists | 判断 Uri 路径资源是否存在 |
@@ -2589,7 +2599,10 @@ DevUtils.openDebug();
 | createImageUri | 创建图片 Uri |
 | createVideoUri | 创建视频 Uri |
 | createAudioUri | 创建音频 Uri |
+| createDownloadUri | 创建 Download Uri |
 | createMediaUri | 创建预存储 Media Uri |
+| createUriByPath | 通过 File Path 创建 Uri |
+| createUriByFile | 通过 File Path 创建 Uri |
 | insertImage | 插入一张图片 |
 | insertVideo | 插入一条视频 |
 | insertAudio | 插入一条音频 |
@@ -3926,6 +3939,13 @@ DevUtils.openDebug();
 
 | 方法 | 注释 |
 | :- | :- |
+| getUrlParams | 获取 Url 携带参数 |
+| getUrlParamsArray | 获取 Url、携带参数 数组 |
+| existsParams | 判断是否存在参数 |
+| existsParamsByURL | 通过 Url 判断是否存在参数 |
+| joinUrlParams | 拼接 Url 及携带参数 |
+| getUrlParamsJoinSymbol | 获取 Url 及携带参数 拼接符号 |
+| splitParamsByUrl | 通过 Url 拆分参数 |
 | splitParams | 拆分参数 |
 | joinParams | 拼接请求参数 |
 | joinParamsObj | 拼接请求参数 |
