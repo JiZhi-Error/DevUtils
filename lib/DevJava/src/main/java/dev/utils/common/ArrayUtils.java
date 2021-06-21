@@ -616,9 +616,9 @@ public final class ArrayUtils {
         return count;
     }
 
-    // ===========
+    // ==========
     // = 数据获取 =
-    // ===========
+    // ==========
 
     /**
      * 获取数组对应索引数据
@@ -1145,9 +1145,9 @@ public final class ArrayUtils {
         return get(booleans, length(booleans) - 1);
     }
 
-    // ===========
+    // ==========
     // = 数据获取 =
-    // ===========
+    // ==========
 
     /**
      * 根据指定值获取 value 所在位置 + 偏移量的值
@@ -2021,9 +2021,9 @@ public final class ArrayUtils {
         return -1;
     }
 
-    // ===========
+    // ==========
     // = 转换处理 =
-    // ===========
+    // ==========
 
     /**
      * int[] 转换 Integer[]
