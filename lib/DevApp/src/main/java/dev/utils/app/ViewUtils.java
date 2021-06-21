@@ -477,9 +477,9 @@ public final class ViewUtils {
         return false;
     }
 
-    // =====================
+    // ===================
     // = 初始化 View 操作等 =
-    // =====================
+    // ===================
 
     /**
      * 初始化 View
@@ -3731,9 +3731,9 @@ public final class ViewUtils {
         return view;
     }
 
-    // ========
+    // =======
     // = 获取 =
-    // ========
+    // =======
 
     /**
      * 获取 View 背景 Drawable
@@ -3885,9 +3885,9 @@ public final class ViewUtils {
         return view;
     }
 
-    // ===========
+    // ==========
     // = 接口相关 =
-    // ===========
+    // ==========
 
     /**
      * detail: 宽高监听事件
