@@ -1016,7 +1016,7 @@ DevUtils.openDebug();
 | createTrashRequest | 获取用户将指定的媒体文件放入设备垃圾箱的请求 |
 | createDeleteRequest | 获取用户立即永久删除指定的媒体文件 ( 而不是先将其放入垃圾箱 ) 的请求 |
 | getMimeTypeFromExtension | 通过后缀获取 MimeType |
-| getExtensionFromMimeType | 通过 MimeType 获取后缀 |
+| getExtensionFromMimeType | 通过 MimeType 获取后缀 ( 不含 . ) |
 | getFileExtensionFromUrl | 通过 Url 获取文件后缀 |
 | hasMimeType | 判断 MimeMap 是否存在指定的 MimeType |
 | hasExtension | 判断是否支持的 MimeType 后缀 |
