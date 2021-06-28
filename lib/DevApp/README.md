@@ -16,6 +16,7 @@ implementation 'io.github.afkt:DevAppX:2.2.7'
    - app             | APP 相关工具类
       - anim         | 动画工具类
       - assist       | 辅助类
+         - record    | 文件记录分析类
       - cache        | 缓存工具类
       - camera1      | 摄像头相关 android.hardware.Camera
       - helper       | 功能 Helper 辅助类
@@ -31,6 +32,7 @@ implementation 'io.github.afkt:DevAppX:2.2.7'
       - wifi         | Wifi、热点工具类
    - common          | Java 工具类, 不依赖 android api
       - assist       | 各种快捷辅助类
+         - record    | 文件记录分析类
          - search    | 搜索相关 ( 文件搜索等 )
       - cipher       | 编 / 解码工具类
       - encrypt      | 加密工具类
@@ -87,6 +89,7 @@ DevUtils.openDebug();
    - [app](#devutilsapp)                              | APP 相关工具类
       - [anim](#devutilsappanim)                      | 动画工具类
       - [assist](#devutilsappassist)                  | 辅助类
+         - [record](#devutilsappassistrecord)         | 文件记录分析类
       - [cache](#devutilsappcache)                    | 缓存工具类
       - [camera1](#devutilsappcamera1)                | 摄像头相关 android.hardware.Camera
       - [helper](#devutilsapphelper)                  | 功能 Helper 辅助类
@@ -102,6 +105,7 @@ DevUtils.openDebug();
       - [wifi](#devutilsappwifi)                      | Wifi、热点工具类
    - [common](#devutilscommon)                        | Java 工具类, 不依赖 android api
       - [assist](#devutilscommonassist)               | 各种快捷辅助类
+         - [record](#devutilscommonassistrecord)      | 文件记录分析类
          - [search](#devutilscommonassistsearch)      | 搜索相关 ( 文件搜索等 )
       - [cipher](#devutilscommoncipher)               | 编 / 解码工具类
       - [encrypt](#devutilscommonencrypt)             | 加密工具类
@@ -286,31 +290,6 @@ DevUtils.openDebug();
 | stopAlarmBroadcast | 关闭 Receiver 闹钟 |
 | startAlarmActivity | 开启 Activity 闹钟 |
 | stopAlarmActivity | 关闭 Activity 闹钟 |
-
-
-* **日志记录分析工具类 ->** [AnalysisRecordUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/AnalysisRecordUtils.java)
-
-| 方法 | 注释 |
-| :- | :- |
-| init | 初始化操作 ( 内部已调用 ) |
-| setCallback | 设置文件记录回调 |
-| record | 日志记录 |
-| isHandler | 判断是否处理日志记录 |
-| setHandler | 设置是否处理日志记录 |
-| isAppendSpace | 判断是否追加空格 |
-| setAppendSpace | 设置是否追加空格 |
-| getLogFolderName | 获取日志文件名 |
-| setLogFolderName | 设置日志文件夹名 |
-| getLogStoragePath | 获取日志存储路径 |
-| setLogStoragePath | 设置日志存储路径 |
-| get | 获取日志记录分析文件对象 |
-| getStoragePath | 获取存储路径 |
-| getFileName | 获取日志文件名 |
-| getFileFunction | 获取日志文件记录功能 |
-| getFileIntervalTime | 获取日志文件记录间隔时间 |
-| getFolderName | 获取日志文件夹名 |
-| getLogPath | 获取日志文件地址 |
-| getIntervalTimeFolder | 获取时间间隔所属的文件夹 |
 
 
 * **APP ( Android ) 工具类 ->** [AppUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/AppUtils.java)
@@ -2197,6 +2176,17 @@ DevUtils.openDebug();
 | stop | 停止监听 |
 | isPortrait | 是否竖屏 |
 | isAllowChange | 是否允许切屏 |
+
+
+## <span id="devutilsappassistrecord">**`dev.utils.app.assist.record`**</span>
+
+
+* **App 日志记录插入信息 ->** [AppRecordInsert.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/assist/record/AppRecordInsert.java)
+
+| 方法 | 注释 |
+| :- | :- |
+| setFileInfo | setFileInfo |
+| getFileInfo | getFileInfo |
 
 
 ## <span id="devutilsappcache">**`dev.utils.app.cache`**</span>
@@ -4282,6 +4272,51 @@ DevUtils.openDebug();
 | :- | :- |
 | waitForEndAsync | 设置等待一段时间后, 通知方法 ( 异步 ) |
 | waitForEnd | 设置等待一段时间后, 通知方法 ( 同步 ) |
+
+
+## <span id="devutilscommonassistrecord">**`dev.utils.common.assist.record`**</span>
+
+
+* **文件记录分析工具类 ->** [FileRecordUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/common/assist/record/FileRecordUtils.java)
+
+| 方法 | 注释 |
+| :- | :- |
+| isSuccessful | 校验记录方法返回字符串是否成功 |
+| isHandler | 是否处理记录 |
+| setHandler | 设置是否处理记录 |
+| getRecordInsert | 获取日志记录插入信息 |
+| setRecordInsert | 设置日志记录插入信息 |
+| setCallback | 设置文件记录回调 |
+| getLogContent | 获取日志内容 |
+| record | 记录方法 |
+
+
+* **日志记录配置信息 ->** [RecordConfig.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/common/assist/record/RecordConfig.java)
+
+| 方法 | 注释 |
+| :- | :- |
+| get | 获取配置信息 |
+| getStoragePath | 获取存储路径 |
+| getFileName | 获取文件名 ( 固定 ) |
+| getFolderName | 获取文件夹名 ( 模块名 ) |
+| getFileIntervalTime | 获取文件记录间隔时间 |
+| isHandler | 是否处理记录 |
+| setHandler | 设置是否处理记录 |
+| getRecordInsert | 获取日志记录插入信息 |
+| setRecordInsert | 设置日志记录插入信息 |
+| getFinalPath | 获取文件地址 |
+
+
+* **日志记录插入信息 ->** [RecordInsert.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/common/assist/record/RecordInsert.java)
+
+| 方法 | 注释 |
+| :- | :- |
+| getFileInfo | getFileInfo |
+| setFileInfo | setFileInfo |
+| getLogHeader | getLogHeader |
+| setLogHeader | setLogHeader |
+| getLogTail | getLogTail |
+| setLogTail | setLogTail |
 
 
 ## <span id="devutilscommonassistsearch">**`dev.utils.common.assist.search`**</span>
