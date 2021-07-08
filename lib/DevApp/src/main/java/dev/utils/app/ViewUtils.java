@@ -2353,6 +2353,19 @@ public final class ViewUtils {
         return (isVisibility == View.VISIBLE);
     }
 
+    /**
+     * 设置 View 显示的状态
+     * @param isVisibility {@code true} View.VISIBLE, {@code false} View.INVISIBLE
+     * @param views        View[]
+     * @return isVisibility 是否传入 {@link View#VISIBLE}
+     */
+    public static boolean setVisibilityINs(
+            final boolean isVisibility,
+            final View... views
+    ) {
+        return setVisibilitys(getVisibilityIN(isVisibility), views);
+    }
+
     // =
 
     /**
