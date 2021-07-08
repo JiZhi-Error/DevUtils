@@ -2273,7 +2273,7 @@ public final class ViewUtils {
      * 设置 View 显示的状态
      * @param isVisibility {@code true} View.VISIBLE, {@code false} View.GONE
      * @param view         {@link View}
-     * @return isVisibility
+     * @return isVisibility 是否传入 {@link View#VISIBLE}
      */
     public static boolean setVisibility(
             final boolean isVisibility,
@@ -2299,6 +2299,22 @@ public final class ViewUtils {
             view.setVisibility(isVisibility);
         }
         return (isVisibility == View.VISIBLE);
+    }
+
+    /**
+     * 设置 View 显示的状态
+     * @param isVisibility {@code true} View.VISIBLE, {@code false} View.INVISIBLE
+     * @param view         {@link View}
+     * @return isVisibility 是否传入 {@link View#VISIBLE}
+     */
+    public static boolean setVisibilityIN(
+            final boolean isVisibility,
+            final View view
+    ) {
+        if (view != null) {
+            view.setVisibility(isVisibility ? View.VISIBLE : View.INVISIBLE);
+        }
+        return isVisibility;
     }
 
     // =
@@ -2395,7 +2411,7 @@ public final class ViewUtils {
      * @param state    {@link View#VISIBLE}、{@link View#INVISIBLE}、{@link View#GONE}
      * @param viewArys View[]
      * @param views    View[]
-     * @return isVisibility
+     * @return isVisibility 是否传入 {@link View#VISIBLE}
      */
     public static boolean reverseVisibilitys(
             final int state,
@@ -2410,7 +2426,7 @@ public final class ViewUtils {
      * @param isVisibility {@code true} View.VISIBLE, {@code false} View.GONE
      * @param viewArys     View[]
      * @param views        View[]
-     * @return isVisibility
+     * @return isVisibility 是否传入 {@link View#VISIBLE}
      */
     public static boolean reverseVisibilitys(
             final boolean isVisibility,
@@ -2429,7 +2445,7 @@ public final class ViewUtils {
      * @param state {@link View#VISIBLE}、{@link View#INVISIBLE}、{@link View#GONE}
      * @param view  {@link View}
      * @param views View[]
-     * @return isVisibility
+     * @return isVisibility 是否传入 {@link View#VISIBLE}
      */
     public static boolean reverseVisibilitys(
             final int state,
@@ -2444,7 +2460,7 @@ public final class ViewUtils {
      * @param isVisibility {@code true} View.VISIBLE, {@code false} View.GONE
      * @param view         {@link View}
      * @param views        View[]
-     * @return isVisibility
+     * @return isVisibility 是否传入 {@link View#VISIBLE}
      */
     public static boolean reverseVisibilitys(
             final boolean isVisibility,
