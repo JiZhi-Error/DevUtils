@@ -7,6 +7,7 @@ import android.content.res.ColorStateList;
 import android.graphics.ColorFilter;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
+import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.view.Gravity;
@@ -728,6 +729,43 @@ public final class ViewUtils {
                 }
             });
             return true;
+        }
+        return false;
+    }
+
+    // =
+
+    /**
+     * 获取 View 在屏幕中可见的坐标区域
+     * @param view {@link View}
+     * @param rect 可见坐标区域
+     * @return {@code true} View 全部或者部分可见, {@code false} View 全部不可见
+     */
+    public static boolean getGlobalVisibleRect(
+            final View view,
+            final Rect rect
+    ) {
+        if (view != null && rect != null) {
+            return view.getGlobalVisibleRect(rect);
+        }
+        return false;
+    }
+
+    /**
+     * 获取 View 本身可见的坐标区域
+     * <pre>
+     *     坐标以自己的左上角为原点 ( 0, 0 )
+     * </pre>
+     * @param view {@link View}
+     * @param rect 可见坐标区域
+     * @return {@code true} View 全部或者部分可见, {@code false} View 全部不可见
+     */
+    public static boolean getLocalVisibleRect(
+            final View view,
+            final Rect rect
+    ) {
+        if (view != null && rect != null) {
+            return view.getLocalVisibleRect(rect);
         }
         return false;
     }
