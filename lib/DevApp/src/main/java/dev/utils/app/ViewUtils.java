@@ -738,6 +738,16 @@ public final class ViewUtils {
     /**
      * 获取 View 在屏幕中可见的坐标区域
      * @param view {@link View}
+     * @return {@code true} View 全部或者部分可见, {@code false} View 全部不可见
+     */
+    public static boolean getGlobalVisibleRect(final View view) {
+        if (view == null) return false;
+        return getGlobalVisibleRect(view, new Rect());
+    }
+
+    /**
+     * 获取 View 在屏幕中可见的坐标区域
+     * @param view {@link View}
      * @param rect 可见坐标区域
      * @return {@code true} View 全部或者部分可见, {@code false} View 全部不可见
      */
@@ -749,6 +759,16 @@ public final class ViewUtils {
             return view.getGlobalVisibleRect(rect);
         }
         return false;
+    }
+
+    /**
+     * 获取 View 本身可见的坐标区域
+     * @param view {@link View}
+     * @return {@code true} View 全部或者部分可见, {@code false} View 全部不可见
+     */
+    public static boolean getLocalVisibleRect(final View view) {
+        if (view == null) return false;
+        return getLocalVisibleRect(view, new Rect());
     }
 
     /**
