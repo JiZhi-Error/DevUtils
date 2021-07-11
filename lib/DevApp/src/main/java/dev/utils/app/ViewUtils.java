@@ -793,6 +793,20 @@ public final class ViewUtils {
     // =
 
     /**
+     * 判断 View 是否完全显示
+     * @param view {@link View}
+     * @return {@code true} yes, {@code false} no
+     */
+    public static boolean isCompletelyVisible(final View view) {
+        if (view == null) return false;
+        Rect    rect      = new Rect();
+        boolean isVisible = getGlobalVisibleRect(view, rect);
+        return isVisible && (rect.bottom - rect.top >= view.getHeight());
+    }
+
+    // =
+
+    /**
      * 获取 View 宽度
      * @param view {@link View}
      * @return View 宽度
