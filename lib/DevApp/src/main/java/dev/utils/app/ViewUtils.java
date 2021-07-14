@@ -442,6 +442,113 @@ public final class ViewUtils {
     // =
 
     /**
+     * 添加 View
+     * @param viewGroup {@link ViewGroup}
+     * @param child     待添加 View
+     * @return {@link ViewGroup}
+     */
+    public static View addView(
+            final ViewGroup viewGroup,
+            final View child
+    ) {
+        return addView(viewGroup, child, -1);
+    }
+
+    /**
+     * 添加 View
+     * @param viewGroup {@link ViewGroup}
+     * @param child     待添加 View
+     * @param index     添加位置索引
+     * @return {@link ViewGroup}
+     */
+    public static View addView(
+            final ViewGroup viewGroup,
+            final View child,
+            final int index
+    ) {
+        if (viewGroup != null && child != null) {
+            try {
+                viewGroup.addView(child, index);
+            } catch (Exception e) {
+                LogPrintUtils.eTag(TAG, e, "addView");
+            }
+        }
+        return viewGroup;
+    }
+
+    /**
+     * 添加 View
+     * @param viewGroup {@link ViewGroup}
+     * @param child     待添加 View
+     * @param index     添加位置索引
+     * @param params    LayoutParams
+     * @return {@link ViewGroup}
+     */
+    public static View addView(
+            final ViewGroup viewGroup,
+            final View child,
+            final int index,
+            final ViewGroup.LayoutParams params
+    ) {
+        if (viewGroup != null && child != null) {
+            try {
+                viewGroup.addView(child, index, params);
+            } catch (Exception e) {
+                LogPrintUtils.eTag(TAG, e, "addView");
+            }
+        }
+        return viewGroup;
+    }
+
+    /**
+     * 添加 View
+     * @param viewGroup {@link ViewGroup}
+     * @param child     待添加 View
+     * @param params    LayoutParams
+     * @return {@link ViewGroup}
+     */
+    public static View addView(
+            final ViewGroup viewGroup,
+            final View child,
+            final ViewGroup.LayoutParams params
+    ) {
+        if (viewGroup != null && child != null) {
+            try {
+                viewGroup.addView(child, params);
+            } catch (Exception e) {
+                LogPrintUtils.eTag(TAG, e, "addView");
+            }
+        }
+        return viewGroup;
+    }
+
+    /**
+     * 添加 View
+     * @param viewGroup {@link ViewGroup}
+     * @param child     待添加 View
+     * @param width     View 宽度
+     * @param height    View 高度
+     * @return {@link ViewGroup}
+     */
+    public static View addView(
+            final ViewGroup viewGroup,
+            final View child,
+            final int width,
+            final int height
+    ) {
+        if (viewGroup != null && child != null) {
+            try {
+                viewGroup.addView(child, width, height);
+            } catch (Exception e) {
+                LogPrintUtils.eTag(TAG, e, "addView");
+            }
+        }
+        return viewGroup;
+    }
+
+    // =
+
+    /**
      * 获取 LayoutParams
      * @param view {@link View}
      * @param <T>  泛型
@@ -4062,8 +4169,8 @@ public final class ViewUtils {
             final int progress,
             final int max
     ) {
-        setBarProgress(view, progress);
-        return setBarMax(view, max);
+        setBarMax(view, max);
+        return setBarProgress(view, progress);
     }
 
     // ==========
