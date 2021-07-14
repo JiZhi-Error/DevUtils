@@ -22,6 +22,7 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
 import androidx.annotation.ColorInt;
@@ -4011,6 +4012,58 @@ public final class ViewUtils {
             LogPrintUtils.eTag(TAG, e, "setColorFilter");
         }
         return view;
+    }
+
+    // ===============
+    // = ProgressBar =
+    // ===============
+
+    /**
+     * 设置 ProgressBar 进度值
+     * @param view     {@link ProgressBar}
+     * @param progress 当前进度
+     * @return {@link ProgressBar}
+     */
+    public static ProgressBar setBarProgress(
+            final ProgressBar view,
+            final int progress
+    ) {
+        if (view != null) {
+            view.setProgress(progress);
+        }
+        return view;
+    }
+
+    /**
+     * 设置 ProgressBar 最大值
+     * @param view {@link ProgressBar}
+     * @param max  最大值
+     * @return {@link ProgressBar}
+     */
+    public static ProgressBar setBarMax(
+            final ProgressBar view,
+            final int max
+    ) {
+        if (view != null) {
+            view.setMax(max);
+        }
+        return view;
+    }
+
+    /**
+     * 设置 ProgressBar 最大值
+     * @param view     {@link ProgressBar}
+     * @param progress 当前进度
+     * @param max      最大值
+     * @return {@link ProgressBar}
+     */
+    public static ProgressBar setBarValue(
+            final ProgressBar view,
+            final int progress,
+            final int max
+    ) {
+        setBarProgress(view, progress);
+        return setBarMax(view, max);
     }
 
     // ==========
