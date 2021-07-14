@@ -680,6 +680,33 @@ public final class ViewUtils {
     }
 
     /**
+     * 设置 View weight 权重
+     * @param view   {@link View}
+     * @param weight 权重比例
+     * @return {@link View}
+     */
+    public static View setWeight(
+            final View view,
+            final float weight
+    ) {
+        if (view != null) {
+            try {
+                ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
+                if (layoutParams instanceof LinearLayout.LayoutParams) {
+                    LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) layoutParams;
+                    params.weight = weight;
+                    view.setLayoutParams(params);
+                }
+            } catch (Exception e) {
+                LogPrintUtils.eTag(TAG, e, "setWeight");
+            }
+        }
+        return view;
+    }
+
+    // =
+
+    /**
      * 获取 View 宽高 ( 准确 )
      * @param view     {@link View}
      * @param listener 回调事件
