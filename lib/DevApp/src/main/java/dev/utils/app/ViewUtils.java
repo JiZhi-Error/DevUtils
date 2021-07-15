@@ -52,6 +52,8 @@ import dev.utils.common.FieldUtils;
  *     @see <a href="https://blog.csdn.net/yanbober/article/details/50419117"/>
  *     Android 获取 View 准确宽高的三种方法
  *     @see <a href="https://blog.csdn.net/yztbydh/article/details/80857016"/>
+ *     getLocalVisibleRect()、getGlobalVisibleRect()、getLocationOnScreen()、getLocationInWindow() 方法浅析
+ *     @see <a href="https://blog.csdn.net/qq1282675628/article/details/112358024"/>
  *     <p></p>
  *     RelativeLayout 的特有属性
  *     属性值为 true、false
@@ -866,6 +868,68 @@ public final class ViewUtils {
             return true;
         }
         return false;
+    }
+
+    // =
+
+    /**
+     * 获取 View 在屏幕中坐标区域
+     * @param view {@link View}
+     * @return 坐标信息
+     */
+    public static int[] getLocationOnScreen(final View view) {
+        return getLocationOnScreen(view, new int[2]);
+    }
+
+    /**
+     * 获取 View 在屏幕中坐标区域
+     * @param view      {@link View}
+     * @param locations 传入数组, 自动赋值 x、y
+     * @return 坐标信息
+     */
+    public static int[] getLocationOnScreen(
+            final View view,
+            final int[] locations
+    ) {
+        if (view != null) {
+            try {
+                view.getLocationOnScreen(locations);
+            } catch (Exception e) {
+                LogPrintUtils.eTag(TAG, e, "getLocationOnScreen");
+            }
+        }
+        return locations;
+    }
+
+    // =
+
+    /**
+     * 获取 View 在父窗口中坐标区域
+     * @param view {@link View}
+     * @return 坐标信息
+     */
+    public static int[] getLocationInWindow(final View view) {
+        return getLocationInWindow(view, new int[2]);
+    }
+
+    /**
+     * 获取 View 在父窗口中坐标区域
+     * @param view      {@link View}
+     * @param locations 传入数组, 自动赋值 x、y
+     * @return 坐标信息
+     */
+    public static int[] getLocationInWindow(
+            final View view,
+            final int[] locations
+    ) {
+        if (view != null) {
+            try {
+                view.getLocationInWindow(locations);
+            } catch (Exception e) {
+                LogPrintUtils.eTag(TAG, e, "getLocationInWindow");
+            }
+        }
+        return locations;
     }
 
     // =
