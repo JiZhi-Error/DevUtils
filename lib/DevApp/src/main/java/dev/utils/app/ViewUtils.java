@@ -4191,6 +4191,56 @@ public final class ViewUtils {
 
     /**
      * 设置 ProgressBar 进度值
+     * @param view     {@link View}
+     * @param progress 当前进度
+     * @return {@link View}
+     */
+    public static View setBarProgress(
+            final View view,
+            final int progress
+    ) {
+        if (view instanceof ProgressBar) {
+            setBarProgress((ProgressBar) view, progress);
+        }
+        return view;
+    }
+
+    /**
+     * 设置 ProgressBar 最大值
+     * @param view {@link View}
+     * @param max  最大值
+     * @return {@link View}
+     */
+    public static View setBarMax(
+            final View view,
+            final int max
+    ) {
+        if (view instanceof ProgressBar) {
+            setBarMax((ProgressBar) view, max);
+        }
+        return view;
+    }
+
+    /**
+     * 设置 ProgressBar 最大值
+     * @param view     {@link View}
+     * @param progress 当前进度
+     * @param max      最大值
+     * @return {@link View}
+     */
+    public static View setBarValue(
+            final View view,
+            final int progress,
+            final int max
+    ) {
+        setBarMax(view, max);
+        return setBarProgress(view, progress);
+    }
+
+    // =
+
+    /**
+     * 设置 ProgressBar 进度值
      * @param view     {@link ProgressBar}
      * @param progress 当前进度
      * @return {@link ProgressBar}
