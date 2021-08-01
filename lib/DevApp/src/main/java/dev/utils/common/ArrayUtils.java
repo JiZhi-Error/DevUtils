@@ -627,18 +627,36 @@ public final class ArrayUtils {
      * @param <T>   泛型
      * @return 数组指定索引的值
      */
-    public static <T> T get(
+    public static <T> T getByArray(
             final Object array,
             final int pos
     ) {
-        if (array == null || pos < 0) return null;
+        return getByArray(array, pos, null);
+    }
+
+    /**
+     * 获取数组对应索引数据
+     * @param array        数组
+     * @param pos          索引
+     * @param defaultValue 默认值
+     * @param <T>          泛型
+     * @return 数组指定索引的值
+     */
+    public static <T> T getByArray(
+            final Object array,
+            final int pos,
+            final T defaultValue
+    ) {
+        if (array == null || pos < 0) return defaultValue;
         try {
             return (T) Array.get(array, pos);
         } catch (Exception e) {
             JCLogUtils.eTag(TAG, e, "getByArray");
         }
-        return null;
+        return defaultValue;
     }
+
+    // =
 
     /**
      * 获取数组对应索引数据
@@ -773,14 +791,11 @@ public final class ArrayUtils {
             final int pos,
             final T defaultValue
     ) {
-        if (array != null) {
-            // 防止索引为负数
-            if (pos < 0) return defaultValue;
-            try {
-                return array[pos];
-            } catch (Exception e) {
-                JCLogUtils.eTag(TAG, e, "get %s", pos);
-            }
+        if (array == null || pos < 0) return defaultValue;
+        try {
+            return array[pos];
+        } catch (Exception e) {
+            JCLogUtils.eTag(TAG, e, "get %s", pos);
         }
         return defaultValue;
     }
@@ -797,14 +812,11 @@ public final class ArrayUtils {
             final int pos,
             final int defaultValue
     ) {
-        if (ints != null) {
-            // 防止索引为负数
-            if (pos < 0) return defaultValue;
-            try {
-                return ints[pos];
-            } catch (Exception e) {
-                JCLogUtils.eTag(TAG, e, "get %s", pos);
-            }
+        if (ints == null || pos < 0) return defaultValue;
+        try {
+            return ints[pos];
+        } catch (Exception e) {
+            JCLogUtils.eTag(TAG, e, "get %s", pos);
         }
         return defaultValue;
     }
@@ -821,14 +833,11 @@ public final class ArrayUtils {
             final int pos,
             final byte defaultValue
     ) {
-        if (bytes != null) {
-            // 防止索引为负数
-            if (pos < 0) return defaultValue;
-            try {
-                return bytes[pos];
-            } catch (Exception e) {
-                JCLogUtils.eTag(TAG, e, "get %s", pos);
-            }
+        if (bytes == null || pos < 0) return defaultValue;
+        try {
+            return bytes[pos];
+        } catch (Exception e) {
+            JCLogUtils.eTag(TAG, e, "get %s", pos);
         }
         return defaultValue;
     }
@@ -845,14 +854,11 @@ public final class ArrayUtils {
             final int pos,
             final char defaultValue
     ) {
-        if (chars != null) {
-            // 防止索引为负数
-            if (pos < 0) return defaultValue;
-            try {
-                return chars[pos];
-            } catch (Exception e) {
-                JCLogUtils.eTag(TAG, e, "get %s", pos);
-            }
+        if (chars == null || pos < 0) return defaultValue;
+        try {
+            return chars[pos];
+        } catch (Exception e) {
+            JCLogUtils.eTag(TAG, e, "get %s", pos);
         }
         return defaultValue;
     }
@@ -869,14 +875,11 @@ public final class ArrayUtils {
             final int pos,
             final short defaultValue
     ) {
-        if (shorts != null) {
-            // 防止索引为负数
-            if (pos < 0) return defaultValue;
-            try {
-                return shorts[pos];
-            } catch (Exception e) {
-                JCLogUtils.eTag(TAG, e, "get %s", pos);
-            }
+        if (shorts == null || pos < 0) return defaultValue;
+        try {
+            return shorts[pos];
+        } catch (Exception e) {
+            JCLogUtils.eTag(TAG, e, "get %s", pos);
         }
         return defaultValue;
     }
@@ -893,14 +896,11 @@ public final class ArrayUtils {
             final int pos,
             final long defaultValue
     ) {
-        if (longs != null) {
-            // 防止索引为负数
-            if (pos < 0) return defaultValue;
-            try {
-                return longs[pos];
-            } catch (Exception e) {
-                JCLogUtils.eTag(TAG, e, "get %s", pos);
-            }
+        if (longs == null || pos < 0) return defaultValue;
+        try {
+            return longs[pos];
+        } catch (Exception e) {
+            JCLogUtils.eTag(TAG, e, "get %s", pos);
         }
         return defaultValue;
     }
@@ -917,14 +917,11 @@ public final class ArrayUtils {
             final int pos,
             final float defaultValue
     ) {
-        if (floats != null) {
-            // 防止索引为负数
-            if (pos < 0) return defaultValue;
-            try {
-                return floats[pos];
-            } catch (Exception e) {
-                JCLogUtils.eTag(TAG, e, "get %s", pos);
-            }
+        if (floats == null || pos < 0) return defaultValue;
+        try {
+            return floats[pos];
+        } catch (Exception e) {
+            JCLogUtils.eTag(TAG, e, "get %s", pos);
         }
         return defaultValue;
     }
@@ -941,14 +938,11 @@ public final class ArrayUtils {
             final int pos,
             final double defaultValue
     ) {
-        if (doubles != null) {
-            // 防止索引为负数
-            if (pos < 0) return defaultValue;
-            try {
-                return doubles[pos];
-            } catch (Exception e) {
-                JCLogUtils.eTag(TAG, e, "get %s", pos);
-            }
+        if (doubles == null || pos < 0) return defaultValue;
+        try {
+            return doubles[pos];
+        } catch (Exception e) {
+            JCLogUtils.eTag(TAG, e, "get %s", pos);
         }
         return defaultValue;
     }
@@ -965,14 +959,11 @@ public final class ArrayUtils {
             final int pos,
             final boolean defaultValue
     ) {
-        if (booleans != null) {
-            // 防止索引为负数
-            if (pos < 0) return defaultValue;
-            try {
-                return booleans[pos];
-            } catch (Exception e) {
-                JCLogUtils.eTag(TAG, e, "get %s", pos);
-            }
+        if (booleans == null || pos < 0) return defaultValue;
+        try {
+            return booleans[pos];
+        } catch (Exception e) {
+            JCLogUtils.eTag(TAG, e, "get %s", pos);
         }
         return defaultValue;
     }
@@ -1153,7 +1144,7 @@ public final class ArrayUtils {
      * 根据指定值获取 value 所在位置 + 偏移量的值
      * @param array   数组
      * @param value   值
-     * @param number  符合条件次数 ( 从 0 开始, 0 = 1)
+     * @param number  符合条件次数 ( 从 0 开始, 0 = 1 )
      * @param notNull 是否不允许值为 null
      * @param offset  偏移量
      * @param <T>     泛型
@@ -1195,7 +1186,7 @@ public final class ArrayUtils {
      * 根据指定值获取 value 所在位置 + 偏移量的索引
      * @param array   数组
      * @param value   值
-     * @param number  符合条件次数 ( 从 0 开始, 0 = 1)
+     * @param number  符合条件次数 ( 从 0 开始, 0 = 1 )
      * @param notNull 是否不允许值为 null
      * @param offset  偏移量
      * @param <T>     泛型
@@ -1253,7 +1244,7 @@ public final class ArrayUtils {
      * 根据指定 value 获取 value 所在位置 + 偏移量的值
      * @param array  数组
      * @param value  值
-     * @param number 符合条件次数 ( 从 0 开始, 0 = 1)
+     * @param number 符合条件次数 ( 从 0 开始, 0 = 1 )
      * @param <T>    泛型
      * @return 对应索引的值
      */
@@ -1285,7 +1276,7 @@ public final class ArrayUtils {
      * 根据指定 value 获取 value 所在位置 + 偏移量的值
      * @param array   数组
      * @param value   值
-     * @param number  符合条件次数 ( 从 0 开始, 0 = 1)
+     * @param number  符合条件次数 ( 从 0 开始, 0 = 1 )
      * @param notNull 是否不允许值为 null
      * @param <T>     泛型
      * @return 对应索引的值
@@ -1319,7 +1310,7 @@ public final class ArrayUtils {
      * 根据指定 value 获取 value 所在位置 + 偏移量的值, 不允许值为 null
      * @param array  数组
      * @param value  值
-     * @param number 符合条件次数 ( 从 0 开始, 0 = 1)
+     * @param number 符合条件次数 ( 从 0 开始, 0 = 1 )
      * @param <T>    泛型
      * @return 对应索引的值
      */
@@ -1351,7 +1342,7 @@ public final class ArrayUtils {
      * 根据指定 value 获取索引
      * @param array  数组
      * @param value  值
-     * @param number 符合条件次数 ( 从 0 开始, 0 = 1)
+     * @param number 符合条件次数 ( 从 0 开始, 0 = 1 )
      * @param <T>    泛型
      * @return 对应的索引
      */
@@ -1383,7 +1374,7 @@ public final class ArrayUtils {
      * 根据指定 value 获取索引
      * @param array   数组
      * @param value   值
-     * @param number  符合条件次数 ( 从 0 开始, 0 = 1)
+     * @param number  符合条件次数 ( 从 0 开始, 0 = 1 )
      * @param notNull 是否不允许值为 null
      * @param <T>     泛型
      * @return 对应的索引
@@ -1417,7 +1408,7 @@ public final class ArrayUtils {
      * 根据指定 value 获取索引, 不允许值为 null
      * @param array  数组
      * @param value  值
-     * @param number 符合条件次数 ( 从 0 开始, 0 = 1)
+     * @param number 符合条件次数 ( 从 0 开始, 0 = 1 )
      * @param <T>    泛型
      * @return 对应的索引
      */
@@ -1435,7 +1426,7 @@ public final class ArrayUtils {
      * 根据指定值获取 value 所在位置 + 偏移量的值
      * @param array  数组
      * @param value  值
-     * @param number 符合条件次数 ( 从 0 开始, 0 = 1)
+     * @param number 符合条件次数 ( 从 0 开始, 0 = 1 )
      * @param offset 偏移量
      * @return 对应索引的值
      */
@@ -1471,7 +1462,7 @@ public final class ArrayUtils {
      * 根据指定值获取 value 所在位置 + 偏移量的索引
      * @param array  数组
      * @param value  值
-     * @param number 符合条件次数 ( 从 0 开始, 0 = 1)
+     * @param number 符合条件次数 ( 从 0 开始, 0 = 1 )
      * @param offset 偏移量
      * @return 对应的索引
      */
@@ -1509,7 +1500,7 @@ public final class ArrayUtils {
      * 根据指定值获取 value 所在位置 + 偏移量的值
      * @param array  数组
      * @param value  值
-     * @param number 符合条件次数 ( 从 0 开始, 0 = 1)
+     * @param number 符合条件次数 ( 从 0 开始, 0 = 1 )
      * @param offset 偏移量
      * @return 对应索引的值
      */
@@ -1545,7 +1536,7 @@ public final class ArrayUtils {
      * 根据指定值获取 value 所在位置 + 偏移量的索引
      * @param array  数组
      * @param value  值
-     * @param number 符合条件次数 ( 从 0 开始, 0 = 1)
+     * @param number 符合条件次数 ( 从 0 开始, 0 = 1 )
      * @param offset 偏移量
      * @return 对应的索引
      */
@@ -1583,7 +1574,7 @@ public final class ArrayUtils {
      * 根据指定值获取 value 所在位置 + 偏移量的值
      * @param array  数组
      * @param value  值
-     * @param number 符合条件次数 ( 从 0 开始, 0 = 1)
+     * @param number 符合条件次数 ( 从 0 开始, 0 = 1 )
      * @param offset 偏移量
      * @return 对应索引的值
      */
@@ -1619,7 +1610,7 @@ public final class ArrayUtils {
      * 根据指定值获取 value 所在位置 + 偏移量的索引
      * @param array  数组
      * @param value  值
-     * @param number 符合条件次数 ( 从 0 开始, 0 = 1)
+     * @param number 符合条件次数 ( 从 0 开始, 0 = 1 )
      * @param offset 偏移量
      * @return 对应的索引
      */
@@ -1657,7 +1648,7 @@ public final class ArrayUtils {
      * 根据指定值获取 value 所在位置 + 偏移量的值
      * @param array  数组
      * @param value  值
-     * @param number 符合条件次数 ( 从 0 开始, 0 = 1)
+     * @param number 符合条件次数 ( 从 0 开始, 0 = 1 )
      * @param offset 偏移量
      * @return 对应索引的值
      */
@@ -1693,7 +1684,7 @@ public final class ArrayUtils {
      * 根据指定值获取 value 所在位置 + 偏移量的索引
      * @param array  数组
      * @param value  值
-     * @param number 符合条件次数 ( 从 0 开始, 0 = 1)
+     * @param number 符合条件次数 ( 从 0 开始, 0 = 1 )
      * @param offset 偏移量
      * @return 对应的索引
      */
@@ -1731,7 +1722,7 @@ public final class ArrayUtils {
      * 根据指定值获取 value 所在位置 + 偏移量的值
      * @param array  数组
      * @param value  值
-     * @param number 符合条件次数 ( 从 0 开始, 0 = 1)
+     * @param number 符合条件次数 ( 从 0 开始, 0 = 1 )
      * @param offset 偏移量
      * @return 对应索引的值
      */
@@ -1767,7 +1758,7 @@ public final class ArrayUtils {
      * 根据指定值获取 value 所在位置 + 偏移量的索引
      * @param array  数组
      * @param value  值
-     * @param number 符合条件次数 ( 从 0 开始, 0 = 1)
+     * @param number 符合条件次数 ( 从 0 开始, 0 = 1 )
      * @param offset 偏移量
      * @return 对应的索引
      */
@@ -1805,7 +1796,7 @@ public final class ArrayUtils {
      * 根据指定值获取 value 所在位置 + 偏移量的值
      * @param array  数组
      * @param value  值
-     * @param number 符合条件次数 ( 从 0 开始, 0 = 1)
+     * @param number 符合条件次数 ( 从 0 开始, 0 = 1 )
      * @param offset 偏移量
      * @return 对应索引的值
      */
@@ -1841,7 +1832,7 @@ public final class ArrayUtils {
      * 根据指定值获取 value 所在位置 + 偏移量的索引
      * @param array  数组
      * @param value  值
-     * @param number 符合条件次数 ( 从 0 开始, 0 = 1)
+     * @param number 符合条件次数 ( 从 0 开始, 0 = 1 )
      * @param offset 偏移量
      * @return 对应的索引
      */
@@ -1879,7 +1870,7 @@ public final class ArrayUtils {
      * 根据指定值获取 value 所在位置 + 偏移量的值
      * @param array  数组
      * @param value  值
-     * @param number 符合条件次数 ( 从 0 开始, 0 = 1)
+     * @param number 符合条件次数 ( 从 0 开始, 0 = 1 )
      * @param offset 偏移量
      * @return 对应索引的值
      */
@@ -1915,7 +1906,7 @@ public final class ArrayUtils {
      * 根据指定值获取 value 所在位置 + 偏移量的索引
      * @param array  数组
      * @param value  值
-     * @param number 符合条件次数 ( 从 0 开始, 0 = 1)
+     * @param number 符合条件次数 ( 从 0 开始, 0 = 1 )
      * @param offset 偏移量
      * @return 对应的索引
      */
@@ -1953,7 +1944,7 @@ public final class ArrayUtils {
      * 根据指定值获取 value 所在位置 + 偏移量的值
      * @param array  数组
      * @param value  值
-     * @param number 符合条件次数 ( 从 0 开始, 0 = 1)
+     * @param number 符合条件次数 ( 从 0 开始, 0 = 1 )
      * @param offset 偏移量
      * @return 对应索引的值
      */
@@ -1989,7 +1980,7 @@ public final class ArrayUtils {
      * 根据指定值获取 value 所在位置 + 偏移量的索引
      * @param array  数组
      * @param value  值
-     * @param number 符合条件次数 ( 从 0 开始, 0 = 1)
+     * @param number 符合条件次数 ( 从 0 开始, 0 = 1 )
      * @param offset 偏移量
      * @return 对应的索引
      */
@@ -2427,8 +2418,8 @@ public final class ArrayUtils {
     public static List<Integer> asList(final int[] ints) {
         if (ints != null) {
             List<Integer> lists = new ArrayList<>();
-            for (int i = 0, len = ints.length; i < len; i++) {
-                lists.add(ints[i]);
+            for (int value : ints) {
+                lists.add(value);
             }
             return lists;
         }
@@ -2443,8 +2434,8 @@ public final class ArrayUtils {
     public static List<Byte> asList(final byte[] bytes) {
         if (bytes != null) {
             List<Byte> lists = new ArrayList<>();
-            for (int i = 0, len = bytes.length; i < len; i++) {
-                lists.add(bytes[i]);
+            for (byte value : bytes) {
+                lists.add(value);
             }
             return lists;
         }
@@ -2459,8 +2450,8 @@ public final class ArrayUtils {
     public static List<Character> asList(final char[] chars) {
         if (chars != null) {
             List<Character> lists = new ArrayList<>();
-            for (int i = 0, len = chars.length; i < len; i++) {
-                lists.add(chars[i]);
+            for (char value : chars) {
+                lists.add(value);
             }
             return lists;
         }
@@ -2475,8 +2466,8 @@ public final class ArrayUtils {
     public static List<Short> asList(final short[] shorts) {
         if (shorts != null) {
             List<Short> lists = new ArrayList<>();
-            for (int i = 0, len = shorts.length; i < len; i++) {
-                lists.add(shorts[i]);
+            for (short value : shorts) {
+                lists.add(value);
             }
             return lists;
         }
@@ -2491,8 +2482,8 @@ public final class ArrayUtils {
     public static List<Long> asList(final long[] longs) {
         if (longs != null) {
             List<Long> lists = new ArrayList<>();
-            for (int i = 0, len = longs.length; i < len; i++) {
-                lists.add(longs[i]);
+            for (long value : longs) {
+                lists.add(value);
             }
             return lists;
         }
@@ -2507,8 +2498,8 @@ public final class ArrayUtils {
     public static List<Float> asList(final float[] floats) {
         if (floats != null) {
             List<Float> lists = new ArrayList<>();
-            for (int i = 0, len = floats.length; i < len; i++) {
-                lists.add(floats[i]);
+            for (float value : floats) {
+                lists.add(value);
             }
             return lists;
         }
@@ -2523,8 +2514,8 @@ public final class ArrayUtils {
     public static List<Double> asList(final double[] doubles) {
         if (doubles != null) {
             List<Double> lists = new ArrayList<>();
-            for (int i = 0, len = doubles.length; i < len; i++) {
-                lists.add(doubles[i]);
+            for (double value : doubles) {
+                lists.add(value);
             }
             return lists;
         }
@@ -2539,8 +2530,8 @@ public final class ArrayUtils {
     public static List<Boolean> asList(final boolean[] booleans) {
         if (booleans != null) {
             List<Boolean> lists = new ArrayList<>();
-            for (int i = 0, len = booleans.length; i < len; i++) {
-                lists.add(booleans[i]);
+            for (boolean value : booleans) {
+                lists.add(value);
             }
             return lists;
         }
@@ -2557,8 +2548,8 @@ public final class ArrayUtils {
     public static List<Integer> asListArgsInt(final int... ints) {
         if (ints != null) {
             List<Integer> lists = new ArrayList<>();
-            for (int i = 0, len = ints.length; i < len; i++) {
-                lists.add(ints[i]);
+            for (int value : ints) {
+                lists.add(value);
             }
             return lists;
         }
@@ -2573,8 +2564,8 @@ public final class ArrayUtils {
     public static List<Byte> asListArgsByte(final byte... bytes) {
         if (bytes != null) {
             List<Byte> lists = new ArrayList<>();
-            for (int i = 0, len = bytes.length; i < len; i++) {
-                lists.add(bytes[i]);
+            for (byte value : bytes) {
+                lists.add(value);
             }
             return lists;
         }
@@ -2589,8 +2580,8 @@ public final class ArrayUtils {
     public static List<Character> asListArgsChar(final char... chars) {
         if (chars != null) {
             List<Character> lists = new ArrayList<>();
-            for (int i = 0, len = chars.length; i < len; i++) {
-                lists.add(chars[i]);
+            for (char value : chars) {
+                lists.add(value);
             }
             return lists;
         }
@@ -2605,8 +2596,8 @@ public final class ArrayUtils {
     public static List<Short> asListArgsShort(final short... shorts) {
         if (shorts != null) {
             List<Short> lists = new ArrayList<>();
-            for (int i = 0, len = shorts.length; i < len; i++) {
-                lists.add(shorts[i]);
+            for (short value : shorts) {
+                lists.add(value);
             }
             return lists;
         }
@@ -2621,8 +2612,8 @@ public final class ArrayUtils {
     public static List<Long> asListArgsLong(final long... longs) {
         if (longs != null) {
             List<Long> lists = new ArrayList<>();
-            for (int i = 0, len = longs.length; i < len; i++) {
-                lists.add(longs[i]);
+            for (long value : longs) {
+                lists.add(value);
             }
             return lists;
         }
@@ -2637,8 +2628,8 @@ public final class ArrayUtils {
     public static List<Float> asListArgsFloat(final float... floats) {
         if (floats != null) {
             List<Float> lists = new ArrayList<>();
-            for (int i = 0, len = floats.length; i < len; i++) {
-                lists.add(floats[i]);
+            for (float value : floats) {
+                lists.add(value);
             }
             return lists;
         }
@@ -2653,8 +2644,8 @@ public final class ArrayUtils {
     public static List<Double> asListArgsDouble(final double... doubles) {
         if (doubles != null) {
             List<Double> lists = new ArrayList<>();
-            for (int i = 0, len = doubles.length; i < len; i++) {
-                lists.add(doubles[i]);
+            for (double value : doubles) {
+                lists.add(value);
             }
             return lists;
         }
@@ -2669,8 +2660,8 @@ public final class ArrayUtils {
     public static List<Boolean> asListArgsBoolean(final boolean... booleans) {
         if (booleans != null) {
             List<Boolean> lists = new ArrayList<>();
-            for (int i = 0, len = booleans.length; i < len; i++) {
-                lists.add(booleans[i]);
+            for (boolean value : booleans) {
+                lists.add(value);
             }
             return lists;
         }
@@ -2717,14 +2708,10 @@ public final class ArrayUtils {
         List<T> lists = new ArrayList<>(prefixLength + suffixLength);
         // 进行判断处理
         if (prefixLength != 0) {
-            for (int i = 0; i < prefixLength; i++) {
-                lists.add(prefix[i]);
-            }
+            lists.addAll(Arrays.asList(prefix).subList(0, prefixLength));
         }
         if (suffixLength != 0) {
-            for (int i = 0; i < suffixLength; i++) {
-                lists.add(suffix[i]);
-            }
+            lists.addAll(Arrays.asList(suffix).subList(0, suffixLength));
         }
         if (prefix != null) {
             return (T[]) Arrays.copyOf(lists.toArray(), lists.size(), prefix.getClass());
@@ -3096,9 +3083,7 @@ public final class ArrayUtils {
         if (data == null || off < 0 || length < 0) return null;
         try {
             List<T> lists = new ArrayList<>(length);
-            for (int i = off; i < off + length; i++) {
-                lists.add(data[i]);
-            }
+            lists.addAll(Arrays.asList(data).subList(off, off + length));
             return (T[]) Arrays.copyOf(lists.toArray(), length, data.getClass());
         } catch (Exception e) {
             JCLogUtils.eTag(TAG, e, "subArray");
@@ -3303,9 +3288,7 @@ public final class ArrayUtils {
             int len = data.length;
             if (len != 0) {
                 if (len == 1) {
-                    StringBuilder builder = new StringBuilder();
-                    builder.append("\"").append(data[0]).append("\"");
-                    return builder.toString();
+                    return "\"" + data[0] + "\"";
                 } else {
                     StringBuilder builder = new StringBuilder();
                     for (int i = 0; i < len - 1; i++) {
@@ -3329,9 +3312,7 @@ public final class ArrayUtils {
             int len = data.length;
             if (len != 0) {
                 if (len == 1) {
-                    StringBuilder builder = new StringBuilder();
-                    builder.append("\"").append(data[0]).append("\"");
-                    return builder.toString();
+                    return "\"" + data[0] + "\"";
                 } else {
                     StringBuilder builder = new StringBuilder();
                     for (int i = 0; i < len - 1; i++) {
@@ -3355,9 +3336,7 @@ public final class ArrayUtils {
             int len = data.length;
             if (len != 0) {
                 if (len == 1) {
-                    StringBuilder builder = new StringBuilder();
-                    builder.append("\"").append(data[0]).append("\"");
-                    return builder.toString();
+                    return "\"" + data[0] + "\"";
                 } else {
                     StringBuilder builder = new StringBuilder();
                     for (int i = 0; i < len - 1; i++) {
@@ -3381,9 +3360,7 @@ public final class ArrayUtils {
             int len = data.length;
             if (len != 0) {
                 if (len == 1) {
-                    StringBuilder builder = new StringBuilder();
-                    builder.append("\"").append(data[0]).append("\"");
-                    return builder.toString();
+                    return "\"" + data[0] + "\"";
                 } else {
                     StringBuilder builder = new StringBuilder();
                     for (int i = 0; i < len - 1; i++) {
@@ -3407,9 +3384,7 @@ public final class ArrayUtils {
             int len = data.length;
             if (len != 0) {
                 if (len == 1) {
-                    StringBuilder builder = new StringBuilder();
-                    builder.append("\"").append(data[0]).append("\"");
-                    return builder.toString();
+                    return "\"" + data[0] + "\"";
                 } else {
                     StringBuilder builder = new StringBuilder();
                     for (int i = 0; i < len - 1; i++) {
@@ -3433,9 +3408,7 @@ public final class ArrayUtils {
             int len = data.length;
             if (len != 0) {
                 if (len == 1) {
-                    StringBuilder builder = new StringBuilder();
-                    builder.append("\"").append(data[0]).append("\"");
-                    return builder.toString();
+                    return "\"" + data[0] + "\"";
                 } else {
                     StringBuilder builder = new StringBuilder();
                     for (int i = 0; i < len - 1; i++) {
@@ -3459,9 +3432,7 @@ public final class ArrayUtils {
             int len = data.length;
             if (len != 0) {
                 if (len == 1) {
-                    StringBuilder builder = new StringBuilder();
-                    builder.append("\"").append(data[0]).append("\"");
-                    return builder.toString();
+                    return "\"" + data[0] + "\"";
                 } else {
                     StringBuilder builder = new StringBuilder();
                     for (int i = 0; i < len - 1; i++) {
@@ -3485,9 +3456,7 @@ public final class ArrayUtils {
             int len = data.length;
             if (len != 0) {
                 if (len == 1) {
-                    StringBuilder builder = new StringBuilder();
-                    builder.append("\"").append(data[0]).append("\"");
-                    return builder.toString();
+                    return "\"" + data[0] + "\"";
                 } else {
                     StringBuilder builder = new StringBuilder();
                     for (int i = 0; i < len - 1; i++) {
@@ -3511,9 +3480,7 @@ public final class ArrayUtils {
             int len = data.length;
             if (len != 0) {
                 if (len == 1) {
-                    StringBuilder builder = new StringBuilder();
-                    builder.append("\"").append(data[0]).append("\"");
-                    return builder.toString();
+                    return "\"" + data[0] + "\"";
                 } else {
                     StringBuilder builder = new StringBuilder();
                     for (int i = 0; i < len - 1; i++) {
