@@ -2659,7 +2659,7 @@ public final class ViewUtils {
     /**
      * 切换 View 显示的状态
      * @param viewArrays View[]
-     * @param views    View[]
+     * @param views      View[]
      * @return {@code true} success, {@code false} fail
      */
     public static boolean toggleVisibilitys(
@@ -2671,9 +2671,9 @@ public final class ViewUtils {
 
     /**
      * 切换 View 显示的状态
-     * @param state    {@link View#VISIBLE}、{@link View#INVISIBLE}、{@link View#GONE}
+     * @param state      {@link View#VISIBLE}、{@link View#INVISIBLE}、{@link View#GONE}
      * @param viewArrays View[]
-     * @param views    View[]
+     * @param views      View[]
      * @return {@code true} success, {@code false} fail
      */
     public static boolean toggleVisibilitys(
@@ -2692,9 +2692,9 @@ public final class ViewUtils {
 
     /**
      * 反转 View 显示的状态
-     * @param state    {@link View#VISIBLE}、{@link View#INVISIBLE}、{@link View#GONE}
+     * @param state      {@link View#VISIBLE}、{@link View#INVISIBLE}、{@link View#GONE}
      * @param viewArrays View[]
-     * @param views    View[]
+     * @param views      View[]
      * @return isVisibility 是否传入 {@link View#VISIBLE}
      */
     public static boolean reverseVisibilitys(
@@ -2708,7 +2708,7 @@ public final class ViewUtils {
     /**
      * 反转 View 显示的状态
      * @param isVisibility {@code true} View.VISIBLE, {@code false} View.GONE
-     * @param viewArrays     View[]
+     * @param viewArrays   View[]
      * @param views        View[]
      * @return isVisibility 是否传入 {@link View#VISIBLE}
      */
@@ -4188,6 +4188,40 @@ public final class ViewUtils {
     // ===============
     // = ProgressBar =
     // ===============
+
+    /**
+     * 设置 ProgressBar 进度条样式
+     * @param view     {@link View}
+     * @param drawable {@link Drawable}
+     * @return {@link View}
+     */
+    public static View setProgressDrawable(
+            final View view,
+            final Drawable drawable
+    ) {
+        if (view instanceof ProgressBar) {
+            setProgressDrawable((ProgressBar) view, drawable);
+        }
+        return view;
+    }
+
+    /**
+     * 设置 ProgressBar 进度条样式
+     * @param view     {@link ProgressBar}
+     * @param drawable {@link Drawable}
+     * @return {@link ProgressBar}
+     */
+    public static ProgressBar setProgressDrawable(
+            final ProgressBar view,
+            final Drawable drawable
+    ) {
+        if (view != null) {
+            view.setProgressDrawable(drawable);
+        }
+        return view;
+    }
+
+    // =
 
     /**
      * 设置 ProgressBar 进度值
