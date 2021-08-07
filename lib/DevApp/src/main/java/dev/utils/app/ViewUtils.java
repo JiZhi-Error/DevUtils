@@ -2658,31 +2658,31 @@ public final class ViewUtils {
 
     /**
      * 切换 View 显示的状态
-     * @param viewArys View[]
+     * @param viewArrays View[]
      * @param views    View[]
      * @return {@code true} success, {@code false} fail
      */
     public static boolean toggleVisibilitys(
-            final View[] viewArys,
+            final View[] viewArrays,
             final View... views
     ) {
-        return toggleVisibilitys(View.GONE, viewArys, views);
+        return toggleVisibilitys(View.GONE, viewArrays, views);
     }
 
     /**
      * 切换 View 显示的状态
      * @param state    {@link View#VISIBLE}、{@link View#INVISIBLE}、{@link View#GONE}
-     * @param viewArys View[]
+     * @param viewArrays View[]
      * @param views    View[]
      * @return {@code true} success, {@code false} fail
      */
     public static boolean toggleVisibilitys(
             final int state,
-            final View[] viewArys,
+            final View[] viewArrays,
             final View... views
     ) {
         // 默认显示
-        setVisibilitys(View.VISIBLE, viewArys);
+        setVisibilitys(View.VISIBLE, viewArrays);
         // 根据状态处理
         setVisibilitys(state, views);
         return true;
@@ -2693,32 +2693,32 @@ public final class ViewUtils {
     /**
      * 反转 View 显示的状态
      * @param state    {@link View#VISIBLE}、{@link View#INVISIBLE}、{@link View#GONE}
-     * @param viewArys View[]
+     * @param viewArrays View[]
      * @param views    View[]
      * @return isVisibility 是否传入 {@link View#VISIBLE}
      */
     public static boolean reverseVisibilitys(
             final int state,
-            final View[] viewArys,
+            final View[] viewArrays,
             final View... views
     ) {
-        return reverseVisibilitys(state == View.VISIBLE, viewArys, views);
+        return reverseVisibilitys(state == View.VISIBLE, viewArrays, views);
     }
 
     /**
      * 反转 View 显示的状态
      * @param isVisibility {@code true} View.VISIBLE, {@code false} View.GONE
-     * @param viewArys     View[]
+     * @param viewArrays     View[]
      * @param views        View[]
      * @return isVisibility 是否传入 {@link View#VISIBLE}
      */
     public static boolean reverseVisibilitys(
             final boolean isVisibility,
-            final View[] viewArys,
+            final View[] viewArrays,
             final View... views
     ) {
         // 默认处理第一个数组
-        setVisibilitys(isVisibility, viewArys);
+        setVisibilitys(isVisibility, viewArrays);
         // 根据状态处理
         setVisibilitys(!isVisibility, views);
         return isVisibility;
