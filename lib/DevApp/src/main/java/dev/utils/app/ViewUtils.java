@@ -132,48 +132,6 @@ public final class ViewUtils {
 
     /**
      * 获取 View
-     * @param resource R.layout.id
-     * @return {@link View}
-     */
-    public static View inflate(@LayoutRes final int resource) {
-        return inflate(resource, null, false);
-    }
-
-    /**
-     * 获取 View
-     * @param resource R.layout.id
-     * @param root     {@link ViewGroup}
-     * @return {@link View}
-     */
-    public static View inflate(
-            @LayoutRes final int resource,
-            final ViewGroup root
-    ) {
-        return inflate(resource, root, root != null);
-    }
-
-    /**
-     * 获取 View
-     * @param resource     R.layout.id
-     * @param root         {@link ViewGroup}
-     * @param attachToRoot 是否添加到 root 上
-     * @return {@link View}
-     */
-    public static View inflate(
-            @LayoutRes final int resource,
-            final ViewGroup root,
-            final boolean attachToRoot
-    ) {
-        try {
-            return LayoutInflater.from(DevUtils.getContext()).inflate(resource, root, attachToRoot);
-        } catch (Exception e) {
-            LogPrintUtils.eTag(TAG, e, "inflate");
-        }
-        return null;
-    }
-
-    /**
-     * 获取 View
      * @param context  {@link Context}
      * @param resource R.layout.id
      * @return {@link View}
