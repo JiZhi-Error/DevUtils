@@ -663,8 +663,7 @@ public final class ViewUtils {
      */
     public static boolean isEmpty(final View... views) {
         if (views != null && views.length != 0) {
-            for (int i = 0, len = views.length; i < len; i++) {
-                View view = views[i];
+            for (View view : views) {
                 if (view == null) {
                     return true;
                 }
@@ -690,8 +689,7 @@ public final class ViewUtils {
      */
     public static boolean isNotEmpty(final View... views) {
         if (views != null && views.length != 0) {
-            for (int i = 0, len = views.length; i < len; i++) {
-                View view = views[i];
+            for (View view : views) {
                 if (view == null) {
                     return false;
                 }
@@ -761,6 +759,27 @@ public final class ViewUtils {
         }
         return view;
     }
+
+    /**
+     * 设置 View[] 宽度、高度
+     * @param width     View 宽度
+     * @param height    View 高度
+     * @param nullNewLP 如果 LayoutParams 为 null 是否创建新的
+     * @param views     View[]
+     * @return {@code true} success, {@code false} fail
+     */
+    public static boolean setWidthHeightByArgs(
+            final int width,
+            final int height,
+            final boolean nullNewLP,
+            final View... views
+    ) {
+        return ForUtils.forArgs(
+                (index, value) -> setWidthHeight(value, width, height, nullNewLP), views
+        );
+    }
+
+    // =
 
     /**
      * 设置 View weight 权重
