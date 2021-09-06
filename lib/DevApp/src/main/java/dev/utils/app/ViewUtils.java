@@ -34,7 +34,6 @@ import androidx.annotation.RequiresApi;
 
 import java.lang.reflect.Field;
 
-import dev.DevUtils;
 import dev.utils.LogPrintUtils;
 import dev.utils.app.anim.AnimationUtils;
 import dev.utils.app.image.ImageUtils;
@@ -95,7 +94,7 @@ public final class ViewUtils {
     public static final  int    WRAP_CONTENT = ViewGroup.LayoutParams.WRAP_CONTENT;
 
     /**
-     * 获取 Context
+     * 获取 View Context
      * @param view {@link View}
      * @return {@link Context}
      */
@@ -107,7 +106,7 @@ public final class ViewUtils {
     }
 
     /**
-     * 获取 View context 所属的 Activity
+     * 获取 View Context 所属的 Activity
      * @param view {@link View}
      * @return {@link Activity}
      */
