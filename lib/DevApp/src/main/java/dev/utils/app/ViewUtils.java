@@ -38,6 +38,7 @@ import dev.utils.LogPrintUtils;
 import dev.utils.app.anim.AnimationUtils;
 import dev.utils.app.image.ImageUtils;
 import dev.utils.common.FieldUtils;
+import dev.utils.common.ForUtils;
 
 /**
  * detail: View 操作相关工具类
@@ -314,6 +315,21 @@ public final class ViewUtils {
             return true;
         }
         return false;
+    }
+
+    /**
+     * 设置是否限制子 View 在其边界内绘制
+     * @param clipChildren {@code true} yes, {@code false} no
+     * @param viewGroups   ViewGroup[]
+     * @return {@code true} success, {@code false} fail
+     */
+    public static boolean setClipChildrens(
+            final boolean clipChildren,
+            final ViewGroup... viewGroups
+    ) {
+        return ForUtils.forArgs(
+                (index, value) -> setClipChildren(value, clipChildren), viewGroups
+        );
     }
 
     // =
