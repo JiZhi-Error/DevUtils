@@ -4138,24 +4138,6 @@ public final class ViewUtils {
     }
 
     /**
-     * 设置 ProgressBar 进度条样式
-     * @param view     {@link ProgressBar}
-     * @param drawable {@link Drawable}
-     * @return {@link ProgressBar}
-     */
-    public static ProgressBar setProgressDrawable(
-            final ProgressBar view,
-            final Drawable drawable
-    ) {
-        if (view != null) {
-            view.setProgressDrawable(drawable);
-        }
-        return view;
-    }
-
-    // =
-
-    /**
      * 设置 ProgressBar 进度值
      * @param view     {@link View}
      * @param progress 当前进度
@@ -4204,6 +4186,22 @@ public final class ViewUtils {
     }
 
     // =
+
+    /**
+     * 设置 ProgressBar 进度条样式
+     * @param view     {@link ProgressBar}
+     * @param drawable {@link Drawable}
+     * @return {@link ProgressBar}
+     */
+    public static ProgressBar setProgressDrawable(
+            final ProgressBar view,
+            final Drawable drawable
+    ) {
+        if (view != null) {
+            view.setProgressDrawable(drawable);
+        }
+        return view;
+    }
 
     /**
      * 设置 ProgressBar 进度值
