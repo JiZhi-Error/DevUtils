@@ -38,7 +38,6 @@ import dev.utils.LogPrintUtils;
 import dev.utils.app.anim.AnimationUtils;
 import dev.utils.app.image.ImageUtils;
 import dev.utils.common.FieldUtils;
-import dev.utils.common.ForUtils;
 
 /**
  * detail: View 操作相关工具类
@@ -745,25 +744,6 @@ public final class ViewUtils {
         return view;
     }
 
-    /**
-     * 设置 View[] 宽度、高度
-     * @param width     View 宽度
-     * @param height    View 高度
-     * @param nullNewLP 如果 LayoutParams 为 null 是否创建新的
-     * @param views     View[]
-     * @return {@code true} success, {@code false} fail
-     */
-    public static boolean setWidthHeightByArgs(
-            final int width,
-            final int height,
-            final boolean nullNewLP,
-            final View... views
-    ) {
-        return ForUtils.forArgs(
-                (index, value) -> setWidthHeight(value, width, height, nullNewLP), views
-        );
-    }
-
     // =
 
     /**
@@ -804,14 +784,7 @@ public final class ViewUtils {
             final OnWHListener listener
     ) {
         if (view != null && listener != null) {
-            view.post(new Runnable() {
-                @Override
-                public void run() {
-                    if (view != null && listener != null) {
-                        listener.onWidthHeight(view, view.getWidth(), view.getHeight());
-                    }
-                }
-            });
+            view.post(() -> listener.onWidthHeight(view, view.getWidth(), view.getHeight()));
             return true;
         }
         return false;
@@ -837,9 +810,7 @@ public final class ViewUtils {
                         } catch (Exception ignored) {
                         }
                     }
-                    if (view != null && listener != null) {
-                        listener.onWidthHeight(view, view.getWidth(), view.getHeight());
-                    }
+                    listener.onWidthHeight(view, view.getWidth(), view.getHeight());
                 }
             });
             return true;
@@ -2052,8 +2023,7 @@ public final class ViewUtils {
             final View... views
     ) {
         if (views != null) {
-            for (int i = 0, len = views.length; i < len; i++) {
-                View view = views[i];
+            for (View view : views) {
                 if (view != null) {
                     view.setFocusableInTouchMode(focusableInTouchMode);
                 }
@@ -2087,8 +2057,7 @@ public final class ViewUtils {
             final View... views
     ) {
         if (views != null) {
-            for (int i = 0, len = views.length; i < len; i++) {
-                View view = views[i];
+            for (View view : views) {
                 if (view != null) {
                     view.setFocusable(focusable);
                 }
@@ -2104,8 +2073,7 @@ public final class ViewUtils {
      */
     public static boolean toggleFocusable(final View... views) {
         if (views != null) {
-            for (int i = 0, len = views.length; i < len; i++) {
-                View view = views[i];
+            for (View view : views) {
                 if (view != null) {
                     view.setFocusable(!view.isFocusable());
                 }
@@ -2140,8 +2108,7 @@ public final class ViewUtils {
             final View... views
     ) {
         if (views != null) {
-            for (int i = 0, len = views.length; i < len; i++) {
-                View view = views[i];
+            for (View view : views) {
                 if (view != null) {
                     view.setSelected(selected);
                 }
@@ -2157,8 +2124,7 @@ public final class ViewUtils {
      */
     public static boolean toggleSelected(final View... views) {
         if (views != null) {
-            for (int i = 0, len = views.length; i < len; i++) {
-                View view = views[i];
+            for (View view : views) {
                 if (view != null) {
                     view.setSelected(!view.isSelected());
                 }
@@ -2193,8 +2159,7 @@ public final class ViewUtils {
             final View... views
     ) {
         if (views != null) {
-            for (int i = 0, len = views.length; i < len; i++) {
-                View view = views[i];
+            for (View view : views) {
                 if (view != null) {
                     view.setEnabled(enabled);
                 }
@@ -2210,8 +2175,7 @@ public final class ViewUtils {
      */
     public static boolean toggleEnabled(final View... views) {
         if (views != null) {
-            for (int i = 0, len = views.length; i < len; i++) {
-                View view = views[i];
+            for (View view : views) {
                 if (view != null) {
                     view.setEnabled(!view.isEnabled());
                 }
@@ -2246,8 +2210,7 @@ public final class ViewUtils {
             final View... views
     ) {
         if (views != null) {
-            for (int i = 0, len = views.length; i < len; i++) {
-                View view = views[i];
+            for (View view : views) {
                 if (view != null) {
                     view.setClickable(clickable);
                 }
@@ -2263,8 +2226,7 @@ public final class ViewUtils {
      */
     public static boolean toggleClickable(final View... views) {
         if (views != null) {
-            for (int i = 0, len = views.length; i < len; i++) {
-                View view = views[i];
+            for (View view : views) {
                 if (view != null) {
                     view.setClickable(!view.isClickable());
                 }
@@ -2299,8 +2261,7 @@ public final class ViewUtils {
             final View... views
     ) {
         if (views != null) {
-            for (int i = 0, len = views.length; i < len; i++) {
-                View view = views[i];
+            for (View view : views) {
                 if (view != null) {
                     view.setLongClickable(longClickable);
                 }
@@ -2316,8 +2277,7 @@ public final class ViewUtils {
      */
     public static boolean toggleLongClickable(final View... views) {
         if (views != null) {
-            for (int i = 0, len = views.length; i < len; i++) {
-                View view = views[i];
+            for (View view : views) {
                 if (view != null) {
                     view.setLongClickable(!view.isLongClickable());
                 }
@@ -2350,8 +2310,8 @@ public final class ViewUtils {
      */
     public static boolean isShowns(final View... views) {
         if (views != null && views.length != 0) {
-            for (int i = 0, len = views.length; i < len; i++) {
-                if (!isShown(views[i])) {
+            for (View view : views) {
+                if (!isShown(view)) {
                     return false;
                 }
             }
@@ -2394,8 +2354,7 @@ public final class ViewUtils {
      */
     public static boolean isVisibilitys(final View... views) {
         if (views != null && views.length != 0) {
-            for (int i = 0, len = views.length; i < len; i++) {
-                View view = views[i];
+            for (View view : views) {
                 if (view == null || view.getVisibility() != View.VISIBLE) {
                     return false;
                 }
@@ -2439,8 +2398,7 @@ public final class ViewUtils {
      */
     public static boolean isVisibilityINs(final View... views) {
         if (views != null && views.length != 0) {
-            for (int i = 0, len = views.length; i < len; i++) {
-                View view = views[i];
+            for (View view : views) {
                 if (view == null || view.getVisibility() != View.INVISIBLE) {
                     return false;
                 }
@@ -2484,8 +2442,7 @@ public final class ViewUtils {
      */
     public static boolean isVisibilityGones(final View... views) {
         if (views != null && views.length != 0) {
-            for (int i = 0, len = views.length; i < len; i++) {
-                View view = views[i];
+            for (View view : views) {
                 if (view == null || view.getVisibility() != View.GONE) {
                     return false;
                 }
@@ -2591,8 +2548,7 @@ public final class ViewUtils {
             final View... views
     ) {
         if (views != null) {
-            for (int i = 0, len = views.length; i < len; i++) {
-                View view = views[i];
+            for (View view : views) {
                 if (view != null) {
                     view.setVisibility(isVisibility);
                 }
@@ -2768,8 +2724,7 @@ public final class ViewUtils {
             final View... views
     ) {
         if (isChange && views != null) {
-            for (int i = 0, len = views.length; i < len; i++) {
-                View view = views[i];
+            for (View view : views) {
                 if (view != null) {
                     view.setVisibility(isVisibility);
                 }
@@ -3294,8 +3249,8 @@ public final class ViewUtils {
             final int bottom
     ) {
         if (views != null) {
-            for (int i = 0, len = views.length; i < len; i++) {
-                setMargin(views[i], left, top, right, bottom);
+            for (View view : views) {
+                setMargin(view, left, top, right, bottom);
             }
             return true;
         }
@@ -3578,8 +3533,8 @@ public final class ViewUtils {
             final int bottom
     ) {
         if (views != null) {
-            for (int i = 0, len = views.length; i < len; i++) {
-                setPadding(views[i], left, top, right, bottom);
+            for (View view : views) {
+                setPadding(view, left, top, right, bottom);
             }
             return true;
         }
@@ -3706,8 +3661,8 @@ public final class ViewUtils {
             final View... views
     ) {
         if (views != null) {
-            for (int i = 0, len = views.length; i < len; i++) {
-                addRule(views[i], verb, subject);
+            for (View view : views) {
+                addRule(view, verb, subject);
             }
             return true;
         }
@@ -3725,8 +3680,8 @@ public final class ViewUtils {
             final View... views
     ) {
         if (views != null) {
-            for (int i = 0, len = views.length; i < len; i++) {
-                removeRule(views[i], verb);
+            for (View view : views) {
+                removeRule(view, verb);
             }
             return true;
         }
