@@ -6,8 +6,10 @@ import android.graphics.ColorFilter;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.text.method.KeyListener;
 import android.text.method.TransformationMethod;
@@ -16,11 +18,13 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.FloatRange;
 import androidx.annotation.IdRes;
+import androidx.annotation.RequiresApi;
 
 import dev.utils.app.ClickUtils;
 import dev.utils.app.EditTextUtils;
@@ -3314,6 +3318,849 @@ public final class QQQQQQQQQQQ
     ) {
         ForUtils.forSimpleArgs(
                 value -> EditTextUtils.setKeyListener(value, accepted), editTexts
+        );
+        return this;
+    }
+
+    // =================
+    // = TextViewUtils =
+    // =================
+
+    /**
+     * 设置 Hint 文本
+     * @param text  Hint text
+     * @param views View[]
+     * @return Helper
+     */
+    @Override
+    public QQQQQQQQQQQ setHint(
+            CharSequence text,
+            View... views
+    ) {
+        ForUtils.forSimpleArgs(
+                value -> TextViewUtils.setHint(value, text), views
+        );
+        return this;
+    }
+
+    /**
+     * 设置多个 TextView Hint 字体颜色
+     * @param color R.color.id
+     * @param views View[]
+     * @return Helper
+     */
+    @Override
+    public QQQQQQQQQQQ setHintTextColors(
+            @ColorInt int color,
+            View... views
+    ) {
+        ForUtils.forSimpleArgs(
+                value -> TextViewUtils.setHint(value, text), views
+        );
+        return this;
+    }
+
+    /**
+     * 设置多个 TextView Hint 字体颜色
+     * @param colors {@link ColorStateList}
+     * @param views  View[]
+     * @return Helper
+     */
+    @Override
+    public QQQQQQQQQQQ setHintTextColors(
+            ColorStateList colors,
+            View... views
+    ) {
+        ForUtils.forSimpleArgs(
+                value -> TextViewUtils.setHint(value, text), views
+        );
+        return this;
+    }
+
+    /**
+     * 设置多个 TextView 字体颜色
+     * @param color R.color.id
+     * @param views View[]
+     * @return Helper
+     */
+    @Override
+    public QQQQQQQQQQQ setTextColors(
+            @ColorInt int color,
+            View... views
+    ) {
+        ForUtils.forSimpleArgs(
+                value -> TextViewUtils.setHint(value, text), views
+        );
+        return this;
+    }
+
+    /**
+     * 设置多个 TextView 字体颜色
+     * @param colors {@link ColorStateList}
+     * @param views  View[]
+     * @return Helper
+     */
+    @Override
+    public QQQQQQQQQQQ setTextColors(
+            ColorStateList colors,
+            View... views
+    ) {
+        ForUtils.forSimpleArgs(
+                value -> TextViewUtils.setHint(value, text), views
+        );
+        return this;
+    }
+
+    /**
+     * 设置多个 TextView Html 内容
+     * @param content Html content
+     * @param views   View[]
+     * @return Helper
+     */
+    @Override
+    public QQQQQQQQQQQ setHtmlTexts(
+            String content,
+            View... views
+    ) {
+        ForUtils.forSimpleArgs(
+                value -> TextViewUtils.setHint(value, text), views
+        );
+        return this;
+    }
+
+    /**
+     * 设置字体
+     * @param typeface {@link Typeface} 字体样式
+     * @param views    View[]
+     * @return Helper
+     */
+    @Override
+    public QQQQQQQQQQQ setTypeface(
+            Typeface typeface,
+            View... views
+    ) {
+        ForUtils.forSimpleArgs(
+                value -> TextViewUtils.setHint(value, text), views
+        );
+        return this;
+    }
+
+    /**
+     * 设置字体
+     * @param typeface {@link Typeface} 字体样式
+     * @param style    样式
+     * @param views    View[]
+     * @return Helper
+     */
+    @Override
+    public QQQQQQQQQQQ setTypeface(
+            Typeface typeface,
+            int style,
+            View... views
+    ) {
+        ForUtils.forSimpleArgs(
+                value -> TextViewUtils.setHint(value, text), views
+        );
+        return this;
+    }
+
+    /**
+     * 设置字体大小 ( px 像素 )
+     * @param size  字体大小
+     * @param views View[]
+     * @return Helper
+     */
+    @Override
+    public QQQQQQQQQQQ setTextSizeByPx(
+            float size,
+            View... views
+    ) {
+        ForUtils.forSimpleArgs(
+                value -> TextViewUtils.setHint(value, text), views
+        );
+        return this;
+    }
+
+    /**
+     * 设置字体大小 ( sp 缩放像素 )
+     * @param size  字体大小
+     * @param views View[]
+     * @return Helper
+     */
+    @Override
+    public QQQQQQQQQQQ setTextSizeBySp(
+            float size,
+            View... views
+    ) {
+        ForUtils.forSimpleArgs(
+                value -> TextViewUtils.setHint(value, text), views
+        );
+        return this;
+    }
+
+    /**
+     * 设置字体大小 ( dp 与设备无关的像素 )
+     * @param size  字体大小
+     * @param views View[]
+     * @return Helper
+     */
+    @Override
+    public QQQQQQQQQQQ setTextSizeByDp(
+            float size,
+            View... views
+    ) {
+        ForUtils.forSimpleArgs(
+                value -> TextViewUtils.setHint(value, text), views
+        );
+        return this;
+    }
+
+    /**
+     * 设置字体大小 ( inches 英寸 )
+     * @param size  字体大小
+     * @param views View[]
+     * @return Helper
+     */
+    @Override
+    public QQQQQQQQQQQ setTextSizeByIn(
+            float size,
+            View... views
+    ) {
+        ForUtils.forSimpleArgs(
+                value -> TextViewUtils.setHint(value, text), views
+        );
+        return this;
+    }
+
+    /**
+     * 设置字体大小
+     * @param unit  字体参数类型
+     * @param size  字体大小
+     * @param views View[]
+     * @return Helper
+     */
+    @Override
+    public QQQQQQQQQQQ setTextSize(
+            int unit,
+            float size,
+            View... views
+    ) {
+        ForUtils.forSimpleArgs(
+                value -> TextViewUtils.setHint(value, text), views
+        );
+        return this;
+    }
+
+    /**
+     * 清空 flags
+     * @param views View[]
+     * @return Helper
+     */
+    @Override
+    public QQQQQQQQQQQ clearFlags(View... views) {
+        ForUtils.forSimpleArgs(
+                value -> TextViewUtils.setHint(value, text), views
+        );
+        return this;
+    }
+
+    /**
+     * 设置 TextView flags
+     * @param flags flags
+     * @param views View[]
+     * @return Helper
+     */
+    @Override
+    public QQQQQQQQQQQ setPaintFlags(
+            int flags,
+            View... views
+    ) {
+        ForUtils.forSimpleArgs(
+                value -> TextViewUtils.setHint(value, text), views
+        );
+        return this;
+    }
+
+    /**
+     * 设置 TextView 抗锯齿 flags
+     * @param views View[]
+     * @return Helper
+     */
+    @Override
+    public QQQQQQQQQQQ setAntiAliasFlag(View... views) {
+        ForUtils.forSimpleArgs(
+                value -> TextViewUtils.setHint(value, text), views
+        );
+        return this;
+    }
+
+    /**
+     * 设置 TextView 是否加粗
+     * @param views View[]
+     * @return Helper
+     */
+    @Override
+    public QQQQQQQQQQQ setBold(View... views) {
+        ForUtils.forSimpleArgs(
+                value -> TextViewUtils.setHint(value, text), views
+        );
+        return this;
+    }
+
+    /**
+     * 设置 TextView 是否加粗
+     * @param isBold {@code true} yes, {@code false} no
+     * @param views  View[]
+     * @return Helper
+     */
+    @Override
+    public QQQQQQQQQQQ setBold(
+            boolean isBold,
+            View... views
+    ) {
+        ForUtils.forSimpleArgs(
+                value -> TextViewUtils.setHint(value, text), views
+        );
+        return this;
+    }
+
+    /**
+     * 设置 TextView 是否加粗
+     * @param typeface {@link Typeface} 字体样式
+     * @param isBold   {@code true} yes, {@code false} no
+     * @param views    View[]
+     * @return Helper
+     */
+    @Override
+    public QQQQQQQQQQQ setBold(
+            Typeface typeface,
+            boolean isBold,
+            View... views
+    ) {
+        ForUtils.forSimpleArgs(
+                value -> TextViewUtils.setHint(value, text), views
+        );
+        return this;
+    }
+
+    /**
+     * 设置下划线
+     * @param views View[]
+     * @return Helper
+     */
+    @Override
+    public QQQQQQQQQQQ setUnderlineText(View... views) {
+        ForUtils.forSimpleArgs(
+                value -> TextViewUtils.setHint(value, text), views
+        );
+        return this;
+    }
+
+    /**
+     * 设置下划线并加清晰
+     * @param isAntiAlias 是否消除锯齿
+     * @param views       View[]
+     * @return Helper
+     */
+    @Override
+    public QQQQQQQQQQQ setUnderlineText(
+            boolean isAntiAlias,
+            View... views
+    ) {
+        ForUtils.forSimpleArgs(
+                value -> TextViewUtils.setHint(value, text), views
+        );
+        return this;
+    }
+
+    /**
+     * 设置中划线
+     * @param views View[]
+     * @return Helper
+     */
+    @Override
+    public QQQQQQQQQQQ setStrikeThruText(View... views) {
+        ForUtils.forSimpleArgs(
+                value -> TextViewUtils.setHint(value, text), views
+        );
+        return this;
+    }
+
+    /**
+     * 设置中划线并加清晰
+     * @param isAntiAlias 是否消除锯齿
+     * @param views       View[]
+     * @return Helper
+     */
+    @Override
+    public QQQQQQQQQQQ setStrikeThruText(
+            boolean isAntiAlias,
+            View... views
+    ) {
+        ForUtils.forSimpleArgs(
+                value -> TextViewUtils.setHint(value, text), views
+        );
+        return this;
+    }
+
+    /**
+     * 设置文字水平间距
+     * @param letterSpacing 文字水平间距
+     * @param views         View[]
+     * @return Helper
+     */
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    @Override
+    public QQQQQQQQQQQ setLetterSpacing(
+            float letterSpacing,
+            View... views
+    ) {
+        ForUtils.forSimpleArgs(
+                value -> TextViewUtils.setHint(value, text), views
+        );
+        return this;
+    }
+
+    /**
+     * 设置文字行间距 ( 行高 )
+     * @param lineSpacing 文字行间距 ( 行高 ), android:lineSpacingExtra
+     * @param views       View[]
+     * @return Helper
+     */
+    @Override
+    public QQQQQQQQQQQ setLineSpacing(
+            float lineSpacing,
+            View... views
+    ) {
+        ForUtils.forSimpleArgs(
+                value -> TextViewUtils.setHint(value, text), views
+        );
+        return this;
+    }
+
+    /**
+     * 设置文字行间距 ( 行高 )、行间距倍数
+     * @param lineSpacing 文字行间距 ( 行高 ), android:lineSpacingExtra
+     * @param multiplier  行间距倍数, android:lineSpacingMultiplier
+     * @param views       View[]
+     * @return Helper
+     */
+    @Override
+    public QQQQQQQQQQQ setLineSpacingAndMultiplier(
+            float lineSpacing,
+            float multiplier,
+            View... views
+    ) {
+        ForUtils.forSimpleArgs(
+                value -> TextViewUtils.setHint(value, text), views
+        );
+        return this;
+    }
+
+    /**
+     * 设置字体水平方向的缩放
+     * @param size  缩放比例
+     * @param views View[]
+     * @return Helper
+     */
+    @Override
+    public QQQQQQQQQQQ setTextScaleX(
+            float size,
+            View... views
+    ) {
+        ForUtils.forSimpleArgs(
+                value -> TextViewUtils.setHint(value, text), views
+        );
+        return this;
+    }
+
+    /**
+     * 设置是否保留字体留白间隙区域
+     * @param includePadding 是否保留字体留白间隙区域
+     * @param views          View[]
+     * @return Helper
+     */
+    @Override
+    public QQQQQQQQQQQ setIncludeFontPadding(
+            boolean includePadding,
+            View... views
+    ) {
+        ForUtils.forSimpleArgs(
+                value -> TextViewUtils.setHint(value, text), views
+        );
+        return this;
+    }
+
+    /**
+     * 设置行数
+     * @param lines 行数
+     * @param views View[]
+     * @return Helper
+     */
+    @Override
+    public QQQQQQQQQQQ setLines(
+            int lines,
+            View... views
+    ) {
+        ForUtils.forSimpleArgs(
+                value -> TextViewUtils.setHint(value, text), views
+        );
+        return this;
+    }
+
+    /**
+     * 设置最大行数
+     * @param maxLines 最大行数
+     * @param views    View[]
+     * @return Helper
+     */
+    @Override
+    public QQQQQQQQQQQ setMaxLines(
+            int maxLines,
+            View... views
+    ) {
+        ForUtils.forSimpleArgs(
+                value -> TextViewUtils.setHint(value, text), views
+        );
+        return this;
+    }
+
+    /**
+     * 设置最小行数
+     * @param minLines 最小行数
+     * @param views    View[]
+     * @return Helper
+     */
+    @Override
+    public QQQQQQQQQQQ setMinLines(
+            int minLines,
+            View... views
+    ) {
+        ForUtils.forSimpleArgs(
+                value -> TextViewUtils.setHint(value, text), views
+        );
+        return this;
+    }
+
+    /**
+     * 设置最大字符宽度限制
+     * @param maxEms 最大字符
+     * @param views  View[]
+     * @return Helper
+     */
+    @Override
+    public QQQQQQQQQQQ setMaxEms(
+            int maxEms,
+            View... views
+    ) {
+        ForUtils.forSimpleArgs(
+                value -> TextViewUtils.setHint(value, text), views
+        );
+        return this;
+    }
+
+    /**
+     * 设置最小字符宽度限制
+     * @param minEms 最小字符
+     * @param views  View[]
+     * @return Helper
+     */
+    @Override
+    public QQQQQQQQQQQ setMinEms(
+            int minEms,
+            View... views
+    ) {
+        ForUtils.forSimpleArgs(
+                value -> TextViewUtils.setHint(value, text), views
+        );
+        return this;
+    }
+
+    /**
+     * 设置指定字符宽度
+     * @param ems   字符
+     * @param views View[]
+     * @return Helper
+     */
+    @Override
+    public QQQQQQQQQQQ setEms(
+            int ems,
+            View... views
+    ) {
+        ForUtils.forSimpleArgs(
+                value -> TextViewUtils.setHint(value, text), views
+        );
+        return this;
+    }
+
+    /**
+     * 设置 Ellipsize 效果
+     * @param where {@link TextUtils.TruncateAt}
+     * @param views View[]
+     * @return Helper
+     */
+    @Override
+    public QQQQQQQQQQQ setEllipsize(
+            TextUtils.TruncateAt where,
+            View... views
+    ) {
+        ForUtils.forSimpleArgs(
+                value -> TextViewUtils.setHint(value, text), views
+        );
+        return this;
+    }
+
+    /**
+     * 设置自动识别文本链接
+     * @param mask  {@link android.text.util.Linkify}
+     * @param views View[]
+     * @return Helper
+     */
+    @Override
+    public QQQQQQQQQQQ setAutoLinkMask(
+            int mask,
+            View... views
+    ) {
+        ForUtils.forSimpleArgs(
+                value -> TextViewUtils.setHint(value, text), views
+        );
+        return this;
+    }
+
+    /**
+     * 设置文本全为大写
+     * @param allCaps 是否全部大写
+     * @param views   View[]
+     * @return Helper
+     */
+    @Override
+    public QQQQQQQQQQQ setAllCaps(
+            boolean allCaps,
+            View... views
+    ) {
+        ForUtils.forSimpleArgs(
+                value -> TextViewUtils.setHint(value, text), views
+        );
+        return this;
+    }
+
+    /**
+     * 设置 Gravity
+     * @param gravity {@link android.view.Gravity}
+     * @param views   View[]
+     * @return Helper
+     */
+    @Override
+    public QQQQQQQQQQQ setGravity(
+            int gravity,
+            View... views
+    ) {
+        ForUtils.forSimpleArgs(
+                value -> TextViewUtils.setHint(value, text), views
+        );
+        return this;
+    }
+
+    /**
+     * 设置 CompoundDrawables Padding
+     * @param padding   CompoundDrawables Padding
+     * @param textViews TextView[]
+     * @return Helper
+     */
+    @Override
+    public QQQQQQQQQQQ setCompoundDrawablePadding(
+            int padding,
+            TextView... textViews
+    ) {
+        ForUtils.forSimpleArgs(
+                value -> TextViewUtils.setHint(value, text), textViews
+        );
+        return this;
+    }
+
+    /**
+     * 设置 Left CompoundDrawables
+     * @param left      left Drawable
+     * @param textViews TextView[]
+     * @return Helper
+     */
+    @Override
+    public QQQQQQQQQQQ setCompoundDrawablesByLeft(
+            Drawable left,
+            TextView... textViews
+    ) {
+        ForUtils.forSimpleArgs(
+                value -> TextViewUtils.setHint(value, text), textViews
+        );
+        return this;
+    }
+
+    /**
+     * 设置 Top CompoundDrawables
+     * @param top       top Drawable
+     * @param textViews TextView[]
+     * @return Helper
+     */
+    @Override
+    public QQQQQQQQQQQ setCompoundDrawablesByTop(
+            Drawable top,
+            TextView... textViews
+    ) {
+        ForUtils.forSimpleArgs(
+                value -> TextViewUtils.setHint(value, text), textViews
+        );
+        return this;
+    }
+
+    /**
+     * 设置 Right CompoundDrawables
+     * @param right     right Drawable
+     * @param textViews TextView[]
+     * @return Helper
+     */
+    @Override
+    public QQQQQQQQQQQ setCompoundDrawablesByRight(
+            Drawable right,
+            TextView... textViews
+    ) {
+        ForUtils.forSimpleArgs(
+                value -> TextViewUtils.setHint(value, text), textViews
+        );
+        return this;
+    }
+
+    /**
+     * 设置 Bottom CompoundDrawables
+     * @param bottom    bottom Drawable
+     * @param textViews TextView[]
+     * @return Helper
+     */
+    @Override
+    public QQQQQQQQQQQ setCompoundDrawablesByBottom(
+            Drawable bottom,
+            TextView... textViews
+    ) {
+        ForUtils.forSimpleArgs(
+                value -> TextViewUtils.setHint(value, text), textViews
+        );
+        return this;
+    }
+
+    /**
+     * 设置 CompoundDrawables
+     * <pre>
+     *     CompoundDrawable 的大小控制是通过 drawable.setBounds() 控制
+     *     需要先设置 Drawable 的 setBounds
+     *     {@link dev.utils.app.image.ImageUtils#setBounds}
+     * </pre>
+     * @param left      left Drawable
+     * @param top       top Drawable
+     * @param right     right Drawable
+     * @param bottom    bottom Drawable
+     * @param textViews TextView[]
+     * @return Helper
+     */
+    @Override
+    public QQQQQQQQQQQ setCompoundDrawables(
+            Drawable left,
+            Drawable top,
+            Drawable right,
+            Drawable bottom,
+            TextView... textViews
+    ) {
+        ForUtils.forSimpleArgs(
+                value -> TextViewUtils.setHint(value, text), textViews
+        );
+        return this;
+    }
+
+    /**
+     * 设置 Left CompoundDrawables ( 按照原有比例大小显示图片 )
+     * @param left      left Drawable
+     * @param textViews TextView[]
+     * @return Helper
+     */
+    @Override
+    public QQQQQQQQQQQ setCompoundDrawablesWithIntrinsicBoundsByLeft(
+            Drawable left,
+            TextView... textViews
+    ) {
+        ForUtils.forSimpleArgs(
+                value -> TextViewUtils.setHint(value, text), textViews
+        );
+        return this;
+    }
+
+    /**
+     * 设置 Top CompoundDrawables ( 按照原有比例大小显示图片 )
+     * @param top       top Drawable
+     * @param textViews TextView[]
+     * @return Helper
+     */
+    @Override
+    public QQQQQQQQQQQ setCompoundDrawablesWithIntrinsicBoundsByTop(
+            Drawable top,
+            TextView... textViews
+    ) {
+        ForUtils.forSimpleArgs(
+                value -> TextViewUtils.setHint(value, text), textViews
+        );
+        return this;
+    }
+
+    /**
+     * 设置 Right CompoundDrawables ( 按照原有比例大小显示图片 )
+     * @param right     right Drawable
+     * @param textViews TextView[]
+     * @return Helper
+     */
+    @Override
+    public QQQQQQQQQQQ setCompoundDrawablesWithIntrinsicBoundsByRight(
+            Drawable right,
+            TextView... textViews
+    ) {
+        ForUtils.forSimpleArgs(
+                value -> TextViewUtils.setHint(value, text), textViews
+        );
+        return this;
+    }
+
+    /**
+     * 设置 Bottom CompoundDrawables ( 按照原有比例大小显示图片 )
+     * @param bottom    bottom Drawable
+     * @param textViews TextView[]
+     * @return Helper
+     */
+    @Override
+    public QQQQQQQQQQQ setCompoundDrawablesWithIntrinsicBoundsByBottom(
+            Drawable bottom,
+            TextView... textViews
+    ) {
+        ForUtils.forSimpleArgs(
+                value -> TextViewUtils.setHint(value, text), textViews
+        );
+        return this;
+    }
+
+    /**
+     * 设置 CompoundDrawables ( 按照原有比例大小显示图片 )
+     * @param left      left Drawable
+     * @param top       top Drawable
+     * @param right     right Drawable
+     * @param bottom    bottom Drawable
+     * @param textViews TextView[]
+     * @return Helper
+     */
+    @Override
+    public QQQQQQQQQQQ setCompoundDrawablesWithIntrinsicBounds(
+            Drawable left,
+            Drawable top,
+            Drawable right,
+            Drawable bottom,
+            TextView... textViews
+    ) {
+        ForUtils.forSimpleArgs(
+                value -> TextViewUtils.setHint(value, text), textViews
         );
         return this;
     }
