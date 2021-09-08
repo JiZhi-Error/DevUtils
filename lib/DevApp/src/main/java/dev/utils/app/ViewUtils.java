@@ -3725,6 +3725,15 @@ public final class ViewUtils {
 
     /**
      * 启动动画
+     * @param view {@link View}
+     * @return {@link View}
+     */
+    public static View startAnimation(final View view) {
+        return AnimationUtils.startAnimation(view);
+    }
+
+    /**
+     * 启动动画
      * @param view      {@link View}
      * @param animation {@link Animation}
      * @return {@link View}
