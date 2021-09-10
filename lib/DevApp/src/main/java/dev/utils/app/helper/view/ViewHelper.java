@@ -33,6 +33,7 @@ import dev.utils.app.HandlerUtils;
 import dev.utils.app.ImageViewUtils;
 import dev.utils.app.ListViewUtils;
 import dev.utils.app.RecyclerViewUtils;
+import dev.utils.app.SizeUtils;
 import dev.utils.app.TextViewUtils;
 import dev.utils.app.ViewUtils;
 import dev.utils.app.helper.dev.DevHelper;
@@ -4436,6 +4437,25 @@ public final class ViewHelper
         ForUtils.forSimpleArgs(
                 value -> RecyclerViewUtils.setNestedScrollingEnabled(value, enabled), views
         );
+        return this;
+    }
+
+    // =============
+    // = SizeUtils =
+    // =============
+
+    /**
+     * 在 onCreate 中获取视图的尺寸 ( 需回调 onGetSizeListener 接口, 在 onGetSize 中获取 View 宽高 )
+     * @param view     {@link View}
+     * @param listener {@link SizeUtils.OnGetSizeListener}
+     * @return Helper
+     */
+    @Override
+    public ViewHelper forceGetViewSize(
+            View view,
+            SizeUtils.OnGetSizeListener listener
+    ) {
+        SizeUtils.forceGetViewSize(view, listener);
         return this;
     }
 }
