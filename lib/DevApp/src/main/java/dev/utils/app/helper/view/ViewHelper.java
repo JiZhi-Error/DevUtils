@@ -149,11 +149,11 @@ public final class ViewHelper
 
     /**
      * 在主线程 Handler 中执行延迟任务
-     * @param runnable      可执行的任务
-     * @param delayMillis   延迟时间
-     * @param number        轮询次数
-     * @param interval      轮询时间
-     * @param onEndListener 结束通知
+     * @param runnable    可执行的任务
+     * @param delayMillis 延迟时间
+     * @param number      轮询次数
+     * @param interval    轮询时间
+     * @param listener    结束通知
      * @return Helper
      */
     @Override
@@ -162,9 +162,9 @@ public final class ViewHelper
             long delayMillis,
             int number,
             int interval,
-            HandlerUtils.OnEndListener onEndListener
+            HandlerUtils.OnEndListener listener
     ) {
-        HandlerUtils.postRunnable(runnable, delayMillis, number, interval, onEndListener);
+        HandlerUtils.postRunnable(runnable, delayMillis, number, interval, listener);
         return this;
     }
 
@@ -206,23 +206,23 @@ public final class ViewHelper
 
     /**
      * 增加控件的触摸范围, 最大范围只能是父布局所包含的的区域
-     * @param top    top range
-     * @param bottom bottom range
      * @param left   left range
+     * @param top    top range
      * @param right  right range
+     * @param bottom bottom range
      * @param views  View[]
      * @return Helper
      */
     @Override
     public ViewHelper addTouchArea(
-            int top,
-            int bottom,
             int left,
+            int top,
             int right,
+            int bottom,
             View... views
     ) {
         ForUtils.forSimpleArgs(
-                value -> ClickUtils.addTouchArea(value, top, bottom, left, right), views
+                value -> ClickUtils.addTouchArea(value, left, top, right, bottom), views
         );
         return this;
     }
@@ -1088,9 +1088,7 @@ public final class ViewHelper
             boolean focusableInTouchMode,
             View... views
     ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setFocusableInTouchMode(focusableInTouchMode), views
-        );
+        ViewUtils.setFocusableInTouchMode(focusableInTouchMode, views);
         return this;
     }
 
