@@ -3354,9 +3354,7 @@ public final class QQQQQQQQQQQ
             @ColorInt int color,
             View... views
     ) {
-        ForUtils.forSimpleArgs(
-                value -> TextViewUtils.setHint(value, text), views
-        );
+        TextViewUtils.setHintTextColors(color, views);
         return this;
     }
 
@@ -3371,9 +3369,7 @@ public final class QQQQQQQQQQQ
             ColorStateList colors,
             View... views
     ) {
-        ForUtils.forSimpleArgs(
-                value -> TextViewUtils.setHint(value, text), views
-        );
+        TextViewUtils.setHintTextColors(colors, views);
         return this;
     }
 
@@ -3388,9 +3384,7 @@ public final class QQQQQQQQQQQ
             @ColorInt int color,
             View... views
     ) {
-        ForUtils.forSimpleArgs(
-                value -> TextViewUtils.setHint(value, text), views
-        );
+        TextViewUtils.setTextColors(color, views);
         return this;
     }
 
@@ -3405,9 +3399,7 @@ public final class QQQQQQQQQQQ
             ColorStateList colors,
             View... views
     ) {
-        ForUtils.forSimpleArgs(
-                value -> TextViewUtils.setHint(value, text), views
-        );
+        TextViewUtils.setTextColors(colors, views);
         return this;
     }
 
@@ -3422,9 +3414,7 @@ public final class QQQQQQQQQQQ
             String content,
             View... views
     ) {
-        ForUtils.forSimpleArgs(
-                value -> TextViewUtils.setHint(value, text), views
-        );
+        TextViewUtils.setHtmlTexts(content, views);
         return this;
     }
 
@@ -3440,7 +3430,7 @@ public final class QQQQQQQQQQQ
             View... views
     ) {
         ForUtils.forSimpleArgs(
-                value -> TextViewUtils.setHint(value, text), views
+                value -> TextViewUtils.setTypeface(value, typeface), views
         );
         return this;
     }
@@ -3459,7 +3449,7 @@ public final class QQQQQQQQQQQ
             View... views
     ) {
         ForUtils.forSimpleArgs(
-                value -> TextViewUtils.setHint(value, text), views
+                value -> TextViewUtils.setTypeface(value, typeface, style), views
         );
         return this;
     }
@@ -3476,7 +3466,7 @@ public final class QQQQQQQQQQQ
             View... views
     ) {
         ForUtils.forSimpleArgs(
-                value -> TextViewUtils.setHint(value, text), views
+                value -> TextViewUtils.setTextSizeByPx(value, size), views
         );
         return this;
     }
@@ -3493,7 +3483,7 @@ public final class QQQQQQQQQQQ
             View... views
     ) {
         ForUtils.forSimpleArgs(
-                value -> TextViewUtils.setHint(value, text), views
+                value -> TextViewUtils.setTextSizeBySp(value, size), views
         );
         return this;
     }
@@ -3510,7 +3500,7 @@ public final class QQQQQQQQQQQ
             View... views
     ) {
         ForUtils.forSimpleArgs(
-                value -> TextViewUtils.setHint(value, text), views
+                value -> TextViewUtils.setTextSizeByDp(value, size), views
         );
         return this;
     }
@@ -3527,7 +3517,7 @@ public final class QQQQQQQQQQQ
             View... views
     ) {
         ForUtils.forSimpleArgs(
-                value -> TextViewUtils.setHint(value, text), views
+                value -> TextViewUtils.setTextSizeByIn(value, size), views
         );
         return this;
     }
@@ -3546,7 +3536,7 @@ public final class QQQQQQQQQQQ
             View... views
     ) {
         ForUtils.forSimpleArgs(
-                value -> TextViewUtils.setHint(value, text), views
+                value -> TextViewUtils.setTextSize(value, unit, size), views
         );
         return this;
     }
@@ -3559,7 +3549,7 @@ public final class QQQQQQQQQQQ
     @Override
     public QQQQQQQQQQQ clearFlags(View... views) {
         ForUtils.forSimpleArgs(
-                value -> TextViewUtils.setHint(value, text), views
+                value -> TextViewUtils.clearFlags(value), views
         );
         return this;
     }
@@ -3576,7 +3566,7 @@ public final class QQQQQQQQQQQ
             View... views
     ) {
         ForUtils.forSimpleArgs(
-                value -> TextViewUtils.setHint(value, text), views
+                value -> TextViewUtils.setPaintFlags(value, flags), views
         );
         return this;
     }
@@ -3589,7 +3579,7 @@ public final class QQQQQQQQQQQ
     @Override
     public QQQQQQQQQQQ setAntiAliasFlag(View... views) {
         ForUtils.forSimpleArgs(
-                value -> TextViewUtils.setHint(value, text), views
+                value -> TextViewUtils.setAntiAliasFlag(value), views
         );
         return this;
     }
@@ -3602,7 +3592,7 @@ public final class QQQQQQQQQQQ
     @Override
     public QQQQQQQQQQQ setBold(View... views) {
         ForUtils.forSimpleArgs(
-                value -> TextViewUtils.setHint(value, text), views
+                value -> TextViewUtils.setBold(value), views
         );
         return this;
     }
@@ -3619,7 +3609,7 @@ public final class QQQQQQQQQQQ
             View... views
     ) {
         ForUtils.forSimpleArgs(
-                value -> TextViewUtils.setHint(value, text), views
+                value -> TextViewUtils.setBold(value, isBold), views
         );
         return this;
     }
@@ -3638,7 +3628,7 @@ public final class QQQQQQQQQQQ
             View... views
     ) {
         ForUtils.forSimpleArgs(
-                value -> TextViewUtils.setHint(value, text), views
+                value -> TextViewUtils.setBold(value, typeface, isBold), views
         );
         return this;
     }
@@ -3651,7 +3641,7 @@ public final class QQQQQQQQQQQ
     @Override
     public QQQQQQQQQQQ setUnderlineText(View... views) {
         ForUtils.forSimpleArgs(
-                value -> TextViewUtils.setHint(value, text), views
+                value -> TextViewUtils.setUnderlineText(value), views
         );
         return this;
     }
@@ -3668,7 +3658,7 @@ public final class QQQQQQQQQQQ
             View... views
     ) {
         ForUtils.forSimpleArgs(
-                value -> TextViewUtils.setHint(value, text), views
+                value -> TextViewUtils.setUnderlineText(value, isAntiAlias), views
         );
         return this;
     }
@@ -3681,7 +3671,7 @@ public final class QQQQQQQQQQQ
     @Override
     public QQQQQQQQQQQ setStrikeThruText(View... views) {
         ForUtils.forSimpleArgs(
-                value -> TextViewUtils.setHint(value, text), views
+                value -> TextViewUtils.setStrikeThruText(value), views
         );
         return this;
     }
@@ -3698,7 +3688,7 @@ public final class QQQQQQQQQQQ
             View... views
     ) {
         ForUtils.forSimpleArgs(
-                value -> TextViewUtils.setHint(value, text), views
+                value -> TextViewUtils.setStrikeThruText(value, isAntiAlias), views
         );
         return this;
     }
@@ -3716,7 +3706,7 @@ public final class QQQQQQQQQQQ
             View... views
     ) {
         ForUtils.forSimpleArgs(
-                value -> TextViewUtils.setHint(value, text), views
+                value -> TextViewUtils.setLetterSpacing(value, letterSpacing), views
         );
         return this;
     }
@@ -3733,7 +3723,7 @@ public final class QQQQQQQQQQQ
             View... views
     ) {
         ForUtils.forSimpleArgs(
-                value -> TextViewUtils.setHint(value, text), views
+                value -> TextViewUtils.setLineSpacing(value, lineSpacing), views
         );
         return this;
     }
@@ -3752,7 +3742,9 @@ public final class QQQQQQQQQQQ
             View... views
     ) {
         ForUtils.forSimpleArgs(
-                value -> TextViewUtils.setHint(value, text), views
+                value -> TextViewUtils.setLineSpacingAndMultiplier(
+                        value, lineSpacing, multiplier
+                ), views
         );
         return this;
     }
@@ -3769,7 +3761,7 @@ public final class QQQQQQQQQQQ
             View... views
     ) {
         ForUtils.forSimpleArgs(
-                value -> TextViewUtils.setHint(value, text), views
+                value -> TextViewUtils.setTextScaleX(value, size), views
         );
         return this;
     }
@@ -3786,7 +3778,7 @@ public final class QQQQQQQQQQQ
             View... views
     ) {
         ForUtils.forSimpleArgs(
-                value -> TextViewUtils.setHint(value, text), views
+                value -> TextViewUtils.setIncludeFontPadding(value, includePadding), views
         );
         return this;
     }
@@ -3803,7 +3795,7 @@ public final class QQQQQQQQQQQ
             View... views
     ) {
         ForUtils.forSimpleArgs(
-                value -> TextViewUtils.setHint(value, text), views
+                value -> TextViewUtils.setLines(value, lines), views
         );
         return this;
     }
@@ -3820,7 +3812,7 @@ public final class QQQQQQQQQQQ
             View... views
     ) {
         ForUtils.forSimpleArgs(
-                value -> TextViewUtils.setHint(value, text), views
+                value -> TextViewUtils.setMaxLines(value, maxLines), views
         );
         return this;
     }
@@ -3837,7 +3829,7 @@ public final class QQQQQQQQQQQ
             View... views
     ) {
         ForUtils.forSimpleArgs(
-                value -> TextViewUtils.setHint(value, text), views
+                value -> TextViewUtils.setMinLines(value, minLines), views
         );
         return this;
     }
@@ -3854,7 +3846,7 @@ public final class QQQQQQQQQQQ
             View... views
     ) {
         ForUtils.forSimpleArgs(
-                value -> TextViewUtils.setHint(value, text), views
+                value -> TextViewUtils.setMaxEms(value, maxEms), views
         );
         return this;
     }
@@ -3871,7 +3863,7 @@ public final class QQQQQQQQQQQ
             View... views
     ) {
         ForUtils.forSimpleArgs(
-                value -> TextViewUtils.setHint(value, text), views
+                value -> TextViewUtils.setMinEms(value, minEms), views
         );
         return this;
     }
@@ -3888,7 +3880,7 @@ public final class QQQQQQQQQQQ
             View... views
     ) {
         ForUtils.forSimpleArgs(
-                value -> TextViewUtils.setHint(value, text), views
+                value -> TextViewUtils.setEms(value, ems), views
         );
         return this;
     }
@@ -3905,7 +3897,7 @@ public final class QQQQQQQQQQQ
             View... views
     ) {
         ForUtils.forSimpleArgs(
-                value -> TextViewUtils.setHint(value, text), views
+                value -> TextViewUtils.setEllipsize(value, where), views
         );
         return this;
     }
@@ -3922,7 +3914,7 @@ public final class QQQQQQQQQQQ
             View... views
     ) {
         ForUtils.forSimpleArgs(
-                value -> TextViewUtils.setHint(value, text), views
+                value -> TextViewUtils.setAutoLinkMask(value, mask), views
         );
         return this;
     }
@@ -3939,7 +3931,7 @@ public final class QQQQQQQQQQQ
             View... views
     ) {
         ForUtils.forSimpleArgs(
-                value -> TextViewUtils.setHint(value, text), views
+                value -> TextViewUtils.setAllCaps(value, allCaps), views
         );
         return this;
     }
@@ -3956,7 +3948,7 @@ public final class QQQQQQQQQQQ
             View... views
     ) {
         ForUtils.forSimpleArgs(
-                value -> TextViewUtils.setHint(value, text), views
+                value -> TextViewUtils.setGravity(value, gravity), views
         );
         return this;
     }
@@ -3973,7 +3965,7 @@ public final class QQQQQQQQQQQ
             TextView... textViews
     ) {
         ForUtils.forSimpleArgs(
-                value -> TextViewUtils.setHint(value, text), textViews
+                value -> TextViewUtils.setCompoundDrawablePadding(value, padding), textViews
         );
         return this;
     }
@@ -3990,7 +3982,7 @@ public final class QQQQQQQQQQQ
             TextView... textViews
     ) {
         ForUtils.forSimpleArgs(
-                value -> TextViewUtils.setHint(value, text), textViews
+                value -> TextViewUtils.setCompoundDrawablesByLeft(value, left), textViews
         );
         return this;
     }
@@ -4007,7 +3999,7 @@ public final class QQQQQQQQQQQ
             TextView... textViews
     ) {
         ForUtils.forSimpleArgs(
-                value -> TextViewUtils.setHint(value, text), textViews
+                value -> TextViewUtils.setCompoundDrawablesByTop(value, top), textViews
         );
         return this;
     }
@@ -4024,7 +4016,7 @@ public final class QQQQQQQQQQQ
             TextView... textViews
     ) {
         ForUtils.forSimpleArgs(
-                value -> TextViewUtils.setHint(value, text), textViews
+                value -> TextViewUtils.setCompoundDrawablesByRight(value, right), textViews
         );
         return this;
     }
@@ -4041,7 +4033,7 @@ public final class QQQQQQQQQQQ
             TextView... textViews
     ) {
         ForUtils.forSimpleArgs(
-                value -> TextViewUtils.setHint(value, text), textViews
+                value -> TextViewUtils.setCompoundDrawablesByBottom(value, bottom), textViews
         );
         return this;
     }
@@ -4069,7 +4061,9 @@ public final class QQQQQQQQQQQ
             TextView... textViews
     ) {
         ForUtils.forSimpleArgs(
-                value -> TextViewUtils.setHint(value, text), textViews
+                value -> TextViewUtils.setCompoundDrawables(
+                        value, left, top, right, bottom
+                ), textViews
         );
         return this;
     }
@@ -4086,7 +4080,9 @@ public final class QQQQQQQQQQQ
             TextView... textViews
     ) {
         ForUtils.forSimpleArgs(
-                value -> TextViewUtils.setHint(value, text), textViews
+                value -> TextViewUtils.setCompoundDrawablesWithIntrinsicBoundsByLeft(
+                        value, left
+                ), textViews
         );
         return this;
     }
@@ -4103,7 +4099,9 @@ public final class QQQQQQQQQQQ
             TextView... textViews
     ) {
         ForUtils.forSimpleArgs(
-                value -> TextViewUtils.setHint(value, text), textViews
+                value -> TextViewUtils.setCompoundDrawablesWithIntrinsicBoundsByTop(
+                        value, top
+                ), textViews
         );
         return this;
     }
@@ -4120,7 +4118,9 @@ public final class QQQQQQQQQQQ
             TextView... textViews
     ) {
         ForUtils.forSimpleArgs(
-                value -> TextViewUtils.setHint(value, text), textViews
+                value -> TextViewUtils.setCompoundDrawablesWithIntrinsicBoundsByRight(
+                        value, right
+                ), textViews
         );
         return this;
     }
@@ -4137,7 +4137,9 @@ public final class QQQQQQQQQQQ
             TextView... textViews
     ) {
         ForUtils.forSimpleArgs(
-                value -> TextViewUtils.setHint(value, text), textViews
+                value -> TextViewUtils.setCompoundDrawablesWithIntrinsicBoundsByBottom(
+                        value, bottom
+                ), textViews
         );
         return this;
     }
@@ -4160,7 +4162,9 @@ public final class QQQQQQQQQQQ
             TextView... textViews
     ) {
         ForUtils.forSimpleArgs(
-                value -> TextViewUtils.setHint(value, text), textViews
+                value -> TextViewUtils.setCompoundDrawablesWithIntrinsicBounds(
+                        value, left, top, right, bottom
+                ), textViews
         );
         return this;
     }
