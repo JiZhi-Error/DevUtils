@@ -43,7 +43,7 @@ import dev.utils.app.helper.view.ViewHelper;
 import dev.utils.common.ForUtils;
 
 /**
- * detail: 简化链式设置 View Helper 类
+ * detail: 简化链式设置 View Quick Helper 类
  * @author Ttt
  * <pre>
  *     整合 {@link ViewHelper} 代码

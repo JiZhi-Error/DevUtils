@@ -24,7 +24,6 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.FloatRange;
 import androidx.annotation.IdRes;
-import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import dev.utils.app.ClickUtils;
@@ -3706,15 +3705,16 @@ public final class ViewHelper
      * @param views         View[]
      * @return Helper
      */
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public ViewHelper setLetterSpacing(
             float letterSpacing,
             View... views
     ) {
-        ForUtils.forSimpleArgs(
-                value -> TextViewUtils.setLetterSpacing(value, letterSpacing), views
-        );
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            ForUtils.forSimpleArgs(
+                    value -> TextViewUtils.setLetterSpacing(value, letterSpacing), views
+            );
+        }
         return this;
     }
 
