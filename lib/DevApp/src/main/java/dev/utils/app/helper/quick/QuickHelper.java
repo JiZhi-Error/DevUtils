@@ -276,17 +276,11 @@ public final class QuickHelper
     /**
      * 增加控件的触摸范围, 最大范围只能是父布局所包含的的区域
      * @param range 点击范围
-     * @param views View[]
      * @return Helper
      */
     @Override
-    public QuickHelper addTouchArea(
-            int range,
-            View... views
-    ) {
-        ForUtils.forSimpleArgs(
-                value -> ClickUtils.addTouchArea(value, range), views
-        );
+    public QuickHelper addTouchArea(int range) {
+        ViewHelper.get().addTouchArea(range, targetView());
         return this;
     }
 
@@ -296,7 +290,6 @@ public final class QuickHelper
      * @param top    top range
      * @param right  right range
      * @param bottom bottom range
-     * @param views  View[]
      * @return Helper
      */
     @Override
@@ -304,63 +297,42 @@ public final class QuickHelper
             int left,
             int top,
             int right,
-            int bottom,
-            View... views
+            int bottom
     ) {
-        ForUtils.forSimpleArgs(
-                value -> ClickUtils.addTouchArea(value, left, top, right, bottom), views
-        );
+        ViewHelper.get().addTouchArea(left, top, right, bottom, targetView());
         return this;
     }
 
     /**
      * 设置点击事件
      * @param listener {@link View.OnClickListener}
-     * @param views    View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setOnClick(
-            View.OnClickListener listener,
-            View... views
-    ) {
-        ForUtils.forSimpleArgs(
-                value -> ClickUtils.setOnClick(value, listener), views
-        );
+    public QuickHelper setOnClick(View.OnClickListener listener) {
+        ViewHelper.get().setOnClick(listener, targetView());
         return this;
     }
 
     /**
      * 设置长按事件
      * @param listener {@link View.OnLongClickListener}
-     * @param views    View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setOnLongClick(
-            View.OnLongClickListener listener,
-            View... views
-    ) {
-        ForUtils.forSimpleArgs(
-                value -> ClickUtils.setOnLongClick(value, listener), views
-        );
+    public QuickHelper setOnLongClick(View.OnLongClickListener listener) {
+        ViewHelper.get().setOnLongClick(listener, targetView());
         return this;
     }
 
     /**
      * 设置触摸事件
      * @param listener {@link View.OnTouchListener}
-     * @param views    View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setOnTouch(
-            View.OnTouchListener listener,
-            View... views
-    ) {
-        ForUtils.forSimpleArgs(
-                value -> ClickUtils.setOnTouch(value, listener), views
-        );
+    public QuickHelper setOnTouch(View.OnTouchListener listener) {
+        ViewHelper.get().setOnTouch(listener, targetView());
         return this;
     }
 
@@ -370,84 +342,64 @@ public final class QuickHelper
 
     /**
      * 设置 View Id
-     * @param view {@link View}
      * @param id   View Id
      * @return Helper
      */
     @Override
-    public QuickHelper setId(
-            View view,
-            int id
-    ) {
-        ViewUtils.setId(view, id);
+    public QuickHelper setId(int id) {
+        ViewHelper.get().setId(targetView(), id);
         return this;
     }
 
     /**
      * 设置是否限制子 View 在其边界内绘制
      * @param clipChildren {@code true} yes, {@code false} no
-     * @param viewGroups   ViewGroup[]
      * @return Helper
      */
     @Override
-    public QuickHelper setClipChildren(
-            boolean clipChildren,
-            ViewGroup... viewGroups
-    ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setClipChildren(value, clipChildren), viewGroups
-        );
+    public QuickHelper setClipChildren(boolean clipChildren) {
+        ViewHelper.get().setClipChildren(clipChildren, targetViewGroup());
         return this;
     }
 
     /**
      * 移除全部子 View
-     * @param viewGroups ViewGroup[]
      * @return Helper
      */
     @Override
-    public QuickHelper removeAllViews(ViewGroup... viewGroups) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.removeAllViews(value), viewGroups
-        );
+    public QuickHelper removeAllViews() {
+        ViewHelper.get().removeAllViews(targetViewGroup());
         return this;
     }
 
     /**
      * 添加 View
-     * @param viewGroup {@link ViewGroup}
      * @param child     待添加 View
      * @return Helper
      */
     @Override
-    public QuickHelper addView(
-            ViewGroup viewGroup,
-            View child
-    ) {
-        ViewUtils.addView(viewGroup, child);
+    public QuickHelper addView(View child) {
+        ViewHelper.get().addView(targetViewGroup(), child);
         return this;
     }
 
     /**
      * 添加 View
-     * @param viewGroup {@link ViewGroup}
      * @param child     待添加 View
      * @param index     添加位置索引
      * @return Helper
      */
     @Override
     public QuickHelper addView(
-            ViewGroup viewGroup,
             View child,
             int index
     ) {
-        ViewUtils.addView(viewGroup, child, index);
+        ViewHelper.get().addView(targetViewGroup(), child, index);
         return this;
     }
 
     /**
      * 添加 View
-     * @param viewGroup {@link ViewGroup}
      * @param child     待添加 View
      * @param index     添加位置索引
      * @param params    LayoutParams
@@ -455,35 +407,31 @@ public final class QuickHelper
      */
     @Override
     public QuickHelper addView(
-            ViewGroup viewGroup,
             View child,
             int index,
             ViewGroup.LayoutParams params
     ) {
-        ViewUtils.addView(viewGroup, child, index, params);
+        ViewHelper.get().addView(targetViewGroup(), child, index, params);
         return this;
     }
 
     /**
      * 添加 View
-     * @param viewGroup {@link ViewGroup}
      * @param child     待添加 View
      * @param params    LayoutParams
      * @return Helper
      */
     @Override
     public QuickHelper addView(
-            ViewGroup viewGroup,
             View child,
             ViewGroup.LayoutParams params
     ) {
-        ViewUtils.addView(viewGroup, child, params);
+        ViewHelper.get().addView(targetViewGroup(), child, params);
         return this;
     }
 
     /**
      * 添加 View
-     * @param viewGroup {@link ViewGroup}
      * @param child     待添加 View
      * @param width     View 宽度
      * @param height    View 高度
@@ -491,27 +439,22 @@ public final class QuickHelper
      */
     @Override
     public QuickHelper addView(
-            ViewGroup viewGroup,
             View child,
             int width,
             int height
     ) {
-        ViewUtils.addView(viewGroup, child, width, height);
+        ViewHelper.get().addView(targetViewGroup(), child, width, height);
         return this;
     }
 
     /**
      * 设置 View LayoutParams
-     * @param view   {@link View}
      * @param params LayoutParams
      * @return Helper
      */
     @Override
-    public QuickHelper setLayoutParams(
-            View view,
-            ViewGroup.LayoutParams params
-    ) {
-        ViewUtils.setLayoutParams(view, params);
+    public QuickHelper setLayoutParams(ViewGroup.LayoutParams params) {
+        ViewHelper.get().setLayoutParams(targetView(), params);
         return this;
     }
 
@@ -519,18 +462,14 @@ public final class QuickHelper
      * 设置 View[] 宽度、高度
      * @param width  View 宽度
      * @param height View 高度
-     * @param views  View[]
      * @return Helper
      */
     @Override
     public QuickHelper setWidthHeight(
             int width,
-            int height,
-            View... views
+            int height
     ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setWidthHeight(value, width, height), views
-        );
+        ViewHelper.get().setWidthHeight(width, height, targetView());
         return this;
     }
 
@@ -539,53 +478,37 @@ public final class QuickHelper
      * @param width     View 宽度
      * @param height    View 高度
      * @param nullNewLP 如果 LayoutParams 为 null 是否创建新的
-     * @param views     View[]
      * @return Helper
      */
     @Override
     public QuickHelper setWidthHeight(
             int width,
             int height,
-            boolean nullNewLP,
-            View... views
+            boolean nullNewLP
     ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setWidthHeight(value, width, height, nullNewLP), views
-        );
+        ViewHelper.get().setWidthHeight(width, height, nullNewLP, targetView());
         return this;
     }
 
     /**
      * 设置 View weight 权重
      * @param weight 权重比例
-     * @param views  View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setWeight(
-            float weight,
-            View... views
-    ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setWeight(value, weight), views
-        );
+    public QuickHelper setWeight(float weight) {
+        ViewHelper.get().setWeight(weight, targetView());
         return this;
     }
 
     /**
      * 设置 View 宽度
      * @param width View 宽度
-     * @param views View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setWidth(
-            int width,
-            View... views
-    ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setWidth(value, width), views
-        );
+    public QuickHelper setWidth(int width) {
+        ViewHelper.get().setWidth(width, targetView());
         return this;
     }
 
@@ -593,35 +516,25 @@ public final class QuickHelper
      * 设置 View 宽度
      * @param width     View 宽度
      * @param nullNewLP 如果 LayoutParams 为 null 是否创建新的
-     * @param views     View[]
      * @return Helper
      */
     @Override
     public QuickHelper setWidth(
             int width,
-            boolean nullNewLP,
-            View... views
+            boolean nullNewLP
     ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setWidth(value, width, nullNewLP), views
-        );
+        ViewHelper.get().setWidth(width, nullNewLP, targetView());
         return this;
     }
 
     /**
      * 设置 View 高度
      * @param height View 高度
-     * @param views  View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setHeight(
-            int height,
-            View... views
-    ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setHeight(value, height), views
-        );
+    public QuickHelper setHeight(int height) {
+        ViewHelper.get().setHeight(height, targetView());
         return this;
     }
 
@@ -629,118 +542,80 @@ public final class QuickHelper
      * 设置 View 高度
      * @param height    View 高度
      * @param nullNewLP 如果 LayoutParams 为 null 是否创建新的
-     * @param views     View[]
      * @return Helper
      */
     @Override
     public QuickHelper setHeight(
             int height,
-            boolean nullNewLP,
-            View... views
+            boolean nullNewLP
     ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setHeight(value, height, nullNewLP), views
-        );
+        ViewHelper.get().setHeight(height, nullNewLP, targetView());
         return this;
     }
 
     /**
      * 设置 View 最小宽度
      * @param minWidth 最小宽度
-     * @param views    View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setMinimumWidth(
-            int minWidth,
-            View... views
-    ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setMinimumWidth(value, minWidth), views
-        );
+    public QuickHelper setMinimumWidth(int minWidth) {
+        ViewHelper.get().setMinimumWidth(minWidth, targetView());
         return this;
     }
 
     /**
      * 设置 View 最小高度
      * @param minHeight 最小高度
-     * @param views     View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setMinimumHeight(
-            int minHeight,
-            View... views
-    ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setMinimumHeight(value, minHeight), views
-        );
+    public QuickHelper setMinimumHeight(int minHeight) {
+        ViewHelper.get().setMinimumHeight(minHeight, targetView());
         return this;
     }
 
     /**
      * 设置 View 透明度
      * @param alpha 透明度
-     * @param views View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setAlpha(
-            @FloatRange(from = 0.0, to = 1.0) float alpha,
-            View... views
-    ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setAlpha(value, alpha), views
-        );
+    public QuickHelper setAlpha(@FloatRange(from = 0.0, to = 1.0) float alpha) {
+        ViewHelper.get().setAlpha(alpha, targetView());
         return this;
     }
 
     /**
      * 设置 View Tag
-     * @param view   View
      * @param object Tag
      * @return Helper
      */
     @Override
-    public QuickHelper setTag(
-            View view,
-            Object object
-    ) {
-        ViewUtils.setTag(view, object);
+    public QuickHelper setTag(Object object) {
+        ViewHelper.get().setTag(targetView(), object);
         return this;
     }
 
     /**
      * 设置 View 滑动的 X 轴坐标
      * @param value X 轴坐标
-     * @param views View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setScrollX(
-            int value,
-            View... views
-    ) {
-        ForUtils.forSimpleArgs(
-                view -> ViewUtils.setScrollX(view, value), views
-        );
+    public QuickHelper setScrollX(int value) {
+        ViewHelper.get().setScrollX(value, targetView());
         return this;
     }
 
     /**
      * 设置 View 滑动的 Y 轴坐标
      * @param value Y 轴坐标
-     * @param views View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setScrollY(
-            int value,
-            View... views
-    ) {
-        ForUtils.forSimpleArgs(
-                view -> ViewUtils.setScrollY(view, value), views
-        );
+    public QuickHelper setScrollY(int value) {
+        ViewHelper.get().setScrollY(value, targetView());
         return this;
     }
 
@@ -753,17 +628,11 @@ public final class QuickHelper
      *     android:descendantFocusability="blocksDescendants"
      * </pre>
      * @param focusability {@link ViewGroup#FOCUS_BEFORE_DESCENDANTS}、{@link ViewGroup#FOCUS_AFTER_DESCENDANTS}、{@link ViewGroup#FOCUS_BLOCK_DESCENDANTS}
-     * @param viewGroups   ViewGroup[]
      * @return Helper
      */
     @Override
-    public QuickHelper setDescendantFocusability(
-            int focusability,
-            ViewGroup... viewGroups
-    ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setDescendantFocusability(value, focusability), viewGroups
-        );
+    public QuickHelper setDescendantFocusability(int focusability) {
+        ViewHelper.get().setDescendantFocusability(focusability, targetViewGroup());
         return this;
     }
 
@@ -774,334 +643,220 @@ public final class QuickHelper
      *     android:overScrollMode="never"
      * </pre>
      * @param overScrollMode {@link View#OVER_SCROLL_ALWAYS}、{@link View#OVER_SCROLL_IF_CONTENT_SCROLLS}、{@link View#OVER_SCROLL_NEVER}
-     * @param views          View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setOverScrollMode(
-            int overScrollMode,
-            View... views
-    ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setOverScrollMode(value, overScrollMode), views
-        );
+    public QuickHelper setOverScrollMode(int overScrollMode) {
+        ViewHelper.get().setOverScrollMode(overScrollMode, targetView());
         return this;
     }
 
     /**
      * 设置是否绘制横向滚动条
      * @param horizontalScrollBarEnabled {@code true} yes, {@code false} no
-     * @param views                      View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setHorizontalScrollBarEnabled(
-            boolean horizontalScrollBarEnabled,
-            View... views
-    ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setHorizontalScrollBarEnabled(value, horizontalScrollBarEnabled), views
-        );
+    public QuickHelper setHorizontalScrollBarEnabled(boolean horizontalScrollBarEnabled) {
+        ViewHelper.get().setHorizontalScrollBarEnabled(horizontalScrollBarEnabled, targetView());
         return this;
     }
 
     /**
      * 设置是否绘制垂直滚动条
      * @param verticalScrollBarEnabled {@code true} yes, {@code false} no
-     * @param views                    View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setVerticalScrollBarEnabled(
-            boolean verticalScrollBarEnabled,
-            View... views
-    ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setVerticalScrollBarEnabled(value, verticalScrollBarEnabled), views
-        );
+    public QuickHelper setVerticalScrollBarEnabled(boolean verticalScrollBarEnabled) {
+        ViewHelper.get().setVerticalScrollBarEnabled(verticalScrollBarEnabled, targetView());
         return this;
     }
 
     /**
      * 设置 View 滚动效应
      * @param isScrollContainer 是否需要滚动效应
-     * @param views             View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setScrollContainer(
-            boolean isScrollContainer,
-            View... views
-    ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setScrollContainer(value, isScrollContainer), views
-        );
+    public QuickHelper setScrollContainer(boolean isScrollContainer) {
+        ViewHelper.get().setScrollContainer(isScrollContainer, targetView());
         return this;
     }
 
     /**
      * 设置下一个获取焦点的 View id
-     * @param view               {@link View}
      * @param nextFocusForwardId 下一个获取焦点的 View id
      * @return Helper
      */
     @Override
-    public QuickHelper setNextFocusForwardId(
-            View view,
-            @IdRes int nextFocusForwardId
-    ) {
-        ViewUtils.setNextFocusForwardId(view, nextFocusForwardId);
+    public QuickHelper setNextFocusForwardId(@IdRes int nextFocusForwardId) {
+        ViewHelper.get().setNextFocusForwardId(targetView(), nextFocusForwardId);
         return this;
     }
 
     /**
      * 设置向下移动焦点时, 下一个获取焦点的 View id
-     * @param view            {@link View}
      * @param nextFocusDownId 下一个获取焦点的 View id
      * @return Helper
      */
     @Override
-    public QuickHelper setNextFocusDownId(
-            View view,
-            @IdRes int nextFocusDownId
-    ) {
-        ViewUtils.setNextFocusDownId(view, nextFocusDownId);
+    public QuickHelper setNextFocusDownId(@IdRes int nextFocusDownId) {
+        ViewHelper.get().setNextFocusDownId(targetView(), nextFocusDownId);
         return this;
     }
 
     /**
      * 设置向左移动焦点时, 下一个获取焦点的 View id
-     * @param view            {@link View}
      * @param nextFocusLeftId 下一个获取焦点的 View id
      * @return Helper
      */
     @Override
-    public QuickHelper setNextFocusLeftId(
-            View view,
-            @IdRes int nextFocusLeftId
-    ) {
-        ViewUtils.setNextFocusLeftId(view, nextFocusLeftId);
+    public QuickHelper setNextFocusLeftId(@IdRes int nextFocusLeftId) {
+        ViewHelper.get().setNextFocusLeftId(targetView(), nextFocusLeftId);
         return this;
     }
 
     /**
      * 设置向右移动焦点时, 下一个获取焦点的 View id
-     * @param view             {@link View}
      * @param nextFocusRightId 下一个获取焦点的 View id
      * @return Helper
      */
     @Override
-    public QuickHelper setNextFocusRightId(
-            View view,
-            @IdRes int nextFocusRightId
-    ) {
-        ViewUtils.setNextFocusRightId(view, nextFocusRightId);
+    public QuickHelper setNextFocusRightId(@IdRes int nextFocusRightId) {
+        ViewHelper.get().setNextFocusRightId(targetView(), nextFocusRightId);
         return this;
     }
 
     /**
      * 设置向上移动焦点时, 下一个获取焦点的 View id
-     * @param view          {@link View}
      * @param nextFocusUpId 下一个获取焦点的 View id
      * @return Helper
      */
     @Override
-    public QuickHelper setNextFocusUpId(
-            View view,
-            @IdRes int nextFocusUpId
-    ) {
-        ViewUtils.setNextFocusUpId(view, nextFocusUpId);
+    public QuickHelper setNextFocusUpId(@IdRes int nextFocusUpId) {
+        ViewHelper.get().setNextFocusUpId(targetView(), nextFocusUpId);
         return this;
     }
 
     /**
      * 设置 View 旋转度数
      * @param rotation 旋转度数
-     * @param views    View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setRotation(
-            float rotation,
-            View... views
-    ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setRotation(value, rotation), views
-        );
+    public QuickHelper setRotation(float rotation) {
+        ViewHelper.get().setRotation(rotation, targetView());
         return this;
     }
 
     /**
      * 设置 View 水平旋转度数
      * @param rotationX 水平旋转度数
-     * @param views     View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setRotationX(
-            float rotationX,
-            View... views
-    ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setRotationX(value, rotationX), views
-        );
+    public QuickHelper setRotationX(float rotationX) {
+        ViewHelper.get().setRotationX(rotationX, targetView());
         return this;
     }
 
     /**
      * 设置 View 竖直旋转度数
      * @param rotationY 竖直旋转度数
-     * @param views     View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setRotationY(
-            float rotationY,
-            View... views
-    ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setRotationY(value, rotationY), views
-        );
+    public QuickHelper setRotationY(float rotationY) {
+        ViewHelper.get().setRotationY(rotationY, targetView());
         return this;
     }
 
     /**
      * 设置 View 水平方向缩放比例
      * @param scaleX 水平方向缩放比例
-     * @param views  View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setScaleX(
-            float scaleX,
-            View... views
-    ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setScaleX(value, scaleX), views
-        );
+    public QuickHelper setScaleX(float scaleX) {
+        ViewHelper.get().setScaleX(scaleX, targetView());
         return this;
     }
 
     /**
      * 设置 View 竖直方向缩放比例
      * @param scaleY 竖直方向缩放比例
-     * @param views  View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setScaleY(
-            float scaleY,
-            View... views
-    ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setScaleY(value, scaleY), views
-        );
+    public QuickHelper setScaleY(float scaleY) {
+        ViewHelper.get().setScaleY(scaleY, targetView());
         return this;
     }
 
     /**
      * 设置文本的显示方式
      * @param textAlignment 文本的显示方式
-     * @param views         View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setTextAlignment(
-            int textAlignment,
-            View... views
-    ) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            ForUtils.forSimpleArgs(
-                    value -> ViewUtils.setTextAlignment(value, textAlignment), views
-            );
-        }
+    public QuickHelper setTextAlignment(int textAlignment) {
+        ViewHelper.get().setTextAlignment(textAlignment, targetView());
         return this;
     }
 
     /**
      * 设置文本的显示方向
      * @param textDirection 文本的显示方向
-     * @param views         View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setTextDirection(
-            int textDirection,
-            View... views
-    ) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            ForUtils.forSimpleArgs(
-                    value -> ViewUtils.setTextDirection(value, textDirection), views
-            );
-        }
+    public QuickHelper setTextDirection(int textDirection) {
+        ViewHelper.get().setTextDirection(textDirection, targetView());
         return this;
     }
 
     /**
      * 设置水平方向偏转量
      * @param pivotX 水平方向偏转量
-     * @param views  View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setPivotX(
-            float pivotX,
-            View... views
-    ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setPivotX(value, pivotX), views
-        );
+    public QuickHelper setPivotX(float pivotX) {
+        ViewHelper.get().setPivotX(pivotX, targetView());
         return this;
     }
 
     /**
      * 设置竖直方向偏转量
      * @param pivotY 竖直方向偏转量
-     * @param views  View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setPivotY(
-            float pivotY,
-            View... views
-    ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setPivotY(value, pivotY), views
-        );
+    public QuickHelper setPivotY(float pivotY) {
+        ViewHelper.get().setPivotY(pivotY, targetView());
         return this;
     }
 
     /**
      * 设置水平方向的移动距离
      * @param translationX 水平方向的移动距离
-     * @param views        View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setTranslationX(
-            float translationX,
-            View... views
-    ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setTranslationX(value, translationX), views
-        );
+    public QuickHelper setTranslationX(float translationX) {
+        ViewHelper.get().setTranslationX(translationX, targetView());
         return this;
     }
 
     /**
      * 设置竖直方向的移动距离
      * @param translationY 竖直方向的移动距离
-     * @param views        View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setTranslationY(
-            float translationY,
-            View... views
-    ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setTranslationY(value, translationY), views
-        );
+    public QuickHelper setTranslationY(float translationY) {
+        ViewHelper.get().setTranslationY(translationY, targetView());
         return this;
     }
 
@@ -1109,362 +864,249 @@ public final class QuickHelper
      * 设置 View 硬件加速类型
      * @param layerType 硬件加速类型
      * @param paint     {@link Paint}
-     * @param views     View[]
      * @return Helper
      */
     @Override
     public QuickHelper setLayerType(
             int layerType,
-            Paint paint,
-            View... views
+            Paint paint
     ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setLayerType(value, layerType, paint), views
-        );
+        ViewHelper.get().setLayerType(layerType, paint, targetView());
         return this;
     }
 
     /**
      * 请求重新对 View 布局
-     * @param views View[]
      * @return Helper
      */
     @Override
-    public QuickHelper requestLayout(View... views) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.requestLayout(value), views
-        );
+    public QuickHelper requestLayout() {
+        ViewHelper.get().requestLayout(targetView());
         return this;
     }
 
     /**
      * View 请求获取焦点
-     * @param views View[]
      * @return Helper
      */
     @Override
-    public QuickHelper requestFocus(View... views) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.requestFocus(value), views
-        );
+    public QuickHelper requestFocus() {
+        ViewHelper.get().requestFocus(targetView());
         return this;
     }
 
     /**
      * View 清除焦点
-     * @param views View[]
      * @return Helper
      */
     @Override
-    public QuickHelper clearFocus(View... views) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.clearFocus(value), views
-        );
+    public QuickHelper clearFocus() {
+        ViewHelper.get().clearFocus(targetView());
         return this;
     }
 
     /**
      * 设置 View 是否在触摸模式下获得焦点
      * @param focusableInTouchMode {@code true} 可获取, {@code false} 不可获取
-     * @param views                View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setFocusableInTouchMode(
-            boolean focusableInTouchMode,
-            View... views
-    ) {
-        ViewUtils.setFocusableInTouchMode(focusableInTouchMode, views);
+    public QuickHelper setFocusableInTouchMode(boolean focusableInTouchMode) {
+        ViewHelper.get().setFocusableInTouchMode(focusableInTouchMode, targetView());
         return this;
     }
 
     /**
      * 设置 View 是否可以获取焦点
      * @param focusable {@code true} 可获取, {@code false} 不可获取
-     * @param views     View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setFocusable(
-            boolean focusable,
-            View... views
-    ) {
-        ViewUtils.setFocusable(focusable, views);
+    public QuickHelper setFocusable(boolean focusable) {
+        ViewHelper.get().setFocusable(focusable, targetView());
         return this;
     }
 
     /**
      * 切换获取焦点状态
-     * @param views View[]
      * @return Helper
      */
     @Override
-    public QuickHelper toggleFocusable(View... views) {
-        ViewUtils.toggleFocusable(views);
+    public QuickHelper toggleFocusable() {
+        ViewHelper.get().toggleFocusable(targetView());
         return this;
     }
 
     /**
      * 设置 View 是否选中
      * @param selected {@code true} 选中, {@code false} 非选中
-     * @param views    View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setSelected(
-            boolean selected,
-            View... views
-    ) {
-        ViewUtils.setSelected(selected, views);
+    public QuickHelper setSelected(boolean selected) {
+        ViewHelper.get().setSelected(selected, targetView());
         return this;
     }
 
     /**
      * 切换选中状态
-     * @param views View[]
      * @return Helper
      */
     @Override
-    public QuickHelper toggleSelected(View... views) {
-        ViewUtils.toggleSelected(views);
+    public QuickHelper toggleSelected() {
+        ViewHelper.get().toggleSelected(targetView());
         return this;
     }
 
     /**
      * 设置 View 是否启用
      * @param enabled {@code true} 启用, {@code false} 禁用
-     * @param views   View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setEnabled(
-            boolean enabled,
-            View... views
-    ) {
-        ViewUtils.setEnabled(enabled, views);
+    public QuickHelper setEnabled(boolean enabled) {
+        ViewHelper.get().setEnabled(enabled, targetView());
         return this;
     }
 
     /**
      * 切换 View 是否启用状态
-     * @param views View[]
      * @return Helper
      */
     @Override
-    public QuickHelper toggleEnabled(View... views) {
-        ViewUtils.toggleEnabled(views);
+    public QuickHelper toggleEnabled() {
+        ViewHelper.get().toggleEnabled(targetView());
         return this;
     }
 
     /**
      * 设置 View 是否可以点击
      * @param clickable {@code true} 可点击, {@code false} 不可点击
-     * @param views     View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setClickable(
-            boolean clickable,
-            View... views
-    ) {
-        ViewUtils.setClickable(clickable, views);
+    public QuickHelper setClickable(boolean clickable) {
+        ViewHelper.get().setClickable(clickable, targetView());
         return this;
     }
 
     /**
      * 切换 View 是否可以点击状态
-     * @param views View[]
      * @return Helper
      */
     @Override
-    public QuickHelper toggleClickable(View... views) {
-        ViewUtils.toggleClickable(views);
+    public QuickHelper toggleClickable() {
+        ViewHelper.get().toggleClickable(targetView());
         return this;
     }
 
     /**
      * 设置 View 是否可以长按
      * @param longClickable {@code true} 可长按, {@code false} 不可长按
-     * @param views         View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setLongClickable(
-            boolean longClickable,
-            View... views
-    ) {
-        ViewUtils.setLongClickable(longClickable, views);
+    public QuickHelper setLongClickable(boolean longClickable) {
+        ViewHelper.get().setLongClickable(longClickable, targetView());
         return this;
     }
 
     /**
      * 切换 View 是否可以长按状态
-     * @param views View[]
      * @return Helper
      */
     @Override
-    public QuickHelper toggleLongClickable(View... views) {
-        ViewUtils.toggleLongClickable(views);
+    public QuickHelper toggleLongClickable() {
+        ViewHelper.get().toggleLongClickable(targetView());
         return this;
     }
 
     /**
      * 设置 View 显示的状态
      * @param isVisibility {@code true} View.VISIBLE, {@code false} View.GONE
-     * @param views        View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setVisibilitys(
-            boolean isVisibility,
-            View... views
-    ) {
-        ViewUtils.setVisibilitys(isVisibility, views);
+    public QuickHelper setVisibilitys(boolean isVisibility) {
+        ViewHelper.get().setVisibilitys(isVisibility, targetView());
         return this;
     }
 
     /**
      * 设置 View 显示的状态
      * @param isVisibility {@link View#VISIBLE}、{@link View#INVISIBLE}、{@link View#GONE}
-     * @param views        View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setVisibilitys(
-            int isVisibility,
-            View... views
-    ) {
-        ViewUtils.setVisibilitys(isVisibility, views);
+    public QuickHelper setVisibilitys(int isVisibility) {
+        ViewHelper.get().setVisibilitys(isVisibility, targetView());
         return this;
     }
 
     /**
      * 设置 View 显示的状态
      * @param isVisibility {@code true} View.VISIBLE, {@code false} View.INVISIBLE
-     * @param views        View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setVisibilityINs(
-            boolean isVisibility,
-            View... views
-    ) {
-        ViewUtils.setVisibilityINs(isVisibility, views);
+    public QuickHelper setVisibilityINs(boolean isVisibility) {
+        ViewHelper.get().setVisibilityINs(isVisibility, targetView());
         return this;
     }
 
     /**
      * 切换 View 显示的状态
-     * @param view  {@link View}
-     * @param views View[]
-     * @return Helper
-     */
-    @Override
-    public QuickHelper toggleVisibilitys(
-            View view,
-            View... views
-    ) {
-        ViewUtils.toggleVisibilitys(view, views);
-        return this;
-    }
-
-    /**
-     * 切换 View 显示的状态
-     * @param viewArrays View[]
      * @param views      View[]
      * @return Helper
      */
     @Override
-    public QuickHelper toggleVisibilitys(
-            View[] viewArrays,
-            View... views
-    ) {
-        ViewUtils.toggleVisibilitys(viewArrays, views);
+    public QuickHelper toggleVisibilitys(View... views) {
+        ViewHelper.get().toggleVisibilitys(targetView(), views);
         return this;
     }
 
     /**
      * 切换 View 显示的状态
      * @param state      {@link View#VISIBLE}、{@link View#INVISIBLE}、{@link View#GONE}
-     * @param viewArrays View[]
      * @param views      View[]
      * @return Helper
      */
     @Override
     public QuickHelper toggleVisibilitys(
             int state,
-            View[] viewArrays,
             View... views
     ) {
-        ViewUtils.toggleVisibilitys(state, viewArrays, views);
+        ViewHelper.get().toggleVisibilitys(state, new View[] {targetView()}, views);
         return this;
     }
 
     /**
      * 反转 View 显示的状态
      * @param state      {@link View#VISIBLE}、{@link View#INVISIBLE}、{@link View#GONE}
-     * @param viewArrays View[]
      * @param views      View[]
      * @return Helper
      */
     @Override
     public QuickHelper reverseVisibilitys(
             int state,
-            View[] viewArrays,
             View... views
     ) {
-        ViewUtils.reverseVisibilitys(state, viewArrays, views);
+        ViewHelper.get().reverseVisibilitys(state, targetView(), views);
         return this;
     }
 
     /**
      * 反转 View 显示的状态
      * @param isVisibility {@code true} View.VISIBLE, {@code false} View.GONE
-     * @param viewArrays   View[]
      * @param views        View[]
      * @return Helper
      */
     @Override
     public QuickHelper reverseVisibilitys(
             boolean isVisibility,
-            View[] viewArrays,
             View... views
     ) {
-        ViewUtils.reverseVisibilitys(isVisibility, viewArrays, views);
-        return this;
-    }
-
-    /**
-     * 反转 View 显示的状态
-     * @param state {@link View#VISIBLE}、{@link View#INVISIBLE}、{@link View#GONE}
-     * @param view  {@link View}
-     * @param views View[]
-     * @return Helper
-     */
-    @Override
-    public QuickHelper reverseVisibilitys(
-            int state,
-            View view,
-            View... views
-    ) {
-        ViewUtils.reverseVisibilitys(state, view, views);
-        return this;
-    }
-
-    /**
-     * 反转 View 显示的状态
-     * @param isVisibility {@code true} View.VISIBLE, {@code false} View.GONE
-     * @param view         {@link View}
-     * @param views        View[]
-     * @return Helper
-     */
-    @Override
-    public QuickHelper reverseVisibilitys(
-            boolean isVisibility,
-            View view,
-            View... views
-    ) {
-        ViewUtils.reverseVisibilitys(isVisibility, view, views);
+        ViewHelper.get().reverseVisibilitys(isVisibility, targetView(), views);
         return this;
     }
 
@@ -1472,63 +1114,46 @@ public final class QuickHelper
      * 切换 View 状态
      * @param isChange     是否改变
      * @param isVisibility {@link View#VISIBLE}、{@link View#INVISIBLE}、{@link View#GONE}
-     * @param views        View[]
      * @return Helper
      */
     @Override
     public QuickHelper toggleViews(
             boolean isChange,
-            int isVisibility,
-            View... views
+            int isVisibility
     ) {
-        ViewUtils.toggleViews(isChange, isVisibility, views);
+        ViewHelper.get().toggleViews(isChange, isVisibility, targetView());
         return this;
     }
 
     /**
      * 把自身从父 View 中移除
-     * @param views View[]
      * @return Helper
      */
     @Override
-    public QuickHelper removeSelfFromParent(View... views) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.removeSelfFromParent(value), views
-        );
+    public QuickHelper removeSelfFromParent() {
+        ViewHelper.get().removeSelfFromParent(targetView());
         return this;
     }
 
     /**
      * View 请求更新
      * @param allParent 是否全部父布局 View 都请求
-     * @param views     View[]
      * @return Helper
      */
     @Override
-    public QuickHelper requestLayoutParent(
-            boolean allParent,
-            View... views
-    ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.requestLayoutParent(value, allParent), views
-        );
+    public QuickHelper requestLayoutParent(boolean allParent) {
+        ViewHelper.get().requestLayoutParent(allParent, targetView());
         return this;
     }
 
     /**
      * 测量 View
      * @param specifiedWidth 指定宽度
-     * @param views          View[]
      * @return Helper
      */
     @Override
-    public QuickHelper measureView(
-            int specifiedWidth,
-            View... views
-    ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.measureView(value, specifiedWidth), views
-        );
+    public QuickHelper measureView(int specifiedWidth) {
+        ViewHelper.get().measureView(specifiedWidth, targetView());
         return this;
     }
 
@@ -1536,35 +1161,25 @@ public final class QuickHelper
      * 测量 View
      * @param specifiedWidth  指定宽度
      * @param specifiedHeight 指定高度
-     * @param views           View[]
      * @return Helper
      */
     @Override
     public QuickHelper measureView(
             int specifiedWidth,
-            int specifiedHeight,
-            View... views
+            int specifiedHeight
     ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.measureView(value, specifiedWidth, specifiedHeight), views
-        );
+        ViewHelper.get().measureView(specifiedWidth, specifiedHeight, targetView());
         return this;
     }
 
     /**
      * 设置 View Layout Gravity
      * @param gravity Gravity
-     * @param views   View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setLayoutGravity(
-            int gravity,
-            View... views
-    ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setLayoutGravity(value, gravity), views
-        );
+    public QuickHelper setLayoutGravity(int gravity) {
+        ViewHelper.get().setLayoutGravity(gravity, targetView());
         return this;
     }
 
@@ -1572,35 +1187,25 @@ public final class QuickHelper
      * 设置 View Layout Gravity
      * @param gravity      Gravity
      * @param isReflection 是否使用反射
-     * @param views        View[]
      * @return Helper
      */
     @Override
     public QuickHelper setLayoutGravity(
             int gravity,
-            boolean isReflection,
-            View... views
+            boolean isReflection
     ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setLayoutGravity(value, gravity, isReflection), views
-        );
+        ViewHelper.get().setLayoutGravity(gravity, isReflection, targetView());
         return this;
     }
 
     /**
      * 设置 View Left Margin
      * @param leftMargin Left Margin
-     * @param views      View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setMarginLeft(
-            int leftMargin,
-            View... views
-    ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setMarginLeft(value, leftMargin), views
-        );
+    public QuickHelper setMarginLeft(int leftMargin) {
+        ViewHelper.get().setMarginLeft(leftMargin, targetView());
         return this;
     }
 
@@ -1608,35 +1213,25 @@ public final class QuickHelper
      * 设置 View Left Margin
      * @param leftMargin Left Margin
      * @param reset      是否重置清空其他 margin
-     * @param views      View[]
      * @return Helper
      */
     @Override
     public QuickHelper setMarginLeft(
             int leftMargin,
-            boolean reset,
-            View... views
+            boolean reset
     ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setMarginLeft(value, leftMargin, reset), views
-        );
+        ViewHelper.get().setMarginLeft(leftMargin, reset, targetView());
         return this;
     }
 
     /**
      * 设置 View Top Margin
      * @param topMargin Top Margin
-     * @param views     View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setMarginTop(
-            int topMargin,
-            View... views
-    ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setMarginTop(value, topMargin), views
-        );
+    public QuickHelper setMarginTop(int topMargin) {
+        ViewHelper.get().setMarginTop(topMargin, targetView());
         return this;
     }
 
@@ -1644,35 +1239,25 @@ public final class QuickHelper
      * 设置 View Top Margin
      * @param topMargin Top Margin
      * @param reset     是否重置清空其他 margin
-     * @param views     View[]
      * @return Helper
      */
     @Override
     public QuickHelper setMarginTop(
             int topMargin,
-            boolean reset,
-            View... views
+            boolean reset
     ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setMarginTop(value, topMargin, reset), views
-        );
+        ViewHelper.get().setMarginTop(topMargin, reset, targetView());
         return this;
     }
 
     /**
      * 设置 View Right Margin
      * @param rightMargin Right Margin
-     * @param views       View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setMarginRight(
-            int rightMargin,
-            View... views
-    ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setMarginRight(value, rightMargin), views
-        );
+    public QuickHelper setMarginRight(int rightMargin) {
+        ViewHelper.get().setMarginRight(rightMargin, targetView());
         return this;
     }
 
@@ -1680,35 +1265,25 @@ public final class QuickHelper
      * 设置 View Right Margin
      * @param rightMargin Right Margin
      * @param reset       是否重置清空其他 margin
-     * @param views       View[]
      * @return Helper
      */
     @Override
     public QuickHelper setMarginRight(
             int rightMargin,
-            boolean reset,
-            View... views
+            boolean reset
     ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setMarginRight(value, rightMargin, reset), views
-        );
+        ViewHelper.get().setMarginRight(rightMargin, reset, targetView());
         return this;
     }
 
     /**
      * 设置 View Bottom Margin
      * @param bottomMargin Bottom Margin
-     * @param views        View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setMarginBottom(
-            int bottomMargin,
-            View... views
-    ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setMarginBottom(value, bottomMargin), views
-        );
+    public QuickHelper setMarginBottom(int bottomMargin) {
+        ViewHelper.get().setMarginBottom(bottomMargin, targetView());
         return this;
     }
 
@@ -1716,18 +1291,14 @@ public final class QuickHelper
      * 设置 View Bottom Margin
      * @param bottomMargin Bottom Margin
      * @param reset        是否重置清空其他 margin
-     * @param views        View[]
      * @return Helper
      */
     @Override
     public QuickHelper setMarginBottom(
             int bottomMargin,
-            boolean reset,
-            View... views
+            boolean reset
     ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setMarginBottom(value, bottomMargin, reset), views
-        );
+        ViewHelper.get().setMarginBottom(bottomMargin, reset, targetView());
         return this;
     }
 
@@ -1735,35 +1306,25 @@ public final class QuickHelper
      * 设置 Margin 边距
      * @param leftRight Left and Right Margin
      * @param topBottom Top and bottom Margin
-     * @param views     View[]
      * @return Helper
      */
     @Override
     public QuickHelper setMargin(
             int leftRight,
-            int topBottom,
-            View... views
+            int topBottom
     ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setMargin(value, leftRight, topBottom), views
-        );
+        ViewHelper.get().setMargin(leftRight, topBottom, targetView());
         return this;
     }
 
     /**
      * 设置 Margin 边距
      * @param margin Margin
-     * @param views  View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setMargin(
-            int margin,
-            View... views
-    ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setMargin(value, margin), views
-        );
+    public QuickHelper setMargin(int margin) {
+        ViewHelper.get().setMargin(margin, targetView());
         return this;
     }
 
@@ -1773,7 +1334,6 @@ public final class QuickHelper
      * @param top    Top Margin
      * @param right  Right Margin
      * @param bottom Bottom Margin
-     * @param views  View[]
      * @return Helper
      */
     @Override
@@ -1781,29 +1341,20 @@ public final class QuickHelper
             int left,
             int top,
             int right,
-            int bottom,
-            View... views
+            int bottom
     ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setMargin(value, left, top, right, bottom), views
-        );
+        ViewHelper.get().setMargin(left, top, right, bottom, targetView());
         return this;
     }
 
     /**
      * 设置 View Left Padding
      * @param leftPadding Left Padding
-     * @param views       View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setPaddingLeft(
-            int leftPadding,
-            View... views
-    ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setPaddingLeft(value, leftPadding), views
-        );
+    public QuickHelper setPaddingLeft(int leftPadding) {
+        ViewHelper.get().setPaddingLeft(leftPadding, targetView());
         return this;
     }
 
@@ -1811,35 +1362,25 @@ public final class QuickHelper
      * 设置 View Left Padding
      * @param leftPadding Left Padding
      * @param reset       是否重置清空其他 Padding
-     * @param views       View[]
      * @return Helper
      */
     @Override
     public QuickHelper setPaddingLeft(
             int leftPadding,
-            boolean reset,
-            View... views
+            boolean reset
     ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setPaddingLeft(value, leftPadding, reset), views
-        );
+        ViewHelper.get().setPaddingLeft(leftPadding, reset, targetView());
         return this;
     }
 
     /**
      * 设置 View Top Padding
      * @param topPadding Top Padding
-     * @param views      View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setPaddingTop(
-            int topPadding,
-            View... views
-    ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setPaddingTop(value, topPadding), views
-        );
+    public QuickHelper setPaddingTop(int topPadding) {
+        ViewHelper.get().setPaddingTop(topPadding, targetView());
         return this;
     }
 
@@ -1847,35 +1388,25 @@ public final class QuickHelper
      * 设置 View Top Padding
      * @param topPadding Top Padding
      * @param reset      是否重置清空其他 Padding
-     * @param views      View[]
      * @return Helper
      */
     @Override
     public QuickHelper setPaddingTop(
             int topPadding,
-            boolean reset,
-            View... views
+            boolean reset
     ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setPaddingTop(value, topPadding, reset), views
-        );
+        ViewHelper.get().setPaddingTop(topPadding, reset, targetView());
         return this;
     }
 
     /**
      * 设置 View Right Padding
      * @param rightPadding Right Padding
-     * @param views        View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setPaddingRight(
-            int rightPadding,
-            View... views
-    ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setPaddingRight(value, rightPadding), views
-        );
+    public QuickHelper setPaddingRight(int rightPadding) {
+        ViewHelper.get().setPaddingRight(rightPadding, targetView());
         return this;
     }
 
@@ -1883,35 +1414,25 @@ public final class QuickHelper
      * 设置 View Right Padding
      * @param rightPadding Right Padding
      * @param reset        是否重置清空其他 Padding
-     * @param views        View[]
      * @return Helper
      */
     @Override
     public QuickHelper setPaddingRight(
             int rightPadding,
-            boolean reset,
-            View... views
+            boolean reset
     ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setPaddingRight(value, rightPadding, reset), views
-        );
+        ViewHelper.get().setPaddingRight(rightPadding, reset, targetView());
         return this;
     }
 
     /**
      * 设置 View Bottom Padding
      * @param bottomPadding Bottom Padding
-     * @param views         View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setPaddingBottom(
-            int bottomPadding,
-            View... views
-    ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setPaddingBottom(value, bottomPadding), views
-        );
+    public QuickHelper setPaddingBottom(int bottomPadding) {
+        ViewHelper.get().setPaddingBottom(bottomPadding, targetView());
         return this;
     }
 
@@ -1919,18 +1440,14 @@ public final class QuickHelper
      * 设置 View Bottom Padding
      * @param bottomPadding Bottom Padding
      * @param reset         是否重置清空其他 Padding
-     * @param views         View[]
      * @return Helper
      */
     @Override
     public QuickHelper setPaddingBottom(
             int bottomPadding,
-            boolean reset,
-            View... views
+            boolean reset
     ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setPaddingBottom(value, bottomPadding, reset), views
-        );
+        ViewHelper.get().setPaddingBottom(bottomPadding, reset, targetView());
         return this;
     }
 
@@ -1938,35 +1455,25 @@ public final class QuickHelper
      * 设置 Padding 边距
      * @param leftRight Left and Right Padding
      * @param topBottom Top and bottom Padding
-     * @param views     View[]
      * @return Helper
      */
     @Override
     public QuickHelper setPadding(
             int leftRight,
-            int topBottom,
-            View... views
+            int topBottom
     ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setPadding(value, leftRight, topBottom), views
-        );
+        ViewHelper.get().setPadding(leftRight, topBottom, targetView());
         return this;
     }
 
     /**
      * 设置 Padding 边距
      * @param padding Padding
-     * @param views   View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setPadding(
-            int padding,
-            View... views
-    ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setPadding(value, padding), views
-        );
+    public QuickHelper setPadding(int padding) {
+        ViewHelper.get().setPadding(padding, targetView());
         return this;
     }
 
@@ -1976,7 +1483,6 @@ public final class QuickHelper
      * @param top    Top Padding
      * @param right  Right Padding
      * @param bottom Bottom Padding
-     * @param views  View[]
      * @return Helper
      */
     @Override
@@ -1984,27 +1490,20 @@ public final class QuickHelper
             int left,
             int top,
             int right,
-            int bottom,
-            View... views
+            int bottom
     ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setPadding(value, left, top, right, bottom), views
-        );
+        ViewHelper.get().setPadding(left, top, right, bottom, targetView());
         return this;
     }
 
     /**
      * 设置多个 RelativeLayout View 布局规则
      * @param verb  布局位置
-     * @param views View[]
      * @return Helper
      */
     @Override
-    public QuickHelper addRules(
-            int verb,
-            View... views
-    ) {
-        ViewUtils.addRules(verb, views);
+    public QuickHelper addRules(int verb) {
+        ViewHelper.get().addRules(verb, targetView());
         return this;
     }
 
@@ -2012,282 +1511,187 @@ public final class QuickHelper
      * 设置多个 RelativeLayout View 布局规则
      * @param verb    布局位置
      * @param subject 关联 View id
-     * @param views   View[]
      * @return Helper
      */
     @Override
     public QuickHelper addRules(
             int verb,
-            int subject,
-            View... views
+            int subject
     ) {
-        ViewUtils.addRules(verb, subject, views);
+        ViewHelper.get().addRules(verb, subject, targetView());
         return this;
     }
 
     /**
      * 移除多个 RelativeLayout View 布局规则
      * @param verb  布局位置
-     * @param views View[]
      * @return Helper
      */
     @Override
-    public QuickHelper removeRules(
-            int verb,
-            View... views
-    ) {
-        ViewUtils.removeRules(verb, views);
+    public QuickHelper removeRules(int verb) {
+        ViewHelper.get().removeRules(verb, targetView());
         return this;
     }
 
     /**
      * 设置动画
-     * @param view      {@link View}
      * @param animation {@link Animation}
      * @return Helper
      */
     @Override
-    public QuickHelper setAnimation(
-            View view,
-            Animation animation
-    ) {
-        ViewUtils.setAnimation(view, animation);
+    public QuickHelper setAnimation(Animation animation) {
+        ViewHelper.get().setAnimation(targetView(), animation);
         return this;
     }
 
     /**
      * 清空动画
-     * @param views View[]
      * @return Helper
      */
     @Override
-    public QuickHelper clearAnimation(View... views) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.clearAnimation(value), views
-        );
+    public QuickHelper clearAnimation() {
+        ViewHelper.get().clearAnimation(targetView());
         return this;
     }
 
     /**
      * 启动动画
-     * @param views View[]
      * @return Helper
      */
     @Override
-    public QuickHelper startAnimation(View... views) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.startAnimation(value), views
-        );
+    public QuickHelper startAnimation() {
+        ViewHelper.get().startAnimation(targetView());
         return this;
     }
 
     /**
      * 启动动画
-     * @param view      {@link View}
      * @param animation {@link Animation}
      * @return Helper
      */
     @Override
-    public QuickHelper startAnimation(
-            View view,
-            Animation animation
-    ) {
-        ViewUtils.startAnimation(view, animation);
+    public QuickHelper startAnimation(Animation animation) {
+        ViewHelper.get().startAnimation(targetView(), animation);
         return this;
     }
 
     /**
      * 取消动画
-     * @param views View[]
      * @return Helper
      */
     @Override
-    public QuickHelper cancelAnimation(View... views) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.cancelAnimation(value), views
-        );
+    public QuickHelper cancelAnimation() {
+        ViewHelper.get().cancelAnimation(targetView());
         return this;
     }
 
     /**
      * 设置背景图片
      * @param background 背景图片
-     * @param views      View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setBackground(
-            Drawable background,
-            View... views
-    ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setBackground(value, background), views
-        );
+    public QuickHelper setBackground(Drawable background) {
+        ViewHelper.get().setBackground(background, targetView());
         return this;
     }
 
     /**
      * 设置背景颜色
      * @param color 背景颜色
-     * @param views View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setBackgroundColor(
-            @ColorInt int color,
-            View... views
-    ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setBackgroundColor(value, color), views
-        );
+    public QuickHelper setBackgroundColor(@ColorInt int color) {
+        ViewHelper.get().setBackgroundColor(color, targetView());
         return this;
     }
 
     /**
      * 设置背景资源
      * @param resId resource identifier
-     * @param views View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setBackgroundResource(
-            @DrawableRes int resId,
-            View... views
-    ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setBackgroundResource(value, resId), views
-        );
+    public QuickHelper setBackgroundResource(@DrawableRes int resId) {
+        ViewHelper.get().setBackgroundResource(resId, targetView());
         return this;
     }
 
     /**
      * 设置背景着色颜色
      * @param tint  着色颜色
-     * @param views View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setBackgroundTintList(
-            ColorStateList tint,
-            View... views
-    ) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            ForUtils.forSimpleArgs(
-                    value -> ViewUtils.setBackgroundTintList(value, tint), views
-            );
-        }
+    public QuickHelper setBackgroundTintList(ColorStateList tint) {
+        ViewHelper.get().setBackgroundTintList(tint, targetView());
         return this;
     }
 
     /**
      * 设置背景着色模式
      * @param tintMode 着色模式 {@link PorterDuff.Mode}
-     * @param views    View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setBackgroundTintMode(
-            PorterDuff.Mode tintMode,
-            View... views
-    ) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            ForUtils.forSimpleArgs(
-                    value -> ViewUtils.setBackgroundTintMode(value, tintMode), views
-            );
-        }
+    public QuickHelper setBackgroundTintMode(PorterDuff.Mode tintMode) {
+        ViewHelper.get().setBackgroundTintMode(tintMode, targetView());
         return this;
     }
 
     /**
      * 设置前景图片
      * @param foreground 前景图片
-     * @param views      View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setForeground(
-            Drawable foreground,
-            View... views
-    ) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            ForUtils.forSimpleArgs(
-                    value -> ViewUtils.setForeground(value, foreground), views
-            );
-        }
+    public QuickHelper setForeground(Drawable foreground) {
+        ViewHelper.get().setForeground(foreground, targetView());
         return this;
     }
 
     /**
      * 设置前景重心
      * @param gravity 重心
-     * @param views   View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setForegroundGravity(
-            int gravity,
-            View... views
-    ) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            ForUtils.forSimpleArgs(
-                    value -> ViewUtils.setForegroundGravity(value, gravity), views
-            );
-        }
+    public QuickHelper setForegroundGravity(int gravity) {
+        ViewHelper.get().setForegroundGravity(gravity, targetView());
         return this;
     }
 
     /**
      * 设置前景着色颜色
      * @param tint  着色颜色
-     * @param views View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setForegroundTintList(
-            ColorStateList tint,
-            View... views
-    ) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            ForUtils.forSimpleArgs(
-                    value -> ViewUtils.setForegroundTintList(value, tint), views
-            );
-        }
+    public QuickHelper setForegroundTintList(ColorStateList tint) {
+        ViewHelper.get().setForegroundTintList(tint, targetView());
         return this;
     }
 
     /**
      * 设置前景着色模式
      * @param tintMode 着色模式 {@link PorterDuff.Mode}
-     * @param views    View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setForegroundTintMode(
-            PorterDuff.Mode tintMode,
-            View... views
-    ) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            ForUtils.forSimpleArgs(
-                    value -> ViewUtils.setForegroundTintMode(value, tintMode), views
-            );
-        }
+    public QuickHelper setForegroundTintMode(PorterDuff.Mode tintMode) {
+        ViewHelper.get().setForegroundTintMode(tintMode, targetView());
         return this;
     }
 
     /**
      * View 着色处理
      * @param color 颜色值
-     * @param views View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setColorFilter(
-            @ColorInt int color,
-            View... views
-    ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setColorFilter(value, color), views
-        );
+    public QuickHelper setColorFilter(@ColorInt int color) {
+        ViewHelper.get().setColorFilter(color, targetView());
         return this;
     }
 
@@ -2295,35 +1699,25 @@ public final class QuickHelper
      * View 着色处理, 并且设置 Background Drawable
      * @param drawable {@link Drawable}
      * @param color    颜色值
-     * @param views    View[]
      * @return Helper
      */
     @Override
     public QuickHelper setColorFilter(
             Drawable drawable,
-            @ColorInt int color,
-            View... views
+            @ColorInt int color
     ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setColorFilter(value, drawable, color), views
-        );
+        ViewHelper.get().setColorFilter(drawable, color, targetView());
         return this;
     }
 
     /**
      * View 着色处理
      * @param colorFilter 颜色过滤 ( 效果 )
-     * @param views       View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setColorFilter(
-            ColorFilter colorFilter,
-            View... views
-    ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setColorFilter(value, colorFilter), views
-        );
+    public QuickHelper setColorFilter(ColorFilter colorFilter) {
+        ViewHelper.get().setColorFilter(colorFilter, targetView());
         return this;
     }
 
@@ -2331,69 +1725,47 @@ public final class QuickHelper
      * View 着色处理, 并且设置 Background Drawable
      * @param drawable    {@link Drawable}
      * @param colorFilter 颜色过滤 ( 效果 )
-     * @param views       View[]
      * @return Helper
      */
     @Override
     public QuickHelper setColorFilter(
             Drawable drawable,
-            ColorFilter colorFilter,
-            View... views
+            ColorFilter colorFilter
     ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setColorFilter(value, drawable, colorFilter), views
-        );
+        ViewHelper.get().setColorFilter(drawable, colorFilter, targetView());
         return this;
     }
 
     /**
      * 设置 ProgressBar 进度条样式
      * @param drawable {@link Drawable}
-     * @param views    View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setProgressDrawable(
-            Drawable drawable,
-            View... views
-    ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setProgressDrawable(value, drawable), views
-        );
+    public QuickHelper setProgressDrawable(Drawable drawable) {
+        ViewHelper.get().setProgressDrawable(drawable, targetView());
         return this;
     }
 
     /**
      * 设置 ProgressBar 进度值
      * @param progress 当前进度
-     * @param views    View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setBarProgress(
-            int progress,
-            View... views
-    ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setBarProgress(value, progress), views
-        );
+    public QuickHelper setBarProgress(int progress) {
+        ViewHelper.get().setBarProgress(progress, targetView());
         return this;
     }
 
     /**
      * 设置 ProgressBar 最大值
      * @param max   最大值
-     * @param views View[]
      * @return Helper
      */
     @Override
-    public QuickHelper setBarMax(
-            int max,
-            View... views
-    ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setBarMax(value, max), views
-        );
+    public QuickHelper setBarMax(int max) {
+        ViewHelper.get().setBarMax(max, targetView());
         return this;
     }
 
@@ -2401,18 +1773,14 @@ public final class QuickHelper
      * 设置 ProgressBar 最大值
      * @param progress 当前进度
      * @param max      最大值
-     * @param views    View[]
      * @return Helper
      */
     @Override
     public QuickHelper setBarValue(
             int progress,
-            int max,
-            View... views
+            int max
     ) {
-        ForUtils.forSimpleArgs(
-                value -> ViewUtils.setBarValue(value, progress, max), views
-        );
+        ViewHelper.get().setBarValue(progress, max, targetView());
         return this;
     }
 
@@ -2423,17 +1791,11 @@ public final class QuickHelper
     /**
      * 滑动到指定索引 ( 有滚动过程 )
      * @param position 索引
-     * @param views    View[]
      * @return Helper
      */
     @Override
-    public QuickHelper smoothScrollToPosition(
-            int position,
-            View... views
-    ) {
-        ForUtils.forSimpleArgs(
-                value -> ListViewUtils.smoothScrollToPosition(value, position), views
-        );
+    public QuickHelper smoothScrollToPosition(int position) {
+        ViewHelper.get().smoothScrollToPosition(position, targetView());
         return this;
     }
 
