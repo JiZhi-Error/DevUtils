@@ -350,7 +350,7 @@ DevUtils.openDebug();
 | sendBroadcast | 发送广播 |
 | startService | 启动服务 |
 | stopService | 停止服务 |
-| installApp | 安装 APP( 支持 8.0) 的意图 |
+| installApp | 安装 APP ( 支持 8.0 ) 的意图 |
 | installAppSilent | 静默安装应用 |
 | uninstallApp | 卸载应用 |
 | uninstallAppSilent | 静默卸载应用 |
@@ -553,9 +553,9 @@ DevUtils.openDebug();
 | getSysCPUSerialNum | 获取手机 CPU 序列号 |
 | getCpuInfo | 获取 CPU 信息 |
 | getCpuModel | 获取 CPU 型号 |
-| getMaxCpuFreq | 获取 CPU 最大频率 ( 单位 KHZ) |
-| getMinCpuFreq | 获取 CPU 最小频率 ( 单位 KHZ) |
-| getCurCpuFreq | 获取 CPU 当前频率 ( 单位 KHZ) |
+| getMaxCpuFreq | 获取 CPU 最大频率 ( 单位 KHZ ) |
+| getMinCpuFreq | 获取 CPU 最小频率 ( 单位 KHZ ) |
+| getCurCpuFreq | 获取 CPU 当前频率 ( 单位 KHZ ) |
 | getCoresNumbers | 获取 CPU 核心数 |
 | getCpuName | 获取 CPU 名字 |
 | getCMDOutputString | 获取 CMD 指令回调数据 |
@@ -624,7 +624,7 @@ DevUtils.openDebug();
 | getDevice | 获取设备驱动名称 |
 | getDisplay | 获取设备显示的版本包 ( 在系统设置中显示为版本号 ) 和 ID 一样 |
 | getFingerprint | 获取设备的唯一标识, 由设备的多个信息拼接合成 |
-| getHardware | 获取设备硬件名称, 一般和基板名称一样 (BOARD) |
+| getHardware | 获取设备硬件名称, 一般和基板名称一样 ( BOARD ) |
 | getHost | 获取设备主机地址 |
 | getID | 获取设备版本号 |
 | getModel | 获取设备型号 如 RedmiNote4X |
@@ -786,7 +786,7 @@ DevUtils.openDebug();
 | getIntent | 获取 Intent |
 | isIntentAvailable | 判断 Intent 是否可用 |
 | getCategoryLauncherIntent | 获取 CATEGORY_LAUNCHER Intent |
-| getInstallAppIntent | 获取安装 APP( 支持 8.0) 的意图 |
+| getInstallAppIntent | 获取安装 APP ( 支持 8.0 ) 的意图 |
 | getUninstallAppIntent | 获取卸载 APP 的意图 |
 | getLaunchAppIntent | 获取打开 APP 的意图 |
 | getSystemSettingIntent | 获取跳转到系统设置的意图 |
@@ -1511,9 +1511,9 @@ DevUtils.openDebug();
 | :- | :- |
 | execCmd | 执行 shell 命令 |
 | isSuccess | 判断是否执行成功 |
-| isSuccess2 | 判断是否执行成功 ( 判断 errorMsg) |
-| isSuccess3 | 判断是否执行成功 ( 判断 successMsg) |
-| isSuccess4 | 判断是否执行成功 ( 判断 successMsg), 并且 successMsg 是否包含某个字符串 |
+| isSuccess2 | 判断是否执行成功 ( 判断 errorMsg ) |
+| isSuccess3 | 判断是否执行成功 ( 判断 successMsg ) |
+| isSuccess4 | 判断是否执行成功 ( 判断 successMsg ), 并且 successMsg 是否包含某个字符串 |
 
 
 * **快捷方式工具类 ->** [ShortCutUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/ShortCutUtils.java)
@@ -1910,8 +1910,8 @@ DevUtils.openDebug();
 | isVisibilityINs | 判断 View 是否都隐藏占位 |
 | isVisibilityGone | 判断 View 是否隐藏 |
 | isVisibilityGones | 判断 View 是否都隐藏 |
-| getVisibility | 获取显示的状态 (View.VISIBLE : View.GONE) |
-| getVisibilityIN | 获取显示的状态 (View.VISIBLE : View.INVISIBLE) |
+| getVisibility | 获取显示的状态 ( View.VISIBLE : View.GONE ) |
+| getVisibilityIN | 获取显示的状态 ( View.VISIBLE : View.INVISIBLE ) |
 | setVisibility | 设置 View 显示的状态 |
 | setVisibilitys | 设置 View 显示的状态 |
 | toggleVisibilitys | 切换 View 显示的状态 |
@@ -2803,7 +2803,7 @@ DevUtils.openDebug();
 | getBitmapHeight | 获取 Bitmap 高度 |
 | getBitmapWidthHeight | 获取 Bitmap 宽高 |
 | copy | 复制 Bitmap |
-| extractAlpha | 获取 Alpha 位图 ( 获取源图片的轮廓 rgb 为 0) |
+| extractAlpha | 获取 Alpha 位图 ( 获取源图片的轮廓 rgb 为 0 ) |
 | recode | 重新编码 Bitmap |
 | recycle | Bitmap 通知回收 |
 | rotate | 旋转图片 |
@@ -3091,7 +3091,7 @@ DevUtils.openDebug();
 | setAudioStreamType | 设置流类型 |
 | playPrepareRaw | 播放 Raw 资源 |
 | playPrepareAssets | 播放 Assets 资源 |
-| playPrepare | 预加载播放 (file-path or http/rtsp URL) http 资源、本地资源 |
+| playPrepare | 预加载播放 ( file-path or http/rtsp URL ) http 资源、本地资源 |
 | isPlaying | 是否播放中 |
 | pause | 暂停操作 |
 | stop | 停止操作 ( 销毁 MediaPlayer ) |
@@ -3141,7 +3141,7 @@ DevUtils.openDebug();
 | 方法 | 注释 |
 | :- | :- |
 | put | 保存数据 |
-| putAll | 保存 Map 集合 ( 只能是 Integer、Long、Boolean、Float、String、Set) |
+| putAll | 保存 Map 集合 ( 只能是 Integer、Long、Boolean、Float、String、Set ) |
 | get | 根据 key 获取数据 |
 | getAll | 获取全部数据 |
 | remove | 移除数据 |
@@ -3291,7 +3291,7 @@ DevUtils.openDebug();
 
 | 方法 | 注释 |
 | :- | :- |
-| createWifiConfigToAp | 创建 Wifi 热点配置 ( 支持 无密码 /WPA2 PSK) |
+| createWifiConfigToAp | 创建 Wifi 热点配置 ( 支持 无密码 / WPA2 PSK ) |
 | startWifiAp | 开启 Wifi 热点 |
 | closeWifiAp | 关闭 Wifi 热点 |
 | getWifiApState | 获取 Wifi 热点状态 |
@@ -3338,7 +3338,7 @@ DevUtils.openDebug();
 | getSecurity | 获取 Wifi 加密类型 |
 | isExistsPwd | 判断 Wifi 加密类型, 是否为加密类型 |
 | isExists | 获取指定的 ssid 网络配置 ( 需连接保存过, 才存在 ) |
-| delWifiConfig | 删除指定的 Wifi(SSID) 配置信息 |
+| delWifiConfig | 删除指定的 Wifi ( SSID ) 配置信息 |
 | quickConnWifi | 快速连接 Wifi ( 不使用静态 IP 方式 ) |
 | createWifiConfig | 创建 Wifi 配置信息 |
 | removeWifiConfig | 移除 Wifi 配置信息 |
@@ -3993,16 +3993,16 @@ DevUtils.openDebug();
 | :- | :- |
 | addZero | 补 0 处理 ( 小于 10, 则自动补充 0x ) |
 | subZeroAndDot | 去掉结尾多余的 . 与 0 |
-| percentI | 计算百分比值 ( 最大 100%) |
-| percentD | 计算百分比值 ( 最大 100%) |
-| percentL | 计算百分比值 ( 最大 100%) |
-| percentF | 计算百分比值 ( 最大 100%) |
-| percentI2 | 计算百分比值 ( 可超出 100%) |
-| percentD2 | 计算百分比值 ( 可超出 100%) |
-| percentL2 | 计算百分比值 ( 可超出 100%) |
-| percentF2 | 计算百分比值 ( 可超出 100%) |
+| percentI | 计算百分比值 ( 最大 100% ) |
+| percentD | 计算百分比值 ( 最大 100% ) |
+| percentL | 计算百分比值 ( 最大 100% ) |
+| percentF | 计算百分比值 ( 最大 100% ) |
+| percentI2 | 计算百分比值 ( 可超出 100% ) |
+| percentD2 | 计算百分比值 ( 可超出 100% ) |
+| percentL2 | 计算百分比值 ( 可超出 100% ) |
+| percentF2 | 计算百分比值 ( 可超出 100% ) |
 | clamp | 返回的 value 介于 max、min 之间, 若 value 小于 min, 返回 min, 若大于 max, 返回 max |
-| getMultiple | 获取倍数 ( 自动补 1) |
+| getMultiple | 获取倍数 ( 自动补 1 ) |
 | getMultipleI | 获取倍数 |
 | getMultipleD | 获取倍数 |
 | getMultipleL | 获取倍数 |

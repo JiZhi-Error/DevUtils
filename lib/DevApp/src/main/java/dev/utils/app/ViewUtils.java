@@ -2455,7 +2455,7 @@ public final class ViewUtils {
     // =
 
     /**
-     * 获取显示的状态 (View.VISIBLE : View.GONE)
+     * 获取显示的状态 ( View.VISIBLE : View.GONE )
      * @param isVisibility {@code true} View.VISIBLE, {@code false} View.GONE
      * @return 显示的状态 {@link View#VISIBLE}、{@link View#GONE}
      */
@@ -2464,7 +2464,7 @@ public final class ViewUtils {
     }
 
     /**
-     * 获取显示的状态 (View.VISIBLE : View.INVISIBLE)
+     * 获取显示的状态 ( View.VISIBLE : View.INVISIBLE )
      * @param isVisibility {@code true} View.VISIBLE, {@code false} View.INVISIBLE
      * @return 显示的状态 {@link View#VISIBLE}、{@link View#INVISIBLE}
      */
