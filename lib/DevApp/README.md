@@ -1024,7 +1024,7 @@ DevUtils.openDebug();
 | setMobileDataEnabled | 设置移动网络开关 ( 无判断是否已开启移动网络 ) |
 | isConnect | 判断是否连接了网络 |
 | getConnectType | 获取连接的网络类型 |
-| isConnWifi | 判断是否连接 Wifi( 连接上、连接中 ) |
+| isConnWifi | 判断是否连接 Wifi ( 连接上、连接中 ) |
 | isConnMobileData | 判断是否连接移动网络 ( 连接上、连接中 ) |
 | isAvailable | 判断网络是否可用 |
 | isAvailableByPing | 使用 ping ip 方式判断网络是否可用 |
@@ -1558,7 +1558,7 @@ DevUtils.openDebug();
 | isSuccess | 判断是否执行成功 |
 | isSuccess2 | 判断是否执行成功 ( 判断 errorMsg ) |
 | isSuccess3 | 判断是否执行成功 ( 判断 successMsg ) |
-| isSuccess4 | 判断是否执行成功 ( 判断 successMsg ), 并且 successMsg 是否包含某个字符串 |
+| isSuccess4 | 判断是否执行成功 ( 判断 successMsg ) , 并且 successMsg 是否包含某个字符串 |
 
 
 * **快捷方式工具类 ->** [ShortCutUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/ShortCutUtils.java)
@@ -1591,13 +1591,13 @@ DevUtils.openDebug();
 | 方法 | 注释 |
 | :- | :- |
 | dipConvertPx | dp 转 px |
-| dipConvertPxf | dp 转 px (float) |
+| dipConvertPxf | dp 转 px ( float ) |
 | pxConvertDip | px 转 dp |
-| pxConvertDipf | px 转 dp (float) |
+| pxConvertDipf | px 转 dp ( float ) |
 | spConvertPx | sp 转 px |
-| spConvertPxf | sp 转 px (float) |
+| spConvertPxf | sp 转 px ( float ) |
 | pxConvertSp | px 转 sp |
-| pxConvertSpf | px 转 sp (float) |
+| pxConvertSpf | px 转 sp ( float ) |
 | applyDimension | 各种单位转换 ( 该方法存在于 TypedValue.applyDimension ) |
 | forceGetViewSize | 在 onCreate 中获取视图的尺寸 ( 需回调 onGetSizeListener 接口, 在 onGetSize 中获取 View 宽高 ) |
 | measureView | 测量 View |
@@ -1614,10 +1614,10 @@ DevUtils.openDebug();
 | setStyle | 设置样式 |
 | getSnackbar | 获取 Snackbar |
 | getSnackbarView | 获取 Snackbar View |
-| getTextView | 获取 Snackbar TextView(snackbar_text) |
-| getActionButton | 获取 Snackbar Action Button(snackbar_action) |
+| getTextView | 获取 Snackbar TextView ( snackbar_text ) |
+| getActionButton | 获取 Snackbar Action Button ( snackbar_action ) |
 | getSnackbarLayout | 获取 Snackbar.SnackbarLayout ( FrameLayout ) |
-| getSnackbarContentLayout | 获取 SnackbarContentLayout ( LinearLayout ( messageView、actionView ) ) |
+| getSnackbarContentLayout | 获取 SnackbarContentLayout ( LinearLayout ( messageView、actionView )  ) |
 | addView | 向 Snackbar 布局中添加 View ( Google 不建议, 复杂的布局应该使用 DialogFragment 进行展示 ) |
 | setCallback | 设置 Snackbar 展示完成、隐藏完成 的监听 |
 | setAction | 设置 Action 按钮文字内容及点击监听 |
@@ -1723,7 +1723,7 @@ DevUtils.openDebug();
 | getLineSpacingExtra | 获取文字行间距 ( 行高 ) |
 | getLineSpacingMultiplier | 获取文字行间距倍数 |
 | setLineSpacing | 设置文字行间距 ( 行高 ) |
-| setLineSpacingAndMultiplier | 设置文字行间距 ( 行高 )、行间距倍数 |
+| setLineSpacingAndMultiplier | 设置文字行间距 ( 行高 ) 、行间距倍数 |
 | getTextScaleX | 获取字体水平方向的缩放 |
 | setTextScaleX | 设置字体水平方向的缩放 |
 | getIncludeFontPadding | 是否保留字体留白间隙区域 |
@@ -1827,8 +1827,8 @@ DevUtils.openDebug();
 | isQ | 是否在 10.0 版本及以上 |
 | isR | 是否在 11.0 版本及以上 |
 | isS | 是否在 12.0 版本及以上 |
-| convertSDKVersion | 转换 SDK 版本 convertSDKVersion(31) = Android 12.0 |
-| convertSDKVersionName | 转换 SDK 版本名字 convertSDKVersionName(31) = Android S |
+| convertSDKVersion | 转换 SDK 版本 convertSDKVersion ( 31 ) = Android 12.0 |
+| convertSDKVersionName | 转换 SDK 版本名字 convertSDKVersionName ( 31 ) = Android S |
 
 
 * **震动相关工具类 ->** [VibrationUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/VibrationUtils.java)
@@ -2563,7 +2563,7 @@ DevUtils.openDebug();
 | setStrikeThruText | 设置中划线 |
 | setLetterSpacing | 设置文字水平间距 |
 | setLineSpacing | 设置文字行间距 ( 行高 ) |
-| setLineSpacingAndMultiplier | 设置文字行间距 ( 行高 )、行间距倍数 |
+| setLineSpacingAndMultiplier | 设置文字行间距 ( 行高 ) 、行间距倍数 |
 | setTextScaleX | 设置字体水平方向的缩放 |
 | setIncludeFontPadding | 设置是否保留字体留白间隙区域 |
 | setLines | 设置行数 |
@@ -2777,7 +2777,7 @@ DevUtils.openDebug();
 | setStrikeThruText | 设置中划线 |
 | setLetterSpacing | 设置文字水平间距 |
 | setLineSpacing | 设置文字行间距 ( 行高 ) |
-| setLineSpacingAndMultiplier | 设置文字行间距 ( 行高 )、行间距倍数 |
+| setLineSpacingAndMultiplier | 设置文字行间距 ( 行高 ) 、行间距倍数 |
 | setTextScaleX | 设置字体水平方向的缩放 |
 | setIncludeFontPadding | 设置是否保留字体留白间隙区域 |
 | setLines | 设置行数 |
@@ -3060,7 +3060,7 @@ DevUtils.openDebug();
 | setStrikeThruText | 设置中划线 |
 | setLetterSpacing | 设置文字水平间距 |
 | setLineSpacing | 设置文字行间距 ( 行高 ) |
-| setLineSpacingAndMultiplier | 设置文字行间距 ( 行高 )、行间距倍数 |
+| setLineSpacingAndMultiplier | 设置文字行间距 ( 行高 ) 、行间距倍数 |
 | setTextScaleX | 设置字体水平方向的缩放 |
 | setIncludeFontPadding | 设置是否保留字体留白间隙区域 |
 | setLines | 设置行数 |
@@ -3267,7 +3267,7 @@ DevUtils.openDebug();
 | setStrikeThruText | 设置中划线 |
 | setLetterSpacing | 设置文字水平间距 |
 | setLineSpacing | 设置文字行间距 ( 行高 ) |
-| setLineSpacingAndMultiplier | 设置文字行间距 ( 行高 )、行间距倍数 |
+| setLineSpacingAndMultiplier | 设置文字行间距 ( 行高 ) 、行间距倍数 |
 | setTextScaleX | 设置字体水平方向的缩放 |
 | setIncludeFontPadding | 设置是否保留字体留白间隙区域 |
 | setLines | 设置行数 |
@@ -3595,9 +3595,9 @@ DevUtils.openDebug();
 | getAppPermission | 获取 APP 注册的权限 |
 | permission | 申请权限初始化 |
 | callback | 设置回调方法 |
-| setRequestPermissionsResult | 设置是否需要在 Activity 的 onRequestPermissionsResult 回调中, 调用 PermissionUtils.onRequestPermissionsResult(this); |
+| setRequestPermissionsResult | 设置是否需要在 Activity 的 onRequestPermissionsResult 回调中, 调用 PermissionUtils.onRequestPermissionsResult ( this ) ; |
 | request | 请求权限 |
-| onRequestPermissionsResult | 请求权限回调 ( 需要在 Activity 的 onRequestPermissionsResult 回调中, 调用 PermissionUtils.onRequestPermissionsResult(this); ) |
+| onRequestPermissionsResult | 请求权限回调 ( 需要在 Activity 的 onRequestPermissionsResult 回调中, 调用 PermissionUtils.onRequestPermissionsResult ( this ) ; ) |
 | notifyPermissionsChange | 刷新权限改变处理 ( 清空已拒绝的权限记录 ) |
 | againRequest | 再次请求处理操作 |
 
@@ -4649,7 +4649,7 @@ DevUtils.openDebug();
 | isInstance | 是不是某个类的实例 |
 | getArgsClass | 获取参数类型 |
 | getPropertyByParent | 获取父类中的变量对象 |
-| getDeclaredFieldParent | 获取父类中的变量对象 ( 循环向上转型, 获取对象的 DeclaredField) |
+| getDeclaredFieldParent | 获取父类中的变量对象 ( 循环向上转型, 获取对象的 DeclaredField ) |
 
 
 * **反射相关工具类 ->** [ReflectUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/common/ReflectUtils.java)
@@ -4674,7 +4674,7 @@ DevUtils.openDebug();
 | 方法 | 注释 |
 | :- | :- |
 | calcScale | 计算比例 ( 商 ) |
-| calcScaleToMath | 计算比例 ( 被除数 ( 最大值 ) / 除数 ( 最小值 ) ) |
+| calcScaleToMath | 计算比例 ( 被除数 ( 最大值 ) / 除数 ( 最小值 )  ) |
 | calcScaleToWidth | 计算缩放比例 ( 根据宽度比例转换高度 ) |
 | calcScaleToHeight | 计算缩放比例 ( 根据高度比例转换宽度 ) |
 | calcWidthHeightToScale | 通过宽度、高度根据对应的比例, 转换成对应的比例宽度高度 ( 智能转换 ) |
@@ -4789,7 +4789,7 @@ DevUtils.openDebug();
 | sqliteEscape | 字符串数据库字符转义 |
 | convertHideMobile | 转换手机号 |
 | convertSymbolHide | 转换符号处理 |
-| subEllipsize | 裁剪超出的内容, 并且追加符号 ( 如 ...) |
+| subEllipsize | 裁剪超出的内容, 并且追加符号 ( 如 ... ) |
 | subSymbolHide | 裁剪符号处理 |
 | subSetSymbol | 裁剪内容 ( 设置符号处理 ) |
 | substring | 裁剪字符串 |
@@ -5092,8 +5092,8 @@ DevUtils.openDebug();
 
 | 方法 | 注释 |
 | :- | :- |
-| md5 | 加密内容 (32 位小写 MD5) |
-| md5Upper | 加密内容 (32 位大写 MD5) |
+| md5 | 加密内容 ( 32 位小写 MD5 ) |
+| md5Upper | 加密内容 ( 32 位大写 MD5 ) |
 | getFileMD5 | 获取文件 MD5 值 |
 | getFileMD5ToHexString | 获取文件 MD5 值 |
 
@@ -5208,7 +5208,7 @@ DevUtils.openDebug();
 | getCalcThreads | 获取线程数 |
 | execute | 加入到线程池任务队列 |
 | shutdown | shutdown 会等待所有提交的任务执行完成, 不管是正在执行还是保存在任务队列中的已提交任务 |
-| shutdownNow | shutdownNow 会尝试中断正在执行的任务 ( 其主要是中断一些指定方法如 sleep 方法 ), 并且停止执行等待队列中提交的任务 |
+| shutdownNow | shutdownNow 会尝试中断正在执行的任务 ( 其主要是中断一些指定方法如 sleep 方法 ) , 并且停止执行等待队列中提交的任务 |
 | isShutdown | 判断线程池是否已关闭 ( isShutDown 当调用 shutdown() 方法后返回为 true ) |
 | isTerminated | 若关闭后所有任务都已完成, 则返回 true |
 | awaitTermination | 请求关闭、发生超时或者当前线程中断 |
