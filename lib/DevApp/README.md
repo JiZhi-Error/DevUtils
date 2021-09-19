@@ -1617,7 +1617,7 @@ DevUtils.openDebug();
 | getTextView | 获取 Snackbar TextView ( snackbar_text ) |
 | getActionButton | 获取 Snackbar Action Button ( snackbar_action ) |
 | getSnackbarLayout | 获取 Snackbar.SnackbarLayout ( FrameLayout ) |
-| getSnackbarContentLayout | 获取 SnackbarContentLayout ( LinearLayout ( messageView、actionView )  ) |
+| getSnackbarContentLayout | 获取 SnackbarContentLayout ( LinearLayout ( messageView、actionView ) ) |
 | addView | 向 Snackbar 布局中添加 View ( Google 不建议, 复杂的布局应该使用 DialogFragment 进行展示 ) |
 | setCallback | 设置 Snackbar 展示完成、隐藏完成 的监听 |
 | setAction | 设置 Action 按钮文字内容及点击监听 |
@@ -4674,7 +4674,7 @@ DevUtils.openDebug();
 | 方法 | 注释 |
 | :- | :- |
 | calcScale | 计算比例 ( 商 ) |
-| calcScaleToMath | 计算比例 ( 被除数 ( 最大值 ) / 除数 ( 最小值 )  ) |
+| calcScaleToMath | 计算比例 ( 被除数 ( 最大值 ) / 除数 ( 最小值 ) ) |
 | calcScaleToWidth | 计算缩放比例 ( 根据宽度比例转换高度 ) |
 | calcScaleToHeight | 计算缩放比例 ( 根据高度比例转换宽度 ) |
 | calcWidthHeightToScale | 通过宽度、高度根据对应的比例, 转换成对应的比例宽度高度 ( 智能转换 ) |
