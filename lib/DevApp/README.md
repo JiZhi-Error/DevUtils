@@ -4389,6 +4389,10 @@ DevUtils.openDebug();
 | createOrExistsDir | 判断目录是否存在, 不存在则判断是否创建成功 |
 | createOrExistsFile | 判断文件是否存在, 不存在则判断是否创建成功 |
 | createFileByDeleteOldFile | 判断文件是否存在, 存在则在创建之前删除 |
+| createTimestampFileName | 通过文件后缀创建时间戳文件名 |
+| createTimestampFileNameByName | 通过文件名创建时间戳文件名 |
+| createTimestampFileNameByFile | 通过文件创建时间戳文件名 |
+| createTimestampFileNameByPath | 通过文件路径创建时间戳文件名 |
 | convertFiles | Path List 转 File List |
 | convertPaths | File List 转 Path List |
 | getPath | 获取文件路径 |
