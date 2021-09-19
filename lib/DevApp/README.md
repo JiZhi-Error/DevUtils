@@ -1827,8 +1827,8 @@ DevUtils.openDebug();
 | isQ | 是否在 10.0 版本及以上 |
 | isR | 是否在 11.0 版本及以上 |
 | isS | 是否在 12.0 版本及以上 |
-| convertSDKVersion | 转换 SDK 版本 convertSDKVersion ( 31 ) = Android 12.0 |
-| convertSDKVersionName | 转换 SDK 版本名字 convertSDKVersionName ( 31 ) = Android S |
+| convertSDKVersion | 转换 SDK 版本 convertSDKVersion(31) = Android 12.0 |
+| convertSDKVersionName | 转换 SDK 版本名字 convertSDKVersionName(31) = Android S |
 
 
 * **震动相关工具类 ->** [VibrationUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/VibrationUtils.java)
@@ -3595,9 +3595,9 @@ DevUtils.openDebug();
 | getAppPermission | 获取 APP 注册的权限 |
 | permission | 申请权限初始化 |
 | callback | 设置回调方法 |
-| setRequestPermissionsResult | 设置是否需要在 Activity 的 onRequestPermissionsResult 回调中, 调用 PermissionUtils.onRequestPermissionsResult ( this ) ; |
+| setRequestPermissionsResult | 设置是否需要在 Activity 的 onRequestPermissionsResult 回调中, 调用 PermissionUtils.onRequestPermissionsResult(this); |
 | request | 请求权限 |
-| onRequestPermissionsResult | 请求权限回调 ( 需要在 Activity 的 onRequestPermissionsResult 回调中, 调用 PermissionUtils.onRequestPermissionsResult ( this ) ; ) |
+| onRequestPermissionsResult | 请求权限回调 ( 需要在 Activity 的 onRequestPermissionsResult 回调中, 调用 PermissionUtils.onRequestPermissionsResult(this); ) |
 | notifyPermissionsChange | 刷新权限改变处理 ( 清空已拒绝的权限记录 ) |
 | againRequest | 再次请求处理操作 |
 
