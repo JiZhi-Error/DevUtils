@@ -35,7 +35,6 @@ import dev.utils.app.RecyclerViewUtils;
 import dev.utils.app.SizeUtils;
 import dev.utils.app.TextViewUtils;
 import dev.utils.app.ViewUtils;
-import dev.utils.app.helper.dev.DevHelper;
 import dev.utils.app.helper.quick.QuickHelper;
 import dev.utils.common.ForUtils;
 
@@ -69,15 +68,6 @@ public final class ViewHelper
     // ===========
     // = IHelper =
     // ===========
-
-    /**
-     * 获取 DevHelper
-     * @return {@link DevHelper}
-     */
-    @Override
-    public DevHelper devHelper() {
-        return DevHelper.get();
-    }
 
     /**
      * 获取 QuickHelper
