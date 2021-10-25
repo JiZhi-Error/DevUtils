@@ -1885,8 +1885,8 @@ DevUtils.openDebug();
 | setMinimumWidth | 设置 View 最小宽度 |
 | getAlpha | 获取 View 透明度 |
 | setAlpha | 设置 View 透明度 |
-| getTag | 获取 View Tag |
-| setTag | 设置 View Tag |
+| getTag | 获取 View TAG |
+| setTag | 设置 View TAG |
 | scrollTo | View 内容滚动位置 ( 相对于初始位置移动 ) |
 | scrollBy | View 内部滚动位置 ( 相对于上次移动的最后位置移动 ) |
 | setScrollX | 设置 View 滑动的 X 轴坐标 |
@@ -2425,7 +2425,7 @@ DevUtils.openDebug();
 | setMinimumWidth | 设置 View 最小宽度 |
 | setMinimumHeight | 设置 View 最小高度 |
 | setAlpha | 设置 View 透明度 |
-| setTag | 设置 View Tag |
+| setTag | 设置 View TAG |
 | setScrollX | 设置 View 滑动的 X 轴坐标 |
 | setScrollY | 设置 View 滑动的 Y 轴坐标 |
 | setDescendantFocusability | 设置 ViewGroup 和其子控件两者之间的关系 |
@@ -2639,7 +2639,7 @@ DevUtils.openDebug();
 | setMinimumWidth | 设置 View 最小宽度 |
 | setMinimumHeight | 设置 View 最小高度 |
 | setAlpha | 设置 View 透明度 |
-| setTag | 设置 View Tag |
+| setTag | 设置 View TAG |
 | setScrollX | 设置 View 滑动的 X 轴坐标 |
 | setScrollY | 设置 View 滑动的 Y 轴坐标 |
 | setDescendantFocusability | 设置 ViewGroup 和其子控件两者之间的关系 |
@@ -2922,7 +2922,7 @@ DevUtils.openDebug();
 | setMinimumWidth | 设置 View 最小宽度 |
 | setMinimumHeight | 设置 View 最小高度 |
 | setAlpha | 设置 View 透明度 |
-| setTag | 设置 View Tag |
+| setTag | 设置 View TAG |
 | setScrollX | 设置 View 滑动的 X 轴坐标 |
 | setScrollY | 设置 View 滑动的 Y 轴坐标 |
 | setDescendantFocusability | 设置 ViewGroup 和其子控件两者之间的关系 |
@@ -3129,7 +3129,7 @@ DevUtils.openDebug();
 | setMinimumWidth | 设置 View 最小宽度 |
 | setMinimumHeight | 设置 View 最小高度 |
 | setAlpha | 设置 View 透明度 |
-| setTag | 设置 View Tag |
+| setTag | 设置 View TAG |
 | setScrollX | 设置 View 滑动的 X 轴坐标 |
 | setScrollY | 设置 View 滑动的 Y 轴坐标 |
 | setDescendantFocusability | 设置 ViewGroup 和其子控件两者之间的关系 |

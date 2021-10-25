@@ -1154,9 +1154,9 @@ public final class ViewUtils {
     }
 
     /**
-     * 获取 View Tag
+     * 获取 View TAG
      * @param view View
-     * @return Tag
+     * @return TAG
      */
     public static Object getTag(final View view) {
         if (view != null) {
@@ -1166,9 +1166,9 @@ public final class ViewUtils {
     }
 
     /**
-     * 设置 View Tag
+     * 设置 View TAG
      * @param view   View
-     * @param object Tag
+     * @param object TAG
      * @return {@link View}
      */
     public static View setTag(

@@ -600,9 +600,9 @@ public final class ViewHelper
     }
 
     /**
-     * 设置 View Tag
+     * 设置 View TAG
      * @param view   View
-     * @param object Tag
+     * @param object TAG
      * @return Helper
      */
     @Override
