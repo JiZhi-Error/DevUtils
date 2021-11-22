@@ -4358,6 +4358,17 @@ public final class ViewHelper
     }
 
     /**
+     * 移除 RecyclerView 全部 ItemDecoration
+     * @param view  {@link View}
+     * @return Helper
+     */
+    @Override
+    public ViewHelper removeAllItemDecoration(View view) {
+        RecyclerViewUtils.removeAllItemDecoration(view);
+        return this;
+    }
+
+    /**
      * 设置 RecyclerView ScrollListener
      * @param view     {@link View}
      * @param listener ScrollListener
