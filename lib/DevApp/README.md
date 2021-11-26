@@ -6,7 +6,7 @@
 //implementation 'com.afkt:DevApp:1.9.4'
 
 // AndroidX ( Maven Central ) 
-implementation 'io.github.afkt:DevAppX:2.2.9'
+implementation 'io.github.afkt:DevAppX:2.3.0'
 ```
 
 ## 目录结构
@@ -160,6 +160,7 @@ DevUtils.openDebug();
 | getWindow | 获取 Window |
 | getActivity | 通过 Context 获取 Activity |
 | isFinishing | 判断 Activity 是否关闭 |
+| isNotFinishing | 判断 Activity 是否未关闭 |
 | isActivityExists | 判断是否存在指定的 Activity |
 | startHomeActivity | 回到桌面 ( 同点击 Home 键效果 ) |
 | getLauncherActivity | 获取 Launcher activity |
@@ -171,17 +172,7 @@ DevUtils.openDebug();
 | getLauncherCategoryHomeToActivityName | 获取系统桌面信息 ( activityName ) |
 | getLauncherCategoryHomeToPackageAndName | 获取系统桌面信息 ( package/activityName ) |
 | getOptionsBundle | 设置跳转动画 |
-| getManager | 获取 ActivityUtils 管理实例 |
-| getActivityStacks | 获取 Activity 栈 |
-| addActivity | 添加 Activity |
-| removeActivity | 移除 Activity |
-| currentActivity | 获取最后一个 ( 当前 ) Activity |
-| finishActivity | 关闭最后一个 ( 当前 ) Activity |
-| existActivitys | 检测是否包含指定的 Activity |
-| finishAllActivityToIgnore | 结束全部 Activity 除忽略的 Activity 外 |
-| finishAllActivity | 结束所有 Activity |
-| exitApplication | 退出应用程序 |
-| restartApplication | 重启 APP |
+| getManager | 获取 ActivityManagerAssist 管理实例 |
 | startActivityForResult | Activity 跳转回传 |
 
 
@@ -302,8 +293,10 @@ DevUtils.openDebug();
 
 | 方法 | 注释 |
 | :- | :- |
+| getSystemService | 获取 SystemService |
 | getWindowManager | 获取 WindowManager |
 | getAudioManager | 获取 AudioManager |
+| getStatusBarManager | 获取 StatusBarManager |
 | getSensorManager | 获取 SensorManager |
 | getStorageManager | 获取 StorageManager |
 | getWifiManager | 获取 WifiManager |
@@ -322,8 +315,8 @@ DevUtils.openDebug();
 | getLocationManager | 获取 LocationManager |
 | getVibrator | 获取 Vibrator |
 | getDevicePolicyManager | 获取 DevicePolicyManager |
+| getSensorPrivacyManager | 获取 SensorPrivacyManager |
 | getWallpaperManager | 获取 WallpaperManager |
-| getSystemService | 获取 SystemService |
 | getPackageManager | 获取 PackageManager |
 | getCurrentWindowMetrics | 获取 Current WindowMetrics |
 | getMaximumWindowMetrics | 获取 Maximum WindowMetrics |
@@ -353,7 +346,8 @@ DevUtils.openDebug();
 | startIntentSenderForResult | Activity 请求权限跳转回传 |
 | registerReceiver | 注册广播监听 |
 | unregisterReceiver | 注销广播监听 |
-| sendBroadcast | 发送广播 |
+| sendBroadcast | 发送广播 ( 无序 ) |
+| sendOrderedBroadcast | 发送广播 ( 有序 ) |
 | startService | 启动服务 |
 | stopService | 停止服务 |
 | installApp | 安装 APP ( 支持 8.0 ) 的意图 |
@@ -586,6 +580,7 @@ DevUtils.openDebug();
 | :- | :- |
 | getAppDbsPath | 获取应用内部存储数据库路径 ( path /data/data/package/databases ) |
 | getAppDbPath | 获取应用内部存储数据库路径 ( path /data/data/package/databases/name ) |
+| deleteDatabase | 根据名称清除数据库 |
 | startExportDatabase | 导出数据库 |
 | startImportDatabase | 导入数据库 |
 
@@ -667,6 +662,9 @@ DevUtils.openDebug();
 | 方法 | 注释 |
 | :- | :- |
 | getWindow | 获取 Dialog Window |
+| setStatusBarColor | 设置 Dialog 状态栏颜色 |
+| setSemiTransparentStatusBarColor | 设置 Dialog 高版本状态栏蒙层 |
+| setStatusBarColor2 | 设置 Dialog 状态栏颜色、高版本状态栏蒙层 |
 | getAttributes | 获取 Dialog Window LayoutParams |
 | setAttributes | 设置 Dialog Window LayoutParams |
 | setWidth | 设置 Dialog 宽度 |
@@ -1255,6 +1253,7 @@ DevUtils.openDebug();
 | addItemDecoration | 添加 RecyclerView ItemDecoration |
 | removeItemDecoration | 移除 RecyclerView ItemDecoration |
 | removeItemDecorationAt | 移除 RecyclerView ItemDecoration |
+| removeAllItemDecoration | 移除 RecyclerView 全部 ItemDecoration |
 | setOnScrollListener | 设置 RecyclerView ScrollListener |
 | addOnScrollListener | 添加 RecyclerView ScrollListener |
 | removeOnScrollListener | 移除 RecyclerView ScrollListener |
@@ -1262,6 +1261,7 @@ DevUtils.openDebug();
 | getScrollState | 获取 RecyclerView 滑动状态 |
 | isNestedScrollingEnabled | 获取 RecyclerView 嵌套滚动开关 |
 | setNestedScrollingEnabled | 设置 RecyclerView 嵌套滚动开关 |
+| requestChildRectangleOnScreen | requestChildRectangleOnScreen |
 
 
 * **APK Resource 工具类 ->** [ResourcePluginUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/ResourcePluginUtils.java)
@@ -2120,6 +2120,22 @@ DevUtils.openDebug();
 ## <span id="devutilsappassist">**`dev.utils.app.assist`**</span>
 
 
+* **Activity 栈管理辅助类 ->** [ActivityManagerAssist.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/assist/ActivityManagerAssist.java)
+
+| 方法 | 注释 |
+| :- | :- |
+| getActivityStacks | 获取 Activity 栈 |
+| addActivity | 添加 Activity |
+| removeActivity | 移除 Activity |
+| currentActivity | 获取最后一个 ( 当前 ) Activity |
+| finishActivity | 关闭最后一个 ( 当前 ) Activity |
+| existActivitys | 检测是否包含指定的 Activity |
+| finishAllActivityToIgnore | 结束全部 Activity 除忽略的 Activity 外 |
+| finishAllActivity | 结束所有 Activity |
+| exitApplication | 退出应用程序 |
+| restartApplication | 重启 APP |
+
+
 * **播放「bee」的声音, 并且震动辅助类 ->** [BeepVibrateAssist.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/assist/BeepVibrateAssist.java)
 
 | 方法 | 注释 |
@@ -2168,6 +2184,8 @@ DevUtils.openDebug();
 | reset | 重置操作 |
 | getPackageName | 获取应用包名 |
 | getResources | 获取 Resources |
+| getTheme | 获取 Resources.Theme |
+| getContentResolver | 获取 ContentResolver |
 | getDisplayMetrics | 获取 DisplayMetrics |
 | getConfiguration | 获取 Configuration |
 | getAssets | 获取 AssetManager |
@@ -2599,6 +2617,7 @@ DevUtils.openDebug();
 | addItemDecoration | 添加 RecyclerView ItemDecoration |
 | removeItemDecoration | 移除 RecyclerView ItemDecoration |
 | removeItemDecorationAt | 移除 RecyclerView ItemDecoration |
+| removeAllItemDecoration | 移除 RecyclerView 全部 ItemDecoration |
 | setOnScrollListener | 设置 RecyclerView ScrollListener |
 | addOnScrollListener | 添加 RecyclerView ScrollListener |
 | removeOnScrollListener | 移除 RecyclerView ScrollListener |
@@ -2813,6 +2832,7 @@ DevUtils.openDebug();
 | addItemDecoration | 添加 RecyclerView ItemDecoration |
 | removeItemDecoration | 移除 RecyclerView ItemDecoration |
 | removeItemDecorationAt | 移除 RecyclerView ItemDecoration |
+| removeAllItemDecoration | 移除 RecyclerView 全部 ItemDecoration |
 | setOnScrollListener | 设置 RecyclerView ScrollListener |
 | addOnScrollListener | 添加 RecyclerView ScrollListener |
 | removeOnScrollListener | 移除 RecyclerView ScrollListener |
@@ -3096,6 +3116,7 @@ DevUtils.openDebug();
 | addItemDecoration | 添加 RecyclerView ItemDecoration |
 | removeItemDecoration | 移除 RecyclerView ItemDecoration |
 | removeItemDecorationAt | 移除 RecyclerView ItemDecoration |
+| removeAllItemDecoration | 移除 RecyclerView 全部 ItemDecoration |
 | setOnScrollListener | 设置 RecyclerView ScrollListener |
 | addOnScrollListener | 添加 RecyclerView ScrollListener |
 | removeOnScrollListener | 移除 RecyclerView ScrollListener |
@@ -3303,6 +3324,7 @@ DevUtils.openDebug();
 | addItemDecoration | 添加 RecyclerView ItemDecoration |
 | removeItemDecoration | 移除 RecyclerView ItemDecoration |
 | removeItemDecorationAt | 移除 RecyclerView ItemDecoration |
+| removeAllItemDecoration | 移除 RecyclerView 全部 ItemDecoration |
 | setOnScrollListener | 设置 RecyclerView ScrollListener |
 | addOnScrollListener | 添加 RecyclerView ScrollListener |
 | removeOnScrollListener | 移除 RecyclerView ScrollListener |
@@ -4879,6 +4901,21 @@ DevUtils.openDebug();
 | :- | :- |
 | waitForEndAsync | 设置等待一段时间后, 通知方法 ( 异步 ) |
 | waitForEnd | 设置等待一段时间后, 通知方法 ( 同步 ) |
+
+
+* **弱引用辅助类 ->** [WeakReferenceAssist.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/common/assist/WeakReferenceAssist.java)
+
+| 方法 | 注释 |
+| :- | :- |
+| getSingleWeak | 获取单个弱引用对象 |
+| getSingleWeakValue | 获取单个弱引用对象值 |
+| setSingleWeakValue | 保存单个弱引用对象值 |
+| removeSingleWeak | 移除单个弱引用持有对象 |
+| getWeak | 获取弱引用对象 |
+| getWeakValue | 获取弱引用对象值 |
+| setWeakValue | 保存弱引用对象值 |
+| removeWeak | 移除指定弱引用持有对象 |
+| clear | 清空全部弱引用持有对象 |
 
 
 ## <span id="devutilscommonassistrecord">**`dev.utils.common.assist.record`**</span>
