@@ -1,7 +1,7 @@
 
 ## Gradle
 
-```java
+```gradle
 // Android ( 1.9.4 以后只更新 AndroidX ) JCenter
 //implementation 'com.afkt:DevApp:1.9.4'
 
@@ -16,11 +16,14 @@ implementation 'io.github.afkt:DevAppX:2.3.0'
    - app             | APP 相关工具类
       - anim         | 动画工具类
       - assist       | 辅助类
+         - floating  | 悬浮窗实现方案辅助类
+         - lifecycle | Activity 生命周期监听辅助类
          - record    | 文件记录分析类
       - cache        | 缓存工具类
       - camera       | 摄像头相关
          - camera1   | android.hardware.Camera ( Camera1 相关 )
       - helper       | 功能 Helper 辅助类
+         - dev       | Dev 工具类链式调用 Helper 类
          - quick     | 简化链式设置 View Quick Helper 类
          - version   | Android 版本适配 Helper 类
          - view      | View 链式调用快捷设置 Helper 类
@@ -93,11 +96,14 @@ DevUtils.openDebug();
    - [app](#devutilsapp)                              | APP 相关工具类
       - [anim](#devutilsappanim)                      | 动画工具类
       - [assist](#devutilsappassist)                  | 辅助类
+         - [floating](#devutilsappassistfloating)     | 悬浮窗实现方案辅助类
+         - [lifecycle](#devutilsappassistlifecycle)   | Activity 生命周期监听辅助类
          - [record](#devutilsappassistrecord)         | 文件记录分析类
       - [cache](#devutilsappcache)                    | 缓存工具类
       - [camera](#devutilsappcamera)                  | 摄像头相关
          - [camera1](#devutilsappcameracamera1)       | android.hardware.Camera ( Camera1 相关 )
       - [helper](#devutilsapphelper)                  | 功能 Helper 辅助类
+         - [dev](#devutilsapphelperdev)               | Dev 工具类链式调用 Helper 类
          - [quick](#devutilsapphelperquick)           | 简化链式设置 View Quick Helper 类
          - [version](#devutilsapphelperversion)       | Android 版本适配 Helper 类
          - [view](#devutilsapphelperview)             | View 链式调用快捷设置 Helper 类
@@ -1056,6 +1062,7 @@ DevUtils.openDebug();
 | cancel | 移除通知 ( 移除标记为 id 的通知 ) |
 | notify | 进行通知 |
 | getNotificationChannel | 获取 NotificationChannel |
+| createNotificationChannel | 创建 NotificationChannel |
 | createPendingIntent | 获取 PendingIntent |
 | createNotification | 创建通知栏对象 |
 | get | 获取 Led 配置参数 |
@@ -2086,7 +2093,7 @@ DevUtils.openDebug();
 
 | 方法 | 注释 |
 | :- | :- |
-| setAnimRepeat | 设置动画重复处理 |
+| setAnimationRepeat | 设置动画重复处理 |
 | setAnimationListener | 设置动画事件 |
 | setAnimation | 设置动画 |
 | getAnimation | 获取动画 |
@@ -2259,6 +2266,144 @@ DevUtils.openDebug();
 | isAllowChange | 是否允许切屏 |
 
 
+## <span id="devutilsappassistfloating">**`dev.utils.app.assist.floating`**</span>
+
+
+* **DevApp 悬浮窗触摸辅助类实现 ->** [DevFloatingTouchIMPL.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/assist/floating/DevFloatingTouchIMPL.java)
+
+| 方法 | 注释 |
+| :- | :- |
+| onTouchEvent | onTouchEvent |
+
+
+* **悬浮窗管理辅助类 ( 需权限 ) ->** [FloatingWindowManagerAssist.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/assist/floating/FloatingWindowManagerAssist.java)
+
+| 方法 | 注释 |
+| :- | :- |
+| getIMPL | 获取悬浮窗管理辅助类实现 |
+| getWindowManager | 获取 WindowManager |
+| getLayoutParams | 获取 Window LayoutParams |
+| addView | 添加悬浮 View |
+| removeView | 移除悬浮 View |
+| updateViewLayout | 更新 View Layout |
+| canDrawOverlays | 是否存在悬浮窗权限 |
+| checkOverlayPermission | 检测是否存在悬浮窗权限并跳转 |
+| isOverlayRequestCode | 是否悬浮窗请求回调 code |
+
+
+* **悬浮窗管理辅助类 ( 无需权限依赖 Activity ) ->** [FloatingWindowManagerAssist2.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/assist/floating/FloatingWindowManagerAssist2.java)
+
+| 方法 | 注释 |
+| :- | :- |
+| removeFloatingView | 移除悬浮窗 View |
+| addFloatingView | 添加悬浮窗 View |
+| removeAllFloatingView | 移除所有悬浮窗 View |
+| isNeedsAdd | 是否处理悬浮 View 添加操作 |
+| setNeedsAdd | 设置是否处理悬浮 View 添加操作 |
+
+
+* **悬浮窗辅助类接口 ->** [IFloatingActivity.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/assist/floating/IFloatingActivity.java)
+
+| 方法 | 注释 |
+| :- | :- |
+| getAttachActivity | 获取悬浮窗依附的 Activity |
+| getMapFloatingKey | 获取悬浮窗 Map Key |
+| getMapFloatingView | 获取悬浮窗 Map Value View |
+| getMapFloatingViewLayoutParams | 获取悬浮窗 View LayoutParams |
+
+
+* **悬浮窗操作辅助类接口 ->** [IFloatingOperate.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/assist/floating/IFloatingOperate.java)
+
+| 方法 | 注释 |
+| :- | :- |
+| removeFloatingView | 移除悬浮窗 View |
+| addFloatingView | 添加悬浮窗 View |
+| removeAllFloatingView | 移除所有悬浮窗 View |
+| isNeedsAdd | 是否处理悬浮 View 添加操作 |
+| setNeedsAdd | 设置是否处理悬浮 View 添加操作 |
+
+
+* **悬浮窗触摸辅助类接口 ->** [IFloatingTouch.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/assist/floating/IFloatingTouch.java)
+
+| 方法 | 注释 |
+| :- | :- |
+| onTouchEvent | 悬浮窗 View 触摸事件 |
+| updateViewLayout | 更新 View Layout |
+
+
+## <span id="devutilsappassistlifecycle">**`dev.utils.app.assist.lifecycle`**</span>
+
+
+* **ActivityLifecycleCallbacks 抽象类 ->** [AbstractActivityLifecycle.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/assist/lifecycle/AbstractActivityLifecycle.java)
+
+| 方法 | 注释 |
+| :- | :- |
+| onActivityCreated | onActivityCreated |
+| onActivityStarted | onActivityStarted |
+| onActivityResumed | onActivityResumed |
+| onActivityPaused | onActivityPaused |
+| onActivityStopped | onActivityStopped |
+| onActivitySaveInstanceState | onActivitySaveInstanceState |
+| onActivityDestroyed | onActivityDestroyed |
+
+
+* **Activity 生命周期辅助类 ->** [ActivityLifecycleAssist.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/assist/lifecycle/ActivityLifecycleAssist.java)
+
+| 方法 | 注释 |
+| :- | :- |
+| getActivityLifecycleGet | 获取 Activity 生命周期 相关信息获取接口类 |
+| getActivityLifecycleNotify | 获取 Activity 生命周期 事件监听接口类 |
+| getTopActivity | 获取 Top Activity |
+| setActivityLifecycleFilter | 设置 Activity 生命周期 过滤判断接口 |
+| setAbstractActivityLifecycle | 设置 ActivityLifecycle 监听回调 |
+| registerActivityLifecycleCallbacks | 注册绑定 Activity 生命周期事件处理 |
+| unregisterActivityLifecycleCallbacks | 解除注册 Activity 生命周期事件处理 |
+
+
+* **Activity 生命周期 过滤判断接口 ->** [ActivityLifecycleFilter.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/assist/lifecycle/ActivityLifecycleFilter.java)
+
+| 方法 | 注释 |
+| :- | :- |
+| filter | 判断是否过滤该类 ( 不进行添加等操作 ) |
+
+
+* **Activity 生命周期 相关信息获取接口 ->** [ActivityLifecycleGet.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/assist/lifecycle/ActivityLifecycleGet.java)
+
+| 方法 | 注释 |
+| :- | :- |
+| getTopActivity | 获取最顶部 ( 当前或最后一个显示 ) Activity |
+| isTopActivity | 判断某个 Activity 是否 Top Activity |
+| isBackground | 判断应用是否在后台 ( 不可见 ) |
+| getActivityCount | 获取 Activity 总数 |
+
+
+* **Activity 生命周期 通知接口 ->** [ActivityLifecycleNotify.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/assist/lifecycle/ActivityLifecycleNotify.java)
+
+| 方法 | 注释 |
+| :- | :- |
+| addOnAppStatusChangedListener | 添加 APP 状态改变事件监听 |
+| removeOnAppStatusChangedListener | 移除 APP 状态改变事件监听 |
+| removeAllOnAppStatusChangedListener | 移除全部 APP 状态改变事件监听 |
+| addOnActivityDestroyedListener | 添加 Activity 销毁通知事件 |
+| removeOnActivityDestroyedListener | 移除 Activity 销毁通知事件 |
+| removeAllOnActivityDestroyedListener | 移除全部 Activity 销毁通知事件 |
+
+
+* **Activity 销毁事件 ->** [OnActivityDestroyedListener.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/assist/lifecycle/OnActivityDestroyedListener.java)
+
+| 方法 | 注释 |
+| :- | :- |
+| onActivityDestroyed | Activity 销毁通知 |
+
+
+* **APP 状态改变事件 ->** [OnAppStatusChangedListener.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/assist/lifecycle/OnAppStatusChangedListener.java)
+
+| 方法 | 注释 |
+| :- | :- |
+| onForeground | 切换到前台 |
+| onBackground | 切换到后台 |
+
+
 ## <span id="devutilsappassistrecord">**`dev.utils.app.assist.record`**</span>
 
 
@@ -2414,10 +2559,196 @@ DevUtils.openDebug();
 
 | 方法 | 注释 |
 | :- | :- |
+| devHelper | 获取 DevHelper |
 | quickHelper | 获取 QuickHelper |
 | viewHelper | 获取 ViewHelper |
 | postRunnable | 在主线程 Handler 中执行任务 |
 | removeRunnable | 在主线程 Handler 中清除任务 |
+
+
+## <span id="devutilsapphelperdev">**`dev.utils.app.helper.dev`**</span>
+
+
+* **Dev 工具类链式调用 Helper 类 ->** [DevHelper.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/helper/dev/DevHelper.java)
+
+| 方法 | 注释 |
+| :- | :- |
+| get | 获取单例 DevHelper |
+| devHelper | 获取 DevHelper |
+| quickHelper | 获取 QuickHelper |
+| viewHelper | 获取 ViewHelper |
+| postRunnable | 在主线程 Handler 中执行任务 |
+| removeRunnable | 在主线程 Handler 中清除任务 |
+| setAnimationRepeat | 设置动画重复处理 |
+| setAnimationListener | 设置动画事件 |
+| startAnimation | 启动动画 |
+| cancelAnimation | 取消动画 |
+| recycle | Bitmap 通知回收 |
+| startTimer | 运行定时器 |
+| stopTimer | 关闭定时器 |
+| recycleTimer | 回收定时器资源 |
+| closeAllTimer | 关闭全部定时器 |
+| closeAllNotRunningTimer | 关闭所有未运行的定时器 |
+| closeAllInfiniteTimer | 关闭所有无限循环的定时器 |
+| closeAllTagTimer | 关闭所有对应 TAG 定时器 |
+| closeAllUUIDTimer | 关闭所有对应 UUID 定时器 |
+| addTouchArea | 增加控件的触摸范围, 最大范围只能是父布局所包含的的区域 |
+| setOnClick | 设置点击事件 |
+| setOnLongClick | 设置长按事件 |
+| setOnTouch | 设置触摸事件 |
+| copyText | 复制文本到剪贴板 |
+| copyUri | 复制 URI 到剪贴板 |
+| copyIntent | 复制意图到剪贴板 |
+| setDialogStatusBarColor | 设置 Dialog 状态栏颜色 |
+| setDialogSemiTransparentStatusBarColor | 设置 Dialog 高版本状态栏蒙层 |
+| setDialogStatusBarColor2 | 设置 Dialog 状态栏颜色、高版本状态栏蒙层 |
+| setDialogAttributes | 设置 Dialog Window LayoutParams |
+| setDialogWidth | 设置 Dialog 宽度 |
+| setDialogHeight | 设置 Dialog 高度 |
+| setDialogWidthHeight | 设置 Dialog 宽度、高度 |
+| setDialogX | 设置 Dialog X 轴坐标 |
+| setDialogY | 设置 Dialog Y 轴坐标 |
+| setDialogXY | 设置 Dialog X、Y 轴坐标 |
+| setDialogGravity | 设置 Dialog Gravity |
+| setDialogDimAmount | 设置 Dialog 透明度 |
+| setDialogCancelable | 设置是否允许返回键关闭 |
+| setDialogCanceledOnTouchOutside | 设置是否允许点击其他地方自动关闭 |
+| setDialogCancelableAndTouchOutside | 设置是否允许 返回键关闭、点击其他地方自动关闭 |
+| showDialog | 显示 Dialog |
+| closeDialogs | 关闭多个 Dialog |
+| closePopupWindows | 关闭多个 PopupWindow |
+| autoCloseDialog | 自动关闭 dialog |
+| autoClosePopupWindow | 自动关闭 PopupWindow |
+| setSoftInputMode | 设置 Window 软键盘是否显示 |
+| judgeView | 设置某个 View 内所有非 EditText 的子 View OnTouchListener 事件 |
+| registerSoftInputChangedListener | 注册软键盘改变监听 |
+| registerSoftInputChangedListener2 | 注册软键盘改变监听 |
+| fixSoftInputLeaks | 修复软键盘内存泄漏 在 Activity.onDestroy() 中使用 |
+| toggleKeyboard | 自动切换键盘状态, 如果键盘显示则隐藏反之显示 |
+| openKeyboard | 打开软键盘 |
+| openKeyboardDelay | 延时打开软键盘 |
+| openKeyboardByFocus | 打开软键盘 |
+| closeKeyboard | 关闭软键盘 |
+| closeKeyBoardSpecial | 关闭软键盘 |
+| closeKeyBoardSpecialDelay | 延时关闭软键盘 |
+| closeKeyboardDelay | 延时关闭软键盘 |
+| applyLanguage | 修改系统语言 ( APP 多语言, 单独改变 APP 语言 ) |
+| cancelAllNotification | 移除通知 ( 移除所有通知 ) |
+| cancelNotification | 移除通知 ( 移除标记为 id 的通知 ) |
+| notifyNotification | 进行通知 |
+| createNotificationChannel | 创建 NotificationChannel |
+| dial | 跳至拨号界面 |
+| call | 拨打电话 |
+| sendSms | 跳至发送短信界面 |
+| sendSmsSilent | 发送短信 |
+| setBright | 设置屏幕常亮 |
+| setWindowSecure | 设置禁止截屏 |
+| setFullScreen | 设置屏幕为全屏 |
+| setFullScreenNoTitle | 设置屏幕为全屏无标题 |
+| setLandscape | 设置屏幕为横屏 |
+| setPortrait | 设置屏幕为竖屏 |
+| toggleScreenOrientation | 切换屏幕方向 |
+| setSleepDuration | 设置进入休眠时长 |
+| forceGetViewSize | 在 onCreate 中获取视图的尺寸 ( 需回调 onGetSizeListener 接口, 在 onGetSize 中获取 View 宽高 ) |
+| vibrate | 震动 |
+| cancelVibrate | 取消震动 |
+| getWidthHeightExact | 获取 View 宽高 ( 准确 ) |
+| getWidthHeightExact2 | 获取 View 宽高 ( 准确 ) |
+| measureView | 测量 View |
+| closeIO | 关闭 IO |
+| closeIOQuietly | 安静关闭 IO |
+| flush | 将缓冲区数据输出 |
+| flushQuietly | 安静将缓冲区数据输出 |
+| flushCloseIO | 将缓冲区数据输出并关闭流 |
+| flushCloseIOQuietly | 安静将缓冲区数据输出并关闭流 |
+
+
+* **DevHelper 接口 ->** [IHelperByDev.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/helper/dev/IHelperByDev.java)
+
+| 方法 | 注释 |
+| :- | :- |
+| setAnimationRepeat | 设置动画重复处理 |
+| setAnimationListener | 设置动画事件 |
+| startAnimation | 启动动画 |
+| cancelAnimation | 取消动画 |
+| recycle | Bitmap 通知回收 |
+| startTimer | 运行定时器 |
+| stopTimer | 关闭定时器 |
+| recycleTimer | 回收定时器资源 |
+| closeAllTimer | 关闭全部定时器 |
+| closeAllNotRunningTimer | 关闭所有未运行的定时器 |
+| closeAllInfiniteTimer | 关闭所有无限循环的定时器 |
+| closeAllTagTimer | 关闭所有对应 TAG 定时器 |
+| closeAllUUIDTimer | 关闭所有对应 UUID 定时器 |
+| addTouchArea | 增加控件的触摸范围, 最大范围只能是父布局所包含的的区域 |
+| setOnClick | 设置点击事件 |
+| setOnLongClick | 设置长按事件 |
+| setOnTouch | 设置触摸事件 |
+| copyText | 复制文本到剪贴板 |
+| copyUri | 复制 URI 到剪贴板 |
+| copyIntent | 复制意图到剪贴板 |
+| setDialogStatusBarColor | 设置 Dialog 状态栏颜色 |
+| setDialogSemiTransparentStatusBarColor | 设置 Dialog 高版本状态栏蒙层 |
+| setDialogStatusBarColor2 | 设置 Dialog 状态栏颜色、高版本状态栏蒙层 |
+| setDialogAttributes | 设置 Dialog Window LayoutParams |
+| setDialogWidth | 设置 Dialog 宽度 |
+| setDialogHeight | 设置 Dialog 高度 |
+| setDialogWidthHeight | 设置 Dialog 宽度、高度 |
+| setDialogX | 设置 Dialog X 轴坐标 |
+| setDialogY | 设置 Dialog Y 轴坐标 |
+| setDialogXY | 设置 Dialog X、Y 轴坐标 |
+| setDialogGravity | 设置 Dialog Gravity |
+| setDialogDimAmount | 设置 Dialog 透明度 |
+| setDialogCancelable | 设置是否允许返回键关闭 |
+| setDialogCanceledOnTouchOutside | 设置是否允许点击其他地方自动关闭 |
+| setDialogCancelableAndTouchOutside | 设置是否允许 返回键关闭、点击其他地方自动关闭 |
+| showDialog | 显示 Dialog |
+| closeDialogs | 关闭多个 Dialog |
+| closePopupWindows | 关闭多个 PopupWindow |
+| autoCloseDialog | 自动关闭 dialog |
+| autoClosePopupWindow | 自动关闭 PopupWindow |
+| setSoftInputMode | 设置 Window 软键盘是否显示 |
+| judgeView | 设置某个 View 内所有非 EditText 的子 View OnTouchListener 事件 |
+| registerSoftInputChangedListener | 注册软键盘改变监听 |
+| registerSoftInputChangedListener2 | 注册软键盘改变监听 |
+| fixSoftInputLeaks | 修复软键盘内存泄漏 在 Activity.onDestroy() 中使用 |
+| toggleKeyboard | 自动切换键盘状态, 如果键盘显示则隐藏反之显示 |
+| openKeyboard | 打开软键盘 |
+| openKeyboardDelay | 延时打开软键盘 |
+| openKeyboardByFocus | 打开软键盘 |
+| closeKeyboard | 关闭软键盘 |
+| closeKeyBoardSpecial | 关闭软键盘 |
+| closeKeyBoardSpecialDelay | 延时关闭软键盘 |
+| closeKeyboardDelay | 延时关闭软键盘 |
+| applyLanguage | 修改系统语言 ( APP 多语言, 单独改变 APP 语言 ) |
+| cancelAllNotification | 移除通知 ( 移除所有通知 ) |
+| cancelNotification | 移除通知 ( 移除标记为 id 的通知 ) |
+| notifyNotification | 进行通知 |
+| createNotificationChannel | 创建 NotificationChannel |
+| dial | 跳至拨号界面 |
+| call | 拨打电话 |
+| sendSms | 跳至发送短信界面 |
+| sendSmsSilent | 发送短信 |
+| setBright | 设置屏幕常亮 |
+| setWindowSecure | 设置禁止截屏 |
+| setFullScreen | 设置屏幕为全屏 |
+| setFullScreenNoTitle | 设置屏幕为全屏无标题 |
+| setLandscape | 设置屏幕为横屏 |
+| setPortrait | 设置屏幕为竖屏 |
+| toggleScreenOrientation | 切换屏幕方向 |
+| setSleepDuration | 设置进入休眠时长 |
+| forceGetViewSize | 在 onCreate 中获取视图的尺寸 ( 需回调 onGetSizeListener 接口, 在 onGetSize 中获取 View 宽高 ) |
+| vibrate | 震动 |
+| cancelVibrate | 取消震动 |
+| getWidthHeightExact | 获取 View 宽高 ( 准确 ) |
+| getWidthHeightExact2 | 获取 View 宽高 ( 准确 ) |
+| measureView | 测量 View |
+| closeIO | 关闭 IO |
+| closeIOQuietly | 安静关闭 IO |
+| flush | 将缓冲区数据输出 |
+| flushQuietly | 安静将缓冲区数据输出 |
+| flushCloseIO | 将缓冲区数据输出并关闭流 |
+| flushCloseIOQuietly | 安静将缓冲区数据输出并关闭流 |
 
 
 ## <span id="devutilsapphelperquick">**`dev.utils.app.helper.quick`**</span>
@@ -2638,6 +2969,7 @@ DevUtils.openDebug();
 | targetTextView | 获取目标 View ( 转 TextView ) |
 | targetEditText | 获取目标 View ( 转 EditText ) |
 | targetRecyclerView | 获取目标 View ( 转 RecyclerView ) |
+| devHelper | 获取 DevHelper |
 | quickHelper | 获取 QuickHelper |
 | viewHelper | 获取 ViewHelper |
 | postRunnable | 在主线程 Handler 中执行任务 |
@@ -3130,6 +3462,7 @@ DevUtils.openDebug();
 | 方法 | 注释 |
 | :- | :- |
 | get | 获取单例 ViewHelper |
+| devHelper | 获取 DevHelper |
 | quickHelper | 获取 QuickHelper |
 | viewHelper | 获取 ViewHelper |
 | postRunnable | 在主线程 Handler 中执行任务 |
