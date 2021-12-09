@@ -627,6 +627,18 @@ public final class ViewUtils {
         return null;
     }
 
+    /**
+     * 转换 ViewGroup
+     * @param view {@link View}
+     * @return {@link ViewGroup}
+     */
+    public static ViewGroup convertViewGroup(final View view) {
+        if (view instanceof ViewGroup) {
+            return (ViewGroup) view;
+        }
+        return null;
+    }
+
     // ============
     // = View 判空 =
     // ============
