@@ -165,7 +165,6 @@ DevUtils.openDebug();
 
 | 方法 | 注释 |
 | :- | :- |
-| getWindow | 获取 Window |
 | getActivity | 通过 Context 获取 Activity |
 | isFinishing | 判断 Activity 是否关闭 |
 | isNotFinishing | 判断 Activity 是否未关闭 |
@@ -669,10 +668,9 @@ DevUtils.openDebug();
 
 | 方法 | 注释 |
 | :- | :- |
-| getWindow | 获取 Dialog Window |
 | setStatusBarColor | 设置 Dialog 状态栏颜色 |
 | setSemiTransparentStatusBarColor | 设置 Dialog 高版本状态栏蒙层 |
-| setStatusBarColor2 | 设置 Dialog 状态栏颜色、高版本状态栏蒙层 |
+| setStatusBarColorAndFlag | 设置 Dialog 状态栏颜色、高版本状态栏蒙层 |
 | getAttributes | 获取 Dialog Window LayoutParams |
 | setAttributes | 设置 Dialog Window LayoutParams |
 | setWidth | 设置 Dialog 宽度 |
@@ -1479,7 +1477,7 @@ DevUtils.openDebug();
 | getHeightDpi | 获取高度比例 dpi 基准 |
 | getScreenInfo | 获取屏幕信息 |
 | setWindowSecure | 设置禁止截屏 |
-| isFullScreen | 屏幕是否为全屏 |
+| isFullScreen | 是否屏幕为全屏 |
 | setFullScreen | 设置屏幕为全屏 |
 | setFullScreenNoTitle | 设置屏幕为全屏无标题 |
 | setLandscape | 设置屏幕为横屏 |
@@ -1872,6 +1870,7 @@ DevUtils.openDebug();
 | setLayoutParams | 设置 View LayoutParams |
 | findViewById | 初始化 View |
 | convertView | 转换 View |
+| convertViewGroup | 转换 ViewGroup |
 | isEmpty | 判断 View 是否为 null |
 | isNotEmpty | 判断 View 是否不为 null |
 | getWidthHeight | 获取 View 宽高 |
@@ -2088,6 +2087,14 @@ DevUtils.openDebug();
 | getMeasuredHeight | 获取 View 的高度 |
 
 
+* **Window 工具类 ->** [WindowUtils.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/WindowUtils.java)
+
+| 方法 | 注释 |
+| :- | :- |
+| getWindow | 获取 Window |
+| get | 获取 WindowAssist |
+
+
 ## <span id="devutilsappanim">**`dev.utils.app.anim`**</span>
 
 
@@ -2182,7 +2189,6 @@ DevUtils.openDebug();
 
 | 方法 | 注释 |
 | :- | :- |
-| getInstance | 获取 ResourceAssist 实例 |
 | get | 获取 ResourceAssist |
 | staticResources | 获取 Resources |
 | staticTheme | 获取 Resources.Theme |
@@ -2266,6 +2272,70 @@ DevUtils.openDebug();
 | stop | 停止监听 |
 | isPortrait | 是否竖屏 |
 | isAllowChange | 是否允许切屏 |
+
+
+* **Window 辅助类 ->** [WindowAssist.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/assist/WindowAssist.java)
+
+| 方法 | 注释 |
+| :- | :- |
+| getWindow | 获取 Window |
+| get | 获取 WindowAssist |
+| getDecorView | 获取 Window DecorView |
+| peekDecorView | 获取 Window DecorView |
+| getCurrentFocus | 获取 Window 当前获取焦点 View |
+| setSystemUiVisibility | 设置 Window System UI 可见性 |
+| getSystemUiVisibility | 获取 Window System UI 可见性 |
+| setSystemUiVisibilityByAdd | 设置 Window System UI 可见性 ( 原来基础上进行追加 ) |
+| setSystemUiVisibilityByClear | 设置 Window System UI 可见性 ( 原来基础上进行清除 ) |
+| getAttributes | 获取 Window LayoutParams |
+| setAttributes | 设置 Window LayoutParams |
+| refreshSelfAttributes | 刷新自身 Window LayoutParams |
+| clearFlags | 清除 Window flags |
+| addFlags | 添加 Window flags |
+| setFlags | 设置 Window flags |
+| hasFlags | Window 是否设置指定 flags 值 |
+| notHasFlags | Window 是否没有设置指定 flags 值 |
+| requestFeature | 启用 Window Extended Feature |
+| hasFeature | Window 是否开启指定 Extended Feature |
+| notHasFeature | Window 是否没有开启指定 Extended Feature |
+| setSoftInputMode | 设置 Window 输入模式 |
+| setStatusBarColor | 设置 StatusBar Color |
+| getStatusBarColor | 获取 StatusBar Color |
+| setNavigationBarColor | 设置 NavigationBar Color |
+| getNavigationBarColor | 获取 NavigationBar Color |
+| setNavigationBarDividerColor | 设置 NavigationBar Divider Color |
+| getNavigationBarDividerColor | 获取 NavigationBar Divider Color |
+| setWidthByParams | 设置 Dialog 宽度 |
+| setHeightByParams | 设置 Dialog 高度 |
+| setWidthHeightByParams | 设置 Dialog 宽度、高度 |
+| setXByParams | 设置 Dialog X 轴坐标 |
+| setYByParams | 设置 Dialog Y 轴坐标 |
+| setXYByParams | 设置 Dialog X、Y 轴坐标 |
+| setGravityByParams | 设置 Dialog Gravity |
+| setDimAmountByParams | 设置 Dialog 透明度 |
+| setWindowBrightness | 设置窗口亮度 |
+| getWindowBrightness | 获取窗口亮度 |
+| setKeyBoardSoftInputMode | 设置 Window 软键盘是否显示 |
+| isKeepScreenOnFlag | 是否屏幕常亮 |
+| setFlagKeepScreenOn | 设置屏幕常亮 |
+| clearFlagKeepScreenOn | 移除屏幕常亮 |
+| isSecureFlag | 是否禁止截屏 |
+| setFlagSecure | 设置禁止截屏 |
+| clearFlagSecure | 移除禁止截屏 |
+| isFullScreenFlag | 是否屏幕为全屏 |
+| setFlagFullScreen | 设置屏幕为全屏 |
+| clearFlagFullScreen | 移除屏幕全屏 |
+| isTranslucentStatusFlag | 是否透明状态栏 |
+| setFlagTranslucentStatus | 设置透明状态栏 |
+| clearFlagTranslucentStatus | 移除透明状态栏 |
+| isDrawsSystemBarBackgroundsFlag | 是否系统状态栏背景绘制 |
+| setFlagDrawsSystemBarBackgrounds | 设置系统状态栏背景绘制 |
+| clearFlagDrawsSystemBarBackgrounds | 移除系统状态栏背景绘制 |
+| isNoTitleFeature | 是否屏幕页面为无标题 |
+| setFeatureNoTitle | 设置屏幕页面无标题 |
+| setFlagFullScreenAndNoTitle | 设置屏幕为全屏无标题 |
+| setSemiTransparentStatusBarColor | 设置高版本状态栏蒙层 |
+| setStatusBarColorAndFlag | 设置状态栏颜色、高版本状态栏蒙层 |
 
 
 ## <span id="devutilsappassistfloating">**`dev.utils.app.assist.floating`**</span>
@@ -2603,7 +2673,7 @@ DevUtils.openDebug();
 | copyIntent | 复制意图到剪贴板 |
 | setDialogStatusBarColor | 设置 Dialog 状态栏颜色 |
 | setDialogSemiTransparentStatusBarColor | 设置 Dialog 高版本状态栏蒙层 |
-| setDialogStatusBarColor2 | 设置 Dialog 状态栏颜色、高版本状态栏蒙层 |
+| setDialogStatusBarColorAndFlag | 设置 Dialog 状态栏颜色、高版本状态栏蒙层 |
 | setDialogAttributes | 设置 Dialog Window LayoutParams |
 | setDialogWidth | 设置 Dialog 宽度 |
 | setDialogHeight | 设置 Dialog 高度 |
@@ -2663,6 +2733,42 @@ DevUtils.openDebug();
 | flushQuietly | 安静将缓冲区数据输出 |
 | flushCloseIO | 将缓冲区数据输出并关闭流 |
 | flushCloseIOQuietly | 安静将缓冲区数据输出并关闭流 |
+| setSystemUiVisibility | 设置 Window System UI 可见性 |
+| setSystemUiVisibilityByAdd | 设置 Window System UI 可见性 ( 原来基础上进行追加 ) |
+| setSystemUiVisibilityByClear | 设置 Window System UI 可见性 ( 原来基础上进行清除 ) |
+| setAttributes | 设置 Window LayoutParams |
+| refreshSelfAttributes | 刷新自身 Window LayoutParams |
+| clearFlags | 清除 Window flags |
+| addFlags | 添加 Window flags |
+| setFlags | 设置 Window flags |
+| requestFeature | 启用 Window Extended Feature |
+| setStatusBarColor | 设置 StatusBar Color |
+| setNavigationBarColor | 设置 NavigationBar Color |
+| setNavigationBarDividerColor | 设置 NavigationBar Divider Color |
+| setWidthByParams | 设置 Dialog 宽度 |
+| setHeightByParams | 设置 Dialog 高度 |
+| setWidthHeightByParams | 设置 Dialog 宽度、高度 |
+| setXByParams | 设置 Dialog X 轴坐标 |
+| setYByParams | 设置 Dialog Y 轴坐标 |
+| setXYByParams | 设置 Dialog X、Y 轴坐标 |
+| setGravityByParams | 设置 Dialog Gravity |
+| setDimAmountByParams | 设置 Dialog 透明度 |
+| setWindowBrightness | 设置窗口亮度 |
+| setKeyBoardSoftInputMode | 设置 Window 软键盘是否显示 |
+| setFlagKeepScreenOn | 设置屏幕常亮 |
+| clearFlagKeepScreenOn | 移除屏幕常亮 |
+| setFlagSecure | 设置禁止截屏 |
+| clearFlagSecure | 移除禁止截屏 |
+| setFlagFullScreen | 设置屏幕为全屏 |
+| clearFlagFullScreen | 移除屏幕全屏 |
+| setFlagTranslucentStatus | 设置透明状态栏 |
+| clearFlagTranslucentStatus | 移除透明状态栏 |
+| setFlagDrawsSystemBarBackgrounds | 设置系统状态栏背景绘制 |
+| clearFlagDrawsSystemBarBackgrounds | 移除系统状态栏背景绘制 |
+| setFeatureNoTitle | 设置屏幕页面无标题 |
+| setFlagFullScreenAndNoTitle | 设置屏幕为全屏无标题 |
+| setSemiTransparentStatusBarColor | 设置高版本状态栏蒙层 |
+| setStatusBarColorAndFlag | 设置状态栏颜色、高版本状态栏蒙层 |
 
 
 * **DevHelper 接口 ->** [IHelperByDev.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/app/helper/dev/IHelperByDev.java)
@@ -2691,7 +2797,7 @@ DevUtils.openDebug();
 | copyIntent | 复制意图到剪贴板 |
 | setDialogStatusBarColor | 设置 Dialog 状态栏颜色 |
 | setDialogSemiTransparentStatusBarColor | 设置 Dialog 高版本状态栏蒙层 |
-| setDialogStatusBarColor2 | 设置 Dialog 状态栏颜色、高版本状态栏蒙层 |
+| setDialogStatusBarColorAndFlag | 设置 Dialog 状态栏颜色、高版本状态栏蒙层 |
 | setDialogAttributes | 设置 Dialog Window LayoutParams |
 | setDialogWidth | 设置 Dialog 宽度 |
 | setDialogHeight | 设置 Dialog 高度 |
@@ -2751,6 +2857,42 @@ DevUtils.openDebug();
 | flushQuietly | 安静将缓冲区数据输出 |
 | flushCloseIO | 将缓冲区数据输出并关闭流 |
 | flushCloseIOQuietly | 安静将缓冲区数据输出并关闭流 |
+| setSystemUiVisibility | 设置 Window System UI 可见性 |
+| setSystemUiVisibilityByAdd | 设置 Window System UI 可见性 ( 原来基础上进行追加 ) |
+| setSystemUiVisibilityByClear | 设置 Window System UI 可见性 ( 原来基础上进行清除 ) |
+| setAttributes | 设置 Window LayoutParams |
+| refreshSelfAttributes | 刷新自身 Window LayoutParams |
+| clearFlags | 清除 Window flags |
+| addFlags | 添加 Window flags |
+| setFlags | 设置 Window flags |
+| requestFeature | 启用 Window Extended Feature |
+| setStatusBarColor | 设置 StatusBar Color |
+| setNavigationBarColor | 设置 NavigationBar Color |
+| setNavigationBarDividerColor | 设置 NavigationBar Divider Color |
+| setWidthByParams | 设置 Dialog 宽度 |
+| setHeightByParams | 设置 Dialog 高度 |
+| setWidthHeightByParams | 设置 Dialog 宽度、高度 |
+| setXByParams | 设置 Dialog X 轴坐标 |
+| setYByParams | 设置 Dialog Y 轴坐标 |
+| setXYByParams | 设置 Dialog X、Y 轴坐标 |
+| setGravityByParams | 设置 Dialog Gravity |
+| setDimAmountByParams | 设置 Dialog 透明度 |
+| setWindowBrightness | 设置窗口亮度 |
+| setKeyBoardSoftInputMode | 设置 Window 软键盘是否显示 |
+| setFlagKeepScreenOn | 设置屏幕常亮 |
+| clearFlagKeepScreenOn | 移除屏幕常亮 |
+| setFlagSecure | 设置禁止截屏 |
+| clearFlagSecure | 移除禁止截屏 |
+| setFlagFullScreen | 设置屏幕为全屏 |
+| clearFlagFullScreen | 移除屏幕全屏 |
+| setFlagTranslucentStatus | 设置透明状态栏 |
+| clearFlagTranslucentStatus | 移除透明状态栏 |
+| setFlagDrawsSystemBarBackgrounds | 设置系统状态栏背景绘制 |
+| clearFlagDrawsSystemBarBackgrounds | 移除系统状态栏背景绘制 |
+| setFeatureNoTitle | 设置屏幕页面无标题 |
+| setFlagFullScreenAndNoTitle | 设置屏幕为全屏无标题 |
+| setSemiTransparentStatusBarColor | 设置高版本状态栏蒙层 |
+| setStatusBarColorAndFlag | 设置状态栏颜色、高版本状态栏蒙层 |
 
 
 ## <span id="devutilsapphelperquick">**`dev.utils.app.helper.quick`**</span>
@@ -5206,6 +5348,18 @@ DevUtils.openDebug();
 | size | 获取参与均值计算的数字个数 |
 | getAverage | 获取平均数 |
 | print | 输出参与均值计算的数字 |
+
+
+* **标记值计算存储 ( 位运算符 ) ->** [FlagsValue.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/common/assist/FlagsValue.java)
+
+| 方法 | 注释 |
+| :- | :- |
+| getFlags | 获取 flags value |
+| setFlags | 设置 flags value |
+| addFlags | 添加 flags value |
+| clearFlags | 移除 flags value |
+| hasFlags | 是否存在 flags value |
+| notHasFlags | 是否不存在 flags value |
 
 
 * **时间均值计算辅助类 ->** [TimeAverager.java](https://github.com/afkT/DevUtils/blob/master/lib/DevApp/src/main/java/dev/utils/common/assist/TimeAverager.java)
