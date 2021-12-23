@@ -1020,6 +1020,40 @@ public final class ViewHelper
     }
 
     /**
+     * 设置 X 轴位置
+     * @param x     X 轴位置
+     * @param views View[]
+     * @return Helper
+     */
+    @Override
+    public ViewHelper setX(
+            float x,
+            View... views
+    ) {
+        ForUtils.forSimpleArgs(
+                value -> ViewUtils.setX(value, x), views
+        );
+        return this;
+    }
+
+    /**
+     * 设置 Y 轴位置
+     * @param y     Y 轴位置
+     * @param views View[]
+     * @return Helper
+     */
+    @Override
+    public ViewHelper setY(
+            float y,
+            View... views
+    ) {
+        ForUtils.forSimpleArgs(
+                value -> ViewUtils.setY(value, y), views
+        );
+        return this;
+    }
+
+    /**
      * 设置 View 硬件加速类型
      * @param layerType 硬件加速类型
      * @param paint     {@link Paint}

@@ -1895,6 +1895,66 @@ public final class ViewUtils {
     // =
 
     /**
+     * 获取 X 轴位置
+     * @param view {@link View}
+     * @return X 轴位置
+     */
+    public static float getX(final View view) {
+        if (view != null) {
+            return view.getX();
+        }
+        return 0f;
+    }
+
+    /**
+     * 设置 X 轴位置
+     * @param view {@link View}
+     * @param x    X 轴位置
+     * @return {@link View}
+     */
+    public static View setX(
+            final View view,
+            final float x
+    ) {
+        if (view != null) {
+            view.setX(x);
+        }
+        return view;
+    }
+
+    // =
+
+    /**
+     * 获取 Y 轴位置
+     * @param view {@link View}
+     * @return Y 轴位置
+     */
+    public static float getY(final View view) {
+        if (view != null) {
+            return view.getY();
+        }
+        return 0f;
+    }
+
+    /**
+     * 设置 Y 轴位置
+     * @param view {@link View}
+     * @param y    Y 轴位置
+     * @return {@link View}
+     */
+    public static View setY(
+            final View view,
+            final float y
+    ) {
+        if (view != null) {
+            view.setY(y);
+        }
+        return view;
+    }
+
+    // =
+
+    /**
      * 获取 View 硬件加速类型
      * @param view {@link View}
      * @return View 硬件加速类型
