@@ -4298,7 +4298,7 @@ DevUtils.openDebug();
 | :- | :- |
 | reset | 重置默认参数 |
 | setToastFilter | 设置 Toast 过滤器 |
-| setIsHandler | 设置是否使用 Handler 显示 Toast |
+| setUseHandler | 设置是否使用 Handler 显示 Toast |
 | setNullText | 设置 Text 为 null 的文本 |
 | setUseConfig | 设置是否使用配置 |
 | setGravity | 设置 Toast 显示在屏幕上的位置 |
@@ -4332,7 +4332,7 @@ DevUtils.openDebug();
 | :- | :- |
 | reset | 重置默认参数 |
 | setToastFilter | 设置 Toast 过滤器 |
-| setIsHandler | 设置是否使用 Handler 显示 Toast |
+| setUseHandler | 设置是否使用 Handler 显示 Toast |
 | setNullText | 设置 Text 为 null 的文本 |
 | setUseConfig | 设置是否使用配置 |
 | setGravity | 设置 Toast 显示在屏幕上的位置 |
@@ -4356,7 +4356,7 @@ DevUtils.openDebug();
 | 方法 | 注释 |
 | :- | :- |
 | reset | 重置默认参数 |
-| setIsHandler | 设置是否使用 Handler 显示 Toast |
+| setUseHandler | 设置是否使用 Handler 显示 Toast |
 | setNullText | 设置 Text 为 null 的文本 |
 | setTextLength | 设置 Toast 文案长度转换 显示时间 |
 | initialize | 初始化调用 ( 内部已调用 ) |
