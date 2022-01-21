@@ -1604,14 +1604,14 @@ DevUtils.openDebug();
 
 | 方法 | 注释 |
 | :- | :- |
-| dipConvertPx | dp 转 px |
-| dipConvertPxf | dp 转 px ( float ) |
-| pxConvertDip | px 转 dp |
-| pxConvertDipf | px 转 dp ( float ) |
-| spConvertPx | sp 转 px |
-| spConvertPxf | sp 转 px ( float ) |
-| pxConvertSp | px 转 sp |
-| pxConvertSpf | px 转 sp ( float ) |
+| dp2px | dp 转 px |
+| dp2pxf | dp 转 px ( float ) |
+| px2dp | px 转 dp |
+| px2dpf | px 转 dp ( float ) |
+| sp2px | sp 转 px |
+| sp2pxf | sp 转 px ( float ) |
+| px2sp | px 转 sp |
+| px2spf | px 转 sp ( float ) |
 | applyDimension | 各种单位转换 ( 该方法存在于 TypedValue.applyDimension ) |
 | forceGetViewSize | 在 onCreate 中获取视图的尺寸 ( 需回调 onGetSizeListener 接口, 在 onGetSize 中获取 View 宽高 ) |
 | measureView | 测量 View |
