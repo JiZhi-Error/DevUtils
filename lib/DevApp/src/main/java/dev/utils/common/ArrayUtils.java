@@ -760,7 +760,7 @@ public final class ArrayUtils {
             final double[] doubles,
             final int pos
     ) {
-        return get(doubles, pos, -1d);
+        return get(doubles, pos, -1D);
     }
 
     /**
