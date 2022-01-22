@@ -747,7 +747,7 @@ public final class ArrayUtils {
             final float[] floats,
             final int pos
     ) {
-        return get(floats, pos, -1f);
+        return get(floats, pos, -1F);
     }
 
     /**
