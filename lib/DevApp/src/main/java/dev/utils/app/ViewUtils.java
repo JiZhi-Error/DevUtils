@@ -1146,7 +1146,7 @@ public final class ViewUtils {
         if (view != null) {
             return view.getAlpha();
         }
-        return 1.0f;
+        return 1.0F;
     }
 
     /**
@@ -1569,7 +1569,7 @@ public final class ViewUtils {
         if (view != null) {
             return view.getRotation();
         }
-        return 0f;
+        return 0F;
     }
 
     /**
@@ -1599,7 +1599,7 @@ public final class ViewUtils {
         if (view != null) {
             return view.getRotationX();
         }
-        return 0f;
+        return 0F;
     }
 
     /**
@@ -1629,7 +1629,7 @@ public final class ViewUtils {
         if (view != null) {
             return view.getRotationY();
         }
-        return 0f;
+        return 0F;
     }
 
     /**
@@ -1659,7 +1659,7 @@ public final class ViewUtils {
         if (view != null) {
             return view.getScaleX();
         }
-        return 0f;
+        return 0F;
     }
 
     /**
@@ -1689,7 +1689,7 @@ public final class ViewUtils {
         if (view != null) {
             return view.getScaleY();
         }
-        return 0f;
+        return 0F;
     }
 
     /**
@@ -1783,7 +1783,7 @@ public final class ViewUtils {
         if (view != null) {
             return view.getPivotX();
         }
-        return 0f;
+        return 0F;
     }
 
     /**
@@ -1813,7 +1813,7 @@ public final class ViewUtils {
         if (view != null) {
             return view.getPivotY();
         }
-        return 0f;
+        return 0F;
     }
 
     /**
@@ -1843,7 +1843,7 @@ public final class ViewUtils {
         if (view != null) {
             return view.getTranslationX();
         }
-        return 0f;
+        return 0F;
     }
 
     /**
@@ -1873,7 +1873,7 @@ public final class ViewUtils {
         if (view != null) {
             return view.getTranslationY();
         }
-        return 0f;
+        return 0F;
     }
 
     /**
@@ -1903,7 +1903,7 @@ public final class ViewUtils {
         if (view != null) {
             return view.getX();
         }
-        return 0f;
+        return 0F;
     }
 
     /**
@@ -1933,7 +1933,7 @@ public final class ViewUtils {
         if (view != null) {
             return view.getY();
         }
-        return 0f;
+        return 0F;
     }
 
     /**

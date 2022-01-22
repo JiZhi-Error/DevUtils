@@ -3737,7 +3737,7 @@ public final class ArrayUtils {
         } catch (Exception e) {
             JCLogUtils.eTag(TAG, e, "getMinimum");
         }
-        return 0f;
+        return 0F;
     }
 
     /**
@@ -3797,7 +3797,7 @@ public final class ArrayUtils {
         } catch (Exception e) {
             JCLogUtils.eTag(TAG, e, "getMaximum");
         }
-        return 0f;
+        return 0F;
     }
 
     /**
