@@ -1899,7 +1899,7 @@ public final class ArrayUtils {
                 JCLogUtils.eTag(TAG, e, "get");
             }
         }
-        return (double) -1;
+        return -1D;
     }
 
     /**
