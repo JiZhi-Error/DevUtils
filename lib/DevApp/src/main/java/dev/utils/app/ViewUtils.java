@@ -2829,19 +2829,19 @@ public final class ViewUtils {
 
     /**
      * 判断触点是否落在该 View 上
-     * @param ev   {@link MotionEvent}
-     * @param view 待判断 {@link View}
+     * @param event {@link MotionEvent}
+     * @param view  待判断 {@link View}
      * @return {@code true} yes, {@code false} no
      */
     public static boolean isTouchInView(
-            final MotionEvent ev,
+            final MotionEvent event,
             final View view
     ) {
-        if (ev != null && view != null) {
+        if (event != null && view != null) {
             int[] locations = new int[2];
             view.getLocationOnScreen(locations);
-            float motionX = ev.getRawX();
-            float motionY = ev.getRawY();
+            float motionX = event.getRawX();
+            float motionY = event.getRawY();
             return motionX >= locations[0] && motionX <= (locations[0] + view.getWidth())
                     && motionY >= locations[1] && motionY <= (locations[1] + view.getHeight());
         }
