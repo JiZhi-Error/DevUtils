@@ -4230,6 +4230,36 @@ public final class ViewHelper
     }
 
     /**
+     * 设置 GridLayoutManager SpanCount
+     * @param view      {@link View}
+     * @param spanCount Span Count
+     * @return Helper
+     */
+    @Override
+    public ViewHelper setSpanCount(
+            View view,
+            int spanCount
+    ) {
+        RecyclerViewUtils.setSpanCount(view, spanCount);
+        return this;
+    }
+
+    /**
+     * 设置 GridLayoutManager SpanCount
+     * @param layoutManager LayoutManager
+     * @param spanCount     Span Count
+     * @return Helper
+     */
+    @Override
+    public ViewHelper setSpanCount(
+            RecyclerView.LayoutManager layoutManager,
+            int spanCount
+    ) {
+        RecyclerViewUtils.setSpanCount(layoutManager, spanCount);
+        return this;
+    }
+
+    /**
      * 设置 RecyclerView Orientation
      * @param view        {@link View}
      * @param orientation 方向
