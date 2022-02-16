@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import dev.utils.DevFinal;
 import dev.utils.JCLogUtils;
 
 /**
@@ -682,7 +683,7 @@ public final class ArrayUtils {
             final int[] ints,
             final int pos
     ) {
-        return get(ints, pos, -1);
+        return get(ints, pos, DevFinal.DEFAULT.ERROR_INT);
     }
 
     /**
@@ -695,7 +696,7 @@ public final class ArrayUtils {
             final byte[] bytes,
             final int pos
     ) {
-        return get(bytes, pos, (byte) -1);
+        return get(bytes, pos, DevFinal.DEFAULT.ERROR_BYTE);
     }
 
     /**
@@ -708,7 +709,7 @@ public final class ArrayUtils {
             final char[] chars,
             final int pos
     ) {
-        return get(chars, pos, (char) -1);
+        return get(chars, pos, DevFinal.DEFAULT.ERROR_CHAR);
     }
 
     /**
@@ -721,7 +722,7 @@ public final class ArrayUtils {
             final short[] shorts,
             final int pos
     ) {
-        return get(shorts, pos, (short) -1);
+        return get(shorts, pos, DevFinal.DEFAULT.ERROR_SHORT);
     }
 
     /**
@@ -734,7 +735,7 @@ public final class ArrayUtils {
             final long[] longs,
             final int pos
     ) {
-        return get(longs, pos, -1L);
+        return get(longs, pos, DevFinal.DEFAULT.ERROR_LONG);
     }
 
     /**
@@ -747,7 +748,7 @@ public final class ArrayUtils {
             final float[] floats,
             final int pos
     ) {
-        return get(floats, pos, -1F);
+        return get(floats, pos, DevFinal.DEFAULT.ERROR_FLOAT);
     }
 
     /**
@@ -760,7 +761,7 @@ public final class ArrayUtils {
             final double[] doubles,
             final int pos
     ) {
-        return get(doubles, pos, -1D);
+        return get(doubles, pos, DevFinal.DEFAULT.ERROR_DOUBLE);
     }
 
     /**
@@ -773,7 +774,7 @@ public final class ArrayUtils {
             final boolean[] booleans,
             final int pos
     ) {
-        return get(booleans, pos, false);
+        return get(booleans, pos, DevFinal.DEFAULT.ERROR_BOOLEAN);
     }
 
     // =
