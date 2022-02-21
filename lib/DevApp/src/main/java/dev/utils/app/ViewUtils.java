@@ -92,6 +92,8 @@ public final class ViewUtils {
     public static final  int    MATCH_PARENT = ViewGroup.LayoutParams.MATCH_PARENT;
     // WRAP_CONTENT
     public static final  int    WRAP_CONTENT = ViewGroup.LayoutParams.WRAP_CONTENT;
+    // Used to mark a View that has no ID
+    public static final  int    NO_ID        = View.NO_ID;
 
     /**
      * 获取 View Context
