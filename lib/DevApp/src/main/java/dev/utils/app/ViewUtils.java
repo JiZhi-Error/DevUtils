@@ -92,6 +92,10 @@ public final class ViewUtils {
     public static final  int    MATCH_PARENT = ViewGroup.LayoutParams.MATCH_PARENT;
     // WRAP_CONTENT
     public static final  int    WRAP_CONTENT = ViewGroup.LayoutParams.WRAP_CONTENT;
+    // VERTICAL
+    public static final  int    VERTICAL     = LinearLayout.VERTICAL;
+    // HORIZONTAL
+    public static final  int    HORIZONTAL   = LinearLayout.HORIZONTAL;
     // Used to mark a View that has no ID
     public static final  int    NO_ID        = View.NO_ID;
 
