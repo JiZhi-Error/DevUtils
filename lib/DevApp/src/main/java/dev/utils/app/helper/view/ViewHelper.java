@@ -35,8 +35,8 @@ import dev.utils.app.RecyclerViewUtils;
 import dev.utils.app.SizeUtils;
 import dev.utils.app.TextViewUtils;
 import dev.utils.app.ViewUtils;
-import dev.utils.app.helper.dev.DevHelper;
-import dev.utils.app.helper.quick.QuickHelper;
+import dev.utils.app.helper.BaseHelper;
+import dev.utils.app.helper.flow.FlowHelper;
 import dev.utils.common.ForUtils;
 
 /**
@@ -50,6 +50,7 @@ import dev.utils.common.ForUtils;
  * </pre>
  */
 public final class ViewHelper
+        extends BaseHelper<ViewHelper>
         implements IHelperByView<ViewHelper> {
 
     private ViewHelper() {
@@ -66,36 +67,19 @@ public final class ViewHelper
         return HELPER;
     }
 
-    // ===========
-    // = IHelper =
-    // ===========
+    // ========
+    // = Flow =
+    // ========
 
     /**
-     * 获取 DevHelper
-     * @return {@link DevHelper}
+     * 执行 Action 流方法
+     * @param action Action
+     * @return Helper
      */
     @Override
-    public DevHelper devHelper() {
-        return DevHelper.get();
-    }
-
-    /**
-     * 获取 QuickHelper
-     * @param target 目标 View
-     * @return {@link QuickHelper}
-     */
-    @Override
-    public QuickHelper quickHelper(View target) {
-        return QuickHelper.get(target);
-    }
-
-    /**
-     * 获取 ViewHelper
-     * @return {@link ViewHelper}
-     */
-    @Override
-    public ViewHelper viewHelper() {
-        return ViewHelper.get();
+    public ViewHelper flow(FlowHelper.Action action) {
+        if (action != null) action.action();
+        return this;
     }
 
     // ================
