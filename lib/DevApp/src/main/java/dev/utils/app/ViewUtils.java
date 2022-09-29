@@ -2,7 +2,6 @@ package dev.utils.app;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.ContextWrapper;
 import android.content.res.ColorStateList;
 import android.graphics.ColorFilter;
 import android.graphics.Paint;
@@ -105,10 +104,8 @@ public final class ViewUtils {
      * @return {@link Context}
      */
     public static Context getContext(final View view) {
-        if (view != null) {
-            return view.getContext();
-        }
-        return null;
+        if (view == null) return null;
+        return view.getContext();
     }
 
     /**
@@ -117,20 +114,7 @@ public final class ViewUtils {
      * @return {@link Activity}
      */
     public static Activity getActivity(final View view) {
-        if (view != null) {
-            try {
-                Context context = view.getContext();
-                while (context instanceof ContextWrapper) {
-                    if (context instanceof Activity) {
-                        return (Activity) context;
-                    }
-                    context = ((ContextWrapper) context).getBaseContext();
-                }
-            } catch (Exception e) {
-                LogPrintUtils.eTag(TAG, e, "getActivity");
-            }
-        }
-        return null;
+        return ActivityUtils.getActivity(view);
     }
 
     // =
