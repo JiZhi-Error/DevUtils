@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewOutlineProvider;
 import android.view.ViewParent;
 import android.view.ViewTreeObserver;
 import android.view.Window;
@@ -1394,6 +1395,83 @@ public final class ViewUtils {
     ) {
         if (view != null) {
             view.setScrollContainer(isScrollContainer);
+        }
+        return view;
+    }
+
+    // =
+
+    /**
+     * 获取 View 是否使用 Outline 来裁剪
+     * @param view {@link View}
+     * @return {@code true} yes, {@code false} no
+     */
+    public static boolean getClipToOutline(
+            final View view
+    ) {
+        if (view == null) return false;
+        return view.getClipToOutline();
+    }
+
+    /**
+     * 设置 View 是否使用 Outline 来裁剪
+     * @param view          {@link View}
+     * @param clipToOutline {@code true} yes, {@code false} no
+     * @return {@link View}
+     */
+    public static View setClipToOutline(
+            final View view,
+            final boolean clipToOutline
+    ) {
+        if (view != null) {
+            view.setClipToOutline(clipToOutline);
+        }
+        return view;
+    }
+
+    /**
+     * 获取 View 轮廓裁剪、绘制
+     * @param view {@link View}
+     * @return {@link ViewOutlineProvider}
+     */
+    public static ViewOutlineProvider getOutlineProvider(
+            final View view
+    ) {
+        if (view == null) return null;
+        return view.getOutlineProvider();
+    }
+
+    /**
+     * 设置 View 轮廓裁剪、绘制
+     * @param view     {@link View}
+     * @param provider {@link ViewOutlineProvider}
+     * @return {@link View}
+     */
+    public static View setOutlineProvider(
+            final View view,
+            final ViewOutlineProvider provider
+    ) {
+        if (view != null) {
+            view.setOutlineProvider(provider);
+        }
+        return view;
+    }
+
+    /**
+     * 设置 View 轮廓裁剪、绘制并进行裁剪
+     * @param view     {@link View}
+     * @param provider {@link ViewOutlineProvider}
+     * @return {@link View}
+     */
+    public static View setOutlineProviderClip(
+            final View view,
+            final ViewOutlineProvider provider
+    ) {
+        if (view != null) {
+            view.setOutlineProvider(provider);
+            if (provider != null) {
+                view.setClipToOutline(true);
+            }
         }
         return view;
     }

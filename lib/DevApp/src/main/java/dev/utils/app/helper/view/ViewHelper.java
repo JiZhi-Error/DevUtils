@@ -15,6 +15,7 @@ import android.text.method.KeyListener;
 import android.text.method.TransformationMethod;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewOutlineProvider;
 import android.view.animation.Animation;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -734,6 +735,57 @@ public final class ViewHelper
     ) {
         ForUtils.forSimpleArgs(
                 value -> ViewUtils.setScrollContainer(value, isScrollContainer), views
+        );
+        return this;
+    }
+
+    /**
+     * 设置 View 是否使用 Outline 来裁剪
+     * @param clipToOutline {@code true} yes, {@code false} no
+     * @param views         View[]
+     * @return Helper
+     */
+    @Override
+    public ViewHelper setClipToOutline(
+            boolean clipToOutline,
+            View... views
+    ) {
+        ForUtils.forSimpleArgs(
+                value -> ViewUtils.setClipToOutline(value, clipToOutline), views
+        );
+        return this;
+    }
+
+    /**
+     * 设置 View 轮廓裁剪、绘制
+     * @param provider {@link ViewOutlineProvider}
+     * @param views    View[]
+     * @return Helper
+     */
+    @Override
+    public ViewHelper setOutlineProvider(
+            ViewOutlineProvider provider,
+            View... views
+    ) {
+        ForUtils.forSimpleArgs(
+                value -> ViewUtils.setOutlineProvider(value, provider), views
+        );
+        return this;
+    }
+
+    /**
+     * 设置 View 轮廓裁剪、绘制并进行裁剪
+     * @param provider {@link ViewOutlineProvider}
+     * @param views    View[]
+     * @return Helper
+     */
+    @Override
+    public ViewHelper setOutlineProviderClip(
+            ViewOutlineProvider provider,
+            View... views
+    ) {
+        ForUtils.forSimpleArgs(
+                value -> ViewUtils.setOutlineProviderClip(value, provider), views
         );
         return this;
     }
