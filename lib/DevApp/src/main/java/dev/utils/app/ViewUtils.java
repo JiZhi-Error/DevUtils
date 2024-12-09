@@ -21,7 +21,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -4233,8 +4232,7 @@ public final class ViewUtils {
             // 移除背景图片
             removeBackground(view);
             // 移除 ImageView Drawable
-            ImageView imageView = ImageViewUtils.getImageView(view);
-            ImageViewUtils.removeImageDrawable(imageView);
+            ImageViewUtils.removeImageDrawable(view);
         }
         return view;
     }
