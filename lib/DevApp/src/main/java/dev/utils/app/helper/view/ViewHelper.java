@@ -2821,20 +2821,20 @@ public final class ViewHelper
 
     /**
      * 移除 ImageView Bitmap
-     * @param views    View[]
+     * @param views View[]
      * @return Helper
      */
     @Override
     public ViewHelper removeImageBitmap(View... views) {
-            ForUtils.forSimpleArgs(
-                    value -> ImageViewUtils.removeImageBitmap(value), views
-            );
+        ForUtils.forSimpleArgs(
+                value -> ImageViewUtils.removeImageBitmap(value), views
+        );
         return this;
     }
 
     /**
      * 移除 ImageView Drawable
-     * @param views    View[]
+     * @param views View[]
      * @return Helper
      */
     @Override
@@ -2987,6 +2987,58 @@ public final class ViewHelper
             View... views
     ) {
         ImageViewUtils.setImageDrawables(drawable, isVisibility, views);
+        return this;
+    }
+
+    /**
+     * 移除 View Bitmap
+     * @param views View[]
+     * @return Helper
+     */
+    @Override
+    public ViewHelper removeImageBitmaps(View... views) {
+        ImageViewUtils.removeImageBitmaps(views);
+        return this;
+    }
+
+    /**
+     * 移除 View Bitmap
+     * @param isVisibility {@link View#VISIBLE}、{@link View#INVISIBLE}、{@link View#GONE}
+     * @param views        View[]
+     * @return Helper
+     */
+    @Override
+    public ViewHelper removeImageBitmaps(
+            int isVisibility,
+            View... views
+    ) {
+        ImageViewUtils.removeImageBitmaps(isVisibility, views);
+        return this;
+    }
+
+    /**
+     * 移除 View Drawable
+     * @param views View[]
+     * @return Helper
+     */
+    @Override
+    public ViewHelper removeImageDrawables(View... views) {
+        ImageViewUtils.removeImageDrawables(views);
+        return this;
+    }
+
+    /**
+     * 移除 View Drawable
+     * @param isVisibility {@link View#VISIBLE}、{@link View#INVISIBLE}、{@link View#GONE}
+     * @param views        View[]
+     * @return Helper
+     */
+    @Override
+    public ViewHelper removeImageDrawables(
+            int isVisibility,
+            View... views
+    ) {
+        ImageViewUtils.removeImageDrawables(isVisibility, views);
         return this;
     }
 
