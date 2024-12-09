@@ -21,6 +21,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -4192,6 +4193,67 @@ public final class ViewUtils {
     public static PorterDuff.Mode getForegroundTintMode(final View view) {
         if (view != null) return view.getForegroundTintMode();
         return null;
+    }
+
+    // ===============
+    // = 移除前景、背景 =
+    // ===============
+
+    /**
+     * 移除背景图片
+     * @return {@link View}
+     */
+    public static View removeBackground(
+            final View view
+    ) {
+        if (view != null) {
+            try {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    view.setBackground(null);
+                } else {
+                    view.setBackgroundDrawable(null);
+                }
+            } catch (Exception e) {
+                LogPrintUtils.eTag(TAG, e, "removeBackground");
+            }
+        }
+        return view;
+    }
+
+    /**
+     * 移除背景图片 ( background、imageDrawable )
+     * @return {@link View}
+     */
+    public static View removeAllBackground(
+            final View view
+    ) {
+        if (view != null) {
+            // 移除背景图片
+            removeBackground(view);
+            // 移除 ImageView Drawable
+            ImageView imageView = ImageViewUtils.getImageView(view);
+            ImageViewUtils.removeImageDrawable(imageView);
+        }
+        return view;
+    }
+
+    /**
+     * 设置前景图片
+     * @param view {@link View}
+     * @return {@link View}
+     */
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    public static View removeForeground(
+            final View view
+    ) {
+        if (view != null) {
+            try {
+                view.setForeground(null);
+            } catch (Exception e) {
+                LogPrintUtils.eTag(TAG, e, "removeForeground");
+            }
+        }
+        return view;
     }
 
     // ==========
