@@ -2260,6 +2260,47 @@ public final class ViewHelper
     }
 
     /**
+     * 移除背景图片
+     * @param views View[]
+     * @return Helper
+     */
+    @Override
+    public ViewHelper removeBackground(View... views) {
+        ForUtils.forSimpleArgs(
+                value -> ViewUtils.removeBackground(value), views
+        );
+        return this;
+    }
+
+    /**
+     * 移除背景图片 ( background、imageDrawable )
+     * @param views View[]
+     * @return Helper
+     */
+    @Override
+    public ViewHelper removeAllBackground(View... views) {
+        ForUtils.forSimpleArgs(
+                value -> ViewUtils.removeAllBackground(value), views
+        );
+        return this;
+    }
+
+    /**
+     * 移除前景图片
+     * @param views View[]
+     * @return Helper
+     */
+    @Override
+    public ViewHelper removeForeground(View... views) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            ForUtils.forSimpleArgs(
+                    value -> ViewUtils.removeForeground(value), views
+            );
+        }
+        return this;
+    }
+
+    /**
      * View 着色处理
      * @param color 颜色值
      * @param views View[]

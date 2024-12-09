@@ -4201,6 +4201,7 @@ public final class ViewUtils {
 
     /**
      * 移除背景图片
+     * @param view {@link View}
      * @return {@link View}
      */
     public static View removeBackground(
@@ -4222,6 +4223,7 @@ public final class ViewUtils {
 
     /**
      * 移除背景图片 ( background、imageDrawable )
+     * @param view {@link View}
      * @return {@link View}
      */
     public static View removeAllBackground(
@@ -4238,7 +4240,7 @@ public final class ViewUtils {
     }
 
     /**
-     * 设置前景图片
+     * 移除前景图片
      * @param view {@link View}
      * @return {@link View}
      */
